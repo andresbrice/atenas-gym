@@ -1,0 +1,1 @@
+<img src="{{asset('img/favicon/favicon sin fondo.png')}}" alt="">

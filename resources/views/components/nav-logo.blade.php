@@ -1,0 +1,1 @@
+<img src="{{asset('img/hr/Atenas_GYM_hr_bordo.png')}}" alt="">

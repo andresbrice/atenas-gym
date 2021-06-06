@@ -1,0 +1,21 @@
+.altura90 {
+    height: 90vh;
+}
+
+.anchoLogo {
+    width: 40vw;
+}
+
+.altura90por {
+    height: 95%;
+}
+
+@media (max-width: 768px) {
+    #atenas-sidebar {
+        display: none !important;
+    }
+
+    #contenedor-sinNav {
+        height: 93vh;
+    }
+}
