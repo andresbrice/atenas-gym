@@ -47,12 +47,12 @@
               </div>
 
               <div>
-                <x-label for="sex" :value="__('Sex')" class="font-semibold" />
-                <select id="sex"
+                <x-label for="gender" :value="__('gender')" class="font-semibold" />
+                <select id="gender"
                   class="block w-full px-2 py-2 mt-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-300 focus:border-red-300"
-                  name="sex" required>
+                  name="gender" required>
                   <option hidden value="">
-                    -- Seleccionar Sexo --
+                    -- Seleccionar Género --
                   </option>
                   <option value="Masculino">
                     Masculino

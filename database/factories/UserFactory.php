@@ -26,7 +26,7 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
+            'name' => $this->faker->firstName(),
             'email' => $this->faker->unique()->safeEmail(),
             'userName' => $this->faker->userName(),
             'dni' => $this->faker->numberBetween($int1=1000000, $int2=40000000),

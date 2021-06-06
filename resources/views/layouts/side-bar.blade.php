@@ -3,13 +3,13 @@
   <div class="md:mt-12 md:w-48 md:fixed md:left-0 md:top-0 content-center md:content-start text-left justify-between">
     @switch(Auth::user()->role_id)
     @case(1)
-    @include('layouts.menus.menu-alumno')
+    @include('layouts.menu.alumno')
     @break
     @case(2)
-    @include('layouts.menus.menu-profesor')
+    @include('layouts.menu.profesor')
     @break
     @case(3)
-    @include('layouts.menus.menu-administrador')
+    @include('layouts.menu.administrador')
     @break
     @default
     @break

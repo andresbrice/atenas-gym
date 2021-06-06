@@ -91,13 +91,13 @@
         <div class="mt-3 space-y-1">
           @switch(Auth::user()->role_id)
           @case(1)
-          @include('layouts.menus.menu-alumno')
+          @include('layouts.menu.alumno')
           @break
           @case(2)
-          @include('layouts.menus.menu-profesor')
+          @include('layouts.menu.profesor')
           @break
           @case(3)
-          @include('layouts.menus.menu-administrador')
+          @include('layouts.menu.administrador')
           @break
           @default
           @break

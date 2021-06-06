@@ -25,7 +25,7 @@
           <li><b><u>Apellido:</u></b> {{$usuario->lastName}}</li>
           <li><b><u>DNI:</u></b> {{$usuario->dni}}</li>
           <li><b><u>Edad:</u></b> {{$usuario->age}}</li>
-          <li><b><u>Sexo:</u></b> {{$usuario->sex}}</li>
+          <li><b><u>Género:</u></b> {{$usuario->gender}}</li>
           <li><b><u>Teléfono:</u></b> {{$usuario->phone}}</li>
           <li><b><u>Teléfono de Emergencia:</u></b> {{$usuario->emergency_number}}</li>
         </ul>
