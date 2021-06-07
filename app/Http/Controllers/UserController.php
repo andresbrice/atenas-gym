@@ -85,6 +85,17 @@ class UserController extends Controller
 
     event(new Registered($user));
 
+    /* 
+    switch($user->role_id){
+      case '1': $alumno = new Alumno($user);
+      break;
+      case '2': $profersor = new Profesor($user);
+      break;
+      case '3': $profersor = new Profesor($user);
+      break;
+    }
+    */
+
     return redirect('usuario');
   }
 
