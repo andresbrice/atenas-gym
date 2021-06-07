@@ -1,1 +1,1 @@
-<img src="{{asset('img/hr/Atenas_GYM_hr_bordo.png')}}" alt="">
+<img class="w-auto" src="{{asset('img/hr/Atenas_GYM_hr_bordo.png')}}" alt="">
