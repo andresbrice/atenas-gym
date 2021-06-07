@@ -6,7 +6,7 @@ Atenas GYM web es una aplicación web para la gestión y administración del gim
 
 ## Prerequisitos
 
--   Entorno de desarrollo (Puede utilizar el de su preferencia. Recomendamos [XAMPP](https://www.apachefriends.org/es/index.html)
+-   Entorno de desarrollo (Puede utilizar el de su preferencia. Recomendamos [XAMPP](https://www.apachefriends.org/es/index.html))
 -   [Composer](https://getcomposer.org/). Para instalar las dependencias definidos en el archivo composer.json
 -   [Nodejs](https://nodejs.org). Para instalar las dependencias de NPM definidas en el archivo package.json 
 
