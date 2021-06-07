@@ -21,4 +21,4 @@ Para poder contribuir en nuestro proyecto recomendamos seguir los siguientes pas
 -   Ejecutar las migraciones: "php artisan migrate --seed"
 -   Ejecutar la carga de datos falsos a la tabla usuarios: "php artisan db:seed --class=UserSeeder"
 
-<p align="center">Y listo! Happy coding 💻</p>
+<p align="center">Happy coding 💻</p>
