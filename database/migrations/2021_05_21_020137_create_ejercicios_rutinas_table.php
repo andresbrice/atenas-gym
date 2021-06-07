@@ -17,9 +17,13 @@ class CreateEjerciciosRutinasTable extends Migration
             $table->engine = 'InnoDB';
             $table->id();
             $table->unsignedBigInteger('ejercicio_id');
-            $table->foreign('ejercicio_id')->references('id')->on('ejercicios');
             $table->unsignedBigInteger('rutina_id');
-            $table->foreign('rutina_id')->references('id')->on('rutinas');
+            $table->foreign('ejercicio_id')->references('id')->on('ejercicios')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->foreign('rutina_id')->references('id')->on('rutinas')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

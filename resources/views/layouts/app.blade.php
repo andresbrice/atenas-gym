@@ -13,7 +13,7 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/cssPropio/estiloSize.css') }}">
+  <link rel="stylesheet" href="{{ asset('cssPropio/estiloSize.css') }}">
   <link rel="shortcut icon" href="{{asset('img/favicon/favicon.ico')}}" type="image/x-icon">
 
 

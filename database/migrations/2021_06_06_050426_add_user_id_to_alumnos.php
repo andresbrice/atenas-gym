@@ -15,9 +15,9 @@ class AddUserIdToAlumnos extends Migration
     {
         Schema::table('alumnos', function (Blueprint $table) {
             $table->unsignedBigInteger('usuario_id');
-            $table->foreign('usuario_id')->references('id')->on('users');
-                // ->onDelete('cascade') // clave foranea
-                // ->onUpdate('cascade');
+            $table->foreign('usuario_id')->references('id')->on('users')
+                ->onDelete('cascade') // clave foranea
+                ->onUpdate('cascade');
         });
     }
 

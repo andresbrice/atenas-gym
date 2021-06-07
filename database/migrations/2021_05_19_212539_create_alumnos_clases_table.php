@@ -16,10 +16,17 @@ class CreateAlumnosClasesTable extends Migration
         Schema::create('alumnos_clases', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
+
             $table->unsignedBigInteger('alumno_id');
-            $table->foreign('alumno_id')->references('id')->on('alumnos');
             $table->unsignedBigInteger('clase_id');
-            $table->foreign('clase_id')->references('id')->on('clases');
+
+            $table->foreign('alumno_id')->references('id')->on('alumnos')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->foreign('clase_id')->references('id')->on('clases')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+
             $table->timestamps();
         });
     }
