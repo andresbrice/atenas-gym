@@ -1,10 +1,10 @@
-<p align="center"><a href="https://https://github.com/andresbrice/atenas-gym.com" target="_blank"><img src="{{asset('img/hr/Atenas_GYM_hr_bordo.png')}}" width="400"></a></p>
+<p align="center"><a href="https://github.com/andresbrice/atenas-gym.com" target="_blank"><img src="{{asset('img/hr/Atenas_GYM_hr_bordo.png')}}" width="400"></a></p>
 
-## About Atenas GYM Web
+## Sobre Atenas GYM Web
 
 Atenas GYM web es una aplicación web para la gestión y administración del gimnasio "Atenas". Creada como proyecto final de la carrera "Tecnicatura Superior en Programación"
 
-## Pre-requisitos
+## Prerequisitos
 
 -   Entorno de desarrollo (Puede utilizar el de su preferencia. Recomendamos [XAMPP](https://www.apachefriends.org/es/index.html)
 -   Manejador de dependencias de PHP: [Composer](https://getcomposer.org/)
@@ -21,4 +21,4 @@ Para poder contribuir en nuestro proyecto recomendamos seguir los siguientes pas
 -   Ejecutar las migraciones: "php artisan migrate --seed"
 -   Ejecutar la carga de datos falsos a la tabla usuarios: "php artisan db:seed --class=UserSeeder"
 
-<center>Y listo! Happy coding 💻</center>
+<p align="center">Y listo! Happy coding 💻</p>
