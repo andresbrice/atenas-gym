@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Alumno;
+use App\Models\Profesor;
 use Illuminate\Auth\Events\Registered;
 
 class UserController extends Controller
@@ -85,17 +87,22 @@ class UserController extends Controller
 
     event(new Registered($user));
 
-    /* 
+
     switch($user->role_id){
-      case '1': $alumno = new Alumno($user);
+      case '1': 
+        $alumno = new Alumno($user);
+        $alumno->usuario_id = $user->id;
       break;
-      case '2': $profersor = new Profesor($user);
+      case '2': 
+        $profesor = new Profesor($user);
+        $profesor->usuario_id = $user->id;
       break;
-      case '3': $profersor = new Profesor($user);
+      case '3': 
+        $profesor = new Profesor($user);
+        $profesor->usuario_id = $user->id;
       break;
     }
-    */
-
+    
     return redirect('usuario');
   }
 
