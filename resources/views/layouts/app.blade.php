@@ -27,23 +27,21 @@
 
 </head>
 
-<body class="font-sans antialiased bg-gray-400 leading-normal tracking-normal mt-12">
+<body class="font-sans antialiased bg-gray-200 leading-normal tracking-normal">
   {{-- Nav --}}
-  @include('layouts.navigation')
+  @include('layouts.newNav-Nav')
 
   <div id="contenedor-sinNav" class="flex flex-col md:flex-row">
 
-    @include('layouts.side-bar')
-
-    <div class="altura90 main-content flex-1 bg-gray-200 mt-12 md:mt-2 pb-24 md:pb-5">
+    <div class="altura90 main-content flex-1 bg-gray-200 mt-12 md:mt-12 md:pb-20">
 
       <div class="bg-gray-400 pt-3">
-        <div class="rounded-tl-3xl bg-gradient-to-r from-red-900  to-gray-400 p-4 shadow text-2xl text-gray-100">
+        <div class="bg-gradient-to-r from-red-900 to-gray-800 p-4 shadow text-2xl text-gray-100">
           {{$breadcrumb}}
         </div>
       </div>
 
-      <div class="flex flex-wrap altura90por">{{--class="flex flex-wrap"--}}
+      <div class="flex flex-wrap altura90por md:pt-14">{{--class="flex flex-wrap"--}}
         <div class="container mx-auto py-2">
           {{ $slot }}
         </div>

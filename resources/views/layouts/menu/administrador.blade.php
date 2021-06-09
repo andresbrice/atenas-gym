@@ -1,4 +1,4 @@
-<ul class="list-reset flex flex-row md:flex-col py-0 md:py-3 px-1 md:px-2 text-center md:text-left">
+{{-- <ul class="list-reset flex flex-row md:flex-col py-0 md:py-3 px-1 md:px-2 text-center md:text-left">
 
 
   <x-a-sidebar href="#" class="text-red-900">
@@ -97,4 +97,23 @@
     </span>
   </x-a-sidebar>
 
-</ul>
+</ul> --}}
+
+<!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+<x-userMobile />
+
+<a href="#" class="md:hidden text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Perfil</a>
+
+<x-a-sidebar href="#" aria-current="page">Asistencias</x-a-sidebar>
+
+<x-a-sidebar href="#" aria-current="page">Clases</x-a-sidebar>
+
+<x-a-sidebar href="#" aria-current="page">Rutinas</x-a-sidebar>
+
+<x-a-sidebar href="#" aria-current="page">Ejercicios</x-a-sidebar>
+
+<x-a-sidebar href="#" aria-current="page">Usuarios</x-a-sidebar>
+
+<x-a-sidebar href="#" aria-current="page">Cuotas</x-a-sidebar>
+
+<x-a-sidebar href="#" aria-current="page">Tarifas</x-a-sidebar>
