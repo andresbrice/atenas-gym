@@ -56,7 +56,7 @@
 
           <!-- Sidebar -->
           <div class="hidden sm:block sm:ml-6">
-            <div class="flex space-x-3">
+            <div class="flex space-x-1">
               @include('layouts.side-bar')
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
               {{-- <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</a>
@@ -86,13 +86,17 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
             </svg>
           </button> --}}
-  
+          
+          <label class="flex md:hidden flex items-center text-sm font-medium text-red-700">
+            {{ Auth::user()->userName }}
+          </label>
+
           <!-- Profile dropdown -->
           <div class="ml-3 relative hidden md:flex">
             <x-dropdown align="right" width="48">
               <x-slot name="trigger">
-                  <button class="flex items-center text-sm font-medium text-gray-300 hover:text-gray-400 hover:border-gray-300 focus:outline-none focus:text-gray-400 focus:border-gray-300 transition duration-150 ease-in-out">
-                      <div>{{ Auth::user()->name }}</div>
+                  <button class="flex items-center text-sm font-medium text-red-700 hover:text-gray-400 hover:border-gray-300 focus:outline-none focus:text-gray-400 focus:border-gray-300 transition duration-150 ease-in-out">
+                      <div>{{ Auth::user()->userName }}</div>
 
                       <div class="ml-1">
                           <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -160,10 +164,10 @@
         <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
   
         <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendar</a> --}}
-        <form method="POST" action="{{ route('logout') }}">
+        <form class="w-48 border-t-2 border-gray-700" method="POST" action="{{ route('logout') }}">
           @csrf
 
-          <a class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" 
+          <a class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 mt-1.5 text-base font-medium" 
             :href="route('logout')"
               onclick="event.preventDefault();
                 this.closest('form').submit();">

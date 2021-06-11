@@ -42,7 +42,7 @@
       </div>
 
       <div class="flex flex-wrap altura90por md:pt-14">{{--class="flex flex-wrap"--}}
-        <div class="container mx-auto py-2">
+        <div class="container mx-auto py-2 mt-14">
           {{ $slot }}
         </div>
       </div>
