@@ -16,13 +16,14 @@ class CreateClasesDiaSemanasTable extends Migration
         Schema::create('clases_dia_semanas', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            $table->unsignedBigInteger('dia_semana_id');
             $table->unsignedBigInteger('clase_id');
-
-            $table->foreign('dia_semana_id')->references('id')->on('dia_semanas')
+            $table->unsignedBigInteger('dia_semana_id');
+          
+            $table->foreign('clase_id')->references('id')->on('clases')
             ->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->foreign('clase_id')->references('id')->on('clases')
+
+            $table->foreign('dia_semana_id')->references('id')->on('dia_semanas')
             ->onUpdate('cascade')
             ->onDelete('cascade');
             $table->timestamps();

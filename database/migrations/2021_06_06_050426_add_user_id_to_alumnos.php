@@ -14,8 +14,8 @@ class AddUserIdToAlumnos extends Migration
     public function up()
     {
         Schema::table('alumnos', function (Blueprint $table) {
-            $table->unsignedBigInteger('usuario_id')->after('id');
-            $table->foreign('usuario_id')->references('id')->on('users')
+            $table->unsignedBigInteger('user_id')->after('id');
+            $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade') // clave foranea
                 ->onUpdate('cascade');
         });
@@ -29,7 +29,7 @@ class AddUserIdToAlumnos extends Migration
     public function down()
     {
         Schema::table('alumnos', function (Blueprint $table) {
-            $table->dropColumn('usuario_id');
+            $table->dropColumn('user_id');
         });
     }
 }

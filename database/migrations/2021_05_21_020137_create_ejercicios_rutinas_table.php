@@ -16,14 +16,17 @@ class CreateEjerciciosRutinasTable extends Migration
         Schema::create('ejercicios_rutinas', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            $table->unsignedBigInteger('ejercicio_id');
             $table->unsignedBigInteger('rutina_id');
-            $table->foreign('ejercicio_id')->references('id')->on('ejercicios')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+            $table->unsignedBigInteger('ejercicio_id');
+            
             $table->foreign('rutina_id')->references('id')->on('rutinas')
             ->onUpdate('cascade')
             ->onDelete('cascade');
+            
+            $table->foreign('ejercicio_id')->references('id')->on('ejercicios')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            
             $table->timestamps();
         });
     }

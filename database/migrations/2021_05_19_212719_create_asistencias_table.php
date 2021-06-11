@@ -17,7 +17,6 @@ class CreateAsistenciasTable extends Migration
             $table->engine = 'InnoDB';
             $table->id();
             $table->date('fecha_asistencia');
-            $table->time('horario_asistencia');
             $table->boolean('asistio');
             $table->unsignedBigInteger('alumno_clase_id');
             $table->foreign('alumno_clase_id')->references('id')->on('alumnos_clases');

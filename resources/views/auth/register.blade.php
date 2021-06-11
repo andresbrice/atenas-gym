@@ -57,7 +57,7 @@
                   <option value="Masculino">
                     Masculino
                   </option>
-                  <option value="Fememino">
+                  <option value="Femenino">
                     Femenino
                   </option>
                 </select>

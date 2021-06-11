@@ -87,19 +87,21 @@ class UserController extends Controller
 
     event(new Registered($user));
 
-
-    switch($user->role_id){
+      switch($user->role_id){
       case '1': 
         $alumno = new Alumno($user);
-        $alumno->usuario_id = $user->id;
+        $alumno->user_id = $user->id;
+        $alumno->save();
       break;
       case '2': 
         $profesor = new Profesor($user);
-        $profesor->usuario_id = $user->id;
+        $profesor->user_id = $user->id;
+        $profesor->save();
       break;
       case '3': 
         $profesor = new Profesor($user);
-        $profesor->usuario_id = $user->id;
+        $profesor->user_id = $user->id;
+        $profesor->save();
       break;
     }
     

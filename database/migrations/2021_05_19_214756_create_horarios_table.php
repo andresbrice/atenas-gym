@@ -17,8 +17,6 @@ class CreateHorariosTable extends Migration
             $table->engine = 'InnoDB';
             $table->id();
             $table->time('hora');
-            $table->unsignedBigInteger('clase_id');
-            $table->foreign('clase_id')->references('id')->on('clases');
             $table->timestamps();
         });
     }

@@ -16,10 +16,7 @@ class CreateTarifasTable extends Migration
         Schema::create('tarifas', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            $table->integer('cantidad_dias');
             $table->float("precio");
-            $table->unsignedBigInteger('clase_id');
-            $table->foreign('clase_id')->references('id')->on('clases');
             $table->timestamps();
         });
     }

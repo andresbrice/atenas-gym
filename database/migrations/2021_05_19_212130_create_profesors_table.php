@@ -16,10 +16,6 @@ class CreateProfesorsTable extends Migration
         Schema::create('profesors', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            // $table->unsignedBigInteger('usuario_id');
-            // $table->foreign('usuario_id')->references('id')->on('users')
-            // ->onDelete('cascade')
-            // ->onUpdate('cascade'); // clave foranea
             $table->timestamps();
         });
     }
