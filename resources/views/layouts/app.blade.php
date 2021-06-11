@@ -36,13 +36,13 @@
     <div class="altura90 main-content flex-1 bg-gray-200 mt-12 md:mt-12 md:pb-20">
 
       <div class="bg-gray-400 pt-3">
-        <div class="bg-gradient-to-r from-red-900 to-gray-800 p-4 shadow text-2xl text-gray-100">
+        <div class="bg-gradient-to-r from-red-900 to-gray-600 p-4 shadow text-lg md:text-2xl text-gray-100">
           {{$breadcrumb}}
         </div>
       </div>
 
-      <div class="flex flex-wrap altura90por md:pt-14">{{--class="flex flex-wrap"--}}
-        <div class="container mx-auto py-2 mt-14">
+      <div class="flex flex-wrap altura90por">{{--class="flex flex-wrap"--}}
+        <div class="container mx-auto py-2 mt-5">
           {{ $slot }}
         </div>
       </div>

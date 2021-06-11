@@ -14,10 +14,6 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/newNav', function () {
-    return view('layouts.newNav');
-});
-
 Route::get('/', function () {
     return view('auth.login'); //auth.login
 });

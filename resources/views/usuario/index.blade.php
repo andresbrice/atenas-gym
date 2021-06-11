@@ -1,7 +1,7 @@
 <x-app-layout>
 
   <x-slot name="breadcrumb">
-    <h3 class="inline">Dashboard / </h3>
+    <h3 class="text-gray-300 underline ml-4">Dashboard / </h3>
     {{-- <h3 class="text-red-300 underline">Gestión Usuario</h3> --}}
   </x-slot>
 

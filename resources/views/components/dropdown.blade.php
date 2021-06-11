@@ -32,7 +32,7 @@ break;
     x-transition:leave-end="transform opacity-0 scale-95"
     class="absolute z-50 mt-2 {{ $width }} rounded-md shadow-lg {{ $alignmentClasses }}" style="display: none;"
     @click="open = false">
-    <div class="bg-gray-800 rounded-md ring-2 ring-red-800 ring-opacity-40 {{ $contentClasses }}">
+    <div class="bg-gray-600 rounded-md ring-1 ring-red-800 {{ $contentClasses }}">
       {{ $content }}
     </div>
   </div>
