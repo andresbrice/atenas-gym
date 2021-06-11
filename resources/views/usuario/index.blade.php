@@ -91,7 +91,7 @@
                       </thead>
                       <tbody class="bg-white divide-y divide-red-100">
 
-                        @foreach ($usuarios as $usuario)
+                        @forelse ($usuarios as $usuario)
                         <tr>
                           <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
                             {{$usuario->id}}
@@ -145,7 +145,13 @@
                             </form>
                           </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                          <td>
+                            <center>No se encontró dicho usuario. Intente nuevamente</center>
+                          </td>
+                        </tr>
+                        @endforelse
                         {{-- @include('usuario.show') --}}
                       </tbody>
                     </table>
