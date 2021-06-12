@@ -14,7 +14,7 @@ class Rutina extends Model
     'series',
     'repeticiones',
     'descanso',
-    // 'alumno_clase_id',
+    'alumno_clase_id',
   ];
 
   public function alumno_clase()

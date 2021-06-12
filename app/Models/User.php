@@ -26,7 +26,6 @@ class User extends Authenticatable implements MustVerifyEmail
     'gender',
     'phone',
     'emergency_number',
-    'role_id',
     'eRespiratorias',
     'eCardiacas',
     'eRenal',
@@ -36,6 +35,7 @@ class User extends Authenticatable implements MustVerifyEmail
     'asma',
     'alergia',
     'medicacion',
+    'role_id',
   ];
 
   /**
@@ -59,7 +59,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
   public function role()
   {
-    return $this->belongsTo(Role::class, 'role_id');
+    return $this->belongsTo(Role::class);
   }
 
   public function alumno()

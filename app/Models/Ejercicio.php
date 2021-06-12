@@ -9,10 +9,6 @@ class Ejercicio extends Model
 {
   use HasFactory;
 
-  protected $fillable = [
-    'rutina_id'
-  ];
-
   public function rutinas()
   {
     return $this->belongsToMany(Rutina::class);

@@ -3,21 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Alumno_Clase extends Pivot
 {
-  protected $fillable =
-  [
-    'alumno_id',
-    'clase_id'
-  ];//VERIFICAR QUE TENGO QUE PONER LAS VARIABLES.
+  use HasFactory;
 
   public function alumno(){
-    return $this->belongsTo(Alumno::class,'alumno_id');
+    return $this->belongsTo(Alumno::class);
   }
 
   public function clase(){
-    return $this->belongsTo(Clase::class,'clase_id');
+    return $this->belongsTo(Clase::class);
   }
   
   public function asistencias (){
@@ -26,5 +23,9 @@ class Alumno_Clase extends Pivot
   
   public function rutinas (){
     return $this->HasMany(Rutina::class);
+  }
+  
+  public function cuotas (){
+    return $this->HasMany(Cuota::class);
   }
 }

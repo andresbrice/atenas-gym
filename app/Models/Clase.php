@@ -11,10 +11,6 @@ class Clase extends Model
 
   protected $fillable =
   [
-    'alumno_id',
-    'profesor_id',
-    'dia_semana_id',
-    'tarifa_id',
     'tipo_clase',
     'cupos_disponibles',
   ];
@@ -23,22 +19,24 @@ class Clase extends Model
   {
     return $this->HasMany(Alumno_Clase::class);
   }
-  public function clases_profesors()
+
+  public function profesors()
   {
-    return $this->HasMany(Clase_Profesor::class);
+    return $this->belongsToMany(Profesor::class);
   }
 
-  // public function tarifas(){
-  //   return $this->HasMany(Tarifa::class);
-  // }
+  
+  public function tarifa(){
+    return $this->belongsTo(Tarifa::class);
+  }
 
-  // public function clases_diaSemanas(){
-  //   return $this->belongsToMany(DiaSemana::class);
-  // }
+  public function clases_diaSemanas(){
+    return $this->belongsToMany(DiaSemana::class);
+  }
 
-  // public function horario(){
-  //   return $this->hasOne(Horario::class);
-  // }
+  public function horario(){
+    return $this->hasOne(Horario::class);
+  }
 
 
 

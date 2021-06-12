@@ -15,10 +15,10 @@ class Profesor extends User
     }
 
     public function usuario(){
-      return $this->belongsTo(User::class,'user_id');
+      return $this->belongsTo(User::class);
     }
 
-    public function clases_profesors(){
-      return $this->HasMany(Clase_Profesor::class);
+    public function clases(){
+      return $this->belongsToMany(Clase::class);
     }
 }

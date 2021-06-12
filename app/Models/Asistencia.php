@@ -14,7 +14,6 @@ class Asistencia extends Model
       'fecha_asistencia',
       'horario_asistencia',
       'asistio',
-      'alumno_clase_id',
     ];
 
     public function alumno_clase(){
