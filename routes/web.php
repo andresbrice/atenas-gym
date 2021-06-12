@@ -15,8 +15,8 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('auth.login'); //auth.login
-});
+    return view('dashboard');
+})->name('dashboard');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
@@ -27,17 +27,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('usuario', UserController::class);
     });
 
-    Route::group(['middleware' => 'profesor'], function () {
-        Route::resource('usuario', UserController::class);
-    });
+    // Route::group(['middleware' => 'profesor'], function () {
+    //     Route::resource('usuario', UserController::class);
+    // });
 
-    Route::group(['middleware' => 'alumno'], function () {
-        Route::resource('usuario', UserController::class);
-    });
+    // Route::group(['middleware' => 'alumno'], function () {
+    //     Route::resource('usuario', UserController::class);
+    // });
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+
 
 require __DIR__.'/auth.php';
