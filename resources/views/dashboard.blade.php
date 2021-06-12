@@ -1,6 +1,6 @@
 <x-app-layout>
   <x-slot name="breadcrumb">
-    <h3 class="text-gray-300 underline ml-4">Dashboard</h3>
+    <x-breadcrumb><u>Dashboard</u></x-breadcrumb>
   </x-slot>
 
   <x-slot name="slot">

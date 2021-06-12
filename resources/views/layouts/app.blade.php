@@ -28,11 +28,11 @@
 </head>
 
 <body class="font-sans antialiased bg-gray-200 leading-normal tracking-normal">
-
   {{-- Nav --}}
   @include('layouts.navigation')
 
   <div class="flex flex-col md:flex-row">
+
 
     <div class="altura90 main-content flex-1 bg-gray-200">
 
@@ -49,6 +49,7 @@
       </div>
 
       <x-footer />
+
     </div>
   </div>
 </body>

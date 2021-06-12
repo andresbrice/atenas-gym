@@ -15,7 +15,7 @@
         </div>
         <!-- Botones de navegación lg-->
         <div class="hidden md:block">
-          <div class="ml-10 flex items-baseline space-x-1 sm:ml-1">
+          <div class="ml-10 flex items-baseline space-x-1 sm:ml-2 sm:space-x-0">
             @switch(Auth::user()->role_id)
             @case(1)
             @include('layouts.menu.alumno')
@@ -33,7 +33,7 @@
         </div>
       </div>
 
-      <!-- Dropdown de Perfil TERMINADO-->
+      <!-- Dropdown de Perfil-->
       <div class="hidden md:block">
         <div class="ml-4 flex items-center md:ml-6">
           <x-dropdown align="right" width="48">
@@ -118,7 +118,7 @@
         </div>
 
       </div>
-      <div class="mt-3 px-2 space-y-1">
+      <div class="mt-3 px-1 space-y-1">
         <x-dropdown-link href="#">
           {{ __('Perfil') }}
         </x-dropdown-link>

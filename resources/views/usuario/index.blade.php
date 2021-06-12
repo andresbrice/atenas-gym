@@ -1,8 +1,7 @@
 <x-app-layout>
 
   <x-slot name="breadcrumb">
-    <h3 class="text-gray-300 underline ml-4">Dashboard / </h3>
-    {{-- <h3 class="text-red-300 underline">Gestión Usuario</h3> --}}
+    <x-breadcrumb><a href="/">Dashboard</a> / <u>Gestion Usuario</u></x-breadcrumb>
   </x-slot>
 
   <x-slot name="slot">
@@ -16,10 +15,12 @@
 
               {{-- BOTON CREAR USUARIO --}}
               <div class="flex-auto justify-center ml-4">
-                <a href="{{route('usuario.create')}}">
-                  <x-button class="bg-red-300 text-red-700 hover:bg-red-700 hover:text-white border-red-600 font-bold">
-                    {{ __('Register User') }}</x-button>
-                </a>
+
+                <x-button :href="route('usuario.create')"
+                  class="bg-red-300 text-red-700 hover:bg-red-700 hover:text-white border-red-600 font-bold">
+                  {{ __('Register User') }}
+                </x-button>
+
               </div>
 
               {{--BUSQUEDA--}}
