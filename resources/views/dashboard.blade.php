@@ -4,14 +4,12 @@
   </x-slot>
 
   <x-slot name="slot">
-    <div class="sm:px-6 lg:px-8 h-full flex justify-center items-center">
+    <div class="sm:px-6 altura89por flex justify-center items-center">
       <div class="w-4/5">
         <div class="bg-gray-200 overflow-visible">
-            <div class="text-center text-5xl font-bold py-28 bg-gray-200 text-black w-100 h-100 mx-auto mb-3 ">
-
-              Le damos la bienvenida, {{ Auth::user()->name }} 😄
-
-            </div>
+          <div class="text-center text-5xl font-bold  bg-gray-200 text-black mx-auto w-auto h-auto ">
+            Le damos la bienvenida, {{ Auth::user()->name }} 😄
+          </div>
         </div>
       </div>
     </div>

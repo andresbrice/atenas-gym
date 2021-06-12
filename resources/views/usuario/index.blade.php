@@ -125,8 +125,9 @@
 
                             {{-- BOTON MOSTRAR --}}
 
-                            <div class="mt-6 inline" x-data="{ open: false }">
-                              <x-button class="text-white bg-yellow-600 hover:bg-yellow-500" @click="open = true">
+                            <div class="mt-6 inline z-5000" x-data="{ open: false }">
+                              <x-button class="text-white bg-yellow-600 hover:bg-yellow-500 z-5000"
+                                @click="open = true">
                                 Mostrar
                               </x-button>
 
