@@ -1,1 +1,1 @@
-<img src="{{asset('img/favicon/favicon sin fondo.png')}}" alt="">
+<img {{$attributes -> merge()}} src="{{asset('img/favicon/favicon sin fondo.png')}}" alt="">
