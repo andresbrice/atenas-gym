@@ -1,12 +1,12 @@
 <x-app-layout>
 
   <x-slot name="breadcrumb">
-    {{-- breadcrumb --}}
+    {{-- breadcrumb --}}//
   </x-slot>
 
 
   <x-slot name="slot">
-    <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-4 bg-white border border-gray-300 rounded">
           <!-- Validation Errors -->

@@ -2,7 +2,7 @@
   <x-auth-card>
     <x-slot name="logo">
       <a href="/">
-        <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+        <x-application-logo class="w-65 h-40 fill-current text-gray-500" />
       </a>
     </x-slot>
 
@@ -27,7 +27,7 @@
           autofocus />
       </div>
 
-      <div class="flex items-center justify-end mt-4">
+      <div class="flex items-center justify-between mt-4">
 
         <x-button type="button" class="bg-red-800">
           <a href="{{ route('login') }}">

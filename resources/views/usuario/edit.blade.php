@@ -4,16 +4,16 @@
   </x-slot>
 
   <x-slot name="slot">
-    <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class=" p-3 bg-white border border-gray-300 rounded">
+        <div class=" p-4 bg-white border border-gray-300 rounded">
           <!-- Validation Errors -->
           <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
           <form method="POST" action="{{route('usuario.update',$usuario->id)}}">
             @csrf
             @method('PUT')
-            <div class=" bg-gray-100  border border-gray-200 grid grid-cols-3 gap-6 mt-4 sm:grid-cols-3 py-5 px-5">
+            <div class=" bg-gray-100  border border-gray-200 grid grid-cols-3 gap-6  sm:grid-cols-3 py-3 px-5">
               <div>
                 <x-label for="userName" :value="__('User Name')" class="font-semibold" />
                 <x-input id="userName" class="block w-full px-4 py-2 mt-2" type="text" name="userName"
@@ -179,7 +179,7 @@
               </div>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-center mt-4">
               <x-button class="text-white bg-green-900 hover:bg-green-700">Editar</x-button>
             </div>
           </form>

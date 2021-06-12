@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
 
 class UserSeeder extends Seeder
 {
@@ -14,8 +14,8 @@ class UserSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        DB::table('users')->insert([
+    { 
+      DB::table('users')->insert([
         'name' => "admin",
         "email" => "admin@admin.com",
         "userName"=> "admin",
