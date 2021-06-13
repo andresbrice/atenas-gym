@@ -5,26 +5,29 @@ use App\Http\Controllers\UserController;
 
 require __DIR__.'/auth.php';
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/', function () {
-      return view('dashboard');
-    })->name('dashboard');
+Route::get('/', function () {
+  return view('dashboard');
+})->middleware('auth')->name('dashboard');
 
-    Route::resource('usuario', UserController::class);
+Route::resource('usuario', UserController::class); 
 
-    
-    Route::group(['middleware' => 'admin'], function () {
-        
-    });
+// Route::middleware(['auth', 'verified'])->group(function () {
+//     Route::get('/', function () {
+//       return view('dashboard');
+//     })->name('dashboard');
 
-    // Route::group(['middleware' => 'profesor'], function () {
-    //     Route::resource('usuario', UserController::class);
-    // });
+//     Route::group(['middleware' => 'admin'], function () {
+//       Route::resource('usuario', UserController::class); 
+//     });
 
-    // Route::group(['middleware' => 'alumno'], function () {
-    //     Route::resource('usuario', UserController::class);
-    // });
-});
+//     // Route::group(['middleware' => 'profesor'], function () {
+//     //     Route::resource('usuario', UserController::class);
+//     // });
+
+//     // Route::group(['middleware' => 'alumno'], function () {
+//     //     Route::resource('usuario', UserController::class);
+//     // });
+// });
 
 
 

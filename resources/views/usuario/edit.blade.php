@@ -1,6 +1,8 @@
 <x-app-layout>
   <x-slot name="breadcrumb">
-    //
+    <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{route('usuario.index')}}">Gestión Usuario</a> / <u>Editar
+        Usuario</u>
+    </x-breadcrumb>
   </x-slot>
 
   <x-slot name="slot">
