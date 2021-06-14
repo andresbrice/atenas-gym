@@ -147,5 +147,13 @@ return [
     |
     */
 
-    'attributes' => []
+    'attributes' => [
+      'name' => 'nombre',
+      'userName' => 'usuario',
+      'lastName'=>'apellido',
+      'gender'=>'género',
+      'age'=>'edad',
+      'phone'=>'teléfono',
+      'emergency_number'=>'teléfono de emergencia',
+    ]
 ];
