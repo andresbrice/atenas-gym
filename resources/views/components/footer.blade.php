@@ -1,4 +1,4 @@
-<footer class="bg-gray-600 fixed inset-x-0 bottom-0 text-xs flex justify-end items-end">
+<footer class="bg-gray-900 fixed inset-x-0 bottom-0 text-xs flex justify-end items-end">
   <div class="flex -mx-2  text-right">
     <x-label class="flex text-base text-gray-400 text-right">Atenas GYM © 2021</x-label>
 

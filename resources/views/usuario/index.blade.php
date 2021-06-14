@@ -10,6 +10,7 @@
       <div class="w-full">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-4 bg-white border-b border-gray-100">
+            <x-auth-session-status class="mb-4 font-bold flex justify-center" :status="session('status')" />
             {{-- DIV ALIGN --}}
             <div class="flex justify-center items-center bg-white mx-auto mb-3 ">
 
@@ -125,7 +126,7 @@
 
                             {{-- BOTON MOSTRAR --}}
 
-                            <div class="mt-6 inline z-5000" x-data="{ open: false }">
+                            <div class="mt-6 inline" x-data="{ open: false }">
                               <x-button class="text-white bg-yellow-600 hover:bg-yellow-500 z-5000"
                                 @click="open = true">
                                 Mostrar

@@ -28,12 +28,11 @@
       </div>
 
       <div class="flex items-center justify-between mt-4">
-
-        <x-button type="button" class="bg-red-800">
-          <a href="{{ route('login') }}">
+        <a href="{{ route('login') }}">
+          <x-button type="button" class="bg-red-800">
             {{ __('Back') }}
-          </a>
-        </x-button>
+          </x-button>
+        </a>
 
         <x-button class="bg-red-800">
           {{ __('Email Password Reset Link') }}

@@ -1,10 +1,10 @@
-<nav class="bg-gray-600" x-data="{ open: false }">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<nav class="sticky top-0  bg-gray-900">
+  <div class="max-w-7xl  mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
 
       {{--Logo y botones de navegación--}}
       <div class="flex items-center">
-        <div class="flex-shrink-0">
+        <div class="flex-shrink-0 lg:mr-4 sm:-mr-1">
           <a href="{{route('dashboard')}}">
             {{-- logo solo--}}
             <x-application-logo class="block lg:hidden h-8 w-auto" />
@@ -14,8 +14,8 @@
           </a>
         </div>
         <!-- Botones de navegación lg-->
-        <div class="hidden md:block">
-          <div class="ml-10 flex items-baseline space-x-1 sm:ml-2 sm:space-x-0">
+        <div class="hidden md:block">}
+          <div class="flex items-baseline space-x-1 ml-10 sm:ml-2 sm:space-x-0">
             @switch(Auth::user()->role_id)
             @case(1)
             @include('layouts.menu.alumno')
@@ -34,12 +34,12 @@
       </div>
 
       <!-- Dropdown de Perfil-->
-      <div class="hidden md:block">
+      <div class="hidden md:block justify-items-end">
         <div class="ml-4 flex items-center md:ml-6">
           <x-dropdown align="right" width="48">
             <x-slot name="trigger">
               <button
-                class="flex items-center text-sm font-bold text-red-900 hover:text-red-800 focus:outline-none focus:text-red-800 transition duration-150 ease-in-out">
+                class="flex items-center text-md font-semibold text-red-800 hover:text-red-700 focus:outline-none focus:text-red-700 transition duration-150 ease-in-out">
                 <div>{{ Auth::user()->userName }}</div>
 
                 <div class="ml-1">
@@ -73,8 +73,8 @@
 
       <!-- Menú hamburguesa -->
       <div class="-mr-1 flex md:hidden">
-        <button x-on:click="open = ! open" type="button"
-          class="bg-gray-600 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-red-800"
+        <button x-on:click="open = !open" type="button"
+          class="bg-gray-900 inline-flex items-center justify-center p-2 focus:outline-none text-gray-400 hover:text-red-800"
           aria-controls="mobile-menu" aria-expanded="false">
           <span class="sr-only">Abrir Menú Principal</span>
 
@@ -113,8 +113,8 @@
       <div class="flex items-center px-2">
 
         <div class="ml-3">
-          <div class="text-base font-medium leading-none text-white">{{ Auth::user()->userName }}</div>
-          <div class="text-sm font-medium leading-none text-gray-400">{{ Auth::user()->email }}</div>
+          <div class="text-md font-medium leading-none text-red-700">{{ Auth::user()->userName }}</div>
+          <div class="text-xs font-medium leading-none text-gray-400">{{ Auth::user()->email }}</div>
         </div>
 
       </div>

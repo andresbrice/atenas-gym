@@ -1,5 +1,5 @@
 <div
-  class=" xl:bg-contain xl:bg-center min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gradient-to-r from-red-800 via-gray-400 to-gray-300 ">
+  class=" xl:bg-contain xl:bg-center min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gradient-to-r from-red-800  via-gray-900 to-gray-900 ">
   <div>
     {{ $logo }}
   </div>

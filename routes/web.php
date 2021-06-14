@@ -9,6 +9,11 @@ Route::get('/', function () {
   return view('dashboard');
 })->middleware('auth')->name('dashboard');
 
+Route::get('/add-alumno', function () {
+  return view('clase.addAlumno');
+})->middleware('auth')->name('AddAlumno');
+
+
 Route::resource('usuario', UserController::class); 
 
 // Route::middleware(['auth', 'verified'])->group(function () {

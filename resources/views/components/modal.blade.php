@@ -1,4 +1,5 @@
-<div class="absolute z-50 bg-black bg-opacity-50 top-0 left-0 flex items-center justify-center w-screen h-screen "
+<div
+  class="fixed z-50 bg-black bg-opacity-50 top-0 left-0 bottom-0 right-0 flex items-center justify-center w-screen h-screen "
   style="display:none" x-show="open">
 
   <div class="h-auto p-4 mx-2 text-left bg-white rounded shadow-xl md:max-w-xl md:p-6 lg:p-8 md:mx-0"
