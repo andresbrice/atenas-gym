@@ -51,18 +51,18 @@ class UserController extends Controller
   public function store(Request $request)
   {
     $request->validate([
-      'name' => 'required|string|max:255',
+      'name' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'email' => 'required|string|email|max:255|unique:users',
       'userName' => 'required|string|max:255',
-      'dni' => 'required|int',
-      'lastName' => 'required|string|max:255',
+      'dni' => 'required|int|unique:users',
+      'lastName' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'gender' => 'required',
       'phone' => 'required|int',
       'emergency_number' => 'required|int',
       'age' => 'required|int',
       // 'password' => ['required', 'confirmed', Rules\Password::defaults()],
     ]);
-
+    
     $user = User::create([
       'name' => $request->name,
       'email' => $request->email,
@@ -105,7 +105,7 @@ class UserController extends Controller
       break;
     }
     
-    return redirect('usuario');
+    return redirect('usuario')->with('status', 'Usuario creado con exito');
   }
 
   /**
@@ -145,7 +145,7 @@ class UserController extends Controller
 
     User::where('id', '=', $id)->update($usuario);
 
-    return redirect('usuario');
+    return redirect('usuario')->with('status', 'Usuario modificado con exito');
   }
 
   /**
@@ -158,6 +158,6 @@ class UserController extends Controller
   {
     User::destroy($id);
 
-    return redirect('usuario');
+    return redirect('usuario')->with('status', 'Usuario eliminado con exito');
   }
 }
