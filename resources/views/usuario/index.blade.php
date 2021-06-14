@@ -132,7 +132,7 @@
                                 Mostrar
                               </x-button>
 
-                              @include('usuario.show')
+                              @include('usuario.infoUser')
 
                             </div>
 
