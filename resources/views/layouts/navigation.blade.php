@@ -14,7 +14,7 @@
           </a>
         </div>
         <!-- Botones de navegación lg-->
-        <div class="hidden md:block">}
+        <div class="hidden md:block">
           <div class="flex items-baseline space-x-1 ml-10 sm:ml-2 sm:space-x-0">
             @switch(Auth::user()->role_id)
             @case(1)
