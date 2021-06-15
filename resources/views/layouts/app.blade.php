@@ -37,14 +37,14 @@
 
     <div class="altura90 main-content flex-1 bg-gray-200">
 
-      <div class="bg-gradient-to-r from-red-900 to-gray-900 p-4 shadow text-lg md:text-xl text-gray-100">
+      <div class="bg-gradient-to-r from-red-900 to-gray-900 p-4 shadow text-md md:text-lg text-gray-100">
         <div class="container mx-auto">
           {{$breadcrumb}}
         </div>
       </div>
 
-      <div style=" height: 80vh;" class="flex flex-wrap items-center">{{--80vh align items center--}}
-        <div class=" container h-full mx-auto py-2 my-2">
+      <div style=" height: 80vh;" class="flex flex-wrap items-center">
+        <div class=" container h-full mx-auto flex justify-center items-center">
           {{ $slot }}
         </div>
       </div>
