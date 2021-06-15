@@ -9,6 +9,7 @@ Route::get('/', function () {
   return view('dashboard');
 })->middleware('auth')->name('dashboard');
 
+
 Route::get('/add-alumno', function () {
   return view('clase.addAlumno');
 })->middleware('auth')->name('AddAlumno');

@@ -8,6 +8,7 @@ use App\Models\Role;
 use App\Models\Alumno;
 use App\Models\Profesor;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -116,7 +117,9 @@ class UserController extends Controller
    */
   public function show($id)
   {
-    $usuario = User::findOrFail($id)->only(['email','password','phone','emergency_number']);
+    $id = Auth::user()->id;
+
+    $usuario = User::findOrFail($id);
 
     return view('usuario.show', compact('usuario'));
   }
