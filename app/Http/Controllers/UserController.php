@@ -10,6 +10,7 @@ use App\Models\Profesor;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 
+
 class UserController extends Controller
 {
   /**
@@ -146,6 +147,19 @@ class UserController extends Controller
    */
   public function update(Request $request, $id)
   {
+    $request->validate([
+      'name' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
+      'email' => 'required|string|email|max:255|unique:users',
+      'userName' => 'required|string|max:255',
+      'dni' => 'required|int|unique:users',
+      'lastName' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
+      'gender' => 'required',
+      'phone' => 'required|int',
+      'emergency_number' => 'required|int',
+      'age' => 'required|int',
+      'password' => 'nullable|required_with:password_confirmation|string|confirmed',
+    ]);
+    
     $usuario = request()->except('_token', '_method');
 
     User::where('id', '=', $id)->update($usuario);
