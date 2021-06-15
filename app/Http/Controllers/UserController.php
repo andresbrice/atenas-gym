@@ -116,7 +116,9 @@ class UserController extends Controller
    */
   public function show($id)
   {
-    //
+    $usuario = User::findOrFail($id)->only(['email','password','phone','emergency_number']);
+
+    return view('usuario.show', compact('usuario'));
   }
 
   /**
