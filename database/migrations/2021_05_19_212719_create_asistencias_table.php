@@ -18,8 +18,8 @@ class CreateAsistenciasTable extends Migration
             $table->id();
             $table->date('fecha_asistencia');
             $table->boolean('asistio');
-            $table->unsignedBigInteger('alumno_clase_id');
-            $table->foreign('alumno_clase_id')->references('id')->on('alumnos_clases');
+            $table->unsignedBigInteger('alumnos_clases_id');
+            $table->foreign('alumnos_clases_id')->references('id')->on('alumnos_clases');
             $table->timestamps();
         });
     }

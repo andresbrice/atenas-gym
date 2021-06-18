@@ -13,6 +13,8 @@ class Clase extends Model
   [
     'tipo_clase',
     'cupos_disponibles',
+    'horario_id',
+    'tarifa_id'
   ];
 
   public function alumnos_clases()
@@ -24,22 +26,16 @@ class Clase extends Model
   {
     return $this->belongsToMany(Profesor::class);
   }
-
   
   public function tarifa(){
     return $this->belongsTo(Tarifa::class);
   }
 
-  public function clases_diaSemanas(){
+  public function dias_semana(){
     return $this->belongsToMany(DiaSemana::class);
   }
 
   public function horario(){
     return $this->hasOne(Horario::class);
   }
-
-
-
-
-
 }

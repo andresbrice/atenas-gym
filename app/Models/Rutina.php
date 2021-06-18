@@ -17,9 +17,9 @@ class Rutina extends Model
     'alumno_clase_id',
   ];
 
-  public function alumno_clase()
+  public function alumnos_clases()
   {
-    return $this->belongsTo(Alumno_Clase::class, 'alumno_clase_id');
+    return $this->belongsTo(Alumno_Clase::class, 'alumnos_clases_id');
   }
 
   public function ejercicios()

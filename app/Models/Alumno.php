@@ -9,8 +9,8 @@ class Alumno extends User
 {
     use HasFactory;
 
-    public function __construct($user){
-      $this->user_id = $user->id;
+    public function __construct(){
+      //
     }
 
     public function usuario(){

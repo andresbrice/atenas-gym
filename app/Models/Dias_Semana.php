@@ -4,19 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User;
 
-class Profesor extends User
+class Dias_Semana extends Model
 {
     use HasFactory;
-
-    public function __construct(){
-     //
-    }
-
-    public function usuario(){
-      return $this->belongsTo(User::class);
-    }
+    protected $table='dias_semana';
+    protected $fillable =[
+      'dia',
+    ];
 
     public function clases(){
       return $this->belongsToMany(Clase::class);

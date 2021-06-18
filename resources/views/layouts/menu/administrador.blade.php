@@ -4,7 +4,7 @@
   {{ __('Asistencias') }}
 </x-nav-link>
 
-<x-nav-link class="px-3 py-2" {{--:href="route('usuario.index')" :active="request()->routeIs('usuario.index')"--}}>
+<x-nav-link class="px-3 py-2" :href="route('clase.index')" :active="request()->routeIs('clase.index')">
   {{ __('Clases') }}
 </x-nav-link>
 

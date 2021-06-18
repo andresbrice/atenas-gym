@@ -50,7 +50,7 @@
                       class="block w-full px-2 py-2 mt-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-300 focus:border-red-300"
                       name="gender" required>
                       <option hidden value="">
-                        -- Seleccionar Género --
+                        - Seleccionar Género -
                       </option>
                       <option value="Masculino">
                         Masculino
@@ -83,7 +83,7 @@
                       class="block w-full px-2 py-2 mt-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-300 focus:border-red-300"
                       name="role_id" required>
                       <option hidden value="">
-                        -- Seleccionar Rol --
+                        - Seleccionar Rol -
                       </option>
                       @foreach ($roles as $role)
                       <option value="{{$role->id}}">

@@ -17,13 +17,13 @@ class CreateClasesDiaSemanasTable extends Migration
             $table->engine = 'InnoDB';
             $table->id();
             $table->unsignedBigInteger('clase_id');
-            $table->unsignedBigInteger('dia_semana_id');
+            $table->unsignedBigInteger('dias_semana_id');
           
             $table->foreign('clase_id')->references('id')->on('clases')
             ->onUpdate('cascade')
             ->onDelete('cascade');
 
-            $table->foreign('dia_semana_id')->references('id')->on('dia_semanas')
+            $table->foreign('dias_semana_id')->references('id')->on('dias_semana')
             ->onUpdate('cascade')
             ->onDelete('cascade');
             $table->timestamps();

@@ -17,7 +17,7 @@ class CreateClasesTable extends Migration
             $table->engine = 'InnoDB';
             $table->id();
             $table->string('tipo_clase');
-            $table->integer('cupos_disponibles');
+            $table->integer('cupos_disponibles')->default(10);
             $table->timestamps();
         });
     }
