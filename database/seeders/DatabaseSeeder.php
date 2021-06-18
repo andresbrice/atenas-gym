@@ -16,6 +16,6 @@ class DatabaseSeeder extends Seeder
     // $this->call(UserSeeder::class);
     $this->call(RoleSeeder::class);
     $this->call(Dia_SemanaSeeder::class);
-    $this->call(HorarioSeeder::class);
+    // $this->call(HorarioSeeder::class);
   }
 }

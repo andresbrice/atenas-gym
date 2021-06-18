@@ -11,6 +11,10 @@ class Horario extends Model
 
     protected $fillable =['hora'];
 
+    public function __construct(){
+      //
+    }
+
     public function horario(){
       return $this->hasOne(Clase::class);
     }

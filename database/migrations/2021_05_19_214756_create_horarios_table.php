@@ -16,7 +16,7 @@ class CreateHorariosTable extends Migration
         Schema::create('horarios', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            $table->time('hora')->format('h:i');
+            $table->time('hora')->unique();
             $table->timestamps();
         });
     }

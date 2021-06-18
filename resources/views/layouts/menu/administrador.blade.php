@@ -27,3 +27,6 @@
 <x-nav-link class="px-3 py-2" {{--:href="route('usuario.index')" :active="request()->routeIs('usuario.index')"--}}>
   {{ __('Tarifas') }}
 </x-nav-link>
+<x-nav-link class="px-3 py-2" :href="route('horario.index')" :active="request()->routeIs('horario.index')">
+  {{ __('Horarios') }}
+</x-nav-link>

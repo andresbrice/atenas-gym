@@ -64,17 +64,14 @@ class ClaseController extends Controller
     $clase = new Clase();
     $clase->tipo_clase = $request->tipo_clase;
     $clase->horario_id = $request->horario_id;
-
     
-    
-
     for ($i=0; $i < sizeof($request->input('dias_semana')) ; $i++) { 
       $dias['dias_semana'] = $request->input('dias_semana');
       $clase->tarifa_id = $i+1;
     }
     $clase->save();
 
-    $clase->Dias_Semana()->sync($dias);
+    $clase->Dias_Semana()->attach($dias['dias_semana']);
 
   }
 
