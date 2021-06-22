@@ -20,6 +20,5 @@ Para poder contribuir en nuestro proyecto recomendamos seguir los siguientes pas
 -   Crear archivo .env (Pueden duplicar el archivo .env.example, renombrarlo a .env e incluir los datos de conexión de la base de datos que indicamos en el paso anterior.)
 -   Generar una clave: "php artisan key:generate"
 -   Ejecutar las migraciones: "php artisan migrate --seed"
--   Ejecutar la carga de datos falsos a la tabla usuarios: "php artisan db:seed --class=UserSeeder"
 
 <p align="center">Happy coding 💻</p>

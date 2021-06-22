@@ -54,7 +54,7 @@
             </x-slot>
 
             <x-slot name="content">
-              <x-dropdown-link href="#">
+              <x-dropdown-link href="{{route('usuario.show',Auth::user()->id)}}">
                 {{ __('Perfil') }}
               </x-dropdown-link>
 
@@ -120,7 +120,7 @@
 
       </div>
       <div class="mt-3 px-1 space-y-1">
-        <x-dropdown-link href="#">
+        <x-dropdown-link href="{{route('usuario.show',Auth::user()->id)}}">
           {{ __('Perfil') }}
         </x-dropdown-link>
 
