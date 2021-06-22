@@ -23,7 +23,6 @@ class UserController extends Controller
     $name = $request->get('name');
     $userName = $request->get('userName');
     $lastName = $request->get('lastName');
-
     $usuarios = User::orderBy('id', 'DESC')
       ->name($name)
       ->userName($userName)
@@ -63,7 +62,7 @@ class UserController extends Controller
       'emergency_number' => 'required|int',
       'age' => 'required|int',
     ]);
-    
+  
     $user = User::create([
       'name' => $request->name,
       'email' => $request->email,

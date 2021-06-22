@@ -37,7 +37,7 @@
       <div class="hidden md:block justify-items-end">
         <div class="ml-4 flex items-center md:ml-6">
           <x-dropdown class="relative" align="right" width="48"
-            contentClasses="bg-gray-900 rounded-md ring-1 ring-red-900">
+            contentClasses="bg-gray-200 rounded-md ring-1 ring-red-900">
             <x-slot name="trigger">
               <button
                 class="flex items-center text-md font-semibold text-red-800 hover:text-red-700 focus:outline-none focus:text-red-700 transition duration-150 ease-in-out">
