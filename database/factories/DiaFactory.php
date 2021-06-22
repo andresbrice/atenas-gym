@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\DiaSemana;
+use App\Models\Dia;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class DiaSemanaFactory extends Factory
+class DiaFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Dia_Semana::class;
+    protected $model = Dia::class;
 
     /**
      * Define the model's default state.

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Clase;
-use App\Models\Dias_Semana;
+use App\Models\Dia;
 use App\Models\Profesor;
 use App\Models\Horario;
 use App\Models\Alumno_Clase;
@@ -24,13 +24,11 @@ class ClaseController extends Controller
   public function index(Request $request)
   {
     
-    $clases = Clase::orderBy('id', 'DESC')->paginate(5);
-    $dias = Dias_Semana::all();
-    $horarios = Horario::all();
-    // $alumnos = Alumno_Clase::find()->alumno()->get();
-    $profesors = Profesor::all();
+    $clases = Clase::with('dias')
+    ->orderByDesc('id')
+    ->paginate(5);
 
-    return view('clase.index', compact('clases','dias','profesors','horarios'));
+    return view('clase.index', compact('clases'));
     
   }
 
@@ -41,7 +39,7 @@ class ClaseController extends Controller
    */
   public function create()
   {
-    $dias = Dias_Semana::all();
+    $dias = Dia::all();
     $horarios = Horario::all();
   
     return view('clase.create',compact('horarios','dias'));
@@ -57,22 +55,25 @@ class ClaseController extends Controller
   {
     $request->validate([
     'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
-    'horario' => 'required',
-    'dias_semana[]'=>'min: 1',
+    'horario_id' => 'required',
+    'dias[]'=>'min: 1',
     ]);
-
+ 
     $clase = new Clase();
     $clase->tipo_clase = $request->tipo_clase;
     $clase->horario_id = $request->horario_id;
+
     
-    for ($i=0; $i < sizeof($request->input('dias_semana')) ; $i++) { 
-      $dias['dias_semana'] = $request->input('dias_semana');
-      $clase->tarifa_id = $i+1;
+    for ($i=0; $i < sizeof($request->dias) ; $i++) { 
+      $clase->tarifa_id = $i + 1;
     }
+
     $clase->save();
 
-    $clase->Dias_Semana()->attach($dias['dias_semana']);
+    
+    $clase->dias()->attach($request->dias);
 
+    return redirect('clase')->with('status', 'Clase creada con exito');
   }
 
   /**

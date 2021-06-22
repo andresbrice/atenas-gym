@@ -26,17 +26,17 @@
                   </div>
 
                   <div class="col-span-6 sm:col-span-6 lg:col-span-2">
-                    <x-label for="hoarios" :value="__('Horario')" class="font-semibold" />
+                    <x-label for="horarios" :value="__('Horario')" class="font-semibold" />
 
                     <select id="horarios"
                       class="block w-full px-2 py-2 mt-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-300 focus:border-red-300"
-                      name="horario" required>
+                      name="horario_id" required>
                       <option hidden value="">
                         - Seleccionar Horario -
                       </option>
                       @foreach ($horarios as $horario)
                       <option value="{{$horario->id}}">
-                        {{$horario->hora}}
+                        {{$horario->hora->format('H:i A')}}
                       </option>
                       @endforeach
                     </select>
@@ -44,16 +44,19 @@
                 </div>
                 <div class="mt-3">
                   <div class="inline grid-cols-6 space-x-2 gap-6 ">
-                    <x-label for="dias_semana" :value="__('Días de la semana')"
-                      class="text-xl px-2 mb-2 font-semibold" />
+                    <x-label for="dia" :value="__('Días de la semana')" class="text-xl px-2 mb-2 font-semibold" />
+
                     @foreach ($dias as $dia)
-                    <label for="dias_semana" class="inline-flex items-center">
-                      <input id="dias_semana" type="checkbox" class="rounded border-gray-300 text-red-900 
+                    <div class="inline-flex items-center">
+                      <input id="dia" type="checkbox" class="rounded border-gray-300 text-red-900 
                       shadow-sm focus:border-red-300 focus:ring
-                      focus:ring-red-200 focus:ring-opacity-50" name="dias_semana[]" value="{{$dia->id}}">
+                      focus:ring-red-200 focus:ring-opacity-50" name="dias[]" value="{{$dia->id}}">
+
                       <span class="ml-2 text-sm text-gray-600">{{ $dia->dia }}</span>
-                    </label>
+                    </div>
+
                     @endforeach
+
                   </div>{{--/div dias de la semana--}}
                 </div>
                 <div class="px-4 py-3 bg-gray-50 text-center sm:px-6">
@@ -69,23 +72,3 @@
     </div>
   </x-slot>
 </x-app-layout>
-
-
-{{-- <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div> --}}

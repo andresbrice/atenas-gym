@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDiasSemanaTable extends Migration
+class CreateDiasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,7 @@ class CreateDiasSemanaTable extends Migration
      */
     public function up()
     {
-        Schema::create('dias_semana', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
+        Schema::create('dias', function (Blueprint $table) {
             $table->id();
             $table->string("dia");
             $table->timestamps();
@@ -28,6 +27,6 @@ class CreateDiasSemanaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dias_semana');
+        Schema::dropIfExists('dias');
     }
 }

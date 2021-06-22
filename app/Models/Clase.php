@@ -24,18 +24,18 @@ class Clase extends Model
 
   public function profesors()
   {
-    return $this->belongsToMany(Profesor::class);
+    return $this->belongsToMany(Profesor::class)->as('clase_profesor');
   }
   
   public function tarifa(){
     return $this->belongsTo(Tarifa::class);
   }
 
-  public function dias_semana(){
-    return $this->belongsToMany(DiaSemana::class);
+  public function dias(){
+    return $this->belongsToMany(Dia::class)->as('clase_dia');
   }
 
   public function horario(){
-    return $this->hasOne(Horario::class);
+    return $this->belongsTo(Horario::class);
   }
 }

@@ -14,8 +14,7 @@ class HorarioController extends Controller
      */
     public function index()
     {
-        $horarios = Horario::orderBy('id','ASC')->paginate(10);
-
+        $horarios = Horario::orderBy('hora','ASC')->paginate(5);
         return view('horario.index',compact('horarios'));
     }
 
@@ -38,13 +37,15 @@ class HorarioController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-          'hora' => 'required|unique:hora'
+          'hora' => 'required|unique:horarios|after:07:59|before:22:00'
         ]);
 
-        $horario = Horario::create([
-          'hora' => strtotime($request->hora),
-        ]);
-
+        $hora = new \DateTime($request->hora);
+        $formathora = $hora->format('H:i');
+        $horario = new Horario();
+        $horario->hora = $formathora;
+        $horario->save();
+        
         return redirect('horario')->with('status', 'Horario creado con exito');
     }
 
@@ -67,7 +68,8 @@ class HorarioController extends Controller
      */
     public function edit($id)
     {
-        //
+      $horario = Horario::findOrFail($id);
+      return view('horario.edit', compact('horario'));
     }
 
     /**
@@ -79,7 +81,15 @@ class HorarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $request->validate([
+        'hora' => 'required|unique:horarios|after:07:59|before:22:00'
+      ]);
+      
+      $horario = request()->except('_token', '_method');
+
+      Horario::where('id', '=', $id)->update($horario);
+
+      return redirect('horario')->with('status', 'Horario modificado con exito');
     }
 
     /**
@@ -90,6 +100,8 @@ class HorarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+      Horario::destroy($id);
+
+      return redirect('horario')->with('status', 'Horario eliminado con exito');
     }
 }

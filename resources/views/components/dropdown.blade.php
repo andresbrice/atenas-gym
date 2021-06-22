@@ -1,4 +1,4 @@
-@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white'])
+@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1'])
 
 @php
 switch ($align) {
@@ -21,7 +21,8 @@ break;
 }
 @endphp
 
-<div class="relative" x-data="{ open: false }" @click.away="open = false" @close.stop="open = false">
+<div {{ $attributes->merge(['class' => '']) }} x-data="{ open: false }" @click.away="open = false"
+  @close.stop="open = false">
   <div @click="open = ! open">
     {{ $trigger }}
   </div>
@@ -32,7 +33,7 @@ break;
     x-transition:leave-end="transform opacity-0 scale-95"
     class="absolute z-50 mt-2 {{ $width }} rounded-md shadow-lg {{ $alignmentClasses }}" style="display: none;"
     @click="open = false">
-    <div class="bg-gray-900 rounded-md ring-1 ring-red-900 {{ $contentClasses }}">
+    <div class="{{ $contentClasses }}">
       {{ $content }}
     </div>
   </div>

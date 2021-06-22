@@ -6,7 +6,7 @@
 
   <x-slot name="slot">
 
-    <div class="sm:px-6 lg:px-8 h-full flex justify-center">
+    <div class="sm:px-6 lg:px-6 h-full flex justify-center">
       <div class="w-full">
         <div class="bg-white mt-5 overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-4 bg-white border-b border-gray-100">
@@ -24,33 +24,33 @@
                 </a>
               </div>
 
-              {{--BUSQUEDA--}}
+              {{-- BUSQUEDA
               <form action="{{route('clase.index')}}" method="GET" class="flex-auto justify-center max-w-3xl
               space-x-3">
 
-                <div class="md:flex md:items-center space-x-2">
-                  <x-input type="text" id="userName" name="userName" value="{{Request::input('userName')}}" class=" mt-1 rounded-xl border-transparent flex-1 appearance-none border shadow-sm text-base
+              <div class="md:flex md:items-center space-x-2">
+                <x-input type="text" id="userName" name="userName" value="{{Request::input('userName')}}" class=" mt-1 rounded-xl border-transparent flex-1 appearance-none border shadow-sm text-base
                   focus:outline-none focus:ring-2 focus:border-transparent" placeholder="{{__('Search User...')}}"
-                    autocomplete="off" />
+                  autocomplete="off" />
 
-                  <x-input type="text" id="name" name="name" value="{{Request::input('name')}}"
-                    class=" mt-1 rounded-xl border-transparent flex-1 appearance-none border shadow-sm text-base focus:outline-none focus:ring-2 focus:border-transparent"
-                    placeholder="{{__('Search Name...')}}" autocomplete="off" />
+                <x-input type="text" id="name" name="name" value="{{Request::input('name')}}"
+                  class=" mt-1 rounded-xl border-transparent flex-1 appearance-none border shadow-sm text-base focus:outline-none focus:ring-2 focus:border-transparent"
+                  placeholder="{{__('Search Name...')}}" autocomplete="off" />
 
-                  <x-input type="text" id="lastName" name="lastName" value="{{Request::input('lastName')}}"
-                    class=" mt-1 rounded-xl border-transparent flex-1 appearance-none border shadow-sm text-base focus:outline-none focus:ring-2 focus:border-transparent"
-                    placeholder="{{__('Search Last Name...')}}" autocomplete="off" />
+                <x-input type="text" id="lastName" name="lastName" value="{{Request::input('lastName')}}"
+                  class=" mt-1 rounded-xl border-transparent flex-1 appearance-none border shadow-sm text-base focus:outline-none focus:ring-2 focus:border-transparent"
+                  placeholder="{{__('Search Last Name...')}}" autocomplete="off" />
 
-                  <button
-                    class="bg-red-700 text-white rounded-full p-2 hover:bg-red-500 focus:outline-none w-12 h-12 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd"
-                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                        clip-rule="evenodd" />
-                    </svg>
-                  </button>
-                </div>
-              </form>{{--FIN BUSQUEDA--}}
+                <button
+                  class="bg-red-700 text-white rounded-full p-2 hover:bg-red-500 focus:outline-none w-12 h-12 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+              </form>{{--FIN BUSQUEDA --}}
             </div>{{--FIN DIV ALIGN--}}
 
             <div class="flex flex-col">
@@ -61,40 +61,39 @@
                       <thead class="bg-gray-100">
                         <tr>
                           <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                             id
                           </th>
                           <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Tipo de clase
                           </th>
                           <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Cupos Disponibles
                           </th>
                           <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Horario
                           </th>
                           <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Dias de Entrenamiento
                           </th>
-
                           <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Alumnos
                           </th>
                           <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Profesores
                           </th>
                           <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Tarifa
                           </th>
                           <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                             acciones
                           </th>
                         </tr>
@@ -107,58 +106,122 @@
                             {{$clase->id}}
                           </td>
 
-                          <td class="px-6 py-4 whitespace-nowrap">
+                          <td class="px-6 py-4 whitespace-nowrap text-center">
                             {{$clase->tipo_clase}}
                           </td>
 
-                          <td class="px-6 py-4 whitespace-nowrap">
+                          <td class="px-6 py-4 whitespace-nowrap text-center">
                             {{$clase->cupos_disponibles}}
                           </td>
 
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            {{$horarios->hora}}
+                          <td class="px-6 py-4 whitespace-nowrap text-center">
+                            {{$clase->horario->hora->format('H:i A')}}
                           </td>
 
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            @foreach ($dias as $dia)
+                          <td class="px-6 py-4 whitespace-nowrap text-center">
+                            @foreach ($clase->dias as $dia)
                             {{$dia->dia}}<br>
                             @endforeach
                           </td>
 
-
-
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            @foreach ($alumnos as $alumno)
-                            {{$alumno->user()->userName}}<br>
-                            @endforeach
+                          <td class="px-6 py-4 whitespace-nowrap text-center">
+                            <button
+                              class="bg-gray-500 text-white active:bg-gray-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                              type="button">
+                              Ver
+                            </button>
                           </td>
 
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            @foreach ($profesors as $profesor)
-                            {{$profesor->user()->userName}}<br>
-                            @endforeach
+                          <td class="px-6 py-4 whitespace-nowrap text-center">
+                            {{-- $clase->profesors->pr --}}
+                            Martin Palermo <br>
+                            Juan Roman Riquelme
                           </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            {{$tarifa->precio}}
+                          <td class="px-6 py-4 whitespace-nowrap text-center">
+                            ${{$clase->tarifa->precio}}
                           </td>
 
-                          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                          <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                             {{-- BOTON EDITAR --}}
-                            <a href="#">
+                            <a href="">
                               <x-button class="text-white bg-green-800 hover:bg-green-700">Editar</x-button>
                             </a>
 
                             {{-- BOTON AGREGAR ALUMNOS --}}
 
-                            <div class="mt-6 inline" x-data="{ open: false }">
-                              <x-button class="text-white bg-yellow-600 hover:bg-yellow-500 z-5000"
-                                @click="open = true">
-                                Agregar Alumnos
-                              </x-button>
+                            <div class="inline text-center">
+                              <x-dropdown align="right" width="48"
+                                contentClasses="bg-white rounded-md ring-1 ring-blue-700 text-blue-800"
+                                class="inline-flex">
+                                <x-slot name="trigger">
+                                  <x-button class="text-white bg-blue-700 hover:bg-blue-600">
+                                    <span class="mx-1">Alumnos</span>
 
-                              {{-- @include('clase.addAlumnos') --}}
+                                    <div>
+                                      <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                          clip-rule="evenodd" />
+                                      </svg>
+                                    </div>
+                                  </x-button>
+                                </x-slot>
 
+                                <x-slot name="content">
+                                  <x-dropdown-link href="#">
+                                    {{ __('Agregar alumnos') }}
+                                  </x-dropdown-link>
+                                  <x-dropdown-link href="#">
+                                    {{ __('Editar alumnos') }}
+                                  </x-dropdown-link>
+                                  <x-dropdown-link href="#">
+                                    {{ __('Borrar alumnos') }}
+                                  </x-dropdown-link>
+                                </x-slot>
+                              </x-dropdown>
                             </div>
+
+
+                            {{-- BOTON AGREGAR Profesores --}}
+
+                            <div class="inline text-center">
+                              <x-dropdown align="right" width="48"
+                                contentClasses="bg-white rounded-md ring-1 ring-yellow-500" class="inline-flex">
+                                <x-slot name="trigger">
+                                  <x-button class="text-white bg-yellow-600 hover:bg-yellow-700">
+                                    <span class="mx-1">Profesores</span>
+
+                                    <div>
+                                      <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                          clip-rule="evenodd" />
+                                      </svg>
+                                    </div>
+                                  </x-button>
+                                </x-slot>
+
+                                <x-slot name="content">
+                                  <x-dropdown-link href="#">
+                                    {{ __('Agregar profesores') }}
+                                  </x-dropdown-link>
+                                  <x-dropdown-link href="#">
+                                    {{ __('Editar profesores') }}
+                                  </x-dropdown-link>
+                                  <x-dropdown-link href="#">
+                                    {{ __('Borrar profesores') }}
+                                  </x-dropdown-link>
+                                </x-slot>
+                              </x-dropdown>
+                            </div>
+
+
+                            {{-- @include('clase.addProfesores') --}}
+
+
+
 
                             {{-- BOTON BORRAR --}}
                             <form action="#" method="post" class="inline">
@@ -166,7 +229,7 @@
                               @method('DELETE')
 
                               <x-button class="text-white bg-red-900 hover:bg-red-700"
-                                onclick="return confirm('¿Quieres borrar este clase?')">
+                                onclick="return confirm('¿Quieres borrar esta clase?')">
                                 Borrar</x-button>
                             </form>
                           </td>

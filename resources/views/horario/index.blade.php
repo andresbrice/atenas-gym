@@ -85,17 +85,17 @@
                           </td>
 
                           <td class="px-6 py-4 whitespace-nowrap">
-                            {{$horario->hora}}
+                            {{$horario->hora->format('H:i A')}}
                           </td>
 
                           <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                             {{-- BOTON EDITAR --}}
-                            <a href="#">
+                            <a href="{{route('horario.edit',$horario->id)}}">
                               <x-button class="text-white bg-green-800 hover:bg-green-700">Editar</x-button>
                             </a>
 
                             {{-- BOTON BORRAR --}}
-                            <form action="#" method="post" class="inline">
+                            <form action="{{route('horario.destroy',$horario->id)}}" method="post" class="inline">
                               @csrf
                               @method('DELETE')
 

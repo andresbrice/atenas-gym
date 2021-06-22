@@ -7,15 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Horario extends Model
 {
-    use HasFactory;
+  use HasFactory;
+  protected $table = 'horarios';
+  
+  protected $fillable =['hora'];  
 
-    protected $fillable =['hora'];
+  protected $dates=['hora'];
 
-    public function __construct(){
-      //
-    }
+  public function __construct(){
+    //
+  }
 
-    public function horario(){
-      return $this->hasOne(Clase::class);
-    }
+  public function clases(){
+    return $this->hasMany(Clase::class);
+  }
 }
