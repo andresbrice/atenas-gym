@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -76,24 +77,40 @@ class User extends Authenticatable implements MustVerifyEmail
   }
 
   // QUERY SCOPES
-  public function scopeUserName($query, $userName)
+
+  public function scopeSearch($query, $filtro, $search)
   {
-    if ($userName) {
-      return $query->where('userName', "LIKE", "%$userName%");
+    if (($filtro) && trim($search) && ($filtro != "")) {
+      if ($filtro === "name") {
+        return $query->where(DB::raw("CONCAT(name,' ',lastName)"), "LIKE", "%$search%");
+      } else {
+        return $query->where($filtro, "LIKE", "%$search%");
+      }
     }
   }
 
-  public function scopeName($query, $name)
-  {
-    if ($name) {
-      return $query->where('name', "LIKE", "%$name%");
-    }
-  }
+  // public function scopeUserName($query, $userName)
+  // {
+  //   if ($userName) {
+  //     return $query->where('userName', "LIKE", "%$userName%");
+  //   }
+  // }
 
-  public function scopeLastName($query, $lastName)
-  {
-    if ($lastName) {
-      return $query->where('lastName', "LIKE", "%$lastName%");
-    }
-  }
+  // public function scopeName($query, $name)
+  // {
+  //   if ($name) {
+  //     return $query->where('name', "LIKE", "%$name%");
+  //   }
+  // }
+
+  // public function scopeLastName($query, $lastName)
+  // {
+  //   if ($lastName) {
+  //     return $query->where('lastName', "LIKE", "%$lastName%");
+  //   }
+  // }
+
+  /*if($filtro === 'name'){ 
+        return $query->where(DB::raw("CONCAT(name,' ',lastName)"),"LIKE", "%$search%");
+      }else{*/
 }

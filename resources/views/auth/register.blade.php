@@ -162,7 +162,13 @@
                     </label>
                   </div>{{--/div historial medico--}}
                 </div>
-                <div class="px-4 py-3 bg-gray-50 text-center sm:px-6">
+                <div class="px-4 py-3 bg-gray-50 flex items-center justify-between sm:px-6">
+                  <a href="{{ route('login') }}">
+                    <x-button type="button" class="bg-red-800">
+                      {{ __('Back') }}
+                    </x-button>
+                  </a>
+
                   <x-button class="ml-3 bg-red-800">
                     {{ __('Register User') }}
                   </x-button>
