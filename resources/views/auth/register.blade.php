@@ -93,7 +93,7 @@
                     </select>
                   </div>
                 </div>
-                <div class="mt-3">
+                <div class="my-3">
                   <div class="inline grid-cols-6 space-x-2 gap-6 ">
 
                     <x-label for="historial_medico" :value="__('Historial Médico')"
@@ -162,14 +162,15 @@
                     </label>
                   </div>{{--/div historial medico--}}
                 </div>
-                <div class="px-4 py-3 bg-gray-50 flex items-center justify-between sm:px-6">
-                  <a href="{{ route('login') }}">
-                    <x-button type="button" class="bg-red-800">
+                <div class="px-4 py-2 bg-gray-50 flex items-center justify-between sm:px-6">
+                  <a href="{{ route('usuario.index') }}">
+                    <x-button type="button" class="bg-gray-600">
                       {{ __('Back') }}
                     </x-button>
                   </a>
 
-                  <x-button class="ml-3 bg-red-800">
+                  <x-button
+                    class="ml-3 bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
                     {{ __('Register User') }}
                   </x-button>
                 </div>

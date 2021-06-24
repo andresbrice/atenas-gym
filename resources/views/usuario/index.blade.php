@@ -5,14 +5,15 @@
   </x-slot>
 
   <x-slot name="slot">
-    <div class="container h-full mt-5 p-4 bg-white lg:p-12 md:p-10 sm:mx-auto sm:rounded-lg  ">
+    <div class=" container  p-4 bg-white  md:p-10 sm:mx-auto sm:rounded-lg  ">
+      <x-auth-session-status class="mb-4 font-bold flex justify-center" :status="session('status')" />
       <div class="mb-3">
         {{-- BOTON CREAR USUARIO Y BUSCADOR --}}
         <div class="flex justify-between items-center">
           {{-- BOTON--}}
           <a href="{{route('usuario.create')}}" class="w-max md:mr-5">
             <x-button type="button"
-              class="bg-red-300 text-red-700 hover:bg-red-700 hover:text-white border-red-600 font-bold">
+              class="bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
               {{ __('Register User') }}
             </x-button>
           </a>
@@ -43,25 +44,25 @@
       <x-table>
         @section('nombre-columna')
         <tr>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
             id
           </th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
             usuario
           </th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
             nombre
           </th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
             apellido
           </th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
             email
           </th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
             rol
           </th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
             acciones
           </th>
         </tr>
@@ -71,31 +72,31 @@
         @section('contenido-filas')
         @forelse ($usuarios as $usuario)
         <tr>
-          <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
+          <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
             {{$usuario->id}}
           </td>
 
-          <td class="px-6 py-4 whitespace-nowrap">
+          <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
             {{$usuario->userName}}
           </td>
 
-          <td class="px-6 py-4 whitespace-nowrap">
+          <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
             {{$usuario->name}}
           </td>
 
-          <td class="px-6 py-4 whitespace-nowrap">
+          <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
             {{$usuario->lastName}}
           </td>
 
-          <td class="px-6 py-4 whitespace-nowrap">
+          <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
             {{$usuario->email}}
           </td>
 
-          <td class="px-6 py-4 whitespace-nowrap">
+          <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
             {{$usuario->role->nombre_rol}}
           </td>
 
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+          <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
             {{-- BOTON EDITAR --}}
             <a href="{{route('usuario.edit',$usuario->id)}}">
               <x-button class="text-white bg-green-800 hover:bg-green-700">Editar</x-button>

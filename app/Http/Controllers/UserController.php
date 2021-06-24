@@ -147,7 +147,7 @@ class UserController extends Controller
       'name' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'email' => 'required|string|email|max:255|unique:users',
       'userName' => 'required|string|max:255',
-      'dni' => 'required|int|unique:users',
+      'dni' => 'required|int|unique:users|max:8',
       'lastName' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'gender' => 'required',
       'phone' => 'required|int',
