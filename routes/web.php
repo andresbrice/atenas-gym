@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RutinaController;
 
 require __DIR__.'/auth.php';
 
@@ -14,7 +15,7 @@ Route::get('/add-alumno', function () {
   return view('clase.addAlumno');
 })->middleware('auth')->name('AddAlumno');
 
-
+Route::resource('rutina', RutinaController::class);
 Route::resource('usuario', UserController::class); 
 
 // Route::middleware(['auth', 'verified'])->group(function () {
