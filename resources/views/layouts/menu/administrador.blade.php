@@ -24,7 +24,7 @@
   {{ __('Cuotas') }}
 </x-nav-link>
 
-<x-nav-link class="px-3 py-2" {{--:href="route('usuario.index')" :active="request()->routeIs('usuario.index')"--}}>
+<x-nav-link class="px-3 py-2" :href="route('tarifa.index')" :active="request()->routeIs('tarifa.index')">
   {{ __('Tarifas') }}
 </x-nav-link>
 <x-nav-link class="px-3 py-2" :href="route('horario.index')" :active="request()->routeIs('horario.index')">

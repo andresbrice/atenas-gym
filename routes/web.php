@@ -5,6 +5,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClaseController;
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\EjercicioController;
+use App\Http\Controllers\TarifaController;
+
 
 require __DIR__.'/auth.php';
 
@@ -23,6 +25,8 @@ Route::resource('clase', ClaseController::class);
 Route::resource('horario', HorarioController::class); 
 
 Route::resource('ejercicio', EjercicioController::class);
+
+Route::resource('tarifa', TarifaController::class);
 
 // Route::middleware(['auth', 'verified'])->group(function () {
 //     Route::get('/', function () {
