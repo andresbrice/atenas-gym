@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClaseController;
 use App\Http\Controllers\HorarioController;
+use App\Http\Controllers\EjercicioController;
 
 require __DIR__.'/auth.php';
 
@@ -20,6 +21,8 @@ Route::get('/add-alumno', function () {
 Route::resource('usuario', UserController::class); 
 Route::resource('clase', ClaseController::class); 
 Route::resource('horario', HorarioController::class); 
+
+Route::resource('ejercicio', EjercicioController::class);
 
 // Route::middleware(['auth', 'verified'])->group(function () {
 //     Route::get('/', function () {
