@@ -151,7 +151,7 @@
     <div class="py-2 xl:py-6">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-          <div class="p-2 bg-white border-b border-gray-200">
+          <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
             <x-auth-session-status class="mb-4 font-bold flex justify-center" :status="session('status')" />
             <div class="mb-3">
               {{-- BOTON CREAR USUARIO Y BUSCADOR --}}
@@ -171,15 +171,15 @@
                   @endsection
 
                   @section('opciones')
-                  <option value=" ">
+                  <option hidden value=" ">
                     Filtrar por...
                   </option>
 
-                  <option value="userName">
+                  <option value="userName" @if (old('filtro')==='userName' ) selected="selected" @endif>
                     Usuario
                   </option>
 
-                  <option value="name">
+                  <option value="name" @if (old('filtro')==='name' ) selected="selected" @endif>
                     Nombre y Apellido
                   </option>
                   @endsection

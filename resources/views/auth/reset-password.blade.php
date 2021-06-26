@@ -39,7 +39,7 @@
       </div>
 
       <div class="flex items-center justify-end mt-4">
-        <x-button class="bg-red-800">
+        <x-button class="bg-red-800 hover:bg-red-700">
           {{ __('Reset Password') }}
         </x-button>
       </div>

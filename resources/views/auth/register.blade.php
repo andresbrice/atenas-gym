@@ -19,7 +19,7 @@
               @csrf
               <div class="flex flex-col p-4 overflow-hidden sm:rounded-md">
 
-                <div class="grid grid-cols-6 gap-6">
+                <div class="grid grid-cols-6 gap-4">
                   <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                     <x-label for="userName" :value="__('User Name')" class="font-semibold" />
                     <x-input id="userName" class="block w-full px-4 py-2 mt-2" type="text" name="userName"
@@ -164,7 +164,7 @@
                 </div>
                 <div class="px-4 py-2  flex items-center justify-between sm:px-6">
                   <a href="{{ route('usuario.index') }}">
-                    <x-button type="button" class="bg-gray-600">
+                    <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
                       {{ __('Back') }}
                     </x-button>
                   </a>

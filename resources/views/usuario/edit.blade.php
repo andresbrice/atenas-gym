@@ -181,7 +181,7 @@
                   <div class="px-4 py-3  flex items-center justify-between sm:px-6">
 
                     <a href="{{ route('usuario.index') }}">
-                      <x-button type="button" class="bg-gray-600 hover:bg-gray-900">
+                      <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
                         {{ __('Back') }}
                       </x-button>
                     </a>
