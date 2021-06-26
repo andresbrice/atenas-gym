@@ -9,7 +9,7 @@ use App\Models\Alumno;
 use App\Models\Profesor;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Password;
 
 class UserController extends Controller
 {
@@ -25,7 +25,7 @@ class UserController extends Controller
     
     $usuarios = User::orderBy('id','DESC')
       ->search($filtro,$search)
-      ->paginate(5);
+      ->simplePaginate(4);
 
     return view('usuario.index', compact('usuarios'));
   }
@@ -84,6 +84,8 @@ class UserController extends Controller
     ]);
 
     event(new Registered($user));
+
+    Password::sendResetLink($request->only(['email']));
 
     switch($user->role_id){
       case '1': 

@@ -6,11 +6,10 @@
 
   --}}
 
-<form action="@yield('action')" method="GET" class="flex-auto justify-center max-w-3xl
-  space-x-3">
+<form action="@yield('action')" method="GET" class="max-w-4xl space-x-3">
 
-  <div class="md:flex md:items-center space-x-2">
-    <div>
+  <div class="flex flex-auto items-center space-x-2 pr-2">
+    <div class="w-max">
       <x-select name="filtro">
         <x-slot name="slot">
           @yield('opciones')
@@ -19,7 +18,7 @@
     </div>
 
     <x-input type="text" id="search" name="search" value="{{Request::input ('search')}}"
-      class="mt-1 rounded-xl border-transparent flex-1 appearance-none border shadow-sm text-base focus:outline-none focus:ring-2 focus:border-transparent sm:w-1/2"
+      class="mt-1 rounded-xl border-transparent flex-1 appearance-none border shadow-sm text-base focus:outline-none focus:ring-2 focus:border-transparent xs:w-1/3"
       autocomplete="off" />
 
     <button
@@ -32,6 +31,9 @@
     </button>
   </div>
 </form>
+
+
+
 
 
 {{-- 

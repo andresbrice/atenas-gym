@@ -6,18 +6,19 @@
     </x-breadcrumb>
   </x-slot>
 
-
+  {{-- <div class="px-4 py-5 bg-white sm:p-6"> --}}
   <x-slot name="slot">
-    <div class="mt-5 sm:mt-0  max-w-7xl mx-auto">
-      <div class="md:flex md:grid-cols-3 md:gap-6">
-        <div class="mt-5 md:mt-0 md:col-span-2">
-          <!-- Validation Errors -->
-          <x-auth-validation-errors class=" mt-5" :errors="$errors" />
+    <div class="py-4 lg:py-6">
+      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+          <div class="p-4 bg-white border-b border-gray-200">
+            <!-- Validation Errors -->
+            <x-auth-validation-errors class=" mt-5" :errors="$errors" />
 
-          <form action="{{ route('usuario.store') }}" method="POST">
-            @csrf
-            <div class="shadow overflow-hidden sm:rounded-md">
-              <div class="px-4 py-5 bg-white sm:p-6">
+            <form action="{{ route('usuario.store') }}" method="POST">
+              @csrf
+              <div class="flex flex-col p-4 overflow-hidden sm:rounded-md">
+
                 <div class="grid grid-cols-6 gap-6">
                   <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                     <x-label for="userName" :value="__('User Name')" class="font-semibold" />
@@ -96,8 +97,7 @@
                 <div class="my-3">
                   <div class="inline grid-cols-6 space-x-2 gap-6 ">
 
-                    <x-label for="historial_medico" :value="__('Historial Médico')"
-                      class="text-xl px-2 font-semibold" />
+                    <x-label for="historial_medico" :value="__('Historial Médico')" class="text-xl font-semibold" />
                     <label for="eRespiratorias" class="inline-flex items-center">
                       <input id="eRespiratorias" type="checkbox"
                         class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
@@ -162,7 +162,7 @@
                     </label>
                   </div>{{--/div historial medico--}}
                 </div>
-                <div class="px-4 py-2 bg-gray-50 flex items-center justify-between sm:px-6">
+                <div class="px-4 py-2  flex items-center justify-between sm:px-6">
                   <a href="{{ route('usuario.index') }}">
                     <x-button type="button" class="bg-gray-600">
                       {{ __('Back') }}
@@ -175,8 +175,8 @@
                   </x-button>
                 </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>
