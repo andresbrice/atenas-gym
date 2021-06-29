@@ -14,7 +14,7 @@
           </a>
         </div>
         <!-- Botones de navegación lg-->
-        <div class="hidden md:block">
+        <div class="hidden lg:block">
           <div class="flex items-baseline space-x-1 ml-10 sm:ml-2 sm:space-x-0">
             @switch(Auth::user()->role_id)
             @case(1)
@@ -34,7 +34,7 @@
       </div>
 
       <!-- Dropdown de Perfil-->
-      <div class="hidden md:block justify-items-end">
+      <div class="hidden lg:block justify-items-end">
         <div class="ml-4 flex items-center md:ml-6">
           <x-dropdown align="right" width="48">
             <x-slot name="trigger">
@@ -72,7 +72,7 @@
       </div>
 
       <!-- Menú hamburguesa -->
-      <div class="-mr-1 flex md:hidden">
+      <div class="-mr-1 flex lg:hidden">
         <button x-on:click="open = !open" type="button"
           class="bg-gray-900 inline-flex items-center justify-center p-2 focus:outline-none text-gray-400 hover:text-red-800"
           aria-controls="mobile-menu" aria-expanded="false">
@@ -93,7 +93,7 @@
   </div>
 
   <!-- Menu celulares -->
-  <div class="md:hidden" id="mobile-menu" x-show="open" x-on:click.away="open = false">
+  <div class="lg:hidden" id="mobile-menu" x-show="open" x-on:click.away="open = false">
     <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
       @switch(Auth::user()->role_id)
       @case(1)
