@@ -10,7 +10,7 @@
 
   <div class="flex flex-auto items-center space-x-2 pr-2">
     <div class="w-max">
-      <x-select name="filtro">
+      <x-select name="filtro" id="filtro">
         <x-slot name="slot">
           @yield('opciones')
         </x-slot>

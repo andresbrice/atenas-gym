@@ -14,8 +14,7 @@ class AddHorarioIdToClasesTable extends Migration
   public function up()
   {
     Schema::table('clases', function (Blueprint $table) {
-      $table->unsignedBigInteger('horario_id')->after('cupos_disponibles');
-      $table->foreign('horario_id')->references('id')->on('horarios');
+      $table->foreignId('horario_id')->constrained();
     });
   }
 

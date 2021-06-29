@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAsistenciasTable extends Migration
+class CreateEjercicioRutinaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateAsistenciasTable extends Migration
      */
     public function up()
     {
-        Schema::create('asistencias', function (Blueprint $table) {
+        Schema::create('ejercicio_rutina', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            $table->date('fecha_asistencia');
-            $table->boolean('asistio');
-            $table->foreignId('alumno_clase_id')->constrained('alumno_clase');
+            $table->foreignId('ejercicio_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('rutina_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateAsistenciasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asistencias');
+        Schema::dropIfExists('ejercicio_rutina');
     }
 }

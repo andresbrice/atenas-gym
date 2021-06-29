@@ -17,14 +17,14 @@ class Clase extends Model
     'tarifa_id'
   ];
 
-  public function alumnos_clases()
+  public function alumno_clase()
   {
     return $this->HasMany(Alumno_Clase::class);
   }
 
   public function profesors()
   {
-    return $this->belongsToMany(Profesor::class)->as('clase_profesor');
+    return $this->belongsToMany(Profesor::class);
   }
   
   public function tarifa(){
@@ -32,7 +32,7 @@ class Clase extends Model
   }
 
   public function dias(){
-    return $this->belongsToMany(Dia::class)->as('clase_dia');
+    return $this->belongsToMany(Dia::class);
   }
 
   public function horario(){

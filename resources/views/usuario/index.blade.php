@@ -171,17 +171,12 @@
                   @endsection
 
                   @section('opciones')
-                  <option hidden value=" ">
+                  <option hidden value="">
                     Filtrar por...
                   </option>
 
-                  <option value="userName" @if (old('filtro')==='userName' ) selected="selected" @endif>
-                    Usuario
-                  </option>
+                  <option {{old('filtro') == "userName" ? 'selected' : ''}}value="userName">Usuario</option>
 
-                  <option value="name" @if (old('filtro')==='name' ) selected="selected" @endif>
-                    Nombre y Apellido
-                  </option>
                   @endsection
                 </x-search>
                 {{-- FIN BUSCADOR --}}

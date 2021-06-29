@@ -67,14 +67,7 @@
                   class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Dias de Entrenamiento
                 </th>
-                <th scope="col"
-                  class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Alumnos
-                </th>
-                <th scope="col"
-                  class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Profesores
-                </th>
+
                 <th scope="col"
                   class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Tarifa
@@ -105,23 +98,10 @@
                   {{$clase->horario->hora->format('H:i A')}}
                 </td>
 
-                <td class="px-6 py-4 whitespace-nowrap text-center">
-                  @for ($i = 0; $i < count($clase->dias - 1); $i++)
-                    {{$dias->dia}},
-                    @endfor
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-center">
-                  <button
-                    class="bg-yellow-600 hover:bg-yellow-700 text-white active:bg-gray-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button">
-                    Mosrtrar
-                  </button>
-                </td>
+
 
                 <td class="px-6 py-4 whitespace-nowrap text-center">
-                  {{-- $clase->profesors->pr --}}
-                  Martin Palermo <br>
-                  Juan Roman Riquelme
+                  {{$clase->clase_dias->dia}}
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-center">
                   ${{$clase->tarifa->precio}}
@@ -159,6 +139,9 @@
                         {{ __('Editar alumnos') }}
                       </x-dropdown-link>
                       <x-dropdown-link href="#">
+                        {{ __('Mostrar alumnos') }}
+                      </x-dropdown-link>
+                      <x-dropdown-link href="#">
                         {{ __('Borrar alumnos') }}
                       </x-dropdown-link>
                     </x-slot>
@@ -191,6 +174,9 @@
                       </x-dropdown-link>
                       <x-dropdown-link href="#">
                         {{ __('Editar profesores') }}
+                      </x-dropdown-link>
+                      <x-dropdown-link href="#">
+                        {{ __('Mostrar profesores') }}
                       </x-dropdown-link>
                       <x-dropdown-link href="#">
                         {{ __('Borrar profesores') }}

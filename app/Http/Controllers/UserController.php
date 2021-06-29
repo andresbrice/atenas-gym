@@ -83,10 +83,11 @@ class UserController extends Controller
       'role_id' => $request->role_id,
     ]);
 
-    event(new Registered($user));
-
+  
     Password::sendResetLink($request->only(['email']));
 
+    event(new Registered($user));
+    
     switch($user->role_id){
       case '1': 
         $alumno = new Alumno();

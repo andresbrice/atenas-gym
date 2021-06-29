@@ -16,7 +16,7 @@ class Asistencia extends Model
       'asistio',
     ];
 
-    public function alumnos_clases(){
-      return $this->belongsTo(Alumno_Clase::class, 'alumnos_clases_id');
+    public function alumno_clase(){
+      return $this->belongsTo(Alumno_Clase::class);
     }
 }
