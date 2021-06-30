@@ -33,7 +33,7 @@
                     <select id="horarios" class="block w-full px-2 py-2 mt-2 border border-gray-300 bg-white rounded-md 
                       shadow-sm focus:outline-none focus:ring-red-300 focus:border-red-300" name="horario_id"  required>
                       <option hidden value="">
-                        {{old('hora',$clase->hora)}}
+                        {{ $clase->horario->hora->format('H:i A') }}
                       </option>
                       @foreach ($horarios as $horario)
                       <option value="{{$horario->id}}">
@@ -49,9 +49,9 @@
 
                     @foreach ($dias as $dia)
                     <div class="inline-flex items-center">
-                      <input id="dia" type="checkbox" class="rounded border-gray-300 text-red-900 
+                      <input id="dia" type="checkbox" name="dias[]" value="{{$dia->id}}" class="rounded border-gray-300 text-red-900 
                         shadow-sm focus:border-red-300 focus:ring
-                        focus:ring-red-200 focus:ring-opacity-50" name="dias[]" value="{{$dia->id}}">
+                        focus:ring-red-200 focus:ring-opacity-50" >
                     
                       <span class="ml-2 text-sm text-gray-600">{{ $dia->dia }}</span>
                     </div>

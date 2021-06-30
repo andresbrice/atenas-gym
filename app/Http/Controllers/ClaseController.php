@@ -103,7 +103,7 @@ class ClaseController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
+  public function update(Request $request, Clase $clase)
   {
     $request->validate([
       'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
@@ -111,15 +111,13 @@ class ClaseController extends Controller
       'dias[]' => 'min: 1',
     ]);
 
-
-    $clase = new Clase();
-    $clase->tipo_clase = $request->tipo_clase;
-    $clase->horario_id = $request->horario_id;
-    $clase->tarifa_id = sizeof($request->dias);
-    $clase->save();
+    $clase->update([
+      'tipo_clase' => $request->tipo_clase,
+      'horario_id' => $request->horario_id,
+      'tarifa_id' => sizeof($request->dias)
+    ]);
 
     $clase->dias()->sync($request->input('dias', []));
-
 
     return redirect('clase')->with('status', 'Clase creada con exito');
   }

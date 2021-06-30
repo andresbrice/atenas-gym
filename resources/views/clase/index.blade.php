@@ -1,7 +1,3 @@
-
-
-
-
 <x-app-layout>
   <x-slot name="breadcrumb">
     <x-breadcrumb><a href="/">Dashboard</a> / <u>Gestion Clase</u></x-breadcrumb>
@@ -35,7 +31,14 @@
                     Filtrar por...
                   </option>
 
-                  <option {{ old('filtro') == 'userName' ? 'selected' : '' }}value="userName">Clase
+                  <option {{ old('filtro') == 'tipo_clase' ? 'selected' : '' }}value="tipo_clase">
+                    Clase
+                  </option>
+                  <option {{ old('filtro') == 'horario' ? 'selected' : '' }}value="horario">
+                    Horario
+                  </option>
+                  <option {{ old('filtro') == 'horario' ? 'selected' : '' }}value="horario">
+                    Días
                   </option>
 
                   @endsection
@@ -122,7 +125,7 @@
                       @csrf
                       @method('DELETE')
                       <button class="focus:outline-none"
-                        onclick="return confirm('¿Esta seguro de querer borrar la clase {{$clase->tipo_clase}} de las {{ $clase->horario->hora->format('H:i A') }}?')">Borrar</button>
+                        onclick="return confirm('¿Esta seguro de querer borrar la clase?')">Borrar</button>
                     </form>
                     @endsection
 
