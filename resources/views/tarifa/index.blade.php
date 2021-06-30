@@ -16,13 +16,29 @@
   
                 {{-- BOTON CREAR TARIFA --}}
                  <div class="flex-auto justify-center ml-4"> 
-                  <a href="{{route('tarifa.create')}}">
+                  {{-- <a href="{{route('tarifa.create')}}">
                     <x-button type="button"
                       class="bg-red-300 text-red-700 hover:bg-red-700 hover:text-white border-red-600 font-bold">
                       {{ __('Register Rate') }}
                     </x-button>
-                  </a>
+                  </a> --}}
+
+                  @if (count($tarifas)==5)
+                <x-button title="Solo se admiten 5 tarifas" class="bg-red-300 text-red-700 hover:bg-red-700 hover:text-white border-red-600 font-bold opacity-50 cursor-not-allowed">
+                  {{ __('Register Rate') }}
+                </x-button>
+                @else
+                <a href="{{route('tarifa.create')}}">
+                  <x-button type="button"
+                    class="bg-red-300 text-red-700 hover:bg-red-700 hover:text-white border-red-600 font-bold">
+                    {{ __('Register Rate') }}
+                  </x-button>
+                </a>
+                @endif
+
+
                 </div>
+
   
                 {{--BUSQUEDA--}}
                 {{-- <form action="{{route('tarifa.index')}}" method="GET"

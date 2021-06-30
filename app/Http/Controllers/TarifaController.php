@@ -82,6 +82,8 @@ class TarifaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Tarifa::destroy($id);
+
+        return redirect('tarifa')->with('status', 'Tarifa eliminada con exito');
     }
 }
