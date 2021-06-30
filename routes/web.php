@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClaseController;
 use App\Http\Controllers\HorarioController;
+use App\Http\Controllers\AsistenciaController;
 
 require __DIR__.'/auth.php';
 
@@ -20,6 +21,12 @@ Route::get('/add-alumno', function () {
 Route::resource('usuario', UserController::class); 
 Route::resource('clase', ClaseController::class); 
 Route::resource('horario', HorarioController::class); 
+Route::resource('asistencia', AsistenciaController::class); 
+
+Route::get('/asistencia/filtroclase', function () {
+  return view('asistencia.filtroclase');
+})->middleware('auth')->name('asistencia.filtroclase');
+
 
 // Route::middleware(['auth', 'verified'])->group(function () {
 //     Route::get('/', function () {
