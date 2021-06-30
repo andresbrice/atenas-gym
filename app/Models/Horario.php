@@ -4,21 +4,32 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Horario extends Model
 {
   use HasFactory;
   protected $table = 'horarios';
-  
-  protected $fillable =['hora'];  
 
-  protected $dates=['hora'];
+  protected $fillable = ['hora'];
 
-  public function __construct(){
+  protected $dates = ['hora'];
+
+  public function __construct()
+  {
     //
   }
 
-  public function clases(){
+  public function clases()
+  {
     return $this->hasMany(Clase::class);
+  }
+
+  // QUERY SCOPES
+  public function scopeSearch($query, $filtro, $search)
+  {
+    if (($filtro) && trim($search) && ($filtro != "")) {
+      return $query->where($filtro, "LIKE", "%$search%");
+    }
   }
 }

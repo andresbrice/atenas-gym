@@ -9,7 +9,7 @@ class Tarifa extends Model
 {
     use HasFactory;
 
-     protected $fillable = ['precio',];
+     protected $fillable = ['precio','cantidad_dias'];
 
   public function clase(){
     return $this->HasMany(Clase::class);

@@ -35,10 +35,9 @@ class UserSeeder extends Seeder
         "asma"=> 0,
         "alergia"=> 0,
         "medicacion"=> 0,
-        "new_password"=>0,
         "email_verified_at"=>null,
         "password" => Hash::make('grupo2utnconcordia'),
-        "remember_token"=>null
+        "remember_token"=>null,
       ]);
 
         User::factory()->times(50)->create();

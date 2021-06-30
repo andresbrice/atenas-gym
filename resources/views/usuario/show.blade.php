@@ -13,7 +13,7 @@
           <!-- Validation Errors -->
           <x-auth-validation-errors class=" mt-5" :errors="$errors" />
 
-          <form method="POST" action="{{route('usuario.update',Auth::user()->id)}}">
+          <form method="POST" action="{{route('usuario.update',auth()->id())}}">
             @csrf
             @method('PUT')
             <div class="shadow overflow-hidden sm:rounded-md">
@@ -24,29 +24,31 @@
                   <div class="col-span-6 md:col-span-2">
                     <x-label for="email" :value="__('Email')" class="font-semibold" />
                     <x-input id="email" class="block w-full px-4 py-2 mt-2" type="email" name="email"
-                      value="{{old('email', Auth::user()->email)}}" required />
+                      value="{{old('email', auth()->user()->email)}}" required />
                   </div>
                   <!-- Password -->
                   <div class="col-span-6 md:col-span-1">
-                      <x-label for="password" :value="__('Password')" class="font-semibold" />
-                      <x-input id="password" class="block w-full px-4 py-2 mt-2" type="password" name="password" required autocomplete="new-password" />
+                    <x-label for="password" :value="__('Password')" class="font-semibold" />
+                    <x-input id="password" class="block w-full px-4 py-2 mt-2" type="password" name="password" required
+                      autocomplete="new-password" />
                   </div>
                   <!-- Confirm Password -->
                   <div class="col-span-6 md:col-span-1">
                     <x-label for="password_confirmation" :value="__('Confirm Password')" class="font-semibold" />
-                    <x-input id="password_confirmation" class="block w-full px-4 py-2 mt-2" type="password" name="password_confirmation" required />
+                    <x-input id="password_confirmation" class="block w-full px-4 py-2 mt-2" type="password"
+                      name="password_confirmation" required />
                   </div>
                   <!-- Teléfono -->
                   <div class="col-span-6 md:col-span-1">
                     <x-label for="phone" :value="__('Phone')" class="font-semibold" />
                     <x-input id="phone" class="block w-full px-4 py-2 mt-2" type="text" name="phone"
-                      value="{{old('phone', Auth::user()->phone)}}" required />
+                      value="{{old('phone', auth()->user()->phone)}}" required />
                   </div>
                   <!-- Teléfono Emergencia -->
                   <div class="col-span-6 md:col-span-1">
                     <x-label for="emergency_number" :value="__('Teléfono de emergencia')" class="font-semibold" />
                     <x-input id="emergency_number" class="block w-full px-4 py-2 mt-2" type="text"
-                      name="emergency_number" value="{{old('emergency_number', Auth::user()->emergency_number)}}"
+                      name="emergency_number" value="{{old('emergency_number', auth()->user()->emergency_number)}}"
                       required />
                   </div>
                 </div>

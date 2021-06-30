@@ -1,6 +1,6 @@
-<footer class="bg-gray-900 fixed inset-x-0 bottom-0 text-xs flex justify-end items-end">
-  <div class="flex -mx-2  text-right">
-    <x-label class="flex text-base text-gray-400 text-right">Atenas GYM © 2021</x-label>
+<footer class="bg-gray-900 text-gray-500">
+  <div class="flex justify-end">
+    <x-label class="flex text-base text-gray-400">Atenas GYM © 2021</x-label>
 
     <a href="https://github.com/andresbrice/atenas-gym"
       class="mx-2 text-gray-400 dark:text-gray-300 hover:text-red-800 dark:hover:text-gray-300" aria-label="Github">

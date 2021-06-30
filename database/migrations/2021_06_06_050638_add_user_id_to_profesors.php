@@ -14,8 +14,7 @@ class AddUserIdToProfesors extends Migration
     public function up()
     {
         Schema::table('profesors', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->after('id');
-            $table->foreign('user_id')->references('id')->on('users')
+            $table->foreignId('user_id')->constrained()
                 ->onDelete('cascade') // clave foranea
                 ->onUpdate('cascade');
         });
