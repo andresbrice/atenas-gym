@@ -14,7 +14,7 @@ class TarifaController extends Controller
      */
     public function index()
     {
-            $tarifas = Tarifa::orderBy('id','ASC')->paginate(5);
+            $tarifas = Tarifa::orderBy('cantidad_dias','ASC')->paginate(5);
             return view('tarifa.index',compact('tarifas'));
 
     }
@@ -37,7 +37,20 @@ class TarifaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'cantidad_dias' => 'required|int|unique:tarifas|max:5',
+            'precio' => 'required|int|unique:tarifas',
+        ]);
+        
+
+        $tarifa = Tarifa::create([
+            'cantidad_dias'=> $request->cantidad_dias,
+            'precio'=> $request->precio,
+
+        ]);
+
+       return redirect('tarifa')->with('status', 'Tarifa creado con exito');
+
     }
 
     /**
@@ -59,7 +72,8 @@ class TarifaController extends Controller
      */
     public function edit($id)
     {
-        return view('tarifa.edit');
+        $tarifa = Tarifa::findOrFail($id);
+        return view('tarifa.edit', compact("tarifa"));
     }
 
     /**
@@ -71,7 +85,16 @@ class TarifaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'cantidad_dias' => 'required|int|unique:tarifas|max:5',
+            'precio' => 'required|int|unique:tarifas',
+        ]);
+          
+          $tarifa = request()->except('_token', '_method');
+    
+          Tarifa::where('id', '=', $id)->update($tarifa);
+    
+          return redirect('Tarifa')->with('status', 'Tarifa modificada con exito');
     }
 
     /**
