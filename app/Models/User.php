@@ -89,7 +89,8 @@ class User extends Authenticatable
     }
   }
 
-   
+
+
   // public function scopeUserName($query, $userName)
   // {
   //   if ($userName) {

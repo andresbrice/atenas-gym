@@ -15,24 +15,25 @@
             <!-- Validation Errors -->
             <x-auth-validation-errors class=" mt-5" :errors="$errors" />
 
-            <form action="{{ route('clase.update') }}" method="POST">
+            <form method="POST" action="{{route('clase.update',$clase->id)}}">
               @csrf
+              @method('PUT')
               <div class="flex flex-col p-4 overflow-hidden sm:rounded-md">
 
                 <div class="grid grid-cols-2 gap-4">
                   <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                     <x-label for="tipo_clase" :value="__('Tipo de Clase')" class="font-semibold" />
                     <x-input id="tipo_clase" class="block w-full px-4 py-2 mt-2" type="text" name="tipo_clase"
-                      value="old('tipo_clase',{{$clase->tipo_clase}})" required autofocus />
+                      value="{{old('tipo_clase',$clase->tipo_clase)}}" required autofocus />
                   </div>
 
                   <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                     <x-label for="horarios" :value="__('Horario')" class="font-semibold" />
 
                     <select id="horarios" class="block w-full px-2 py-2 mt-2 border border-gray-300 bg-white rounded-md 
-                      shadow-sm focus:outline-none focus:ring-red-300 focus:border-red-300" name="horario_id" required>
+                      shadow-sm focus:outline-none focus:ring-red-300 focus:border-red-300" name="horario_id"  required>
                       <option hidden value="">
-                        - Seleccionar Horario -
+                        {{old('hora',$clase->hora)}}
                       </option>
                       @foreach ($horarios as $horario)
                       <option value="{{$horario->id}}">
@@ -49,12 +50,12 @@
                     @foreach ($dias as $dia)
                     <div class="inline-flex items-center">
                       <input id="dia" type="checkbox" class="rounded border-gray-300 text-red-900 
-                      shadow-sm focus:border-red-300 focus:ring
-                      focus:ring-red-200 focus:ring-opacity-50" name="dias[]" value="{{$dia->id}}">
-
+                        shadow-sm focus:border-red-300 focus:ring
+                        focus:ring-red-200 focus:ring-opacity-50" name="dias[]" value="{{$dia->id}}">
+                    
                       <span class="ml-2 text-sm text-gray-600">{{ $dia->dia }}</span>
                     </div>
-
+                    
                     @endforeach
 
                   </div>{{--/div dias de la semana--}}
@@ -66,8 +67,7 @@
                     </x-button>
                   </a>
 
-                  <x-button
-                    class="ml-3 bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
+                  <x-button class="ml-3 bg-green-900 hover:bg-green-700">
                     {{ __('Edit Class') }}
                   </x-button>
                 </div>

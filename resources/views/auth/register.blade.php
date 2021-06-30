@@ -8,10 +8,10 @@
 
   {{-- <div class="px-4 py-5 bg-white sm:p-6"> --}}
   <x-slot name="slot">
-    <div class="py-4 lg:py-6">
+    <div class="py-2 xl:py-6">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-          <div class="p-4 bg-white border-b border-gray-200">
+          <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
             <!-- Validation Errors -->
             <x-auth-validation-errors class="mb-3" :errors="$errors" />
 

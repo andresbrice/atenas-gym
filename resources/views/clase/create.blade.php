@@ -51,7 +51,7 @@
                       <input id="dia" type="checkbox" class="rounded border-gray-300 text-red-900 
                       shadow-sm focus:border-red-300 focus:ring
                       focus:ring-red-200 focus:ring-opacity-50" name="dias[]" value="{{$dia->id}}">
-
+                      
                       <span class="ml-2 text-sm text-gray-600">{{ $dia->dia }}</span>
                     </div>
 

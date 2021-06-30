@@ -26,16 +26,19 @@ class Clase extends Model
   {
     return $this->belongsToMany(Profesor::class);
   }
-  
-  public function tarifa(){
+
+  public function tarifa()
+  {
     return $this->belongsTo(Tarifa::class);
   }
 
-  public function dias(){
+  public function dias()
+  {
     return $this->belongsToMany(Dia::class);
   }
 
-  public function horario(){
+  public function horario()
+  {
     return $this->belongsTo(Horario::class);
   }
 }

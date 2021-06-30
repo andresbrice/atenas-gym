@@ -8,10 +8,10 @@
 
 
   <x-slot name="slot">
-    <div class="py-4 lg:py-6">
+    <div class="py-2 xl:py-6">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white overflow-hidden shadow-none sm:rounded-lg">
-          <div class="p-4  bg-white border-b border-gray-200">
+        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+          <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
             <!-- Validation Errors -->
             <x-auth-validation-errors class=" mt-5" :errors="$errors" />
 
@@ -50,7 +50,7 @@
                       <select id="gender"
                         class="block w-full px-2 py-2 mt-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-300 focus:border-red-300"
                         name="gender" required>
-                        <option hidden value="{{old('gender', $usuario->gender)}}">
+                        <option hidden value="{{old('gender')}}">
                           {{$usuario->gender}}
                         </option>
                         <option value="Masculino">
