@@ -31,10 +31,14 @@
                       Filtrar por...
                     </option>
 
-                    <option {{ old('filtro') == 'userName' ? 'selected' : '' }}value="userName">
+                    <option value="userName" {{ old('filtro') == 'userName' ? 'selected' : '' }}>
                       Usuario
                     </option>
 
+                    <option value="name" {{ old('filtro') == 'name' ? 'selected' : '' }}>
+                      Nombre y Apellido
+                    </option>
+                    
                   @endsection
                 </x-search>
                 {{-- FIN BUSCADOR --}}
