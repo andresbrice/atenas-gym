@@ -45,7 +45,6 @@ class UserFactory extends Factory
             'asma' => $this->faker->boolean(),
             'alergia' => $this->faker->boolean(),
             'medicacion' => $this->faker->boolean(),
-            'new_password'=>$this->faker->boolean(),
             'email_verified_at' => now(),
             'password' => Hash::make('grupo2utnconcordia'), // grupo2utnconcordia
             'remember_token' => Str::random(10),

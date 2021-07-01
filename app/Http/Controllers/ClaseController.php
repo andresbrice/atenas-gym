@@ -23,13 +23,12 @@ class ClaseController extends Controller
    */
   public function index(Request $request)
   {
-    
+
     $clases = Clase::with('dias')
-    ->orderByDesc('id')
-    ->paginate(5);
+      ->simplePaginate(3);
+
 
     return view('clase.index', compact('clases'));
-    
   }
 
   /**
@@ -41,8 +40,8 @@ class ClaseController extends Controller
   {
     $dias = Dia::all();
     $horarios = Horario::all();
-  
-    return view('clase.create',compact('horarios','dias'));
+
+    return view('clase.create', compact('horarios', 'dias'));
   }
 
   /**
@@ -54,24 +53,18 @@ class ClaseController extends Controller
   public function store(Request $request)
   {
     $request->validate([
-    'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
-    'horario_id' => 'required',
-    'dias[]'=>'min: 1',
+      'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
+      'horario_id' => 'required',
+      'dias[]' => 'min: 1',
     ]);
- 
+
     $clase = new Clase();
     $clase->tipo_clase = $request->tipo_clase;
     $clase->horario_id = $request->horario_id;
-
-    
-    for ($i=0; $i < sizeof($request->dias) ; $i++) { 
-      $clase->tarifa_id = $i + 1;
-    }
-
+    $clase->tarifa_id = sizeof($request->dias);
     $clase->save();
 
-    
-    $clase->dias()->attach($request->dias);
+    $clase->dias()->sync($request->input('dias', []));
 
     return redirect('clase')->with('status', 'Clase creada con exito');
   }
@@ -82,9 +75,10 @@ class ClaseController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
+
   public function show($id)
   {
-    
+    //
   }
 
   /**
@@ -95,7 +89,11 @@ class ClaseController extends Controller
    */
   public function edit($id)
   {
- 
+    $clase = Clase::findOrFail($id);
+    $dias = Dia::all();
+    $horarios = Horario::all();
+
+    return view('clase.edit', compact('clase', 'horarios', 'dias'));
   }
 
   /**
@@ -107,7 +105,23 @@ class ClaseController extends Controller
    */
   public function update(Request $request, $id)
   {
-    
+    $request->validate([
+      'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
+      'horario_id' => 'required',
+      'dias[]' => 'min: 1',
+    ]);
+
+
+    $clase = new Clase();
+    $clase->tipo_clase = $request->tipo_clase;
+    $clase->horario_id = $request->horario_id;
+    $clase->tarifa_id = sizeof($request->dias);
+    $clase->save();
+
+    $clase->dias()->sync($request->input('dias', []));
+
+
+    return redirect('clase')->with('status', 'Clase creada con exito');
   }
 
   /**

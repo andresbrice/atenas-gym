@@ -14,8 +14,7 @@ class AddTarifaIdToClasesTable extends Migration
   public function up()
   {
     Schema::table('clases', function (Blueprint $table) {
-      $table->unsignedBigInteger('tarifa_id')->after('horario_id');
-      $table->foreign('tarifa_id')->references('id')->on('tarifas');
+      $table->foreignId('tarifa_id')->constrained();
     });
   }
 

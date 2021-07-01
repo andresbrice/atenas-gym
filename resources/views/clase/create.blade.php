@@ -6,19 +6,19 @@
     </x-breadcrumb>
   </x-slot>
 
-
   <x-slot name="slot">
-    <div class="mt-5 sm:mt-0  max-w-7xl mx-auto">
-      <div class="md:flex md:grid-cols-3 md:gap-6">
-        <div class="mt-5 md:mt-0 md:col-span-2">
-          <!-- Validation Errors -->
-          <x-auth-validation-errors class=" mt-5" :errors="$errors" />
+    <div class="py-4 lg:py-6">
+      <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+          <div class="p-4 bg-white border-b border-gray-200">
+            <!-- Validation Errors -->
+            <x-auth-validation-errors class=" mt-5" :errors="$errors" />
 
-          <form action="{{ route('clase.store') }}" method="POST">
-            @csrf
-            <div class="shadow overflow-hidden sm:rounded-md">
-              <div class="px-4 py-5 bg-white sm:p-6">
-                <div class="grid grid-cols-4 gap-6">
+            <form action="{{ route('clase.store') }}" method="POST">
+              @csrf
+              <div class="flex flex-col p-4 overflow-hidden sm:rounded-md">
+
+                <div class="grid grid-cols-2 gap-4">
                   <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                     <x-label for="tipo_clase" :value="__('Tipo de Clase')" class="font-semibold" />
                     <x-input id="tipo_clase" class="block w-full px-4 py-2 mt-2" type="text" name="tipo_clase"
@@ -51,7 +51,7 @@
                       <input id="dia" type="checkbox" class="rounded border-gray-300 text-red-900 
                       shadow-sm focus:border-red-300 focus:ring
                       focus:ring-red-200 focus:ring-opacity-50" name="dias[]" value="{{$dia->id}}">
-
+                      
                       <span class="ml-2 text-sm text-gray-600">{{ $dia->dia }}</span>
                     </div>
 
@@ -59,13 +59,20 @@
 
                   </div>{{--/div dias de la semana--}}
                 </div>
-                <div class="px-4 py-3 bg-gray-50 text-center sm:px-6">
-                  <x-button class="ml-3 bg-red-800">
+                <div class="px-4 py-2 mt-3 flex items-center justify-between sm:px-6">
+                  <a href="{{ route('clase.index') }}">
+                    <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
+                      {{ __('Back') }}
+                    </x-button>
+                  </a>
+
+                  <x-button
+                    class="ml-3 bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
                     {{ __('Register Class') }}
                   </x-button>
                 </div>
               </div>
-            </div>
+          </div>
           </form>
         </div>
       </div>

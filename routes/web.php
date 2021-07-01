@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClaseController;
 use App\Http\Controllers\HorarioController;
-use App\Http\Controllers\AsistenciaController;
+use App\Http\Controllers\EjercicioController;
+use App\Http\Controllers\TarifaController;
+
 
 require __DIR__.'/auth.php';
 
@@ -27,6 +29,10 @@ Route::get('/asistencia/filtroclase', function () {
   return view('asistencia.filtroclase');
 })->middleware('auth')->name('asistencia.filtroclase');
 
+
+Route::resource('ejercicio', EjercicioController::class);
+
+Route::resource('tarifa', TarifaController::class);
 
 // Route::middleware(['auth', 'verified'])->group(function () {
 //     Route::get('/', function () {

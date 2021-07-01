@@ -7,9 +7,10 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\Alumno;
 use App\Models\Profesor;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Password;
 
 class UserController extends Controller
 {
@@ -20,14 +21,12 @@ class UserController extends Controller
    */
   public function index(Request $request)
   {
-    $name = $request->get('name');
-    $userName = $request->get('userName');
-    $lastName = $request->get('lastName');
+    $search = $request->get('search');
+    $filtro = $request->get('filtro');
+
     $usuarios = User::orderBy('id', 'DESC')
-      ->name($name)
-      ->userName($userName)
-      ->lastName($lastName)
-      ->paginate(5);
+      ->search($filtro, $search)
+      ->simplePaginate(4);
 
     return view('usuario.index', compact('usuarios'));
   }
@@ -62,7 +61,7 @@ class UserController extends Controller
       'emergency_number' => 'required|int',
       'age' => 'required|int',
     ]);
-  
+
     $user = User::create([
       'name' => $request->name,
       'email' => $request->email,
@@ -85,26 +84,29 @@ class UserController extends Controller
       'role_id' => $request->role_id,
     ]);
 
-    event(new Registered($user));
 
-    switch($user->role_id){
-      case '1': 
+    Password::sendResetLink($request->only(['email']));
+
+    event(new PasswordReset($user));
+
+    switch ($user->role_id) {
+      case '1':
         $alumno = new Alumno();
         $alumno->user_id = $user->id;
         $alumno->save();
-      break;
-      case '2': 
+        break;
+      case '2':
         $profesor = new Profesor();
         $profesor->user_id = $user->id;
         $profesor->save();
-      break;
-      case '3': 
+        break;
+      case '3':
         $profesor = new Profesor();
         $profesor->user_id = $user->id;
         $profesor->save();
-      break;
+        break;
     }
-    
+
     return redirect('usuario')->with('status', 'Usuario creado con exito');
   }
 
@@ -149,7 +151,7 @@ class UserController extends Controller
       'name' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'email' => 'required|string|email|max:255|unique:users',
       'userName' => 'required|string|max:255',
-      'dni' => 'required|int|unique:users',
+      'dni' => 'required|int|unique:users|max:8',
       'lastName' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'gender' => 'required',
       'phone' => 'required|int',
@@ -157,7 +159,7 @@ class UserController extends Controller
       'age' => 'required|int',
       'password' => 'nullable|required_with:password_confirmation|string|confirmed',
     ]);
-    
+
     $usuario = request()->except('_token', '_method');
 
     User::where('id', '=', $id)->update($usuario);
