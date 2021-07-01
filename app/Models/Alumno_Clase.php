@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Alumno_Clase extends Pivot
 {
   use HasFactory;
-
+  
   public function alumno(){
     return $this->belongsTo(Alumno::class);
   }

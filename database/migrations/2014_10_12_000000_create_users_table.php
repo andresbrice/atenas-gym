@@ -37,7 +37,6 @@ class CreateUsersTable extends Migration
             $table->boolean('asma');
             $table->boolean('medicacion');
             $table->string('password')->default(Hash::make("grupo2utnconcordia"));
-            $table->boolean('new_password')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -29,12 +29,12 @@
 
       <div class="flex items-center justify-between mt-4">
         <a href="{{ route('login') }}">
-          <x-button type="button" class="bg-red-800">
+          <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
             {{ __('Back') }}
           </x-button>
         </a>
 
-        <x-button class="bg-red-800">
+        <x-button class="bg-red-800 hover:bg-red-700">
           {{ __('Email Password Reset Link') }}
         </x-button>
 

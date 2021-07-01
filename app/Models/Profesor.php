@@ -8,17 +8,20 @@ use Illuminate\Foundation\Auth\User;
 
 class Profesor extends User
 {
-    use HasFactory;
+  use HasFactory;
 
-    public function __construct($user){
-      $this->user_id = $user->id;
-    }
+  public function __construct()
+  {
+    //
+  }
 
-    public function usuario(){
-      return $this->belongsTo(User::class);
-    }
+  public function usuario()
+  {
+    return $this->belongsTo(User::class);
+  }
 
-    public function clases(){
-      return $this->belongsToMany(Clase::class);
-    }
+  public function clases()
+  {
+    return $this->belongsToMany(Clase::class)->withTimestamps();
+  }
 }

@@ -13,9 +13,8 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-  <link rel="stylesheet" href="{{ asset('cssPropio/estiloSize.css') }}">
+  {{-- <link rel="stylesheet" href="{{ asset('cssPropio/estiloSize.css') }}"> --}}
   <link rel="shortcut icon" href="{{asset('img/favicon/favicon.ico')}}" type="image/x-icon">
-
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}"></script>
@@ -27,33 +26,51 @@
 
 </head>
 
-<body class="font-sans antialiased bg-gray-200 leading-normal tracking-normal" x-data="{ open: false }"
-  :class="open ? 'overflow-hidden' : 'overflow-visible'">
-  {{-- Nav --}}
-  @include('layouts.navigation')
+<body class="font-sans antialiased" x-data="{ open: false }" :class="open ? 'overflow-hidden' : 'overflow-visible'">
 
-  <div class="flex flex-col md:flex-row">
+  <div class="min-h-screen flex flex-col bg-gray-200">
+    @include('layouts.navigation')
 
-
-    <div class="altura90 main-content flex-1 bg-gray-200">
-
-      <div class="bg-gradient-to-r from-red-900 to-gray-900 p-2 shadow text-md md:text-lg text-gray-100">
-        <div class="container mx-auto">
-          {{$breadcrumb}}
-        </div>
+    <header class="bg-gradient-to-r from-red-900 to-gray-900 shadow">
+      <div class="max-w-7xl mx-auto p-2 text-gray-100 sm:px-6 lg:px-8">
+        {{ $breadcrumb }}
       </div>
+    </header>
 
-      <div style="height: 80vh;" class="flex flex-wrap items-center">
-        <div class=" container h-full mx-auto flex justify-center items-center">
-          {{ $slot }}
-        </div>
-      </div>
+    <main class="flex flex-auto flex-col justify-center">
+      {{ $slot }}
+    </main>
 
-      <x-footer />
-
-    </div>
+    <x-footer />
   </div>
-
 </body>
 
 </html>
+
+
+
+{{-- 
+  @include('layouts.navigation')
+  
+  <div class="flex flex-col md:flex-row">
+  
+  
+    <div class="altura90 main-content flex-1 bg-gray-200">
+  
+      <div class="bg-gradient-to-r from-red-900 to-gray-900 p-2 shadow text-md md:text-lg text-gray-100">
+        <div class="container mx-auto">
+          {{$breadcrumb}}
+</div>
+</div>
+
+<div style="height: 80vh;" class="flex flex-wrap items-center">
+  <div class=" container h-full mx-auto flex justify-center items-center">
+    {{ $slot }}
+  </div>
+</div>
+
+<x-footer />
+
+</div>
+</div>
+--}}

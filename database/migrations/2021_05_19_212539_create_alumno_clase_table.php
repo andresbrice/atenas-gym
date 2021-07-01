@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDiaSemanasTable extends Migration
+class CreateAlumnoClaseTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateDiaSemanasTable extends Migration
      */
     public function up()
     {
-        Schema::create('dia_semanas', function (Blueprint $table) {
+        Schema::create('alumno_clase', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            $table->string("descripcion");
+            $table->foreignId('alumno_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('clase_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
+
     }
 
     /**
@@ -28,6 +30,6 @@ class CreateDiaSemanasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dia_semanas');
+        Schema::dropIfExists('alumno_clase');
     }
 }

@@ -20,8 +20,7 @@ class CreateRutinasTable extends Migration
             $table->integer('series');
             $table->integer('repeticiones');
             $table->integer('descanso');
-            $table->unsignedBigInteger('alumno_clase_id');
-            $table->foreign('alumno_clase_id')->references('id')->on('alumnos_clases');
+            $table->foreignId('alumno_clase_id')->constrained('alumno_clase');
             $table->timestamps();
         });
     }

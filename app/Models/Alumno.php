@@ -9,15 +9,11 @@ class Alumno extends User
 {
     use HasFactory;
 
-    public function __construct($user){
-      $this->user_id = $user->id;
-    }
-
     public function usuario(){
       return $this->belongsTo(User::class);
     }
 
-    public function alumnos_clases(){
+    public function alumno_clase(){
       return $this->HasMany(Alumno_Clase::class);
     }
 }

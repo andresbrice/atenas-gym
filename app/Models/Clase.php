@@ -13,33 +13,32 @@ class Clase extends Model
   [
     'tipo_clase',
     'cupos_disponibles',
+    'horario_id',
+    'tarifa_id'
   ];
 
-  public function alumnos_clases()
+  public function alumno_clase()
   {
     return $this->HasMany(Alumno_Clase::class);
   }
 
   public function profesors()
   {
-    return $this->belongsToMany(Profesor::class);
+    return $this->belongsToMany(Profesor::class)->withTimestamps();
   }
 
-  
-  public function tarifa(){
+  public function tarifa()
+  {
     return $this->belongsTo(Tarifa::class);
   }
 
-  public function clases_diaSemanas(){
-    return $this->belongsToMany(DiaSemana::class);
+  public function dias()
+  {
+    return $this->belongsToMany(Dia::class)->withTimestamps();
   }
 
-  public function horario(){
-    return $this->hasOne(Horario::class);
+  public function horario()
+  {
+    return $this->belongsTo(Horario::class);
   }
-
-
-
-
-
 }
