@@ -1,7 +1,7 @@
 <x-modal> 
     <x-slot name="title">
       <div class="grid grid-cols-2">
-          {{-- Aca va el titulo de modal en un div --}} 
+          <h3>Buscar Clase:</h3>
         <div class="cursor-pointer grid justify-items-end" @click="open = false">
           <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
             viewBox="0 0 18 18">
@@ -12,43 +12,44 @@
         </div>
       </div>
     </x-slot>
-    <div class="grid grid-cols-2">
     <x-slot name="body">
-        {{-- input fecha --}}
-        <x-label for="fecha" :value="__('Fecha')" class="font-semibold" />
-        <x-input id="fecha" class="block w-full px-4 py-2 mt-2" type="date" name="fecha" :value="old('fecha')"
-        required autofocus />
+      <div class="grid grid-cols-1">
 
         {{-- selec tipo de clase --}}
+        <x-label for="Clase" :value="__('Clase:')" class="font-semibold" />
         <select name="tipo_clase">
-            <option value="value1">Value 1</option>
-            <option value="value2" selected>Value 2</option>
-            <option value="value3">Value 3</option>
+            <option hidden value="">Seleccione la clase</option>
+            @foreach ($clases as $clase)
+            <option value="{{$clase->id}}" >{{$clase->tipo_clase}}</option>
+            @endforeach
         </select>
 
-         {{-- selec horario --}}
+          {{-- selec horario --}}
+        <x-label for="horario" :value="__('Horario:')" class="font-semibold" />
          <select name="horario">
-            <option value="value1">Value 1</option>
-            <option value="value2" selected>Value 2</option>
-            <option value="value3">Value 3</option>
+          <option hidden value="">Seleccione el horario</option>
+          @foreach ($horarios as $horario)
+          <option value="{{$horario->id}}" >{{ $horario->hora->format('H:i A') }}</option>
+          @endforeach
         </select>
 
       </div>
     </x-slot>
 
     <x-slot name="footer">
-      <div class="w-full grid justify-items-end">
-  
-        <x-button class="bg-gray-600 hover:bg-gray-700" @click="open = false">{{_('Cancel')}}</x-button>
-
-        {{-- aca va el boton de redireccion a crear asistencia, tiene que ir dentro de un form con el metodo post --}}
-
+      <div class="px-4 py-2  flex items-center justify-center sm:px-6">
         <form action="{{route('asistencia.create')}}" method="GET" class="inline">
-            <x-button class="text-white bg-red-900 hover:bg-red-700"
-              onclick="return">
-              Buscar</x-button>
-        </form>
-
-      </div>
+        <x-button
+          class="ml-3 bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
+          {{ __('Find Class') }}
+        </x-button>
+      </form>
+      </div> 
     </x-slot>
   </x-modal>
+
+
+
+
+
+  

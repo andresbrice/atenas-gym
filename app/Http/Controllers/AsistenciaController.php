@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Asistencia;
+use App\Models\Clase;
+use App\Models\Horario;
 
 class AsistenciaController extends Controller
 {
@@ -15,7 +17,9 @@ class AsistenciaController extends Controller
     public function index()
     {
         $asistencias = Asistencia::orderBy('id','ASC')->paginate(5);
-        return view('asistencia.index',compact('asistencias'));
+        $clases = Clase::all();
+        $horarios = Horario::all();
+        return view('asistencia.index',compact('asistencias','clases','horarios'));
     }
 
     /**
@@ -89,6 +93,11 @@ class AsistenciaController extends Controller
 
     public function filtroClase(){
 
-        return view("asistencia.filtroclase");
+        $clases = Clase::all();
+        $horarios = Horario::all();
+
+        return view('asistencia.filtroclase',compact('clases', 'horarios'));
     }
+
+
 }

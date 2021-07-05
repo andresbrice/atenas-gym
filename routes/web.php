@@ -25,15 +25,10 @@ Route::resource('usuario', UserController::class);
 Route::resource('clase', ClaseController::class); 
 Route::resource('horario', HorarioController::class); 
 Route::resource('asistencia', AsistenciaController::class); 
-
-Route::get('/asistencia/filtroclase', function () {
-  return view('asistencia.filtroclase');
-})->middleware('auth')->name('asistencia.filtroclase');
-
-
 Route::resource('ejercicio', EjercicioController::class);
-
 Route::resource('tarifa', TarifaController::class);
+
+Route::get('asistencia/filtroclase', [AsistenciaController::class, 'filtroclase'])->name('asistencia.filtroclase');
 
 // Route::middleware(['auth', 'verified'])->group(function () {
 //     Route::get('/', function () {
