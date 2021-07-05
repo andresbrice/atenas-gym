@@ -15,18 +15,18 @@
     <x-slot name="body">
       <div class="grid grid-cols-1">
 
-        {{-- selec tipo de clase --}}
+        {{-- Select tipo de clase --}}
         <x-label for="Clase" :value="__('Clase:')" class="font-semibold" />
-        <select name="tipo_clase">
+        <select name="tipo_clase" class="block w-full px-2 py-2 mt-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-300 focus:border-red-300" required>
             <option hidden value="">Seleccione la clase</option>
             @foreach ($clases as $clase)
             <option value="{{$clase->id}}" >{{$clase->tipo_clase}}</option>
             @endforeach
         </select>
 
-          {{-- selec horario --}}
+          {{-- Select horario --}}
         <x-label for="horario" :value="__('Horario:')" class="font-semibold" />
-         <select name="horario">
+         <select name="horario" class="block w-full px-2 py-2 mt-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-300 focus:border-red-300" required>
           <option hidden value="">Seleccione el horario</option>
           @foreach ($horarios as $horario)
           <option value="{{$horario->id}}" >{{ $horario->hora->format('H:i A') }}</option>

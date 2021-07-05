@@ -20,6 +20,14 @@
                 <div class="px-4 py-5 bg-white sm:p-6">
 
                   <div class="grid grid-cols-2 gap-6">
+                    <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                      <x-label for="fecha" :value="__('Fecha')" class="font-semibold" />
+                      <x-input id="fecha" class="block w-full px-4 py-2 mt-2" type="date" name="fecha" :value="old('fecha')"
+                        required autofocus />
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-6">
                         <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                           <x-label for="horario" :value="__('Horario')" class="font-semibold" />
                           <x-input id="horario" class="block w-full px-4 py-2 mt-2" type="text" name="horario" :value="old('horario')"
@@ -31,14 +39,14 @@
                       <x-input id="tipo_clase" class="block w-full px-4 py-2 mt-2" type="text" name="tipo_clase" :value="old('tipo_clase')"
                         required autofocus />
                     </div>
-                    <div class="col-span-6 sm:col-span-6 lg:col-span-2">
-                        <x-label for="profesor" :value="__('Profesor')" class="font-semibold" />
-                        <x-input id="profesor" class="block w-full px-4 py-2 mt-2" type="text" name="profesor" :value="old('profesor')"
-                          required autofocus />
-                    </div>
                     
-
-                        
+                    <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                      <x-label for="asistio" :value="__('Asistencia')" class="font-semibold" />
+                      <input id="asistio" type="checkbox" class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
+                            name="asistio" value="1">
+                      <span class="ml-2 text-sm text-gray-600">{{ __('Asistencia') }}</span>
+                    </div>
+       
                   <div class="px-4 py-3 bg-gray-50 text-center sm:px-6">
                     <x-button class=" bg-red-800">
                       {{ __('Register Assistance') }}
