@@ -7,10 +7,10 @@
         <div class="flex-shrink-0 flex items-center">
           <a href="{{ route('dashboard') }}">
             {{-- logo solo --}}
-            <x-application-logo class="block xl:hidden h-8 w-auto" />
+            <x-application-logo class="block h-8 w-auto" />
 
             {{-- logo + Atenas Gym --}}
-            <x-nav-logo class="hidden xl:block h-8 w-auto" />
+            {{-- <x-nav-logo class="hidden xl:block h-8 w-auto" /> --}}
           </a>
         </div>
 
@@ -51,7 +51,7 @@
             </x-slot>
 
             <x-slot name="content">
-              <x-dropdown-link href="#">
+              <x-dropdown-link href="{{route('usuario.show',auth()->id())}}">
                 {{ __('Perfil') }}
               </x-dropdown-link>
               <!-- Authentication -->

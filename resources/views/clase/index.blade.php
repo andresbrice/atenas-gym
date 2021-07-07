@@ -30,7 +30,6 @@
                   <option hidden value="">
                     Filtrar por...
                   </option>
-
                   <option {{ old('filtro') == 'tipo_clase' ? 'selected' : '' }}value="tipo_clase">
                     Clase
                   </option>
@@ -49,10 +48,6 @@
             <x-table>
               @section('nombre-columna')
               <tr>
-                <th scope="col"
-                  class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  id
-                </th>
                 <th scope="col"
                   class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Tipo de clase
@@ -85,10 +80,6 @@
               @section('contenido-filas')
               @forelse ($clases as $clase)
               <tr>
-                <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                  {{ $clase->id }}
-                </td>
-
                 <td class="px-6 py-4 whitespace-nowrap text-center">
                   {{ $clase->tipo_clase }}
                 </td>
@@ -103,7 +94,7 @@
 
                 <td class="px-6 py-4 whitespace-nowrap text-center">
                   @foreach ($clase->dias as $dia)
-                  {{$dia->dia}}@if(!$loop->last), @endif
+                  {{ $dia->dia }}@if (!$loop->last), @endif
                   @endforeach
                 </td>
 
@@ -113,71 +104,96 @@
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                  <x-multi-level-dropdown>
+
+                  {{-- <x-multilevel-dropdown>
                     @section('editar')
-                    <a href="{{ route('clase.edit', $clase->id) }}">
-                      Editar
-                    </a>
-                    @endsection
-
-                    @section('borrar')
-                    <form action="{{route('clase.destroy', $clase->id)}}" method="post">
-                      @csrf
-                      @method('DELETE')
-                      <button class="focus:outline-none"
-                        onclick="return confirm('¿Esta seguro de querer borrar la clase?')">Borrar</button>
-                    </form>
-                    @endsection
-
-                    @section('alumnos')
-                    <li class="rounded-lg relative px-3 py-1 hover:bg-gray-400">
-                      <button class="w-full text-left flex items-center outline-none focus:outline-none">
-                        <span class="pr-1 flex-1">Alumnos</span>
-                        <span class="mr-auto">
-                          <svg class="fill-current h-4 w-4
-                                        transition duration-150 ease-in-out" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20">
+                    <li><a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                        href="{{route('clase.edit',$clase->id)}}">Editar</a></li>
+                  @endsection
+                  @section('borrar')
+                  <form method="POST" action="{{ route('clase.destroy',$clase->id) }}">
+                    @csrf
+                    @method('DELETE')
+                    <li><a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                        href="{{route('clase.destroy',$clase->id)}}"
+                        onclick="event.preventDefault();this.closest('form').submit();return confirm('¿Esta seguro de querer borrar la clase?');">Borrar</a>
+                    </li>
+                  </form>
+                  @endsection
+                  @section('alumnos')
+                  <li class="dropdown">
+                    <span class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">Alumnos
+                      🡺</span>
+                    <ul
+                      class="dropdown-content rounded-md border-2 border-red-700 absolute hidden text-gray-900 left-28 -mt-10">
+                      <li><a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">Agregar
+                          Alumnos</a>
+                      <li><a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">Editar
+                          Alumnos</a>
+                      <li><a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">Mostrar
+                          Alumnos</a>
+                      <li><a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">Borrar
+                          Alumnos</a>
+                    </ul>
+                  </li>
+                  @endsection
+                  @section('profesores')
+                  <li class="dropdown">
+                    <span class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">Profesores
+                      🡺</span>
+                    <ul
+                      class="dropdown-content rounded-md border-2 border-red-700 absolute hidden text-gray-900 left-28 -mt-10">
+                      <li><a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">Agregar
+                          Profesores</a>
+                      <li><a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">Editar
+                          Profesores</a>
+                      <li><a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">Mostrar
+                          Profesores</a>
+                      <li><a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">Borrar
+                          Profesores</a>
+                    </ul>
+                  </li>
+                  @endsection
+                  </x-multilevel-dropdown> --}}
+                  <x-dropdown align="right" width="48">
+                    <x-slot name="trigger">
+                      <x-button
+                        class="outline-none focus:outline-none border px-3 py-1 bg-gray-900 hover:bg-gray-700 text-white rounded-sm flex items-center min-w-32">
+                        <span class="pr-1 font-semibold flex-1">Acciones</span>
+                        <span>
+                          <svg class="fill-current h-4 w-4 transform group-hover:-rotate-180
+                                                                  transition duration-150 ease-in-out"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                             <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                           </svg>
                         </span>
-                      </button>
-                      <ul class="bg-white border ring-2 ring-red-700 rounded-lg absolute top-0 right-0 
-                              transition duration-150 ease-in-out origin-top-left
-                              min-w-32
-                              ">
-                        <li class="rounded-lg px-3 py-1 hover:bg-gray-400">Agregar</li>
-                        <li class="rounded-lg px-3 py-1 hover:bg-gray-400">Editar</li>
-                        <li class="rounded-lg px-3 py-1 hover:bg-gray-400">Mostrar</li>
-                        <li class="rounded-lg px-3 py-1 hover:bg-gray-400">Borrar</li>
+                      </x-button>
+                    </x-slot>
 
-                      </ul>
-                    </li>
-                    @endsection
+                    <x-slot name="content">
+                      <x-dropdown-link href="{{ route('clase.edit', $clase->id) }}">
+                        {{ __('Edit') }}
+                      </x-dropdown-link>
 
-                    @section('profesores')
-                    <li class="rounded-lg relative px-3 py-1 hover:bg-gray-400">
-                      <button class="w-full text-left flex items-center outline-none focus:outline-none">
-                        <span class="pr-1 flex-1">Profesores</span>
-                        <span class="mr-auto">
-                          <svg class="fill-current h-4 w-4
-                                        transition duration-150 ease-in-out" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20">
-                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                          </svg>
-                        </span>
-                      </button>
-                      <ul class="bg-white border ring-2 ring-red-700 rounded-lg absolute top-0 right-0 
-                              transition duration-150 ease-in-out origin-top-left
-                              min-w-32
-                              ">
-                        <li class="rounded-lg px-3 py-1 hover:bg-gray-400">Agregar</li>
-                        <li class="rounded-lg px-3 py-1 hover:bg-gray-400">Editar</li>
-                        <li class="rounded-lg px-3 py-1 hover:bg-gray-400">Mostrar</li>
-                        <li class="rounded-lg px-3 py-1 hover:bg-gray-400">Borrar</li>
-                      </ul>
-                    </li>
-                    @endsection
-                  </x-multi-level-dropdown>
+                      <form method="POST" action="{{ route('clase.destroy', $clase->id) }}">
+                        @csrf
+                        @method('DELETE')
+
+                        <x-dropdown-link :href="route('clase.destroy',$clase->id)"
+                          onclick="event.preventDefault();this.closest('form').submit();return confirm('¿Esta seguro de querer borrar la clase?');">
+                          Borrar
+                        </x-dropdown-link>
+                      </form>
+
+                      <x-dropdown-link href="{{ route('clase.alumnos', $clase->id) }}">
+                        {{ __('Students') }}
+                      </x-dropdown-link>
+
+                      <x-dropdown-link href="#">
+                        {{ __('Teachers') }}
+                      </x-dropdown-link>
+                    </x-slot>
+                  </x-dropdown>
                 </td>
               </tr>
               @empty
@@ -202,6 +218,6 @@
           </div>
         </div>
       </div>
-
+    </div>
   </x-slot>
 </x-app-layout>
