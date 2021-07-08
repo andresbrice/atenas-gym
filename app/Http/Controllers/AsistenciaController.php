@@ -17,9 +17,9 @@ class AsistenciaController extends Controller
     public function index()
     {
         $asistencias = Asistencia::orderBy('id','ASC')->paginate(5);
-        $clases = Clase::all();
-        $horarios = Horario::all();
-        return view('asistencia.index',compact('asistencias','clases','horarios'));
+        // $clases = Clase::all();
+        // $horarios = Horario::all();
+        return view('asistencia.index', compact('asistencias'));
     }
 
     /**
@@ -29,6 +29,8 @@ class AsistenciaController extends Controller
      */
     public function create()
     {
+        // $clases = Clase::all();
+        // $horarios = Horario::all();
         return view('asistencia.create');
 
     }
@@ -41,7 +43,8 @@ class AsistenciaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+
     }
 
     /**
@@ -63,6 +66,9 @@ class AsistenciaController extends Controller
      */
     public function edit($id)
     {
+        // $asistencias = Asistencia::findOrFail($id);
+        // $clases = Clase::all();
+        // $horarios = Horario::all();
         return view('asistencia.edit');
     }
 
@@ -75,7 +81,13 @@ class AsistenciaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+          
+        //   $asistencia = request()->except('_token', '_method');
+    
+        //   Asistencia::where('id', '=', $id)->update($asistencia);
+    
+        //   return redirect('asistencia')->with('status', 'Asistencia modificada con exito');
     }
 
     /**
@@ -86,18 +98,17 @@ class AsistenciaController extends Controller
      */
     public function destroy($id)
     {
-        Asistencia::destroy($id);
+        // Asistencia::destroy($id);
 
-        return redirect('asistencia')->with('status', 'Asistencia eliminada con exito');
+        // return redirect('asistencia')->with('status', 'Asistencia eliminada con exito');
+    }
+    
+    public function buscarClase()
+    {
+        return view('asistencia.buscarclase');
+
     }
 
-    public function filtroClase(){
-
-        $clases = Clase::all();
-        $horarios = Horario::all();
-
-        return view('asistencia.filtroclase',compact('clases', 'horarios'));
-    }
 
 
 }

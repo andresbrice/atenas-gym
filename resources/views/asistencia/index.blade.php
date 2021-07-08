@@ -13,21 +13,13 @@
                 {{-- BOTON CREAR ASISTENCIA Y BUSCADOR --}}
                 <div class="flex flex-col sm:flex-row justify-between items-center">
                   {{-- BOTON --}}
-                  {{-- <a href="{{ route('asistencia.filtroclase') }}" class="w-max md:mr-5">
-                    <x-button type="button"
-                      class="bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
-                      {{ __('Register Class') }}
-                    </x-button>
-                  </a> --}}
-
-                  <div class="w-max md:mr-5" x-data="{ open: false }">
-                    <x-button type="button"
-                    class="bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold" @click="open = true">
-                    {{ __('Register Assistance') }}
-                    </x-button>
-
-                    @include('asistencia.filtroclase')
-
+                  <div class="flex-auto justify-center ml-4"> 
+                    <a href="{{ route('asistencia.buscarclase') }}">
+                      <x-button 
+                        class="bg-red-300 text-red-700 hover:bg-red-700 hover:text-white border-red-600 font-bold">
+                        {{ __('Register Assistance') }}
+                      </x-button>
+                    </a>
                   </div>
   
                   {{-- BUSCADOR --}}
@@ -52,10 +44,7 @@
               <x-table>
                 @section('nombre-columna')
                 <tr>
-                  <th scope="col"
-                    class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    id
-                  </th>
+                 
                   <th scope="col"
                     class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Tipo de Clase
@@ -70,16 +59,6 @@
                   </th>
                   <th scope="col"
                     class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Profesor
-                  </th>
-  
-                  <th scope="col"
-                    class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Asistencia
-                  </th>
-                  <th scope="col"
-                    class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-  
                   </th>
                 </tr>
                 @endsection
@@ -88,9 +67,6 @@
                 @section('contenido-filas')
                 @forelse ($asistencias as $asistencia)
                 <tr>
-                  <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                    {{ $asistencia->id }}
-                  </td>
   
                   <td class="px-6 py-4 whitespace-nowrap text-center">
                     {{ $asistencia->tipo_clase }}
@@ -104,31 +80,10 @@
                     {{ $asistencia->horario->hora->format('H:i A') }}
                   </td>
   
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    {{$asistencia->profesor}}
-                  </td>
-
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    {{$asistencia->asistio}}
-                  </td>
-  
                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                    <x-multi-level-dropdown>
-                      @section('editar')
-                      <a href="{{ route('asistencia.edit', $asistencia->id) }}">
-                        Editar
-                      </a>
-                      @endsection
-  
-                      @section('borrar')
-                      <form action="{{route('asistencia.destroy', $asistencia->id)}}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button class="focus:outline-none"
-                          onclick="return confirm('¿Esta seguro de querer borrar la asistencia?')">Borrar</button>
-                      </form>
-                      @endsection
-                    </x-multi-level-dropdown>
+                    <button>
+                      Acciones
+                    </button>
                   </td>
                 </tr>
                 @empty

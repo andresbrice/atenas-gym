@@ -28,7 +28,7 @@ Route::resource('asistencia', AsistenciaController::class);
 Route::resource('ejercicio', EjercicioController::class);
 Route::resource('tarifa', TarifaController::class);
 
-Route::get('asistencia/filtroclase', [AsistenciaController::class, 'filtroclase'])->name('asistencia.filtroclase');
+Route::get('buscarclase', [AsistenciaController::class, 'buscarClase'])->name('asistencia.buscarclase');
 
 // Route::middleware(['auth', 'verified'])->group(function () {
 //     Route::get('/', function () {
