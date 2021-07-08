@@ -90,9 +90,9 @@
                         @csrf
                         @method('DELETE')
 
-                        <x-dropdown-link :href="route('horario.destroy',$horario->id)"
-                          onclick="return confirm('¿Esta seguro de querer borrar este horario?'); this.closest('form').submit();">
-                          Borrar
+                        <x-dropdown-link class="text-center" :href="route('horario.destroy',$horario->id)">
+                          <button
+                            onclick="return confirm('¿Esta seguro de querer borrar este horario?');">Borrar</button>
                         </x-dropdown-link>
                       </form>
 

@@ -33,10 +33,10 @@
                   <option {{ old('filtro') == 'tipo_clase' ? 'selected' : '' }}value="tipo_clase">
                     Clase
                   </option>
-                  <option {{ old('filtro') == 'horario' ? 'selected' : '' }}value="horario">
-                    Horario
+                  <option {{ old('filtro') == 'clase' ? 'selected' : '' }}value="clase">
+                    clase
                   </option>
-                  <option {{ old('filtro') == 'horario' ? 'selected' : '' }}value="horario">
+                  <option {{ old('filtro') == 'clase' ? 'selected' : '' }}value="clase">
                     Días
                   </option>
 
@@ -58,7 +58,7 @@
                 </th>
                 <th scope="col"
                   class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Horario
+                  clase
                 </th>
                 <th scope="col"
                   class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -179,9 +179,8 @@
                         @csrf
                         @method('DELETE')
 
-                        <x-dropdown-link :href="route('clase.destroy',$clase->id)"
-                          onclick="event.preventDefault();this.closest('form').submit();return confirm('¿Esta seguro de querer borrar la clase?');">
-                          Borrar
+                        <x-dropdown-link class="text-center" :href="route('clase.destroy',$clase->id)">
+                          <button onclick="return confirm('¿Esta seguro de querer borrar esta clase?');">Borrar</button>
                         </x-dropdown-link>
                       </form>
 

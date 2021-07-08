@@ -22,7 +22,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('clase', ClaseController::class);
     Route::resource('horario', HorarioController::class);
     Route::get('clase/{clase}/alumnos', [ClaseController::class, 'indexAlumnos'])->name('clase.alumnos');
-    Route::get('usuario/{usuario}/info', [UserController::class, 'infoUser'])->name('usuario.infoUser');
   });
 
   // Route::group(['middleware' => 'profesor'], function () {
