@@ -6,7 +6,7 @@
     <x-slot name="slot">
         <div class="py-2 xl:py-6">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white shadow-sm sm:rounded-lg">
                     <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
                         <x-auth-session-status class="mb-4 font-bold flex justify-center" :status="session('status')" />
                         <div class="mb-3">
@@ -39,14 +39,6 @@
                                             Ejercicio
                                         </option>
 
-                                        <option value="2" @php
-                                            if (isset($seleccionado) && $seleccionado == '2') {
-                                                echo 'selected';
-                                            }
-                                        @endphp>
-                                            Nombre y Apellido
-                                        </option>
-
                                     @endsection
                                 </x-search>
                                 {{-- FIN BUSCADOR --}}
@@ -62,6 +54,9 @@
                                     <th scope="col"
                                         class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Descripción
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     </th>
                                 </tr>
                             @endsection
@@ -104,10 +99,9 @@
                                                         @csrf
                                                         @method('DELETE')
 
-                                                        <x-dropdown-link class="text-center"
-                                                            :href="route('ejercicio.destroy',$ejercicio->id)">
-                                                            <button
-                                                                onclick="return confirm('¿Esta seguro de querer borrar este ejercicio?');">Borrar</button>
+                                                        <x-dropdown-link class="text-center" :href="route('ejercicio.destroy',$ejercicio->id)">
+                                                            <button onclick="return confirm('¿Esta seguro de querer borrar este ejercicio?');">Borrar
+                                                            </button>
                                                         </x-dropdown-link>
                                                     </form>
                                                 </x-slot>

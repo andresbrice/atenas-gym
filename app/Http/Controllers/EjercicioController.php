@@ -109,5 +109,6 @@ class EjercicioController extends Controller
         Ejercicio::destroy($id);
 
         return redirect('ejercicio')->with('status', 'Ejercicio eliminado con exito');
+
     }
 }
