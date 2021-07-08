@@ -28,15 +28,15 @@ class RutinaController extends Controller
      */
     public function create(Request $request)
     {
-        $name = $request->get('name');
-        $userName = $request->get('userName');
-        $lastName = $request->get('lastName');
+        // $name = $request->get('name');
+        // $userName = $request->get('userName');
+        // $lastName = $request->get('lastName');
 
         $usuarios = User::orderBy('id', 'DESC')
-            ->name($name)
-            ->userName($userName)
-            ->lastName($lastName)
-            ->paginate(5);
+            // ->name($name)
+            // ->userName($userName)
+            // ->lastName($lastName)
+            ->simplePaginate(4);
 
         return view('rutina.create', compact('usuarios'));
     }

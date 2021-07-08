@@ -7,7 +7,7 @@
     <x-slot name="slot">
   
       <div class="sm:px-6 lg:px-8 h-full flex justify-center">
-        <div class="w-full">
+        <div class="w-full px-8">
           <div class="bg-white mt-5 overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-4 bg-white border-b border-gray-100">
               <x-auth-session-status class="mb-4 font-bold flex justify-center" :status="session('status')" />
@@ -24,37 +24,31 @@
                   </a>
                 </div>
   
-                {{--BUSQUEDA--}}
-                <form action="{{route('rutina.index')}}" method="GET"
-                  class="flex-auto justify-center max-w-3xl space-x-3">
-  
-                  <div class="md:flex md:items-center space-x-2">
-                    <x-input type="text" id="userName" name="userName" value="{{Request::input('userName')}}"
-                      class=" mt-1 rounded-xl border-transparent flex-1 appearance-none border shadow-sm text-base focus:outline-none focus:ring-2 focus:border-transparent"
-                      placeholder="{{__('Search User...')}}" autocomplete="off" />
-  
-                    <x-input type="text" id="name" name="name" value="{{Request::input('name')}}"
-                      class=" mt-1 rounded-xl border-transparent flex-1 appearance-none border shadow-sm text-base focus:outline-none focus:ring-2 focus:border-transparent"
-                      placeholder="{{__('Search Name...')}}" autocomplete="off" />
-  
-                    <x-input type="text" id="lastName" name="lastName" value="{{Request::input('lastName')}}"
-                      class=" mt-1 rounded-xl border-transparent flex-1 appearance-none border shadow-sm text-base focus:outline-none focus:ring-2 focus:border-transparent"
-                      placeholder="{{__('Search Last Name...')}}" autocomplete="off" />
-  
-                    <button
-                      class="bg-red-700 text-white rounded-full p-2 hover:bg-red-500 focus:outline-none w-12 h-12 flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd"
-                          d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                          clip-rule="evenodd" />
-                      </svg>
-                    </button>
-                  </div>
-                </form>
-                {{-- FIN BUSQUEDA --}}
+                {{-- BUSCADOR --}}
+                <x-search>
+                  @section('action')
+                    {{ route('rutina.index') }}
+                  @endsection
+
+                  @section('opciones')
+                    <option hidden value="">
+                      Filtrar por...
+                    </option>
+
+                    <option value="userName" {{ old('filtro') == 'userName' ? 'selected' : '' }}>
+                      Usuario
+                    </option>
+
+                    <option value="name" {{ old('filtro') == 'name' ? 'selected' : '' }}>
+                      Nombre y Apellido
+                    </option>
+                    
+                  @endsection
+                </x-search>
+                {{-- FIN BUSCADOR --}}
               </div>{{-- FIN DIV ALIGN --}}
   
-              <div class="flex flex-col">
+              <div class="flex flex-col px-5">
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                   <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                     <div class="shadow overflow-hidden border-b border-gray-400 sm:rounded-lg">
@@ -62,23 +56,19 @@
                         <thead class="bg-gray-100">
                           <tr>
                             <th scope="col"
-                              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                              id
-                            </th>
-                            <th scope="col"
-                              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                               fecha de emisión
                             </th>
                             <th scope="col"
-                              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                               Alumno
                             </th>
                             <th scope="col"
-                              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                               Profesor
                             </th>
                             <th scope="col"
-                              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                               acciones
                             </th>
                           </tr>
@@ -87,28 +77,18 @@
   
                           @forelse ($rutinas as $rutina)
                           <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
-                              {{$rutina->id}}
-                            </td>
-  
                             <td class="px-6 py-4 whitespace-nowrap">
                               {{$rutina->fecha_emision}}
                             </td>
   
                             <td class="px-6 py-4 whitespace-nowrap">
-                              {{$rutina->series}}
+                              {{-- acá van los alumnos --}}
+                              {{-- {{$rutina->series}} --}}
                             </td>
   
                             <td class="px-6 py-4 whitespace-nowrap">
-                              {{$rutina->repeticiones}}
-                            </td>
-  
-                            <td class="px-6 py-4 whitespace-nowrap">
-                              {{$rutina->descanso}}
-                            </td>
-  
-                            <td class="px-6 py-4 whitespace-nowrap">
-                              {{-- Acá irían las alumnos --}}
+                              {{-- acá los pofesores --}}
+                              {{-- {{$rutina->repeticiones}} --}}
                             </td>
   
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">

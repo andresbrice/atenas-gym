@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClaseController;
 use App\Http\Controllers\HorarioController;
+use App\Http\Controllers\RutinaController;
 
 require __DIR__.'/auth.php';
 
