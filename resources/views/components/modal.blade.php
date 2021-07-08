@@ -17,9 +17,7 @@
     </div>
 
     <div class="mt-5 sm:mt-6">
-      <span class="flex w-full rounded-md shadow-sm">
-        {{ $footer }}
-      </span>
+      {{$footer}}
     </div>
 
   </div>

@@ -1,11 +1,3 @@
-{{-- 
-  
-  Secciones a tener en cuenta al llamar al componente busqueda:
-  - action
-  - opciones
-
-  --}}
-
 <form action="@yield('action')" method="GET" class="max-w-4xl space-x-3">
 
   <div class="flex flex-auto items-center space-x-2 pr-2">
@@ -33,9 +25,13 @@
 
 
 
-
-
 {{-- 
+  
+  Secciones a tener en cuenta al llamar al componente busqueda:
+  - action
+  - opciones
+
+  
           OPCIONES PARA SELECT
 
           <option value="">

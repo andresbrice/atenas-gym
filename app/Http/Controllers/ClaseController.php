@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alumno;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Clase;
@@ -25,7 +26,8 @@ class ClaseController extends Controller
   {
 
     $clases = Clase::with('dias')
-      ->simplePaginate(3);
+      ->orderByDesc('id')
+      ->simplePaginate(4);
 
 
     return view('clase.index', compact('clases'));
@@ -55,13 +57,17 @@ class ClaseController extends Controller
     $request->validate([
       'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'horario_id' => 'required',
-      'dias[]' => 'min: 1',
-    ]);
+      'dias' => 'required|array|min: 1'
+    ], ['dias.required' => 'Debe seleccionar al menos 1 día de la semana']);
 
     $clase = new Clase();
     $clase->tipo_clase = $request->tipo_clase;
     $clase->horario_id = $request->horario_id;
-    $clase->tarifa_id = sizeof($request->dias);
+
+    for ($i = 0; $i < count($request->dias); $i++) {
+      $clase->tarifa_id += 1;
+    }
+
     $clase->save();
 
     $clase->dias()->sync($request->input('dias', []));
@@ -130,8 +136,35 @@ class ClaseController extends Controller
    */
   public function destroy($id)
   {
+
     Clase::destroy($id);
 
     return redirect('clase')->with('status', 'Clase eliminada con exito');
+  }
+
+
+  public function indexAlumnos()
+  {
+    $alumnos = User::where('role_id', 1)->simplePaginate(6);
+
+    return view('clase.alumnos', compact('alumnos'));
+  }
+
+  public function addAlumnos(Request $request)
+  {
+    // $clase = $request->all();
+    // $clase->dias()->sync(); 
+  }
+  public function deleteAlumnos()
+  {
+  }
+  public function indexProfesores()
+  {
+  }
+  public function addProfesores()
+  {
+  }
+  public function deleteProfesores()
+  {
   }
 }
