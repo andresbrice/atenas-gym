@@ -98,16 +98,16 @@
                     </x-slot>
 
                     <x-slot name="content">
-                      <x-dropdown-link href="{{ route('ejercicio.edit', $ejercicio->id) }}">
+                      <x-dropdown-link href="{{ route('tarifa.edit', $tarifa->id) }}">
                         {{ __('Edit') }}
                       </x-dropdown-link>
 
-                      <form method="POST" action="{{ route('ejercicio.destroy', $ejercicio->id) }}">
+                      <form method="POST" action="{{ route('tarifa.destroy', $tarifa->id) }}">
                         @csrf
                         @method('DELETE')
 
-                        <x-dropdown-button class="text-center w-full" :href="route('ejercicio.destroy',$ejercicio->id)"
-                          onclick="return confirm('¿Esta seguro de querer borrar este ejercicio?');">
+                        <x-dropdown-button class="text-center w-full" :href="route('tarifa.destroy',$tarifa->id)"
+                          onclick="return confirm('¿Esta seguro de querer borrar esta tarifa?');">
                           Borrar
                         </x-dropdown-button>
                       </form>
