@@ -22,7 +22,7 @@
                     <dt class="text-sm font-medium text-gray-500">
                       Nombre y Apellido
                     </dt>
-                    <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <dd class="mt-1  text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                       {{$usuario->name}} {{$usuario->lastName}}
                     </dd>
                   </div>
@@ -30,7 +30,7 @@
                     <dt class="text-sm font-medium text-gray-500">
                       Email
                     </dt>
-                    <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <dd class="mt-1  text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                       {{$usuario->email}}
                     </dd>
                   </div>
@@ -38,7 +38,7 @@
                     <dt class="text-sm font-medium text-gray-500">
                       Rol
                     </dt>
-                    <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <dd class="mt-1  text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                       {{$usuario->role->nombre_rol}}
                     </dd>
                   </div>
@@ -46,7 +46,7 @@
                     <dt class="text-sm font-medium text-gray-500">
                       DNI
                     </dt>
-                    <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <dd class="mt-1  text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                       {{$usuario->dni}}
                     </dd>
                   </div>
@@ -54,7 +54,7 @@
                     <dt class="text-sm font-medium text-gray-500">
                       Edad
                     </dt>
-                    <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <dd class="mt-1  text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                       {{$usuario->age}} años
                     </dd>
                   </div>
@@ -62,7 +62,7 @@
                     <dt class="text-sm font-medium text-gray-500">
                       Género
                     </dt>
-                    <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <dd class="mt-1  text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                       {{$usuario->gender}}
                     </dd>
                   </div>
@@ -70,7 +70,7 @@
                     <dt class="text-sm font-medium text-gray-500">
                       Teléfono
                     </dt>
-                    <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <dd class="mt-1  text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                       {{$usuario->phone}}
                     </dd>
                   </div>
@@ -78,7 +78,7 @@
                     <dt class="text-sm font-medium text-gray-500">
                       Teléfono de Emergencia
                     </dt>
-                    <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <dd class="mt-1  text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                       {{$usuario->emergency_number}}
                     </dd>
                   </div>

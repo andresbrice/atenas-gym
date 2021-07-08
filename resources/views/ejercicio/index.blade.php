@@ -133,6 +133,7 @@
                 </div>
             </div>
         </div>
-    </div>
-</x-slot>
-</x-app-layout>
+      </div>
+    </x-slot>
+  
+  </x-app-layout>

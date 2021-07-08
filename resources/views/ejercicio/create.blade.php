@@ -114,4 +114,4 @@
             </div>
         </div>
     </x-slot>
-</x-app-layout>
+  </x-app-layout>

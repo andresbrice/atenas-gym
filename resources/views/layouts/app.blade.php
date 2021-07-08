@@ -16,8 +16,20 @@
   {{-- <link rel="stylesheet" href="{{ asset('cssPropio/estiloSize.css') }}"> --}}
   <link rel="shortcut icon" href="{{asset('img/favicon/favicon.ico')}}" type="image/x-icon">
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
+
+  {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" /> --}}
+  {{-- <link rel="stylesheet" href="{{ asset('vendor/select2/dist/css/select2.min.css') }}"> --}}
+
   <!-- Scripts -->
+  {{-- <script src="{{ asset('vendor/select2/dist/js/select2.min.js') }}"></script> --}}
   <script src="{{ asset('js/app.js') }}"></script>
+  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script> --}}
 
   <!--Font Awesome-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous">
@@ -40,37 +52,10 @@
     <main class="flex flex-auto flex-col justify-center">
       {{ $slot }}
     </main>
-
     <x-footer />
   </div>
+  {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> --}}
+  {{-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> --}}
+
 </body>
-
 </html>
-
-
-
-{{-- 
-  @include('layouts.navigation')
-  
-  <div class="flex flex-col md:flex-row">
-  
-  
-    <div class="altura90 main-content flex-1 bg-gray-200">
-  
-      <div class="bg-gradient-to-r from-red-900 to-gray-900 p-2 shadow text-md md:text-lg text-gray-100">
-        <div class="container mx-auto">
-          {{$breadcrumb}}
-</div>
-</div>
-
-<div style="height: 80vh;" class="flex flex-wrap items-center">
-  <div class=" container h-full mx-auto flex justify-center items-center">
-    {{ $slot }}
-  </div>
-</div>
-
-<x-footer />
-
-</div>
-</div>
---}}
