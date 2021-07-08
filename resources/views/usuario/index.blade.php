@@ -130,10 +130,10 @@
                         @csrf
                         @method('DELETE')
 
-                        <x-dropdown-link class="text-center" :href="route('usuario.destroy',$usuario->id)">
-                          <button
-                            onclick="return confirm('¿Esta seguro de querer borrar este usuario?');">Borrar</button>
-                        </x-dropdown-link>
+                        <x-dropdown-button class="text-center w-full" :href="route('usuario.destroy',$usuario->id)"
+                          onclick="return confirm('¿Esta seguro de querer borrar este usuario?');">
+                          Borrar
+                        </x-dropdown-button>
                       </form>
 
                       <x-dropdown-link href="{{ route('usuario.show', $usuario->id) }}">
