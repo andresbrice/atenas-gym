@@ -1,20 +1,10 @@
-{{-- 
-  
-  Secciones a tener en cuenta al llamar al componente busqueda:
-  - action
-  - opciones
-
-  --}}
-
 <form action="@yield('action')" method="GET" class="max-w-4xl space-x-3">
 
   <div class="flex flex-auto items-center space-x-2 pr-2">
     <div class="w-max">
-      <x-select name="filtro" id="filtro">
-        <x-slot name="slot">
-          @yield('opciones')
-        </x-slot>
-      </x-select>
+      <select name="filtro" id="filtro" class="w-28 sm:w-48 block text-gray-700 py-1 px-3 mt-1 border border-gray-400 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-800 focus:border-red-800">
+        @yield('opciones')
+      </select>
     </div>
 
     <x-input type="text" id="search" name="search" value="{{Request::input ('search')}}"
@@ -34,9 +24,13 @@
 
 
 
-
-
 {{-- 
+  
+  Secciones a tener en cuenta al llamar al componente busqueda:
+  - action
+  - opciones
+
+  
           OPCIONES PARA SELECT
 
           <option value="">

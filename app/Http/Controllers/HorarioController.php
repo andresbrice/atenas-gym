@@ -44,6 +44,9 @@ class HorarioController extends Controller
   {
     $request->validate([
       'hora' => 'required|unique:horarios|after:07:59|before:22:00'
+    ], [
+      'hora.after' => 'El horario debe ser a partir de las 08.00 AM',
+      'hora.before' => 'El horario debe ser antes de las 22.00 PM'
     ]);
 
     $hora = new \DateTime($request->hora);
@@ -106,8 +109,14 @@ class HorarioController extends Controller
    */
   public function destroy($id)
   {
-    Horario::destroy($id);
+    $horario = Horario::findOrFail($id);
 
-    return redirect('horario')->with('status', 'Horario eliminado con exito');
+    if ($horario->clases()->count()) {
+      return redirect('horario')->with('error', 'No es posible eliminar este horario ya que esta relacionado a una clase');
+    } else {
+      Horario::destroy($id);
+
+      return redirect('horario')->with('status', 'Horario eliminado con exito');
+    }
   }
 }

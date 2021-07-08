@@ -7,13 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dia extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    protected $fillable =[
-      'dia',
-    ];
+  protected $fillable = [
+    'dia',
+  ];
 
-    public function clases(){
-      return $this->belongsToMany(Clase::class);
-    }
+  public function clases()
+  {
+    return $this->belongsToMany(Clase::class)->withTimestamps();
+  }
 }

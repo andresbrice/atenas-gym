@@ -1,66 +1,188 @@
 <x-app-layout>
-
   <x-slot name="breadcrumb">
-    <x-breadcrumb><a href="/">Dashboard</a> / <u>Perfil</u>
+    <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{route('usuario.index')}}">Gestión Usuario</a> / <u>Mostrar
+        Usuario</u>
     </x-breadcrumb>
   </x-slot>
 
-
   <x-slot name="slot">
-    <div class="mt-5 sm:mt-0  max-w-7xl mx-auto">
-      <div class="md:flex md:grid-cols-3 md:gap-6">
-        <div class="mt-5 md:mt-0 md:col-span-2">
-          <!-- Validation Errors -->
-          <x-auth-validation-errors class=" mt-5" :errors="$errors" />
+    <div class="py-2 xl:py-6">
+      <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+          <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
+            <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+              <div class="px-4 py-5 sm:px-6">
+                <h1 class="text-xl leading-6 font-semibold text-gray-900">
+                  Usuario: {{$usuario->userName}}
+                </h1>
+              </div>
+              <div class="border-t border-gray-200">
+                <dl>
+                  <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">
+                      Nombre y Apellido
+                    </dt>
+                    <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      {{$usuario->name}} {{$usuario->lastName}}
+                    </dd>
+                  </div>
+                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">
+                      Email
+                    </dt>
+                    <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      {{$usuario->email}}
+                    </dd>
+                  </div>
+                  <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">
+                      Rol
+                    </dt>
+                    <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      {{$usuario->role->nombre_rol}}
+                    </dd>
+                  </div>
+                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">
+                      DNI
+                    </dt>
+                    <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      {{$usuario->dni}}
+                    </dd>
+                  </div>
+                  <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">
+                      Edad
+                    </dt>
+                    <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      {{$usuario->age}} años
+                    </dd>
+                  </div>
+                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">
+                      Género
+                    </dt>
+                    <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      {{$usuario->gender}}
+                    </dd>
+                  </div>
+                  <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">
+                      Teléfono
+                    </dt>
+                    <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      {{$usuario->phone}}
+                    </dd>
+                  </div>
+                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">
+                      Teléfono de Emergencia
+                    </dt>
+                    <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      {{$usuario->emergency_number}}
+                    </dd>
+                  </div>
+                  <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 items-center sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">
+                      Historial Médico
+                    </dt>
+                    <dd class="mt-1 text-sm grid justify-center text-gray-900 sm:mt-0 sm:col-span-2">
+                      <ul class="list-inside inline">
+                        @if ($usuario->eRespiratorias === 1)
+                        <li><b><u>E. Respiratorias:</u></b> <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg> </li>
+                        @else
+                        <li><b><u>E. Respiratorias:</u></b>
+                          @endif
 
-          <form method="POST" action="{{route('usuario.update',auth()->id())}}">
-            @csrf
-            @method('PUT')
-            <div class="shadow overflow-hidden sm:rounded-md">
-              <div class="px-4 py-5 bg-white sm:p-6">
-                <div class="grid grid-cols-2 gap-4">
-                  <!-- Email -->
-                  {{-- col-span-6 sm:col-span-6 lg:col-span-2 --}}
-                  <div class="col-span-6 md:col-span-2">
-                    <x-label for="email" :value="__('Email')" class="font-semibold" />
-                    <x-input id="email" class="block w-full px-4 py-2 mt-2" type="email" name="email"
-                      value="{{old('email', auth()->user()->email)}}" required />
+                          @if ($usuario->eCardiacas === 1)
+                        <li><b><u>E. Cardiacas:</u></b> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg> </li>
+                        @else
+                        <li><b><u>E. Cardiacas:</u></b>
+                          @endif
+
+                          @if ($usuario->eRenal === 1)
+                        <li><b><u>E. Renales:</u></b> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg> </li>
+                        @else
+                        <li><b><u>E. Renales:</u></b>
+                          @endif
+
+                          @if ($usuario->convulsiones === 1)
+                        <li><b><u>Convulsiones:</u></b> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg> </li>
+                        @else
+                        <li><b><u>Convulsiones:</u></b>
+                          @endif
+
+                          @if ($usuario->epilepsia === 1)
+                        <li><b><u>Epilepsia:</u></b> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg> </li>
+                        @else
+                        <li><b><u>Epilepsia:</u></b>
+                          @endif
+
+                          @if ($usuario->diabetes === 1)
+                        <li><b><u>Diabetes:</u></b> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg> </li>
+                        @else
+                        <li><b><u>Diabetes:</u></b>
+                          @endif
+
+                          @if ($usuario->alergia === 1)
+                        <li><b><u>Alergias:</u></b> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg> </li>
+                        @else
+                        <li><b><u>Alergias:</u></b>
+                          @endif
+
+                          @if ($usuario->asma === 1)
+                        <li><b><u>Asma:</u></b> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg> </li>
+                        @else
+                        <li><b><u>Asma:</u></b>
+                          @endif
+
+                          @if ($usuario->medicacion === 1)
+                        <li><b><u>Medicación:</u></b> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg> </li>
+                        @else
+                        <li><b><u>Medicación:</u></b>
+                          @endif
+                      </ul>
+                    </dd>
                   </div>
-                  <!-- Password -->
-                  <div class="col-span-6 md:col-span-1">
-                    <x-label for="password" :value="__('Password')" class="font-semibold" />
-                    <x-input id="password" class="block w-full px-4 py-2 mt-2" type="password" name="password" required
-                      autocomplete="new-password" />
-                  </div>
-                  <!-- Confirm Password -->
-                  <div class="col-span-6 md:col-span-1">
-                    <x-label for="password_confirmation" :value="__('Confirm Password')" class="font-semibold" />
-                    <x-input id="password_confirmation" class="block w-full px-4 py-2 mt-2" type="password"
-                      name="password_confirmation" required />
-                  </div>
-                  <!-- Teléfono -->
-                  <div class="col-span-6 md:col-span-1">
-                    <x-label for="phone" :value="__('Phone')" class="font-semibold" />
-                    <x-input id="phone" class="block w-full px-4 py-2 mt-2" type="text" name="phone"
-                      value="{{old('phone', auth()->user()->phone)}}" required />
-                  </div>
-                  <!-- Teléfono Emergencia -->
-                  <div class="col-span-6 md:col-span-1">
-                    <x-label for="emergency_number" :value="__('Teléfono de emergencia')" class="font-semibold" />
-                    <x-input id="emergency_number" class="block w-full px-4 py-2 mt-2" type="text"
-                      name="emergency_number" value="{{old('emergency_number', auth()->user()->emergency_number)}}"
-                      required />
-                  </div>
-                </div>
-                <!-- Botón Editar -->
-                <div class="px-4 pb-0 mt-6 bg-white text-center sm:px-6">
-                  <x-button class="ml-3 bg-green-900 hover:bg-green-700">
-                    {{ __('Edit User') }}
-                  </x-button>
-                </div>
+                </dl>
               </div>
             </div>
-          </form>
+          </div>
+          <div class="px-4 py-2  flex items-center justify-center sm:px-6">
+            <a href="{{ route('usuario.index') }}">
+              <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
+                {{ __('Back') }}
+              </x-button>
+            </a>
+          </div>
+
         </div>
       </div>
     </div>

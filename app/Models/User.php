@@ -81,12 +81,27 @@ class User extends Authenticatable
   public function scopeSearch($query, $filtro, $search)
   {
     if (($filtro) && trim($search) && ($filtro != "")) {
-      if ($filtro === "name") {
-        return $query->where(DB::raw("CONCAT(name,' ',lastName)"), "LIKE", "%$search%");
-      } else {
-        return $query->where($filtro, "LIKE", "%$search%");
+      switch ($filtro) {
+        case 1:
+          $filtro = 'userName';
+          return $query->where($filtro, "LIKE", "%$search%");
+          break;
+
+        case 2:
+          return $query->where(DB::raw("CONCAT(name,' ',lastName)"), "LIKE", "%$search%");
+          break;
       }
+    } elseif (trim($search) == "") {
+      $filtro = "";
     }
+
+    // if (($filtro) && trim($search) && ($filtro != "")) {
+    //   if ($filtro === "name") {
+    //     return $query->where(DB::raw("CONCAT(name,' ',lastName)"), "LIKE", "%$search%");
+    //   } else {
+    //     return $query->where($filtro, "LIKE", "%$search%");
+    //   }
+    // }
   }
 
 
