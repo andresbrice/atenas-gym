@@ -16,17 +16,17 @@
                   Usuario: {{$usuario->userName}}
                 </h1>
               </div>
-              <div class="border-t border-gray-200">
-                <dl>
+              <div class="border-t grid grid-cols-1 border-gray-200">
+                <dl class="">
                   <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">
+                    <dt class="text-sm font-medium place-items-start text-gray-500">
                       Nombre y Apellido
                     </dt>
-                    <dd class="mt-1  text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <dd class="mt-1  text-sm place-items-center text-gray-900 sm:mt-0 sm:col-span-2">
                       {{$usuario->name}} {{$usuario->lastName}}
                     </dd>
                   </div>
-                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <div class="bg-white px-4 py-5 place-items-center sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">
                       Email
                     </dt>
@@ -34,7 +34,7 @@
                       {{$usuario->email}}
                     </dd>
                   </div>
-                  <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <div class="bg-gray-50 px-4 py-5 place-items-center sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">
                       Rol
                     </dt>
@@ -42,7 +42,7 @@
                       {{$usuario->role->nombre_rol}}
                     </dd>
                   </div>
-                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <div class="bg-white px-4 py-5 place-items-center sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">
                       DNI
                     </dt>
@@ -50,7 +50,7 @@
                       {{$usuario->dni}}
                     </dd>
                   </div>
-                  <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <div class="bg-gray-50 px-4 py-5 place-items-center sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">
                       Edad
                     </dt>
@@ -58,7 +58,7 @@
                       {{$usuario->age}} años
                     </dd>
                   </div>
-                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <div class="bg-white px-4 py-5 place-items-center sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">
                       Género
                     </dt>
@@ -66,7 +66,7 @@
                       {{$usuario->gender}}
                     </dd>
                   </div>
-                  <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <div class="bg-gray-50 px-4 py-5 place-items-center sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">
                       Teléfono
                     </dt>
@@ -74,7 +74,7 @@
                       {{$usuario->phone}}
                     </dd>
                   </div>
-                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <div class="bg-white px-4 py-5 place-items-center sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">
                       Teléfono de Emergencia
                     </dt>
@@ -82,12 +82,13 @@
                       {{$usuario->emergency_number}}
                     </dd>
                   </div>
-                  <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 items-center sm:gap-4 sm:px-6">
+                  <div
+                    class="bg-gray-50 px-4 py-5 place-items-center sm:grid sm:grid-cols-3 items-center sm:gap-4 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">
                       Historial Médico
                     </dt>
-                    <dd class="mt-1 text-sm grid justify-center text-gray-900 sm:mt-0 sm:col-span-2">
-                      <ul class="list-inside inline">
+                    <dd class="mt-1 text-sm  text-gray-900 sm:mt-0 sm:col-span-2">
+                      <ul class="list-inside list-disc inline">
                         @if ($usuario->eRespiratorias === 1)
                         <li><b><u>E. Respiratorias:</u></b> <svg xmlns="http://www.w3.org/2000/svg"
                             class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
