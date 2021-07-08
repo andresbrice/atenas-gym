@@ -25,7 +25,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('usuario', UserController::class);
     Route::resource('clase', ClaseController::class);
     Route::resource('horario', HorarioController::class);
+    Route::resource('asistencia', AsistenciaController::class);
+    Route::resource('tarifa', TarifaController::class);
+    Route::resource('ejercicio', EjercicioController::class);
     Route::get('clase/{clase}/alumnos', [ClaseController::class, 'indexAlumnos'])->name('clase.alumnos');
+    Route::get('buscarclase', [AsistenciaController::class, 'buscarClase'])->name('asistencia.buscarclase');
+    
   });
 
   // Route::group(['middleware' => 'profesor'], function () {
