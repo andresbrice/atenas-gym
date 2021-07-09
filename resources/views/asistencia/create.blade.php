@@ -1,125 +1,110 @@
 <x-app-layout>
     <x-slot name="breadcrumb">
-        <x-breadcrumb><a href="/">Dashboard</a> / <u>Gestion Asistencia</u></x-breadcrumb>
+        <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{ route('asistencia.index') }}">Gestión Asistencia</a> /
+            <u>Crear
+                Asistencia</u>
+        </x-breadcrumb>
     </x-slot>
 
     <x-slot name="slot">
         <div class="py-2 xl:py-6">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white  shadow-sm sm:rounded-lg">
+            <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
-                        <x-auth-session-status class="mb-4 font-bold flex justify-center" :status="session('status')" />
-                        <div class="mb-3">
-                            {{-- BOTON CREAR ASISTENCIA Y BUSCADOR --}}
-                            <div class="flex flex-col sm:flex-row justify-between items-center">
-                                {{-- BOTON --}}
-                                <div class="flex-auto justify-center ml-4">
-                                    <a href="{{ route('asistencia.buscarclase') }}">
-                                        <x-button
-                                            class="bg-red-300 text-red-700 hover:bg-red-700 hover:text-white border-red-600 font-bold">
-                                            {{ __('Register Assistance') }}
-                                        </x-button>
-                                    </a>
-                                </div>
-
-                                {{-- BUSCADOR --}}
-                                <x-search>
-                                    @section('action')
-                                        {{ route('asistencia.index') }}
-                                    @endsection
-
-                                    @section('opciones')
-                                        <option hidden value="">
-                                            Filtrar por...
-                                        </option>
-
-                                        <option {{ old('filtro') == 'userName' ? 'selected' : '' }}value="userName">
-                                            Asistencia
-                                        </option>
-
-                                    @endsection
-                                </x-search>
-                                {{-- FIN BUSCADOR --}}
+                        <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+                            <div class="px-4 py-5 sm:px-6">
+                                 <ul class="list-disc list-inside bold">
+                                    <li>Fecha: Ejemplo</li>
+                                    <li>Horario: Ejemplo</li>
+                                    <li>Tipo de Clase: Ejemplo</li>
+                                    <li>Profesor: Ejemplo</li>   
+                                </ul> 
+                            </div>
+                            <div class="border-t grid grid-cols-1 justify-between border-gray-200">
+                                <dl>
+                                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt class="text-sm text-center font-medium text-gray-500">
+                                            Alumno 1
+                                        </dt>
+                                        <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                            <input type="checkbox" name="alumno1" id="alumno1">
+                                        </dd>
+                                    </div>
+                                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt class="text-sm text-center font-medium text-gray-500">
+                                            Alumno 1
+                                        </dt>
+                                        <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                            <input type="checkbox" name="alumno1" id="alumno1">
+                                        </dd>
+                                    </div>
+                                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt class="text-sm text-center font-medium text-gray-500">
+                                            Alumno 1
+                                        </dt>
+                                        <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                            <input type="checkbox" name="alumno1" id="alumno1">
+                                        </dd>
+                                    </div>
+                                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt class="text-sm text-center font-medium text-gray-500">
+                                            Alumno 1
+                                        </dt>
+                                        <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                            <input type="checkbox" name="alumno1" id="alumno1">
+                                        </dd>
+                                    </div>
+                                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt class="text-sm text-center font-medium text-gray-500">
+                                            Alumno 1
+                                        </dt>
+                                        <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                            <input type="checkbox" name="alumno1" id="alumno1">
+                                        </dd>
+                                    </div>
+                                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt class="text-sm text-center font-medium text-gray-500">
+                                            Alumno 1
+                                        </dt>
+                                        <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                            <input type="checkbox" name="alumno1" id="alumno1">
+                                        </dd>
+                                    </div>
+                                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt class="text-sm text-center font-medium text-gray-500">
+                                            Alumno 1
+                                        </dt>
+                                        <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                            <input type="checkbox" name="alumno1" id="alumno1">
+                                        </dd>
+                                    </div>
+                                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt class="text-sm text-center font-medium text-gray-500">
+                                            Alumno 1
+                                        </dt>
+                                        <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                            <input type="checkbox" name="alumno1" id="alumno1">
+                                        </dd>
+                                    </div>
+                                </dl>
                             </div>
                         </div>
-                        <x-table>
-                            @section('nombre-columna')
-                                <tr>
-
-                                    <th scope="col"
-                                        class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Tipo de Clase
-                                    </th>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Fecha
-                                    </th>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Horario
-                                    </th>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    </th>
-                                </tr>
-                            @endsection
-
-
-                            @section('contenido-filas')
-                                @forelse ($asistencias as $asistencia)
-                                    <tr>
-
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            {{ $asistencia->tipo_clase }}
-                                        </td>
-
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            {{ $asistencia->fecha }}
-                                        </td>
-
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            {{ $asistencia->horario->hora->format('H:i A') }}
-                                        </td>
-
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                            <button>
-                                                Acciones
-                                            </button>
-                                        </td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td>
-                                            @if (strlen($asistencias) === 0)
-                                                <center>No hay asistencias creadas.</center>
-                                            @else
-                                                <center>No se encontró dicho asistencia. Intente nuevamente</center>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforelse
-                            @endsection
-                        @section('paginacion')
-                            <div class="mt-4">
-                                {{ $asistencias->links() }}
-                            </div>
-                        @endsection
-                        </x-table>
-                    
-                    <div class="px-4 mt-3 py-2  flex items-center justify-between sm:px-6">
-                        <a href="{{ route('asistencia.index') }}">
+                    </div>
+                    <div class="px-4 py-2  flex items-center justify-between sm:px-6">
+                        <a href="{{ route('asistencia.buscarclase') }}">
                             <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
                                 {{ __('Back') }}
                             </x-button>
                         </a>
+
                         <x-button
                             class="ml-3 bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
-                            {{ __('Find Class') }}
+                            {{ __('Register Assistance') }}
                         </x-button>
                     </div>
+
                 </div>
             </div>
         </div>
-
-</x-slot>
+    </x-slot>
 </x-app-layout>

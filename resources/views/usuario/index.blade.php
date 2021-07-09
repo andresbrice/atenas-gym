@@ -6,7 +6,7 @@
   <x-slot name="slot">
     <div class="py-2 xl:py-6">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="bg-white shadow-sm sm:rounded-lg">
           <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
             <x-auth-session-status class="mb-4 font-bold flex justify-center" :status="session('status')" />
             <div class="mb-3">
@@ -113,7 +113,7 @@
                         <span>
                           <svg
                             class="fill-current h-4 w-4 transform group-hover:-rotate-180
-                                                                                    transition duration-150 ease-in-out"
+                                                                                              transition duration-150 ease-in-out"
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                             <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                           </svg>
@@ -130,10 +130,10 @@
                         @csrf
                         @method('DELETE')
 
-                        <x-dropdown-link class="text-center" :href="route('usuario.destroy',$usuario->id)">
-                          <button
-                            onclick="return confirm('¿Esta seguro de querer borrar este usuario?');">Borrar</button>
-                        </x-dropdown-link>
+                        <x-dropdown-button class="text-center w-full" :href="route('usuario.destroy',$usuario->id)"
+                          onclick="return confirm('¿Esta seguro de querer borrar este usuario?');">
+                          Borrar
+                        </x-dropdown-button>
                       </form>
 
                       <x-dropdown-link href="{{ route('usuario.show', $usuario->id) }}">

@@ -9,7 +9,6 @@ use App\Http\Controllers\EjercicioController;
 use App\Http\Controllers\RutinaController;
 use App\Http\Controllers\TarifaController;
 
-
 require __DIR__ . '/auth.php';
 
 Route::get('/', function () {
