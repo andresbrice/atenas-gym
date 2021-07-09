@@ -23,10 +23,11 @@
                             <div class="inline-block w-max">
                               <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
                                 <option value=""></option>
-                                <option value="WY">Wyoming</option>
-                                <option value="AL">jasbdabsdoab</option>
-                                <option value="123">asasdasdasdf</option>
-                                <option value="3">asasdsadasdrwvebhnujdf</option>
+                                @foreach ($alumnos as $alumno)
+                                  <option>
+                                    {{ $alumno->name }} {{ $alumno->lastName }}
+                                  </option>
+                                @endforeach
                               </select>
                             </div>
                           </div>
@@ -37,10 +38,11 @@
                             <div class="inline-block w-max">
                               <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
                                 <option value=""></option>
-                                <option value="WY">Wyoming</option>
-                                <option value="AL">jasbdabsdoab</option>
-                                <option value="123">asasdasdasdf</option>
-                                <option value="3">asasdsadasdrwvebhnujdf</option>
+                                @foreach ($profesores as $profesor)
+                                  <option>
+                                    {{ $profesor->name }} {{ $profesor->lastName }}
+                                  </option>
+                                @endforeach
                               </select>    
                             </div>
                           </div>
@@ -920,13 +922,16 @@
                         </div>
                       </div>
                       {{-- BOTON ATRAS y CREAR RUTINA --}}
-                      <div class="px-4 pt-10 pb-1 grid grid-cols-3 bg-white sm:px-6">
-                        <a href="{{route('rutina.index')}}">
-                          <x-button type="button" class="place-self-start ml-2 bg-gray-600">
-                            {{ __('Atras') }}
-                          </x-button>
-                        </a>
-                        <x-button type="button" class="place-self-center bg-red-300 text-red-700 focus:outline-none hover:bg-red-700 hover:text-white border-red-600 font-bold">
+                      <div class="flex justify-center items-center bg-white mx-auto mt-10 px-7">
+                        <div class="flex-auto">
+                          <a class="flex justify-start" href="{{route('rutina.index')}}">
+                            <x-button type="button" class="ml-2 bg-gray-600">
+                              {{ __('Atras') }}
+                            </x-button>
+                          </a>
+                        </div>
+
+                        <x-button type="button" class="flex bg-red-300 text-red-700 focus:outline-none hover:bg-red-700 hover:text-white border-red-600 font-bold">
                           {{ __('Crear Rutina') }}
                         </x-button>
                       </div>

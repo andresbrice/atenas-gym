@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Rutina;
+use App\Models\Alumno;
 use App\Models\User;
+
 
 class RutinaController extends Controller
 {
@@ -16,7 +18,7 @@ class RutinaController extends Controller
     public function index()
     {
         $rutinas = Rutina::orderBy('id', 'DESC')
-        ->paginate(5);
+        ->simplePaginate(4);
         
         return view('rutina.index', compact('rutinas'));
     }
@@ -28,17 +30,29 @@ class RutinaController extends Controller
      */
     public function create(Request $request)
     {
+        $alumnos = User::select('name', 'lastName')
+            ->where('role_id', '=', 1)
+            ->orderBy('name', 'asc')
+            ->get();
+
+        $profesores = User::select('name', 'lastName')
+            ->where('role_id', '=', 2)
+            ->orderBy('name', 'asc')
+            ->get();
+
+        return view('rutina.create', compact('alumnos', 'profesores'));
+
         // $name = $request->get('name');
-        // $userName = $request->get('userName');
-        // $lastName = $request->get('lastName');
+        // // $userName = $request->get('userName');
+        // // $lastName = $request->get('lastName');
 
-        $usuarios = User::orderBy('id', 'DESC')
-            // ->name($name)
-            // ->userName($userName)
-            // ->lastName($lastName)
-            ->simplePaginate(4);
+        // $usuarios = User::orderBy('id', 'DESC')
+        //     ->name($name)
+        //     // ->userName($userName)
+        //     // ->lastName($lastName)
+        //     ->simplePaginate(4);
 
-        return view('rutina.create', compact('usuarios'));
+        // return view('rutina.create', compact('usuarios'));
     }
 
     /**
