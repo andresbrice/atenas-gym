@@ -14,7 +14,7 @@
               <form id="rutina" action="{{ route('usuario.store') }}" method="POST" class="p-1">
                   @csrf
                   <div class="">
-                    <div class="px-4 py-5 bg-white sm:p-6">
+                    <div class="py-5 bg-white sm:p-6">
                       <div class="">
                         <div class="space-y-2">
                           {{-- BÚSQUEDA ALUMNO --}}
@@ -51,171 +51,62 @@
                         <div class="flex relative z-1 justify-center pt-6">
                           <div class="-my-2 w-full sm:-mx-6 lg:-mx-8">
                             {{-- Día 1 --}}
-                            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                            <div class="align-middle inline-block min-w-full sm:px-6 lg:px-8">
                               <div class="grid grid-cols-2">
                                 <div class="place-self-start p-3">
                                   DÍA 1
                                 </div>
                               </div>
                               <div class="shadow">
-                                <table class="min-w-full divide-y divide-gray-200">
-                                  <thead class="bg-gray-100">
-                                    <tr class="text-center">
-                                      <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Ejercicio
-                                      </th>
-                                      <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Series
-                                      </th>
-                                      <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Repeticiones
-                                      </th>
-                                      <th scope="col"
-                                        class="px-1 py-3 text-xs font-medium text-gray-500 tracking-wider">
-                                        DESCANSO (min)
-                                      </th>
-                                    </tr>
-                                  </thead>
-                                  <tbody class="bg-white divide-y divide-red-100">
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
+                                <x-table>
+                                  @section('nombre-columna')
+                                  <tr>
+                                    <th scope="col"
+                                      class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      Ejercicio
+                                    </th>
+                                    <th scope="col"
+                                      class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      Series
+                                    </th>
+                                    <th scope="col"
+                                      class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      Repeticiones
+                                    </th>
+                                    <th scope="col"
+                                      class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      DESCANSO (min)
+                                    </th>
+                                  </tr>
+                                  @endsection
+                    
+                    
+                                  @section('contenido-filas')
+                                  <tr>
+                                    <td class="w-max px-3 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                      <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
+                                        <option value=""></option>
+                                        <option value="WY">Wyoming</option>
+                                        <option value="AL">jasbdabsdoab</option>
+                                        <option value="123">asasdasdasdf</option>
+                                        <option value="3">asasdsadasdrwvebhnujdf</option>
+                                      </select>
+                                    </td>
+                    
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                      <input type="text" maxlength="2" value="" step="1" ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
+                                    </td>
+                    
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                      <input type="text" maxlength="2" value="" step="1" ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
+                                    </td>
+                    
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                      <input type="text" maxlength="2" value="" step="1" ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
+                                    </td>
+                                  </tr>
+                                  @endsection
+                                </x-table>
                               </div>
                               <div id="btnDia1" class="w-full flex justify-end">
                                 <x-btnDia/>
@@ -233,164 +124,55 @@
                                 </div>
                               </div>
                               <div class="shadow">
-                                <table class="min-w-full divide-y divide-gray-200">
-                                  <thead class="bg-gray-100">
-                                    <tr class="text-center">
-                                      <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Ejercicio
-                                      </th>
-                                      <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Series
-                                      </th>
-                                      <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Repeticiones
-                                      </th>
-                                      <th scope="col"
-                                        class="px-1 py-3 text-xs font-medium text-gray-500 tracking-wider">
-                                        DESCANSO (min)
-                                      </th>
-                                    </tr>
-                                  </thead>
-                                  <tbody class="bg-white divide-y divide-red-100">
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
+                                <x-table>
+                                  @section('nombre-columna')
+                                  <tr>
+                                    <th scope="col"
+                                      class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      Ejercicio
+                                    </th>
+                                    <th scope="col"
+                                      class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      Series
+                                    </th>
+                                    <th scope="col"
+                                      class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      Repeticiones
+                                    </th>
+                                    <th scope="col"
+                                      class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      DESCANSO (min)
+                                    </th>
+                                  </tr>
+                                  @endsection
+                    
+                    
+                                  @section('contenido-filas')
+                                  <tr>
+                                    <td class="w-full px-3 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                      <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
+                                        <option value=""></option>
+                                        <option value="WY">Wyoming</option>
+                                        <option value="AL">jasbdabsdoab</option>
+                                        <option value="123">asasdasdasdf</option>
+                                        <option value="3">asasdsadasdrwvebhnujdf</option>
+                                      </select>
+                                    </td>
+                    
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                      <input type="text" maxlength="2" value="" step="1" ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
+                                    </td>
+                    
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                      <input type="text" maxlength="2" value="" step="1" ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
+                                    </td>
+                    
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                      <input type="text" maxlength="2" value="" step="1" ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
+                                    </td>
+                                  </tr>
+                                  @endsection
+                                </x-table>
                               </div>
                               <div id="btnDia2" class="w-full flex justify-end">
                                 <x-btnDia/>
@@ -408,164 +190,55 @@
                                 </div>
                               </div>
                               <div class="shadow">
-                                <table class="min-w-full divide-y divide-gray-200">
-                                  <thead class="bg-gray-100">
-                                    <tr class="text-center">
-                                      <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Ejercicio
-                                      </th>
-                                      <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Series
-                                      </th>
-                                      <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Repeticiones
-                                      </th>
-                                      <th scope="col"
-                                        class="px-1 py-3 text-xs font-medium text-gray-500 tracking-wider">
-                                        DESCANSO (min)
-                                      </th>
-                                    </tr>
-                                  </thead>
-                                  <tbody class="bg-white divide-y divide-red-100">
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
+                                <x-table>
+                                  @section('nombre-columna')
+                                  <tr>
+                                    <th scope="col"
+                                      class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      Ejercicio
+                                    </th>
+                                    <th scope="col"
+                                      class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      Series
+                                    </th>
+                                    <th scope="col"
+                                      class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      Repeticiones
+                                    </th>
+                                    <th scope="col"
+                                      class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      DESCANSO (min)
+                                    </th>
+                                  </tr>
+                                  @endsection
+                    
+                    
+                                  @section('contenido-filas')
+                                  <tr>
+                                    <td class="w-max px-3 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                      <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
+                                        <option value=""></option>
+                                        <option value="WY">Wyoming</option>
+                                        <option value="AL">jasbdabsdoab</option>
+                                        <option value="123">asasdasdasdf</option>
+                                        <option value="3">asasdsadasdrwvebhnujdf</option>
+                                      </select>
+                                    </td>
+                    
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                      <input type="text" maxlength="2" value="" step="1" ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
+                                    </td>
+                    
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                      <input type="text" maxlength="2" value="" step="1" ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
+                                    </td>
+                    
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                      <input type="text" maxlength="2" value="" step="1" ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
+                                    </td>
+                                  </tr>
+                                  @endsection
+                                </x-table>
                               </div>
                               <div id="btnDia3" class="w-full flex justify-end">
                                 <x-btnDia/>
@@ -583,164 +256,55 @@
                                 </div>
                               </div>
                               <div class="shadow">
-                                <table class="min-w-full divide-y divide-gray-200">
-                                  <thead class="bg-gray-100">
-                                    <tr class="text-center">
-                                      <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Ejercicio
-                                      </th>
-                                      <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Series
-                                      </th>
-                                      <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Repeticiones
-                                      </th>
-                                      <th scope="col"
-                                        class="px-1 py-3 text-xs font-medium text-gray-500 tracking-wider">
-                                        DESCANSO (min)
-                                      </th>
-                                    </tr>
-                                  </thead>
-                                  <tbody class="bg-white divide-y divide-red-100">
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
+                                <x-table>
+                                  @section('nombre-columna')
+                                  <tr>
+                                    <th scope="col"
+                                      class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      Ejercicio
+                                    </th>
+                                    <th scope="col"
+                                      class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      Series
+                                    </th>
+                                    <th scope="col"
+                                      class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      Repeticiones
+                                    </th>
+                                    <th scope="col"
+                                      class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      DESCANSO (min)
+                                    </th>
+                                  </tr>
+                                  @endsection
+                    
+                    
+                                  @section('contenido-filas')
+                                  <tr>
+                                    <td class="w-max px-3 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                      <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
+                                        <option value=""></option>
+                                        <option value="WY">Wyoming</option>
+                                        <option value="AL">jasbdabsdoab</option>
+                                        <option value="123">asasdasdasdf</option>
+                                        <option value="3">asasdsadasdrwvebhnujdf</option>
+                                      </select>
+                                    </td>
+                    
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                      <input type="text" maxlength="2" value="" step="1" ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
+                                    </td>
+                    
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                      <input type="text" maxlength="2" value="" step="1" ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
+                                    </td>
+                    
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                      <input type="text" maxlength="2" value="" step="1" ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
+                                    </td>
+                                  </tr>
+                                  @endsection
+                                </x-table>
                               </div>
                               <div id="btnDia4" class="w-full flex justify-end">
                                 <x-btnDia/>
@@ -758,164 +322,55 @@
                                 </div>
                               </div>
                               <div class="shadow">
-                                <table class="min-w-full divide-y divide-gray-200">
-                                  <thead class="bg-gray-100">
-                                    <tr class="text-center">
-                                      <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Ejercicio
-                                      </th>
-                                      <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Series
-                                      </th>
-                                      <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Repeticiones
-                                      </th>
-                                      <th scope="col"
-                                        class="px-1 py-3 text-xs font-medium text-gray-500 tracking-wider">
-                                        DESCANSO (min)
-                                      </th>
-                                    </tr>
-                                  </thead>
-                                  <tbody class="bg-white divide-y divide-red-100">
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-
-                                    <tr>
-                                      <td class="py-3 flex justify-center whitespace-nowrap">
-                                        <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
-                                          <option value=""></option>
-                                          <option value="WY">Wyoming</option>
-                                          <option value="AL">jasbdabsdoab</option>
-                                          <option value="123">asasdasdasdf</option>
-                                          <option value="3">asasdsadasdrwvebhnujdf</option>
-                                        </select>
-                                      </td>
-                                      
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-            
-                                      <td class="px-6 py-4 text-center whitespace-nowrap">
-                                        <input type="text" maxlength="2" value="" step="1"
-                                         ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
+                                <x-table>
+                                  @section('nombre-columna')
+                                  <tr>
+                                    <th scope="col"
+                                      class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      Ejercicio
+                                    </th>
+                                    <th scope="col"
+                                      class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      Series
+                                    </th>
+                                    <th scope="col"
+                                      class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      Repeticiones
+                                    </th>
+                                    <th scope="col"
+                                      class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      DESCANSO (min)
+                                    </th>
+                                  </tr>
+                                  @endsection
+                    
+                    
+                                  @section('contenido-filas')
+                                  <tr>
+                                    <td class="w-max px-3 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                      <select class="js-example-basic-single w-auto" style="height: 20px;" name="state">
+                                        <option value=""></option>
+                                        <option value="WY">Wyoming</option>
+                                        <option value="AL">jasbdabsdoab</option>
+                                        <option value="123">asasdasdasdf</option>
+                                        <option value="3">asasdsadasdrwvebhnujdf</option>
+                                      </select>
+                                    </td>
+                    
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                      <input type="text" maxlength="2" value="" step="1" ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
+                                    </td>
+                    
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                      <input type="text" maxlength="2" value="" step="1" ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
+                                    </td>
+                    
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                      <input type="text" maxlength="2" value="" step="1" ondrop="return false;" onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="w-20 h-7 text-sm text-center rounded border-gray-300 focus:border-red-300 focus:ring-0 hover:border-red-300">
+                                    </td>
+                                  </tr>
+                                  @endsection
+                                </x-table>
                               </div>
                             </div>
                           </div>
