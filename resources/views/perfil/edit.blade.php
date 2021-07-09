@@ -5,7 +5,6 @@
     </x-breadcrumb>
   </x-slot>
 
-
   <x-slot name="slot">
     <div class="mt-5 sm:mt-0  max-w-7xl mx-auto">
       <div class="md:flex md:grid-cols-3 md:gap-6">
@@ -61,7 +60,7 @@
                   </a>
 
                   <x-button class="ml-3 bg-green-900 hover:bg-green-700">
-                    {{ __('Edit Class') }}
+                    {{ __('Edit Profile') }}
                   </x-button>
                 </div>
               </div>
