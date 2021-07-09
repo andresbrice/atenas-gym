@@ -17,12 +17,12 @@
                 </h1>
               </div>
               <div class="border-t grid grid-cols-1 border-gray-200">
-                <dl class="">
-                  <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium place-items-start text-gray-500">
+                <dl>
+                  <div class="bg-gray-50 px-4 py-5 place-items-center sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium  text-gray-500">
                       Nombre y Apellido
                     </dt>
-                    <dd class="mt-1  text-sm place-items-center text-gray-900 sm:mt-0 sm:col-span-2">
+                    <dd class="mt-1  text-sm  text-gray-900 sm:mt-0 sm:col-span-2">
                       {{$usuario->name}} {{$usuario->lastName}}
                     </dd>
                   </div>
