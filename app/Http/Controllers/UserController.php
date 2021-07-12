@@ -8,9 +8,8 @@ use App\Models\Role;
 use App\Models\Alumno;
 use App\Models\Profesor;
 use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -27,6 +26,9 @@ class UserController extends Controller
     $usuarios = User::orderBy('id', 'DESC')
       ->search($filtro, $search)
       ->simplePaginate(4);
+
+    Session::put('usuario_url', request()->fullUrl());
+
 
     return view('usuario.index', compact('usuarios'));
   }
@@ -119,9 +121,6 @@ class UserController extends Controller
   public function show($id)
   {
     $usuario = User::findOrFail($id);
-    // $id = Auth::user()->id;
-
-    // $usuario = User::findOrFail($id);
 
     return view('usuario.show', compact('usuario'));
   }
@@ -164,6 +163,10 @@ class UserController extends Controller
     $usuario = request()->except('_token', '_method');
 
     User::where('id', '=', $id)->update($usuario);
+
+    if (session('usuario_url')) {
+      return redirect('usuario_url')->with('status', 'Usuario modificado con exito');
+    }
 
     return redirect('usuario')->with('status', 'Usuario modificado con exito');
   }
