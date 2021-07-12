@@ -45,18 +45,6 @@ class RutinaController extends Controller
             ->get();
             
         return view('rutina.create', compact('alumnos', 'profesores', 'ejercicios'));
-
-        // $name = $request->get('name');
-        // // $userName = $request->get('userName');
-        // // $lastName = $request->get('lastName');
-
-        // $usuarios = User::orderBy('id', 'DESC')
-        //     ->name($name)
-        //     // ->userName($userName)
-        //     // ->lastName($lastName)
-        //     ->simplePaginate(4);
-
-        // return view('rutina.create', compact('usuarios'));
     }
 
     /**
@@ -75,13 +63,13 @@ class RutinaController extends Controller
           'descanso' => 'required|int',
         ]);
     
-        $rutina = Rutina::create([
-          'alumno' => $request->alumno,
-          'profesor' => $request->profesor,
-          'series' => $request->series,
-          'repeticiones' => $request->repeticiones,
-          'descanso' => $request->descanso,
-        ]);
+        // $rutina = Rutina::create([
+        //   'alumno' => $request->alumno,
+        //   'profesor' => $request->profesor,
+        //   'series' => $request->series,
+        //   'repeticiones' => $request->repeticiones,
+        //   'descanso' => $request->descanso,
+        // ]);
 
         $rutina = new Rutina();
         $rutina->alumno = ucfirst($request->alumno);
