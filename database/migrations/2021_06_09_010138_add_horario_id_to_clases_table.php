@@ -14,7 +14,7 @@ class AddHorarioIdToClasesTable extends Migration
   public function up()
   {
     Schema::table('clases', function (Blueprint $table) {
-      $table->foreignId('horario_id')->constrained('');
+      $table->foreignId('horario_id')->constrained();
     });
   }
 
