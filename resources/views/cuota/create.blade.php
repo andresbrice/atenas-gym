@@ -25,17 +25,17 @@
                                         <x-input id="userName" class="block w-full px-4 py-2 mt-2" type="text" name="userName" :value="old('userName')" required autofocus />
                                     </div>
                                     <div class="col-span-6 sm:col-span-6 lg:col-span-2">
-                                        <x-label for="fechaDePago" :value="__('Fecha de Pago')" class="font-semibold" />
-                                        <x-input id="fechaDePago" class="block w-full px-4 py-2 mt-2" type="date"
-                                            name="fecha_cuota" :value="old('date')" autofocus />
-                                    </div>
-                                    <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                                         <x-label for="tipo_clase" :value="__('Tipo de Clase')" class="font-semibold" />
                                         <x-input id="tipo_clase" class="block w-full px-4 py-2 mt-2" type="text" name="tipo_clase" :value="old('tipo_clase')" required autofocus />
                                     </div> 
                                     <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                                         <x-label for="importe" :value="__('Importe')" class="font-semibold" />
                                         <x-input id="importe" class="block w-full px-4 py-2 mt-2" type="text" name="importe" :value="old('importe')" required autofocus />
+                                    </div>
+                                    <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                                        <x-label for="fechaDePago" :value="__('Fecha de Pago')" class="font-semibold" />
+                                        <x-input id="fechaDePago" class="block w-full px-4 py-2 mt-2" type="date"
+                                            name="fecha_cuota" :value="old('date')" autofocus />
                                     </div>
                                 </div>
                                 <div class="px-4 py-2 mt-3 flex items-center justify-between sm:px-6">
