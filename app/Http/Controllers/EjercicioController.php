@@ -15,7 +15,7 @@ class EjercicioController extends Controller
    */
   public function index()
   {
-    $ejercicios = Ejercicio::orderBy('id', 'DESC')->paginate(5);
+    $ejercicios = Ejercicio::orderBy('id', 'DESC')->simplePaginate(4);
     return view('ejercicio.index', compact('ejercicios'));
   }
 

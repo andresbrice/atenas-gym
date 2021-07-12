@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Rutina;
-use App\Models\Alumno;
+use App\Models\Ejercicio;
 use App\Models\User;
 
 
@@ -40,7 +40,11 @@ class RutinaController extends Controller
             ->orderBy('name', 'asc')
             ->get();
 
-        return view('rutina.create', compact('alumnos', 'profesores'));
+        $ejercicios = Ejercicio::select('nombre_ejercicio')
+            ->orderBy('nombre_ejercicio', 'asc')
+            ->get();
+            
+        return view('rutina.create', compact('alumnos', 'profesores', 'ejercicios'));
 
         // $name = $request->get('name');
         // // $userName = $request->get('userName');
@@ -63,8 +67,33 @@ class RutinaController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+          'alumno' => 'required',
+          'profesor' => 'required',
+          'series' => 'required|int',
+          'repeticiones' => 'required|int',
+          'descanso' => 'required|int',
+        ]);
+    
+        $rutina = Rutina::create([
+          'alumno' => $request->alumno,
+          'profesor' => $request->profesor,
+          'series' => $request->series,
+          'repeticiones' => $request->repeticiones,
+          'descanso' => $request->descanso,
+        ]);
+
+        $rutina = new Rutina();
+        $rutina->alumno = ucfirst($request->alumno);
+        $rutina->profesor = ucfirst($request->profesor);
+        $rutina->ejercicio = ucfirst($request->ejercicio);
+        $rutina->series = ucfirst($request->series);
+        $rutina->repeticiones = ucfirst($request->repeticiones);
+        $rutina->descanso = ucfirst($request->descanso);
+        $rutina->save();
+    
+        return redirect('rutina')->with('status', 'Rutina creada con exito');
+      }
 
     /**
      * Display the specified resource.
