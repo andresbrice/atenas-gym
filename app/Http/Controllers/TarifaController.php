@@ -12,10 +12,16 @@ class TarifaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-            $tarifas = Tarifa::orderBy('cantidad_dias','ASC')->paginate(5);
-            return view('tarifa.index',compact('tarifas'));
+        $search = $request->get('search');
+        $filtro = $request->get('filtro');
+
+
+        $tarifas = Tarifa::orderBy('cantidad_dias','ASC')
+        ->search($filtro, $search)
+        ->simplePaginate(5);
+        return view('tarifa.index',compact('tarifas'));
 
     }
 
