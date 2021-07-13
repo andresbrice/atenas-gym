@@ -13,7 +13,7 @@
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-4 bg-white border-b border-gray-200">
             <!-- Validation Errors -->
-            <x-auth-validation-errors class=" mt-5" :errors="$errors" />
+            {{-- <x-auth-validation-errors class=" mt-5" :errors="$errors" /> --}}
 
             <form method="POST" action="{{route('clase.update',$clase->id)}}">
               @csrf
@@ -31,7 +31,7 @@
                     <x-label for="horarios" :value="__('Horario')" class="font-semibold" />
 
                     <select id="horarios" class="block w-full px-2 py-2 mt-2 border border-gray-300 bg-white rounded-md 
-                      shadow-sm focus:outline-none focus:ring-red-300 focus:border-red-300" name="horario_id"  required>
+                      shadow-sm focus:outline-none focus:ring-red-300 focus:border-red-300" name="horario_id" required>
                       <option hidden value="">
                         {{ $clase->horario->hora->format('H:i A') }}
                       </option>
@@ -51,11 +51,11 @@
                     <div class="inline-flex items-center">
                       <input id="dia" type="checkbox" name="dias[]" value="{{$dia->id}}" class="rounded border-gray-300 text-red-900 
                         shadow-sm focus:border-red-300 focus:ring
-                        focus:ring-red-200 focus:ring-opacity-50" >
-                    
+                        focus:ring-red-200 focus:ring-opacity-50">
+
                       <span class="ml-2 text-sm text-gray-600">{{ $dia->dia }}</span>
                     </div>
-                    
+
                     @endforeach
 
                   </div>{{--/div dias de la semana--}}

@@ -113,7 +113,7 @@
                       <a href="{{ route('clase.show', $clase->id) }}">Mostrar</a></button>
                     <button
                       class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-800 focus:shadow-outline hover:bg-blue-600">
-                      <a href="{{ route('clase.show', $clase->id) }}">Alumnos</a></button>
+                      <a href="{{ route('clase.alumnos', $clase->id) }}">Alumnos</a></button>
                     <button
                       class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-800 focus:shadow-outline hover:bg-indigo-800">
                       <a href="{{ route('clase.show', $clase->id) }}">Profesores</a></button>
