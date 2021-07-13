@@ -13,9 +13,14 @@ class EjercicioController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index()
+  public function index(Request $request)
   {
-    $ejercicios = Ejercicio::orderBy('id', 'DESC')->paginate(5);
+    $search = $request->get('search');
+    $filtro = $request->get('filtro');
+
+    $ejercicios = Ejercicio::orderBy('id', 'DESC')
+    ->search($filtro, $search)
+    ->simplePaginate(5);
     return view('ejercicio.index', compact('ejercicios'));
   }
 

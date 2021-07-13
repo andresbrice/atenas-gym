@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClaseController;
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\EjercicioController;
+use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\RutinaController;
 use App\Http\Controllers\TarifaController;
 use App\Http\Controllers\CuotaController;
@@ -21,6 +22,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
   Route::get('/', function () {
     return view('dashboard');
   })->name('dashboard');
+
+  Route::resource('perfil', PerfilController::class);
 
   Route::group(['middleware' => 'admin'], function () {
     Route::resource('usuario', UserController::class);

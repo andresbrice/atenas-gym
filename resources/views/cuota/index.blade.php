@@ -17,7 +17,7 @@
                                     <a href="{{ route('cuota.buscaralumno') }}">
                                         <x-button
                                             class="bg-red-300 text-red-700 hover:bg-red-700 hover:text-white border-red-600 font-bold">
-                                            {{ __('Register subscription') }}
+                                            {{ __('Register Subscription') }}
                                         </x-button>
                                     </a>
                                 </div>
@@ -46,7 +46,6 @@
                         <x-table>
                             @section('nombre-columna')
                                 <tr>
-
                                     <th scope="col"
                                         class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Alumno

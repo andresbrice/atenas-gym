@@ -2,18 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Alumno;
+
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Clase;
 use App\Models\Dia;
-use App\Models\Profesor;
 use App\Models\Horario;
-use App\Models\Alumno_Clase;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Session;
 
 class ClaseController extends Controller
 {
@@ -24,11 +19,15 @@ class ClaseController extends Controller
    */
   public function index(Request $request)
   {
+    $search = $request->get('search');
+    $filtro = $request->get('filtro');
 
     $clases = Clase::with('dias')
+      ->search($filtro, $search)
       ->orderByDesc('id')
       ->simplePaginate(4);
 
+    Session::put('clase_url', request()->fullUrl());
 
     return view('clase.index', compact('clases'));
   }
@@ -125,7 +124,11 @@ class ClaseController extends Controller
 
     $clase->dias()->sync($request->input('dias', []));
 
-    return redirect('clase')->with('status', 'Clase creada con exito');
+    if (session('clase_url')) {
+      return redirect(session('clase_url'))->with('status', 'Clase modificada con exito');
+    }
+
+    return redirect('clase')->with('status', 'Clase modificada con exito');
   }
 
   /**

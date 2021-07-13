@@ -17,7 +17,7 @@ class CreateEjerciciosTable extends Migration
             $table->engine = 'InnoDB';
             $table->id();
             $table->string('nombre_ejercicio');
-            $table->string('descripcion');
+            $table->longText('descripcion');
             $table->timestamps();
         });
     }

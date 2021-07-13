@@ -35,8 +35,8 @@
                                         <textarea id="descripcion" name="descripcion" class="resize-none
                                            border-gray-300 block
                                             focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                                            rows="3" cols="50" minlength="10" value="old('descripcion')" required
-                                            autofocus></textarea>
+                                            rows="3" cols="50" minlength="10"  required
+                                            autofocus>{{ old('descripcion', $ejercicio->descripcion) }}</textarea>
                                     </div>
                                 </div>
                                 <div class="px-4 py-2  flex items-center justify-between sm:px-6">

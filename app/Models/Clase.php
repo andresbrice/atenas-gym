@@ -41,4 +41,28 @@ class Clase extends Model
   {
     return $this->belongsTo(Horario::class);
   }
+
+  // QUERY SCOPES
+
+  public function scopeSearch($query, $filtro, $search)
+  {
+    if (($filtro) && trim($search) && ($filtro != "")) {
+      switch ($filtro) {
+        case 1:
+          $filtro = 'userName';
+          return $query->where($filtro, "LIKE", "%$search%");
+          break;
+        case 1:
+          $filtro = 'userName';
+          return $query->where($filtro, "LIKE", "%$search%");
+          break;
+        case 1:
+          $filtro = 'userName';
+          return $query->where($filtro, "LIKE", "%$search%");
+          break;
+      }
+    } elseif (trim($search) == "") {
+      $filtro = "";
+    }
+  }
 }

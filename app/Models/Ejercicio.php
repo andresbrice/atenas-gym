@@ -21,4 +21,25 @@ class Ejercicio extends Model
   {
     return $this->belongsToMany(Rutina::class);
   }
+
+
+  public function scopeSearch($query, $filtro, $search)
+  {
+    if (($filtro) && trim($search) && ($filtro != "")) {
+      switch ($filtro) {
+        case 1:
+          $filtro = 'nombre_ejercicio';
+          return $query->where($filtro, "LIKE", "%$search%");
+          break;
+
+        case 2:
+          $filtro = 'descripcion';
+          return $query->where($filtro, "LIKE", "%$search%");
+          break;
+      }
+    } elseif (trim($search) == "") {
+      $filtro = "";
+    }
+  }
 }
+
