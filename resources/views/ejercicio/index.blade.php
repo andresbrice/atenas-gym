@@ -5,8 +5,8 @@
 
     <x-slot name="slot">
         <div class="py-2 xl:py-6">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white shadow-sm sm:rounded-lg">
+            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
                         <x-auth-session-status class="mb-4 font-bold flex justify-center" :status="session('status')" />
                         <div class="mb-3">
@@ -19,6 +19,12 @@
                                         {{ __('Register Exercise') }}
                                     </x-button>
                                 </a>
+
+                                @php
+                                if (isset($_GET['filtro'])) {
+                                $seleccionado= $_GET['filtro'];
+                                }
+                                @endphp
 
                                 {{-- BUSCADOR --}}
                                 <x-search>
@@ -36,7 +42,15 @@
                                                 echo 'selected';
                                             }
                                         @endphp>
-                                            Ejercicio
+                                            Nombre
+                                        </option>
+
+                                        <option value="2" @php
+                                            if (isset($seleccionado) && $seleccionado == '2') {
+                                                echo 'selected';
+                                            }
+                                        @endphp>
+                                            Descripción
                                         </option>
 
                                     @endsection
@@ -57,6 +71,7 @@
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Acciones
                                     </th>
                                 </tr>
                             @endsection
@@ -69,7 +84,7 @@
                                             {{ $ejercicio->nombre_ejercicio }}
                                         </td>
 
-                                        <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                        <td class="px-6 py-4 whitespace-normal text-center text-sm font-medium">
                                             {{ $ejercicio->descripcion }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
