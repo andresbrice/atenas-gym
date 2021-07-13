@@ -41,13 +41,13 @@
                   <div class="col-span-6 md:col-span-1">
                     <x-label for="password" :value="__('Password')" class="font-semibold" />
                     <x-input id="password" class="block w-full px-4 py-2 mt-2" type="password" name="password"
-                      autocomplete="new-password" />
+                      placeholder="Nueva Contraseña" autocomplete="new-password" />
                   </div>
                   <!-- Confirm Password -->
                   <div class="col-span-6 md:col-span-1">
                     <x-label for="password_confirmation" :value="__('Confirm Password')" class="font-semibold" />
                     <x-input id="password_confirmation" class="block w-full px-4 py-2 mt-2" type="password"
-                      name="password_confirmation" />
+                      placeholder="Repita su nueva contraseña" name="password_confirmation" />
                   </div>
                 </div>
                 <!-- Botón Editar -->

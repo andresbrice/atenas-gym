@@ -28,7 +28,7 @@ class UserController extends Controller
       ->simplePaginate(4);
 
     Session::put('usuario_url', request()->fullUrl());
-
+    // echo Session::get('usuario_url');
 
     return view('usuario.index', compact('usuarios'));
   }
@@ -147,11 +147,12 @@ class UserController extends Controller
    */
   public function update(Request $request, $id)
   {
+    $user = User::findOrFail($id);
     $request->validate([
       'name' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
-      'email' => 'required|string|email|max:255|unique:users',
+      'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
       'userName' => 'required|string|max:255',
-      'dni' => 'required|int|unique:users|max:8',
+      'dni' => 'required|int|digits:8|unique:users,dni,' . $user->id,
       'lastName' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'gender' => 'required',
       'phone' => 'required|int',
@@ -165,7 +166,7 @@ class UserController extends Controller
     User::where('id', '=', $id)->update($usuario);
 
     if (session('usuario_url')) {
-      return redirect('usuario_url')->with('status', 'Usuario modificado con exito');
+      return redirect(session('usuario_url'))->with('status', 'Usuario modificado con exito');
     }
 
     return redirect('usuario')->with('status', 'Usuario modificado con exito');

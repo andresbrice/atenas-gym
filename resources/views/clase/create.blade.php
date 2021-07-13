@@ -12,7 +12,7 @@
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-4 bg-white border-b border-gray-200">
             <!-- Validation Errors -->
-            <x-auth-validation-errors class=" mt-5" :errors="$errors" />
+            {{-- <x-auth-validation-errors class=" mt-5" :errors="$errors" /> --}}
 
             <form action="{{ route('clase.store') }}" method="POST">
               @csrf
@@ -51,7 +51,7 @@
                       <input id="dia" type="checkbox" class="rounded border-gray-300 text-red-900 
                       shadow-sm focus:border-red-300 focus:ring
                       focus:ring-red-200 focus:ring-opacity-50" name="dias[]" value="{{$dia->id}}">
-                      
+
                       <span class="ml-2 text-sm text-gray-600">{{ $dia->dia }}</span>
                     </div>
 

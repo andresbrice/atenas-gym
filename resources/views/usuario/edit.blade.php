@@ -52,13 +52,10 @@
                     <select id="gender"
                       class="block w-full px-2 py-2 mt-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-300 focus:border-red-300"
                       name="gender" required>
-                      <option hidden value="{{ old('gender') }}">
-                        {{ old('gender', $usuario->gender) }}
-                      </option>
-                      <option value="Masculino">
+                      <option value="Masculino" {{($usuario->gender ==='Masculino') ? 'selected' : ''}}>
                         Masculino
                       </option>
-                      <option value="Femenino">
+                      <option value="Femenino" {{($usuario->gender ==='Femenino') ? 'selected' : ''}}>
                         Femenino
                       </option>
                     </select>
@@ -90,7 +87,7 @@
                         {{ old('role_id', $usuario->role->nombre_rol) }}
                       </option>
                       @foreach ($roles as $role)
-                      <option value="{{ $role->id }}" {{old('$usuario->role->role_id') == }}>
+                      <option value="{{ $role->id }}" {{$usuario->role->id == $role->id ? 'selected' : ''}}>
                         {{ $role->nombre_rol }}
                       </option>
                       @endforeach

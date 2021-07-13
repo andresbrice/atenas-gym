@@ -6,7 +6,7 @@
   <x-slot name="slot">
     <div class="py-2 xl:py-6">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white shadow-sm sm:rounded-lg">
+        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
             <x-auth-session-status class="mb-4 font-bold flex justify-center" :status="session('status')" />
             <div class="mb-3">
@@ -52,7 +52,7 @@
             </div>
             <x-table>
               @section('nombre-columna')
-              <tr>
+              <tr class="overflow-visible">
                 <th scope="col"
                   class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                   usuario
@@ -83,7 +83,7 @@
 
               @section('contenido-filas')
               @forelse ($usuarios as $usuario)
-              <tr>
+              <tr class="overflow-visible">
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                   {{ $usuario->userName }}
                 </td>
@@ -105,42 +105,22 @@
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                  <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                      <x-button
-                        class="outline-none focus:outline-none border px-3 py-1 bg-gray-900 hover:bg-gray-700 text-white rounded-sm flex items-center min-w-32">
-                        <span class="pr-1 font-semibold flex-1">Acciones</span>
-                        <span>
-                          <svg
-                            class="fill-current h-4 w-4 transform group-hover:-rotate-180
-                                                                                              transition duration-150 ease-in-out"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                          </svg>
-                        </span>
-                      </x-button>
-                    </x-slot>
+                  <div class="inline-flex" role="group" aria-label="Button group">
+                    <button
+                      class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 rounded-l-md focus:shadow-outline hover:bg-green-800">
+                      <a href="{{ route('usuario.edit', $usuario->id) }}">Editar</a></button>
+                    <button
+                      class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 focus:shadow-outline hover:bg-yellow-600">
+                      <a href="{{ route('usuario.show', $usuario->id) }}">Mostrar</a></button>
 
-                    <x-slot name="content">
-                      <x-dropdown-link href="{{ route('usuario.edit', $usuario->id) }}">
-                        {{ __('Edit') }}
-                      </x-dropdown-link>
-
-                      <form method="POST" action="{{ route('usuario.destroy', $usuario->id) }}">
-                        @csrf
-                        @method('DELETE')
-
-                        <x-dropdown-button class="text-center w-full" :href="route('usuario.destroy',$usuario->id)"
-                          onclick="return confirm('¿Esta seguro de querer borrar este usuario?');">
-                          Borrar
-                        </x-dropdown-button>
-                      </form>
-
-                      <x-dropdown-link href="{{ route('usuario.show', $usuario->id) }}">
-                        {{ __('Show') }}
-                      </x-dropdown-link>
-                    </x-slot>
-                  </x-dropdown>
+                    <form method="POST" action="{{ route('usuario.destroy', $usuario->id) }}">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit"
+                        class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 rounded-r-md focus:shadow-outline hover:bg-red-800"
+                        onclick="return confirm('¿Esta seguro de querer borrar este usuario?');">Borrar</button>
+                    </form>
+                  </div>
                 </td>
               </tr>
               @empty
@@ -165,3 +145,39 @@
     </div>
   </x-slot>
 </x-app-layout>
+{{-- <x-dropdown align="right" width="48">
+  <x-slot name="trigger">
+    <x-button
+      class="outline-none focus:outline-none border px-3 py-1 bg-gray-900 hover:bg-gray-700 text-white rounded-sm flex items-center min-w-32">
+      <span class="pr-1 font-semibold flex-1">Acciones</span>
+      <span>
+        <svg
+          class="fill-current h-4 w-4 transform group-hover:-rotate-180
+                                                                            transition duration-150 ease-in-out"
+          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+        </svg>
+      </span>
+    </x-button>
+  </x-slot>
+
+  <x-slot name="content">
+    <x-dropdown-link href="{{ route('usuario.edit', $usuario->id) }}">
+{{ __('Edit') }}
+</x-dropdown-link>
+
+<form method="POST" action="{{ route('usuario.destroy', $usuario->id) }}">
+  @csrf
+  @method('DELETE')
+
+  <x-dropdown-button class="text-center w-full" :href="route('usuario.destroy',$usuario->id)"
+    onclick="return confirm('¿Esta seguro de querer borrar este usuario?');">
+    Borrar
+  </x-dropdown-button>
+</form>
+
+<x-dropdown-link href="{{ route('usuario.show', $usuario->id) }}">
+  {{ __('Show') }}
+</x-dropdown-link>
+</x-slot>
+</x-dropdown> --}}
