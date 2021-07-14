@@ -20,11 +20,11 @@
                   </x-button>
                 </a>
 
-                @php
+                {{-- @php
                 if (isset($_GET['filtro'])) {
                 $seleccionado= $_GET['filtro'];
                 }
-                @endphp
+                @endphp --}}
 
                 {{-- BUSCADOR --}}
                 <x-search>
@@ -36,12 +36,12 @@
                   <option hidden value="">
                     Filtrar por...
                   </option>
-
-                  <option value="1" @php if (isset($seleccionado) && $seleccionado=='1' ) { echo 'selected' ; } @endphp>
+                  {{-- @php if (isset($seleccionado) && $seleccionado=='1' ) { echo 'selected' ; } @endphp --}}
+                  <option value="1">
                     Usuario
                   </option>
 
-                  <option value="2" @php if (isset($seleccionado) && $seleccionado=='2' ) { echo 'selected' ; } @endphp>
+                  <option value="2">
                     Nombre y Apellido
                   </option>
 
