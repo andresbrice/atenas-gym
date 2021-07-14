@@ -2,7 +2,7 @@
 
     <x-slot name="breadcrumb">
         <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{ route('cuota.index') }}">Gestión Cuota</a> /
-            <u>Selección del Alumno</u>
+            <u>Seleccionar Alumno</u>
         </x-breadcrumb>
     </x-slot>
 
@@ -26,7 +26,7 @@
                                         <select name="userName"
                                             class="block w-full px-2 py-2 mt-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-300 focus:border-red-300">
                                             <option hidden value="">Seleccione un alumno</option>
-                                            <option value="value1">Value 1</option>
+                                            <option value="value1"></option>
                                         </select>
                                     </div>
                                     <div class="col-span-6 sm:col-span-6 lg:col-span-2">
@@ -34,7 +34,7 @@
                                         <select name="tipo_clase"
                                             class="block w-full px-2 py-2 mt-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-300 focus:border-red-300">
                                             <option hidden value="">Seleccione la clase</option>
-                                            <option value="value1">Value 1</option>
+                                            <option value="value1"></option>
                                         </select>
                                     </div>                                       
                                 </div>

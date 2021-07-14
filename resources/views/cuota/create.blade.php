@@ -46,7 +46,7 @@
                                     </a>
 
                                     <x-button class="bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
-                                        {{ __('Register subscription') }}
+                                        {{ __('Register Subscription') }}
                                     </x-button>
                                 </div>
                             </div>

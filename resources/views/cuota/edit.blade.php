@@ -55,14 +55,14 @@
                                             required autofocus />
                                     </div>
                                 </div>
-                                <div class="px-4 py-2  flex items-center justify-between sm:px-6">
+                                <div class="px-4 py-2 mt-3 flex items-center justify-between sm:px-6">
                                     <a href="{{ route('cuota.index') }}">
                                         <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
                                             {{ __('Back') }}
                                         </x-button>
                                     </a>
 
-                                    <x-button class="ml-3 bg-green-900 hover:bg-green-700">
+                                    <x-button class="bg-green-900 hover:bg-green-700">
                                         {{ __('Edit subscription') }}
                                     </x-button>
                                 </div>
