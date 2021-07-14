@@ -9,6 +9,7 @@ use App\Http\Controllers\EjercicioController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\RutinaController;
 use App\Http\Controllers\TarifaController;
+use App\Http\Controllers\CuotaController;
 
 require __DIR__ . '/auth.php';
 
@@ -34,6 +35,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('clase/{clase}/alumnos', [ClaseController::class, 'indexAlumnos'])->name('clase.alumnos');
     Route::get('buscarclase', [AsistenciaController::class, 'buscarClase'])->name('asistencia.buscarclase');
     Route::resource('rutina', RutinaController::class);
+    Route::resource('cuota', CuotaController::class);
+    Route::get('buscaralumno', [CuotaController::class, 'buscarAlumno'])->name('cuota.buscaralumno');
+    
   });
 
   // Route::group(['middleware' => 'profesor'], function () {

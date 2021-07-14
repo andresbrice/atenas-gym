@@ -42,27 +42,15 @@
                     </select>
                   </div>
                 </div>
-                <div class="px-4 mt-3 py-2  flex items-center justify-between sm:px-6">
-                  <a href="{{ route('asistencia.index') }}">
-                    <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
-                      {{ __('Back') }}
-                    </x-button>
-                  </a>
-                  <x-button
-                    class="ml-3 bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
-                    {{ __('Find Class') }}
-                  </x-button>
-                </div>
-              </div>
-            </form>
-          </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </x-slot>
+    </x-slot>
 </x-app-layout>
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD=======<<<<<<< HEAD======={{-- <x-app-layout>
+=======
 
 
 
@@ -85,6 +73,7 @@
 
 
 <<<<<<< HEAD======={{-- <x-app-layout>
+>>>>>>> 7a422457c8f030ffdd431a67cf012aa959a8b0ae
 
     <x-slot name="breadcrumb">
         <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{ route('asistencia.index') }}">Gestión Asistencia</a> /
@@ -160,6 +149,13 @@
         </div>
       </div>
     </div>
+<<<<<<< HEAD
+  </div>
+</x-slot>
+</x-app-layout> --}}>>>>>>> perfil
+    >>>>>>> main
+=======
   </x-slot>
   </x-app-layout> --}}
   >>>>>>> perfil
+>>>>>>> 7a422457c8f030ffdd431a67cf012aa959a8b0ae
