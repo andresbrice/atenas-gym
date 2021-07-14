@@ -56,7 +56,7 @@ class UserController extends Controller
       'name' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'email' => 'required|string|email|max:255|unique:users',
       'userName' => 'required|string|max:255',
-      'dni' => 'required|int|unique:users',
+      'dni' => 'required|int|digits:8|unique:users',
       'lastName' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'gender' => 'required',
       'phone' => 'required|int',
@@ -158,7 +158,7 @@ class UserController extends Controller
       'phone' => 'required|int',
       'emergency_number' => 'required|int',
       'age' => 'required|int',
-      'password' => 'nullable|required_with:password_confirmation|string|confirmed',
+      // 'password' => 'nullable|required_with:password_confirmation|string|confirmed',
     ]);
 
     $usuario = request()->except('_token', '_method');
