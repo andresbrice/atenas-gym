@@ -20,7 +20,7 @@
   {{ __('Usuarios') }}
 </x-nav-link>
 
-<x-nav-link class="px-3 py-2" :href="route('cuota.index')" :active="request()->routeIs('cuota.index')">
+<x-nav-link class="px-3 py-2" {{--:href="route('cuota.index')" :active="request()->routeIs('cuota.index')">--}}>
   {{ __('Cuotas') }}
 </x-nav-link>
 
