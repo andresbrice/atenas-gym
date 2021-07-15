@@ -5,7 +5,6 @@
   </x-slot>
 
   <x-slot name="slot">
-
     <div class="sm:px-6 lg:px-16 h-full flex justify-center">
       <div class="w-full">
         <div class="bg-white mt-5 shadow-sm sm:rounded-lg">
