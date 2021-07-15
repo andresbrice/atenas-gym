@@ -6,7 +6,7 @@
   <x-slot name="slot">
     <div class="py-2 xl:py-6">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white  shadow-sm sm:rounded-lg">
+        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
             <x-auth-session-status class="mb-4 font-bold flex justify-center" :status="session('status')" />
             <div class="mb-3">
@@ -58,7 +58,7 @@
                 </th>
                 <th scope="col"
                   class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  clase
+                  Horario
                 </th>
                 <th scope="col"
                   class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -71,7 +71,7 @@
                 </th>
                 <th scope="col"
                   class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-
+                  Acciones
                 </th>
               </tr>
               @endsection
@@ -104,46 +104,28 @@
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                  <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                      <x-button
-                        class="outline-none focus:outline-none border px-3 py-1 bg-gray-900 hover:bg-gray-700 text-white rounded-sm flex items-center min-w-32">
-                        <span class="pr-1 font-semibold flex-1">Acciones</span>
-                        <span>
-                          <svg
-                            class="fill-current h-4 w-4 transform group-hover:-rotate-180
-                                                                                                                transition duration-150 ease-in-out"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                          </svg>
-                        </span>
-                      </x-button>
-                    </x-slot>
+                  <div class="inline-flex" role="group" aria-label="Button group">
+                    <button
+                      class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-800 rounded-l-md focus:shadow-outline hover:bg-green-800">
+                      <a href="{{ route('clase.edit', $clase->id) }}">Editar</a></button>
+                    <button
+                      class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-800 focus:shadow-outline hover:bg-yellow-600">
+                      <a href="{{ route('clase.show', $clase->id) }}">Mostrar</a></button>
+                    <button
+                      class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-800 focus:shadow-outline hover:bg-blue-600">
+                      <a href="{{ route('clase.alumnos', $clase->id) }}">Alumnos</a></button>
+                    <button
+                      class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-800 focus:shadow-outline hover:bg-indigo-800">
+                      <a href="{{ route('clase.show', $clase->id) }}">Profesores</a></button>
 
-                    <x-slot name="content">
-                      <x-dropdown-link href="{{ route('clase.edit', $clase->id) }}">
-                        {{ __('Edit') }}
-                      </x-dropdown-link>
-
-                      <form method="POST" action="{{ route('clase.destroy', $clase->id) }}">
-                        @csrf
-                        @method('DELETE')
-
-                        <x-dropdown-button class="text-center w-full" :href="route('clase.destroy',$clase->id)"
-                          onclick="return confirm('¿Esta seguro de querer borrar esta clase?');">
-                          Borrar
-                        </x-dropdown-button>
-                      </form>
-
-                      <x-dropdown-link href="{{ route('clase.alumnos', $clase->id) }}">
-                        {{ __('Students') }}
-                      </x-dropdown-link>
-
-                      <x-dropdown-link href="#">
-                        {{ __('Teachers') }}
-                      </x-dropdown-link>
-                    </x-slot>
-                  </x-dropdown>
+                    <form method="POST" action="{{ route('clase.destroy', $clase->id) }}">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit"
+                        class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-800 rounded-r-md focus:shadow-outline hover:bg-red-800"
+                        onclick="return confirm('¿Esta seguro de querer borrar esta clase?');">Borrar</button>
+                    </form>
+                  </div>
                 </td>
               </tr>
               @empty
@@ -171,3 +153,43 @@
     </div>
   </x-slot>
 </x-app-layout>
+{{-- <x-dropdown align="right" width="48">
+  <x-slot name="trigger">
+    <x-button
+      class="outline-none focus:outline-none border px-3 py-1 bg-gray-900 hover:bg-gray-700 text-white rounded-sm flex items-center min-w-32">
+      <span class="pr-1 font-semibold flex-1">Acciones</span>
+      <span>
+        <svg
+          class="fill-current h-4 w-4 transform group-hover:-rotate-180
+                                                                                              transition duration-150 ease-in-out"
+          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+        </svg>
+      </span>
+    </x-button>
+  </x-slot>
+
+  <x-slot name="content">
+    <x-dropdown-link href="{{ route('clase.edit', $clase->id) }}">
+{{ __('Edit') }}
+</x-dropdown-link>
+
+<form method="POST" action="{{ route('clase.destroy', $clase->id) }}">
+  @csrf
+  @method('DELETE')
+
+  <x-dropdown-button class="text-center w-full" :href="route('clase.destroy',$clase->id)"
+    onclick="return confirm('¿Esta seguro de querer borrar esta clase?');">
+    Borrar
+  </x-dropdown-button>
+</form>
+
+<x-dropdown-link href="{{ route('clase.alumnos', $clase->id) }}">
+  {{ __('Students') }}
+</x-dropdown-link>
+
+<x-dropdown-link href="#">
+  {{ __('Teachers') }}
+</x-dropdown-link>
+</x-slot>
+</x-dropdown> --}}

@@ -16,7 +16,7 @@
 
         <!-- Navigation Links -->
         <div class="hidden space-x-2 md:-my-px md:ml-10 lg:flex">
-          @switch(Auth::user()->role_id)
+          @switch(auth()->user()->role_id)
           @case(1)
           @include('layouts.menu.alumno')
           @break
@@ -38,7 +38,7 @@
           <x-slot name="trigger">
             <button
               class="flex items-center text-md font-semibold text-red-800 hover:text-red-700 focus:outline-none focus:text-red-700 transition duration-150 ease-in-out">
-              <div>{{ Auth::user()->name }}</div>
+              <div>{{ auth()->user()->name }}</div>
 
               <div class="ml-1">
                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -51,9 +51,9 @@
           </x-slot>
 
           <x-slot name="content">
-            {{-- <x-dropdown-link href="{{route('usuario.show',auth()->id())}}">
-            {{ __('Perfil') }}
-            </x-dropdown-link> --}}
+            <x-dropdown-link href="{{route('perfil.edit',auth()->id())}}">
+              {{ __('Perfil') }}
+            </x-dropdown-link>
             <!-- Authentication -->
             <form method="POST" action="{{ route('logout') }}">
               @csrf
@@ -85,7 +85,7 @@
   <!-- Responsive Navigation Menu -->
   <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden">
     <div class="pt-2 pb-3 space-y-1">
-      @switch(Auth::user()->role_id)
+      @switch(auth()->user()->role_id)
       @case(1)
       @include('layouts.menu.responsive.responsive-alumno')
       @break
@@ -103,14 +103,14 @@
     <!-- Responsive Settings Options -->
     <div class="pt-4 pb-1 border-t border-gray-200">
       <div class="px-4">
-        <div class="font-medium text-base text-red-700">{{ Auth::user()->name }}</div>
-        <div class="font-medium text-sm text-gray-400">{{ Auth::user()->email }}</div>
+        <div class="font-medium text-base text-red-700">{{ auth()->user()->name }}</div>
+        <div class="font-medium text-sm text-gray-400">{{ auth()->user()->email }}</div>
       </div>
 
       <div class="mt-3 space-y-1">
-        {{-- <x-responsive-nav-link href="{{ route('perfil.edit', Auth::user()->id) }}">
-        {{ __('Profile') }}
-        </x-responsive-nav-link> --}}
+        <x-responsive-nav-link href="{{ route('perfil.edit', auth()->user()->id) }}">
+          {{ __('Profile') }}
+        </x-responsive-nav-link>
         <!-- Authentication -->
         <form method="POST" action="{{ route('logout') }}">
           @csrf
