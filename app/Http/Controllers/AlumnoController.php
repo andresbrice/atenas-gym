@@ -6,5 +6,11 @@ use Illuminate\Http\Request;
 
 class AlumnoController extends Controller
 {
-    //
+
+    public function consultaClase()
+    {
+        return view('alumnos.clase');
+
+    }
+
 }

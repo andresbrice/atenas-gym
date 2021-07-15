@@ -10,6 +10,7 @@ use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\RutinaController;
 use App\Http\Controllers\TarifaController;
 use App\Http\Controllers\CuotaController;
+use App\Http\Controllers\AlumnoController;
 
 require __DIR__ . '/auth.php';
 
@@ -37,13 +38,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('rutina', RutinaController::class);
     Route::resource('cuota', CuotaController::class);
     Route::get('seleccionaralumno', [CuotaController::class, 'seleccionarAlumno'])->name('cuota.seleccionaralumno');
+    
+   
   });
 
   // Route::group(['middleware' => 'profesor'], function () {
   //     Route::resource('usuario', UserController::class);
   // });
 
-  // Route::group(['middleware' => 'alumno'], function () {
-  //     Route::resource('usuario', UserController::class);
-  // });sd  
+  Route::group(['middleware' => 'alumno'], function () {
+    Route::get('clase', [AlumnoController::class, 'consultaClase'])->name('alumnos.clase');
+    Route::get('asistencia', [AlumnoController::class, 'consultaAsistencia'])->name('alumnos.asistencia');
+    Route::get('rutina', [AlumnoController::class, 'consultaRutina'])->name('alumnos.rutina');
+    Route::get('cuota', [AlumnoController::class, 'consultaCuota'])->name('alumnos.cuota');
+  });
 });
