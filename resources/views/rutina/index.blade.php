@@ -8,7 +8,7 @@
 
     <div class="sm:px-6 lg:px-8 h-full flex justify-center">
       <div class="w-full px-8">
-        <div class="bg-white mt-5  shadow-sm sm:rounded-lg">
+        <div class="bg-white overflow-hidden mt-5  shadow-sm sm:rounded-lg">
           <div class="p-4 bg-white border-b border-gray-100">
             <x-auth-session-status class="mb-4 font-bold flex justify-center" :status="session('status')" />
             {{-- DIV ALIGN --}}
@@ -34,12 +34,12 @@
                 <option hidden value="">
                   Filtrar por...
                 </option>
-
-                <option value="userName" {{ old('filtro') == 'userName' ? 'selected' : '' }}>
+                {{-- value="userName" {{ old('filtro') == 'userName' ? 'selected' : '' }} --}}
+                <option >
                   rutina
                 </option>
 
-                <option value="name" {{ old('filtro') == 'name' ? 'selected' : '' }}>
+                <option >
                   Nombre y Apellido
                 </option>
 

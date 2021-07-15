@@ -111,7 +111,7 @@
                                         <label for="eCardiacas" class="inline-flex items-center">
                                             <input id="eCardiacas" type="checkbox"
                                                 class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                                                name="eCardiacas" value="" eCardiacas>
+                                                name="eCardiacas" value="eCardiacas">
                                             <span class="ml-2 text-sm text-gray-600">{{ __('E. Cardíacas') }}</span>
                                         </label>
 
