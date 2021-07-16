@@ -51,5 +51,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('asistencia', [AlumnoController::class, 'consultaAsistencia'])->name('alumnos.asistencia');
     Route::get('rutina', [AlumnoController::class, 'consultaRutina'])->name('alumnos.rutina');
     Route::get('cuota', [AlumnoController::class, 'consultaCuota'])->name('alumnos.cuota');
+    Route::get('imprimirRutina', [AlumnoController::class, 'imprimirRutina'])->name('alumnos.imprimirRutina');
   });
 });

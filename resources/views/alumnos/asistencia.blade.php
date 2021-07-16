@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="breadcrumb">
-        <x-breadcrumb><a href="/">Dashboard</a> / <u>Gestion Asistencia</u></x-breadcrumb>
+        <x-breadcrumb><a href="/">Dashboard</a> / <u>Consulta Asistencia</u></x-breadcrumb>
     </x-slot>
 
     <x-slot name="slot">
@@ -38,7 +38,6 @@
 
                             @section('contenido-filas')
                                 <tr>
-
                                     <td class="px-6 py-4 whitespace-nowrap text-center">
                                         04/01/21
                                     </td>
@@ -51,17 +50,14 @@
                                         Funcional
                                     </td>
 
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <td class="px-6 py-4 whitespace-nowrap text-center">
                                         andresbrice
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <td class="px-6 py-4 whitespace-nowrap text-center">
                                         Presente
                                     </td>
                                 </tr>
-                            @endsection
-                            @section('contenido-filas')
                                 <tr>
-
                                     <td class="px-6 py-4 whitespace-nowrap text-center">
                                         06/01/21
                                     </td>
@@ -74,17 +70,14 @@
                                         Funcional
                                     </td>
 
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <td class="px-6 py-4 whitespace-nowrap text-center">
                                         andresbrice
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                        Presente
+                                    <td class="px-6 py-4 whitespace-nowrap text-center">
+                                        Ausente
                                     </td>
                                 </tr>
-                            @endsection
-                            @section('contenido-filas')
                                 <tr>
-
                                     <td class="px-6 py-4 whitespace-nowrap text-center">
                                         08/01/21
                                     </td>
@@ -97,19 +90,16 @@
                                         Funcional
                                     </td>
 
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <td class="px-6 py-4 whitespace-nowrap text-center">
                                         andresbrice
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                        Ausente
+                                    <td class="px-6 py-4 whitespace-nowrap text-center">
+                                        Presente
                                     </td>
                                 </tr>
-                            @endsection
-                            @section('contenido-filas')
                                 <tr>
-
                                     <td class="px-6 py-4 whitespace-nowrap text-center">
-                                        10/01/21
+                                        11/01/21
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap text-center">
@@ -120,15 +110,14 @@
                                         Funcional
                                     </td>
 
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <td class="px-6 py-4 whitespace-nowrap text-center">
                                         andresbrice
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <td class="px-6 py-4 whitespace-nowrap text-center">
                                         Presente
                                     </td>
                                 </tr>
                             @endsection
-                            
                         </x-table>
                     </div>
                 </div>

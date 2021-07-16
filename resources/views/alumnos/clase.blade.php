@@ -10,7 +10,7 @@
           <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
             <x-auth-session-status class="mb-4 font-bold flex justify-center" :status="session('status')" />
 
-            <div class="flex flex-col md:flex-row md:items-center">
+            <div class="flex flex-col items-center md:flex-row">
               <div class="flex-1 m-3 max-w-max overflow-hidden bg-gray-900 rounded-lg shadow-lg dark:bg-gray-800">
                 <div class="px-4 py-2">
                   <h2 class="text-xl font-bold text-gray-100 uppercase dark:text-white">Tipo de Clase
