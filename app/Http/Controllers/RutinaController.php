@@ -51,7 +51,8 @@ class RutinaController extends Controller
         return view('rutina.create', compact('alumnos', 'profesores', 'ejercicios', 'clases'));
     }
 
-    public function findClase(){
+    public function findClase()
+    {
         $data= DB::SELECT ('clases.id, clases.tipo_clase FROM clases LEFT JOIN alumno_clase ON alumno_clase.clase_id = clases.id WHERE alumno_clase.alumno_id = ?',[$alumno_id]);
         return response()->json($data);
      }

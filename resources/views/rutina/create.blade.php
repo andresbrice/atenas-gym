@@ -53,28 +53,35 @@
                   </select>
                 </div>
               </div>
-              <script>
+              <script type="text/javascript">
                 $(document).ready(function(){
-                  $(document).on('change', '.select2_el', function() {
-                    // console.log("hmm its working");
-
-                    var cat_id=$(this).val();
-              			// console.log(cat_id);
-
+              
+                  $(document).on('change','#alumno',function(){
+              
+                    var alumno_id=$(this).val();
+                    var div=$(this).parent();
+              
+                    var op=" ";
+              
                     $.ajax({
                       type:'get',
-                      url:'{!!URL::to('findProductName')!!}',
-                      data:{'id':cat_id},
+                      url:'{!!URL::to('findClase')!!}',
+                      data:{'id':alumno_id},
                       success:function(data){
-                        console.log('success ');
-
-                        console.log(data);
-                      }
+                        op+='<option value="0" selected disabled>chose product</option>';
+                        for(var i=0;i<data.length;i++){
+                        op+='<option value="'+data[i].id+'">'+data[i].tipo_clase+'</option>';
+                         }
+              
+                         div.find('.productname').html(" ");
+                         div.find('.productname').append(op);
+                      },
                       error:function(){
-
+              
                       }
-                    })
+                    });
                   });
+              
                 });
               </script>
                 
