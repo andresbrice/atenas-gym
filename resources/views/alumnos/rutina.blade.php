@@ -14,12 +14,10 @@
                             <div class="flex flex-col sm:flex-row justify-between items-center">
                                 {{-- BOTON --}}
                                 <div class="flex-auto justify-center">
-                                    <a href="{{ route('alumnos.imprimirRutina') }}">
-                                        <x-button
-                                            class="bg-red-300 text-red-700 hover:bg-red-700 hover:text-white border-red-600 font-bold">
-                                            {{ __('Print Routine') }}
-                                        </x-button>
-                                    </a>
+                                    <x-button
+                                        class="bg-red-300 text-red-700 hover:bg-red-700 hover:text-white border-red-600 font-bold">
+                                        {{ __('Print Routine') }}
+                                    </x-button>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +55,7 @@
                                             </td>
 
                                             <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                4
+                                                3
                                             </td>
 
                                             <td class="px-6 py-4 whitespace-nowrap text-center">
@@ -75,7 +73,7 @@
                                             </td>
 
                                             <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                4
+                                                5
                                             </td>
 
                                             <td class="px-6 py-4 whitespace-nowrap text-center">
@@ -152,7 +150,6 @@
 
                                     @section('contenido-filas')
                                         <tr>
-
                                             <td class="px-6 py-4 whitespace-nowrap text-center">
                                                 Zancadas
                                             </td>
@@ -170,7 +167,6 @@
                                             </td>
                                         </tr>
                                         <tr>
-
                                             <td class="px-6 py-4 whitespace-nowrap text-center">
                                                 Abdominales
                                             </td>
@@ -188,7 +184,6 @@
                                             </td>
                                         </tr>
                                         <tr>
-
                                             <td class="px-6 py-4 whitespace-nowrap text-center">
                                                 Peso Muerto
                                             </td>
@@ -222,6 +217,7 @@
                                             <td class="px-6 py-4 whitespace-nowrap text-center">
                                                 30"
                                             </td>
+
                                         </tr>
                                     @endsection
 
