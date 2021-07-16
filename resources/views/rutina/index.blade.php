@@ -5,47 +5,44 @@
   </x-slot>
 
   <x-slot name="slot">
-    <div class="sm:px-6 lg:px-16 h-full flex justify-center">
-      <div class="w-full">
-        <div class="bg-white mt-5 shadow-sm sm:rounded-lg">
-          <div class="p-2 bg-white border-b border-gray-100">
+    <div class="py-2 xl:py-6">
+      <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+          <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
             <x-auth-session-status class="mb-4 font-bold flex justify-center" :status="session('status')" />
-            {{-- DIV ALIGN --}}
-            <div class="flex justify-center items-center bg-white mx-auto mb-3 ">
-
-              {{-- BOTON CREAR RUTINA --}}
-              <div class="flex-auto justify-center ml-2">
+            <div class="mb-3">
+              {{-- BOTON CREAR USUARIO Y BUSCADOR --}}
+              <div class="flex flex-col sm:flex-row justify-between items-center">
+                {{-- BOTON --}}
                 <a href="{{route('rutina.create')}}">
                   <x-button type="button" class="bg-red-300 text-red-700 hover:bg-red-700 hover:text-white border-red-600 font-bold">
                     {{ __('Crear rutina') }}
                   </x-button>
                 </a>
+                {{-- BUSCADOR --}}
+                <x-search>
+                  @section('action')
+                  {{ route('usuario.index') }}
+                  @endsection
+
+                  @section('opciones')
+                  <option hidden value="">
+                    Filtrar por...
+                  </option>
+                  {{-- @php if (isset($seleccionado) && $seleccionado=='1' ) { echo 'selected' ; } @endphp --}}
+                  <option value="1">
+                    Usuario
+                  </option>
+
+                  <option value="2">
+                    Nombre y Apellido
+                  </option>
+
+                  @endsection
+                </x-search>
+                {{-- FIN BUSCADOR --}}
               </div>
-
-              {{-- BUSCADOR --}}
-              <x-search>
-                @section('action')
-                {{ route('rutina.index') }}
-                @endsection
-
-                @section('opciones')
-                <option hidden value="">
-                  Filtrar por...
-                </option>
-
-                <option value="userName" {{ old('filtro') == 'userName' ? 'selected' : '' }}>
-                  rutina
-                </option>
-
-                <option value="name" {{ old('filtro') == 'name' ? 'selected' : '' }}>
-                  Nombre y Apellido
-                </option>
-
-                @endsection
-              </x-search>
-              {{-- FIN BUSCADOR --}}
-            </div>{{-- FIN DIV ALIGN --}}
-
+            </div>
             <x-table>
               @section('nombre-columna')
               <tr>
@@ -67,7 +64,6 @@
                 </th>
               </tr>
               @endsection
-
 
               @section('contenido-filas')
               @forelse ($rutinas as $rutina)
@@ -126,7 +122,7 @@
               <tr>
                 <td>
                   <center>
-                    No se encontró dicho usuario. Intente nuevamente
+                    {{-- No se encontró dicho usuario. Intente nuevamente --}}
                   </center>
                 </td>
               </tr>
@@ -138,7 +134,6 @@
               </div>
               @endsection
             </x-table>
-
           </div>
         </div>
       </div>

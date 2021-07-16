@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Rutina;
 use App\Models\Ejercicio;
 use App\Models\User;
-
+use App\Models\Clase;
+use App\Models\Alumno;
+use Illuminate\Support\Facades\DB;
 
 class RutinaController extends Controller
 {
@@ -30,22 +32,30 @@ class RutinaController extends Controller
      */
     public function create(Request $request)
     {
-        $alumnos = User::select('name', 'lastName')
+        $alumnos = User::select('id', 'name', 'lastName')
             ->where('role_id', '=', 1)
             ->orderBy('name', 'asc')
             ->get();
 
-        $profesores = User::select('name', 'lastName')
+        $profesores = User::select('id', 'name', 'lastName')
             ->where('role_id', '=', 2)
             ->orderBy('name', 'asc')
             ->get();
 
-        $ejercicios = Ejercicio::select('nombre_ejercicio')
+        $ejercicios = Ejercicio::select('id', 'nombre_ejercicio')
             ->orderBy('nombre_ejercicio', 'asc')
             ->get();
+
+        $clases = Clase::all();
             
-        return view('rutina.create', compact('alumnos', 'profesores', 'ejercicios'));
+        return view('rutina.create', compact('alumnos', 'profesores', 'ejercicios', 'clases'));
     }
+
+    public function findClase(){
+        $data= DB::SELECT ('clases.id, clases.tipo_clase FROM clases LEFT JOIN alumno_clase ON alumno_clase.clase_id = clases.id WHERE alumno_clase.alumno_id = ?',[$alumno_id]);
+        return response()->json($data);
+     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -58,6 +68,8 @@ class RutinaController extends Controller
         $request->validate([
           'alumno' => 'required',
           'profesor' => 'required',
+          'ejercicio' => 'required',
+          'clase' => 'required',
           'series' => 'required|int',
           'repeticiones' => 'required|int',
           'descanso' => 'required|int',
@@ -66,21 +78,20 @@ class RutinaController extends Controller
         // $rutina = Rutina::create([
         //   'alumno' => $request->alumno,
         //   'profesor' => $request->profesor,
+        //   'ejercicio' => $request->ejercicio,
         //   'series' => $request->series,
         //   'repeticiones' => $request->repeticiones,
         //   'descanso' => $request->descanso,
         // ]);
-
+        
         $rutina = new Rutina();
-        $rutina->alumno = ucfirst($request->alumno);
-        $rutina->profesor = ucfirst($request->profesor);
-        $rutina->ejercicio = ucfirst($request->ejercicio);
         $rutina->series = ucfirst($request->series);
         $rutina->repeticiones = ucfirst($request->repeticiones);
         $rutina->descanso = ucfirst($request->descanso);
+        // $rutina->alumno_clase_id = ;
         $rutina->save();
     
-        return redirect('rutina')->with('status', 'Rutina creada con exito');
+        return redirect('rutina.index')->with('status', 'Rutina creada con exito');
       }
 
     /**

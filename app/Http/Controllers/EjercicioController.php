@@ -15,16 +15,12 @@ class EjercicioController extends Controller
    */
   public function index(Request $request)
   {
-<<<<<<< HEAD
-    $ejercicios = Ejercicio::orderBy('id', 'DESC')->simplePaginate(4);
-=======
     $search = $request->get('search');
     $filtro = $request->get('filtro');
 
     $ejercicios = Ejercicio::orderBy('id', 'DESC')
     ->search($filtro, $search)
     ->simplePaginate(5);
->>>>>>> main
     return view('ejercicio.index', compact('ejercicios'));
   }
 
