@@ -24,7 +24,8 @@ class Clase extends Model
 
   public function profesors()
   {
-    return $this->belongsToMany(Profesor::class)->withTimestamps();
+    return $this->belongsToMany(Profesor::class)
+      ->withTimestamps();
   }
 
   public function tarifa()

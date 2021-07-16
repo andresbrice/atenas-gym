@@ -71,7 +71,7 @@ class ClaseController extends Controller
 
     $clase->dias()->sync($request->input('dias', []));
 
-    return redirect('clase')->with('status', 'Clase creada con exito');
+    return redirect('clase')->with('message', 'Clase creada con exito');
   }
 
   /**
@@ -83,7 +83,8 @@ class ClaseController extends Controller
 
   public function show($id)
   {
-    //
+    $clase = Clase::findOrFail($id);
+    return view('clase.show', compact('clase'));
   }
 
   /**
@@ -125,10 +126,10 @@ class ClaseController extends Controller
     $clase->dias()->sync($request->input('dias', []));
 
     if (session('clase_url')) {
-      return redirect(session('clase_url'))->with('status', 'Clase modificada con exito');
+      return redirect(session('clase_url'))->with('message', 'Clase modificada con exito');
     }
 
-    return redirect('clase')->with('status', 'Clase modificada con exito');
+    return redirect('clase')->with('message', 'Clase modificada con exito');
   }
 
   /**
@@ -142,21 +143,23 @@ class ClaseController extends Controller
 
     Clase::destroy($id);
 
-    return redirect('clase')->with('status', 'Clase eliminada con exito');
+    return redirect('clase')->with('message', 'Clase eliminada con exito');
   }
 
 
-  public function indexAlumnos()
+  public function indexAlumnos($id)
   {
     $alumnos = User::where('role_id', 1)->simplePaginate(6);
+    $clase = Clase::findOrFail($id);
 
-    return view('clase.alumnos', compact('alumnos'));
+    return view('clase.alumnos', compact('alumnos', 'clase'));
   }
 
   public function addAlumnos(Request $request)
   {
     // $clase = $request->all();
     // $clase->dias()->sync(); 
+    dd($request->id);
   }
   public function deleteAlumnos()
   {

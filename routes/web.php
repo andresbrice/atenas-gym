@@ -23,7 +23,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     return view('dashboard');
   })->name('dashboard');
 
-  Route::resource('perfil', PerfilController::class);
+  Route::view('perfil', 'perfil.edit')->name('perfil');
+  Route::put('perfil', [PerfilController::class, 'update'])->name('perfil.update');
+
+
 
   Route::group(['middleware' => 'admin'], function () {
     Route::resource('usuario', UserController::class);
@@ -33,6 +36,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('tarifa', TarifaController::class);
     Route::resource('ejercicio', EjercicioController::class);
     Route::get('clase/{clase}/alumnos', [ClaseController::class, 'indexAlumnos'])->name('clase.alumnos');
+    Route::post('clase/addAlumnos', [ClaseController::class, 'addAlumnos'])->name('clase.addAlumnos');
     Route::get('buscarclase', [AsistenciaController::class, 'buscarClase'])->name('asistencia.buscarclase');
     Route::resource('rutina', RutinaController::class);
     Route::resource('cuota', CuotaController::class);
