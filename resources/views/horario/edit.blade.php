@@ -13,7 +13,7 @@
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
             <!-- Validation Errors -->
-            <x-auth-validation-errors class="mb-3" :errors="$errors" />
+            {{-- <x-auth-validation-errors class="mb-3" :errors="$errors" /> --}}
 
             <form method="POST" action="{{ route('horario.update', $horario->id) }}">
               @csrf
