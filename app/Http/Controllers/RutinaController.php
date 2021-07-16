@@ -51,11 +51,11 @@ class RutinaController extends Controller
         return view('rutina.create', compact('alumnos', 'profesores', 'ejercicios', 'clases'));
     }
 
-    public function findClase()
-    {
-        $data= DB::SELECT ('clases.id, clases.tipo_clase FROM clases LEFT JOIN alumno_clase ON alumno_clase.clase_id = clases.id WHERE alumno_clase.alumno_id = ?',[$alumno_id]);
-        return response()->json($data);
-     }
+    // public function findClase()
+    // {
+    //     $data= DB::SELECT ('clases.id, clases.tipo_clase FROM clases LEFT JOIN alumno_clase ON alumno_clase.clase_id = clases.id WHERE alumno_clase.alumno_id = ?',[$alumno_id]);
+    //     return response()->json($data);
+    //  }
 
 
     /**
@@ -76,21 +76,14 @@ class RutinaController extends Controller
           'descanso' => 'required|int',
         ]);
     
-        // $rutina = Rutina::create([
-        //   'alumno' => $request->alumno,
-        //   'profesor' => $request->profesor,
-        //   'ejercicio' => $request->ejercicio,
-        //   'series' => $request->series,
-        //   'repeticiones' => $request->repeticiones,
-        //   'descanso' => $request->descanso,
-        // ]);
-        
-        $rutina = new Rutina();
-        $rutina->series = ucfirst($request->series);
-        $rutina->repeticiones = ucfirst($request->repeticiones);
-        $rutina->descanso = ucfirst($request->descanso);
-        // $rutina->alumno_clase_id = ;
-        $rutina->save();
+        $rutina = Rutina::create([
+          'alumno' => $request->alumno,
+          'profesor' => $request->profesor,
+          'ejercicio' => $request->ejercicio,
+          'series' => $request->series,
+          'repeticiones' => $request->repeticiones,
+          'descanso' => $request->descanso,
+        ]);
     
         return redirect('rutina.index')->with('status', 'Rutina creada con exito');
       }
