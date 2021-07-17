@@ -67,6 +67,16 @@
   </x-slot>
 </x-app-layout>
 <script>
+  // $(document).ready(function() {
+  //   $('.select2_el').select2({
+  //     placeholder: "Seleccionar",
+  //     allowClear: true
+  //   });
+  // });
+
+
+
+
   $(document).ready(function() {
 
     $('#alumno_id').change(function(){
@@ -155,7 +165,21 @@ for(var i=0;i<response.length;i++){ op+='<option value="' +response[i].id+'">'+r
       }
       }
     });
+
+    $(wrapper).on("click", "#btnRemoveRow", function(e) { //user click on remove text
+      e.preventDefault();
+      $(this).closest("tr").remove();
+
+      // $(".camerasCounter").each(function(elm) {
+      //   var count = elm + 1
+      //   $(this).attr("name", "Camera " + count);
+      //   $(this).attr("value", "Camera " + count);
+      //   x = elm + 1;
+      // });
+    })
+
   });
+<<<<<<< HEAD
   
   const tbodyEl = document.querySelector("tbody");
   const tableEl = document.querySelector("table");
@@ -212,6 +236,17 @@ for(var i=0;i<response.length;i++){ op+='<option value="' +response[i].id+'">'+r
   btnAgregar.addEventListener("click", onAddRow);
   tableEl.addEventListener("click", onDeleteRow);
   
+=======
+
+
+
+  
+
+
+
+
+
+>>>>>>> dc2851cdf6d3af034743066402ced133d2ee8362
 
   window.addEventListener('DOMContentLoaded', () => {
     const btnD1 = document.querySelector('#btnDia1')

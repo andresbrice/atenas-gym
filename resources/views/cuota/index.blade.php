@@ -32,10 +32,10 @@
                   <option hidden value="">
                     Filtrar por...
                   </option>
-
-                  <option {{ old('filtro') == 'userName' ? 'selected' : '' }}value="userName">Alumno
+                  {{-- {{ old('filtro') == 'userName' ? 'selected' : '' }}value="userName" --}}
+                  <option >Alumno
                   </option>
-                  <option {{ old('filtro') == 'userName' ? 'selected' : '' }}value="userName">Clase
+                  <option >Clase
                   </option>
 
                   @endsection
