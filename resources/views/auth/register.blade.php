@@ -53,10 +53,10 @@
                       <option hidden value="">
                         - Seleccionar Género -
                       </option>
-                      <option value="Masculino">
+                      <option value="Masculino" {{ old('gender') == 'Masculino' ? 'selected' : '' }}>
                         Masculino
                       </option>
-                      <option value="Femenino">
+                      <option value="Femenino" {{ old('gender') == 'Femenino' ? 'selected' : '' }}>
                         Femenino
                       </option>
                     </select>
@@ -87,7 +87,7 @@
                         - Seleccionar Rol -
                       </option>
                       @foreach ($roles as $role)
-                      <option value="{{ $role->id }}">
+                      <option value="{{ $role->id }}" {{old('role_id') == $role->id ? 'selected' : ''}}>
                         {{ $role->nombre_rol }}
                       </option>
                       @endforeach
@@ -101,7 +101,7 @@
                     <label for="eRespiratorias" class="inline-flex items-center">
                       <input id="eRespiratorias" type="checkbox"
                         class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                        name="eRespiratorias" value="eRespiratorias">
+                        name="eRespiratorias" value="{{ old('eRespiratorias') }}">
                       <span class="ml-2 text-sm text-gray-600">{{ __('E. Respiratorias') }}</span>
                     </label>
 
