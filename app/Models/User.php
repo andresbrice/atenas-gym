@@ -37,6 +37,7 @@ class User extends Authenticatable
     'alergia',
     'medicacion',
     'role_id',
+    'password'
   ];
 
   /**

@@ -2,47 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class PerfilController extends Controller
 {
-
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-
-  public function edit($id)
-  {
-    $usuario = User::findOrFail($id);
-
-    return view('perfil.edit', compact('usuario'));
-  }
-
-
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function update(Request $request, $id)
+  public function update(Request $request)
   {
     $request->validate([
-      'email' => 'required|string|email|max:255|unique:users',
+      'email' => 'required|string|email|max:255|unique:users,email,' . auth()->id(),
       'phone' => 'required|int',
       'emergency_number' => 'required|int',
-      'password' => 'min:6|confirmed',
     ]);
 
-    $usuario = request()->except('_token', '_method');
-    dd($usuario);
-    User::where('id', '=', $id)->update($usuario);
+    auth()->user()->update($request->only('email', 'phone', 'emergency_number'));
 
-    return redirect('perfil.edit')->with('status', 'Usuario modificado con exito');
+    if ($request->input('password')) {
+      $request->validate(['password' => 'min:6|confirmed']);
+      auth()->user()->update(['password' => bcrypt($request->input('password'))]);
+    }
+
+    return redirect('perfil')->with('message', 'Perfil editado con éxito');
   }
 }

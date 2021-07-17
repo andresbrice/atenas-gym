@@ -13,7 +13,7 @@
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-4 bg-white border-b border-gray-200">
             <!-- Validation Errors -->
-            {{-- <x-auth-validation-errors class=" mt-5" :errors="$errors" /> --}}
+            <x-validation-errors class=" mt-5" :errors="$errors" />
 
             <form method="POST" action="{{route('clase.update',$clase->id)}}">
               @csrf
@@ -32,11 +32,11 @@
 
                     <select id="horarios" class="block w-full px-2 py-2 mt-2 border border-gray-300 bg-white rounded-md 
                       shadow-sm focus:outline-none focus:ring-red-300 focus:border-red-300" name="horario_id" required>
-                      <option hidden value="">
-                        {{ $clase->horario->hora->format('H:i A') }}
+                      <option hidden value="{{$clase->horario->id}}">
+                        {{ old('horario_id', $clase->horario->hora->format('H:i A')) }}
                       </option>
                       @foreach ($horarios as $horario)
-                      <option value="{{$horario->id}}">
+                      <option value="{{$horario->id}}" {{$clase->horario->id == $horario->id ? 'selected' : ''}}>
                         {{$horario->hora->format('H:i A')}}
                       </option>
                       @endforeach
@@ -47,35 +47,47 @@
                   <div class="inline grid-cols-6 space-x-2 gap-6 ">
                     <x-label for="dia" :value="__('Días de la semana')" class="text-xl px-2 mb-2 font-semibold" />
 
-                    @foreach ($dias as $dia)
+                    {{-- @foreach ($dias as $dia)
                     <div class="inline-flex items-center">
-                      <input id="dia" type="checkbox" name="dias[]" value="{{$dia->id}}" class="rounded border-gray-300 text-red-900 
-                        shadow-sm focus:border-red-300 focus:ring
-                        focus:ring-red-200 focus:ring-opacity-50">
+                      <input type="hidden" name="dias[]" value="0">
+                      <input id="dias" type="checkbox" name="dias[]" value="1"
+                        {{$clase->dias || old('dias',0) === 1 ? 'checked' : '' }}class="rounded border-gray-300
+                    text-red-900
+                    shadow-sm focus:border-red-300 focus:ring
+                    focus:ring-red-200 focus:ring-opacity-50">
 
-                      <span class="ml-2 text-sm text-gray-600">{{ $dia->dia }}</span>
-                    </div>
+                    <span class="ml-2 text-sm text-gray-600">{{ $dia->dia }}</span>
+                  </div>
 
-                    @endforeach
+                  @endforeach --}}
+                  @foreach ($dias as $dia)
+                  <input type="hidden" name="dias[]" value="0">
+                  <input id="dias[]" type="checkbox"
+                    class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
+                    name="dias[]" value="1" @if (count($clase->dias->where('id',$dia->id)))
+                  checked
+                  @endif>
+                  <span class="ml-2 text-sm text-gray-600">{{$dia->dia}}</span>
+                  @endforeach
 
-                  </div>{{--/div dias de la semana--}}
-                </div>
-                <div class="px-4 py-2  flex items-center justify-between sm:px-6">
-                  <a href="{{ route('clase.index') }}">
-                    <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
-                      {{ __('Back') }}
-                    </x-button>
-                  </a>
-
-                  <x-button class="ml-3 bg-green-900 hover:bg-green-700">
-                    {{ __('Edit Class') }}
+                </div>{{--/div dias de la semana--}}
+              </div>
+              <div class="px-4 py-2  flex items-center justify-between sm:px-6">
+                <a href="{{ route('clase.index') }}">
+                  <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
+                    {{ __('Back') }}
                   </x-button>
-                </div>
+                </a>
+
+                <x-button class="ml-3 bg-green-900 hover:bg-green-700">
+                  {{ __('Edit Class') }}
+                </x-button>
               </div>
           </div>
-          </form>
         </div>
+        </form>
       </div>
+    </div>
     </div>
   </x-slot>
 </x-app-layout>
