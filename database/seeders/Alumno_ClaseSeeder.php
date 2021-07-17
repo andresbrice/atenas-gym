@@ -14,6 +14,6 @@ class Alumno_ClaseSeeder extends Seeder
    */
   public function run()
   {
-    Alumno_Clase::factory()->times(4)->create();
+    //
   }
 }
