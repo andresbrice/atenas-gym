@@ -1,17 +1,18 @@
-<?php
+ <?php
 
-namespace App\Http\Controllers;
+  namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Rutina;
-use App\Models\Ejercicio;
-use App\Models\User;
-use App\Models\Clase;
-use App\Models\Alumno;
-use Illuminate\Support\Facades\DB;
+  use Illuminate\Http\Request;
+  use App\Models\Rutina;
+  use App\Models\Ejercicio;
+  use App\Models\User;
+  use App\Models\Clase;
+  use App\Models\Alumno;
+  use App\Models\Profesor;
+  use Illuminate\Support\Facades\DB;
 
-class RutinaController extends Controller
-{
+  class RutinaController extends Controller
+  {
     /**
      * Display a listing of the resource.
      *
@@ -19,10 +20,10 @@ class RutinaController extends Controller
      */
     public function index()
     {
-        $rutinas = Rutina::orderBy('id', 'DESC')
+      $rutinas = Rutina::orderBy('id', 'DESC')
         ->simplePaginate(4);
-        
-        return view('rutina.index', compact('rutinas'));
+
+      return view('rutina.index', compact('rutinas'));
     }
 
     /**
@@ -32,30 +33,47 @@ class RutinaController extends Controller
      */
     public function create(Request $request)
     {
-        $alumnos = User::select('id', 'name', 'lastName')
-            ->where('role_id', '=', 1)
-            ->orderBy('name', 'asc')
-            ->get();
+      $alumnos = User::select('id', 'name', 'lastName')
+        ->where('role_id', '=', 1)
+        ->orderBy('name', 'asc')
+        ->get();
 
-        $profesores = User::select('id', 'name', 'lastName')
-            ->where('role_id', '=', 2)
-            ->orderBy('name', 'asc')
-            ->get();
+      // $profesors = Profesor::select('id')
+      //   ->join('')
 
-        $ejercicios = Ejercicio::select('id', 'nombre_ejercicio')
-            ->orderBy('nombre_ejercicio', 'asc')
-            ->get();
 
-        $clases = Clase::all();
-            
-        return view('rutina.create', compact('alumnos', 'profesores', 'ejercicios', 'clases'));
+      // $profesors = Profesor::whereHas('clases', function ($query) {
+      //   $query->whereId(request()->input('clase_id', 0));
+      // })->pluck('id');
+
+      // return response()->json($profesors);
+
+
+
+
+      $ejercicios = Ejercicio::select('id', 'nombre_ejercicio')
+        ->orderBy('nombre_ejercicio', 'asc')
+        ->get();
+      return view('rutina.create', compact('alumnos', 'ejercicios'));
     }
 
     public function findClase()
     {
-        $data= DB::SELECT ('clases.id, clases.tipo_clase FROM clases LEFT JOIN alumno_clase ON alumno_clase.clase_id = clases.id WHERE alumno_clase.alumno_id = ?',[$alumno_id]);
-        return response()->json($data);
-     }
+      $clases = Alumno::whereHas('alumno_clase', function ($query) {
+        $query->whereId(request()->input('alumno_id', 0));
+      });
+      return response()->json($clases);
+      // if ($request->ajax()) {
+
+      //   $alumno_id = $request;
+
+      //   $data = DB::SELECT('clases.id, clases.tipo_clase FROM clases LEFT JOIN alumno_clase ON alumno_clase.clase_id = clases.id WHERE alumno_clase.alumno_id = ?', [$alumno_id]);
+
+      //   return response()->json($data);
+      // } else {
+      //   return response()->json('Alumno no encontrado', 501);
+      // }
+    }
 
 
     /**
@@ -66,34 +84,39 @@ class RutinaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-          'alumno' => 'required',
-          'profesor' => 'required',
-          'ejercicio' => 'required',
-          'clase' => 'required',
-          'series' => 'required|int',
-          'repeticiones' => 'required|int',
-          'descanso' => 'required|int',
-        ]);
-    
-        // $rutina = Rutina::create([
-        //   'alumno' => $request->alumno,
-        //   'profesor' => $request->profesor,
-        //   'ejercicio' => $request->ejercicio,
-        //   'series' => $request->series,
-        //   'repeticiones' => $request->repeticiones,
-        //   'descanso' => $request->descanso,
-        // ]);
-        
-        $rutina = new Rutina();
-        $rutina->series = ucfirst($request->series);
-        $rutina->repeticiones = ucfirst($request->repeticiones);
-        $rutina->descanso = ucfirst($request->descanso);
-        // $rutina->alumno_clase_id = ;
-        $rutina->save();
-    
-        return redirect('rutina.index')->with('status', 'Rutina creada con exito');
-      }
+      $request->validate([
+        'alumno' => 'required',
+        'profesor' => 'required',
+        'ejercicio' => 'required',
+        'clase' => 'required',                                          //validar en frontend 
+        'series' => 'required|int',
+        'repeticiones' => 'required|int',
+        'descanso' => 'required|int',
+      ]);
+
+      // $rutina = Rutina::create([
+      //   'alumno' => $request->alumno,
+      //   'profesor' => $request->profesor,
+      //   'ejercicio' => $request->ejercicio,
+      //   'series' => $request->series,
+      //   'repeticiones' => $request->repeticiones,
+      //   'descanso' => $request->descanso,
+      // ]);
+
+
+      // $rutina = new Rutina();
+      // for ($i=0; $i < $request.lenght ; $i++ ) { 
+      //   $rutina->ejercicio() = $request->ejercicio
+      // }
+
+      // $rutina->series = ucfirst($request->series);
+      // $rutina->repeticiones = ucfirst($request->repeticiones);
+      // $rutina->descanso = ucfirst($request->descanso);
+      // // $rutina->alumno_clase_id = ;
+      // $rutina->save();
+
+      return redirect('rutina.index')->with('status', 'Rutina creada con exito');
+    }
 
     /**
      * Display the specified resource.
@@ -103,7 +126,7 @@ class RutinaController extends Controller
      */
     public function show($id)
     {
-        //
+      //
     }
 
     /**
@@ -114,7 +137,7 @@ class RutinaController extends Controller
      */
     public function edit($id)
     {
-        //
+      //
     }
 
     /**
@@ -126,7 +149,7 @@ class RutinaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      //
     }
 
     /**
@@ -137,6 +160,6 @@ class RutinaController extends Controller
      */
     public function destroy($id)
     {
-        //
+      //
     }
-}
+  }
