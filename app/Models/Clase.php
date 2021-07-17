@@ -50,15 +50,23 @@ class Clase extends Model
     if (($filtro) && trim($search) && ($filtro != "")) {
       switch ($filtro) {
         case 1:
-          $filtro = 'userName';
+          $filtro = 'tipo_clase';
           return $query->where($filtro, "LIKE", "%$search%");
           break;
-        case 1:
-          $filtro = 'userName';
+        case 2:
+          $filtro = 'horario';
           return $query->where($filtro, "LIKE", "%$search%");
           break;
-        case 1:
-          $filtro = 'userName';
+        case 3:
+        //   $filtro = 'dias';
+          return $query->where('dias.dia', "LIKE", "%$search%")->join('clases','dias.clase_id','=','dias.id');
+          break;
+        case 4:
+          $filtro = 'alumnos';
+          return $query->where($filtro, "LIKE", "%$search%");
+          break;
+        case 5:
+          $filtro = 'profesor';
           return $query->where($filtro, "LIKE", "%$search%");
           break;
       }

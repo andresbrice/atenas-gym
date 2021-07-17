@@ -30,15 +30,22 @@
                   <option hidden value="">
                     Filtrar por...
                   </option>
-                  <option {{ old('filtro') == 'tipo_clase' ? 'selected' : '' }}value="tipo_clase">
+                  {{-- {{ old('filtro') == 'tipo_clase' ? 'selected' : '' }} value="1" --}}
+                  <option value="1" >
                     Clase
                   </option>
-                  <option {{ old('filtro') == 'clase' ? 'selected' : '' }}value="clase">
-                    clase
+                  <option  value="2" >
+                    Horario
                   </option>
-                  <option {{ old('filtro') == 'clase' ? 'selected' : '' }}value="clase">
-                    Días
+                  <option value="3" >
+                    Días de Entrenamiento
                   </option>
+                  <option >
+                    Alumnos
+                  </option value="4">
+                  <option >
+                    Profesor
+                  </option value="5">
 
                   @endsection
                 </x-search>
@@ -153,6 +160,8 @@
     </div>
   </x-slot>
 </x-app-layout>
+
+
 {{-- <x-dropdown align="right" width="48">
   <x-slot name="trigger">
     <x-button

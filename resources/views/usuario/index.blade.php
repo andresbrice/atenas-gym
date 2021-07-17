@@ -19,13 +19,6 @@
                     {{ __('Register User') }}
                   </x-button>
                 </a>
-
-                {{-- @php
-                if (isset($_GET['filtro'])) {
-                $seleccionado= $_GET['filtro'];
-                }
-                @endphp --}}
-
                 {{-- BUSCADOR --}}
                 <x-search>
                   @section('action')
