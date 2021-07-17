@@ -111,24 +111,45 @@ class ClaseController extends Controller
    */
   public function update(Request $request, Clase $clase)
   {
+    // // dd($request->all());
+    // $request->validate([
+    //   'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
+    //   'horario_id' => 'required',
+    //   'dias[]' => 'min: 1',
+    // ]);
+
+    // $clase->update([
+    //   'tipo_clase' => $request->tipo_clase,
+    //   'horario_id' => $request->horario_id,
+    // ]);
+
+    // for ($i = 0; $i < count($request->dias); $i++) {
+    //   $clase->tarifa_id += 1;
+    // }
+    // $clase->dias()->sync($request->input('dias', []));
+
+    // }
     $request->validate([
       'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'horario_id' => 'required',
-      'dias[]' => 'min: 1',
-    ]);
+      'dias' => 'required|array|min: 1'
+    ], ['dias.required' => 'Debe seleccionar al menos 1 día de la semana']);
 
-    $clase->update([
-      'tipo_clase' => $request->tipo_clase,
-      'horario_id' => $request->horario_id,
-      'tarifa_id' => sizeof($request->dias)
-    ]);
+    $clase = new Clase();
+    $clase->tipo_clase = $request->tipo_clase;
+    $clase->horario_id = $request->horario_id;
+    dd($request->dias);
+    for ($i = 0; $i < count($request->dias); $i++) {
+      $clase->tarifa_id += 1;
+    }
+
+    $clase->save();
 
     $clase->dias()->sync($request->input('dias', []));
 
     if (session('clase_url')) {
       return redirect(session('clase_url'))->with('message', 'Clase modificada con exito');
     }
-
     return redirect('clase')->with('message', 'Clase modificada con exito');
   }
 
