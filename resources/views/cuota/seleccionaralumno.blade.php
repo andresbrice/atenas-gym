@@ -13,7 +13,7 @@
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-2 2xl:p-4 bg-white border-gray-200">
             <!-- Validation Errors -->
-            {{-- <x-validation-errors class="mb-3" :errors="$errors" /> --}}
+            <x-validation-errors class=" mt-5" :errors="$errors" />
 
             <form action="{{ route('cuota.create') }}" method="GET">
               @csrf
