@@ -53,10 +53,10 @@
                       <option hidden value="">
                         - Seleccionar Género -
                       </option>
-                      <option value="Masculino">
+                      <option value="Masculino" {{ old('gender') == 'Masculino' ? 'selected' : '' }}>
                         Masculino
                       </option>
-                      <option value="Femenino">
+                      <option value="Femenino" {{ old('gender') == 'Femenino' ? 'selected' : '' }}>
                         Femenino
                       </option>
                     </select>
@@ -87,7 +87,7 @@
                         - Seleccionar Rol -
                       </option>
                       @foreach ($roles as $role)
-                      <option value="{{ $role->id }}">
+                      <option value="{{ $role->id }}" {{old('role_id') == $role->id ? 'selected' : ''}}>
                         {{ $role->nombre_rol }}
                       </option>
                       @endforeach
