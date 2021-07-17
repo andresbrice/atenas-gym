@@ -97,9 +97,10 @@ class ClaseController extends Controller
   {
     $clase = Clase::findOrFail($id);
     $dias = Dia::all();
+    $clase_dias = $clase->dias->toArray();
     $horarios = Horario::all();
 
-    return view('clase.edit', compact('clase', 'horarios', 'dias'));
+    return view('clase.edit', compact('clase', 'horarios', 'dias', 'clase_dias'));
   }
 
   /**
@@ -111,7 +112,7 @@ class ClaseController extends Controller
    */
   public function update(Request $request, Clase $clase)
   {
-    // // dd($request->all());
+    dd($request->all());
     // $request->validate([
     //   'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
     //   'horario_id' => 'required',

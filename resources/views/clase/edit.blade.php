@@ -60,13 +60,21 @@
                   </div>
 
                   @endforeach --}}
-                  @foreach ($dias as $dia)
+                  {{-- @foreach ($dias as $dia)
                   <input type="hidden" name="dias[]" value="0">
                   <input id="dias[]" type="checkbox"
                     class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
                     name="dias[]" value="1" @if (count($clase->dias->where('id',$dia->id)))
                   checked
                   @endif>
+                  <span class="ml-2 text-sm text-gray-600">{{$dia->dia}}</span>
+                  @endforeach --}}
+                  @foreach ($dias as $dia)
+                  <input type="checkbox"
+                    class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
+                    name="{{ $dia->dia }}" value="{{ $dia->id }}" @if( in_array($dia->id,
+                  $clase_dias)
+                  ) checked="1" @endif />
                   <span class="ml-2 text-sm text-gray-600">{{$dia->dia}}</span>
                   @endforeach
 
