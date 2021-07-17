@@ -32,7 +32,7 @@
                   </option>
                   {{-- @php if (isset($seleccionado) && $seleccionado=='1' ) { echo 'selected' ; } @endphp --}}
                   <option value="1">
-                    Usuario
+                    Tipo de clase
                   </option>
 
                   <option value="2">
