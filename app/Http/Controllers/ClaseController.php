@@ -71,7 +71,7 @@ class ClaseController extends Controller
 
     $clase->dias()->sync($request->input('dias', []));
 
-    return redirect('clase')->with('status', 'Clase creada con exito');
+    return redirect('clase')->with('message', 'Clase creada con exito');
   }
 
   /**
@@ -83,7 +83,8 @@ class ClaseController extends Controller
 
   public function show($id)
   {
-    //
+    $clase = Clase::findOrFail($id);
+    return view('clase.show', compact('clase'));
   }
 
   /**
@@ -96,9 +97,10 @@ class ClaseController extends Controller
   {
     $clase = Clase::findOrFail($id);
     $dias = Dia::all();
+    $clase_dias = $clase->dias->toArray();
     $horarios = Horario::all();
 
-    return view('clase.edit', compact('clase', 'horarios', 'dias'));
+    return view('clase.edit', compact('clase', 'horarios', 'dias', 'clase_dias'));
   }
 
   /**
@@ -110,25 +112,46 @@ class ClaseController extends Controller
    */
   public function update(Request $request, Clase $clase)
   {
+    dd($request->all());
+    // $request->validate([
+    //   'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
+    //   'horario_id' => 'required',
+    //   'dias[]' => 'min: 1',
+    // ]);
+
+    // $clase->update([
+    //   'tipo_clase' => $request->tipo_clase,
+    //   'horario_id' => $request->horario_id,
+    // ]);
+
+    // for ($i = 0; $i < count($request->dias); $i++) {
+    //   $clase->tarifa_id += 1;
+    // }
+    // $clase->dias()->sync($request->input('dias', []));
+
+    // }
     $request->validate([
       'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'horario_id' => 'required',
-      'dias[]' => 'min: 1',
-    ]);
+      'dias' => 'required|array|min: 1'
+    ], ['dias.required' => 'Debe seleccionar al menos 1 día de la semana']);
 
-    $clase->update([
-      'tipo_clase' => $request->tipo_clase,
-      'horario_id' => $request->horario_id,
-      'tarifa_id' => sizeof($request->dias)
-    ]);
+    $clase = new Clase();
+    $clase->tipo_clase = $request->tipo_clase;
+    $clase->horario_id = $request->horario_id;
+    dd($request->dias);
+    for ($i = 0; $i < count($request->dias); $i++) {
+      $clase->tarifa_id += 1;
+    }
+
+    $clase->save();
 
     $clase->dias()->sync($request->input('dias', []));
 
     if (session('clase_url')) {
-      return redirect(session('clase_url'))->with('status', 'Clase modificada con exito');
+      return redirect(session('clase_url'))->with('message', 'Clase modificada con exito');
     }
-
-    return redirect('clase')->with('status', 'Clase modificada con exito');
+    return redirect('clase')->with('message', 'Clase modificada con exito');
   }
 
   /**
@@ -142,21 +165,23 @@ class ClaseController extends Controller
 
     Clase::destroy($id);
 
-    return redirect('clase')->with('status', 'Clase eliminada con exito');
+    return redirect('clase')->with('message', 'Clase eliminada con exito');
   }
 
 
-  public function indexAlumnos()
+  public function indexAlumnos($id)
   {
     $alumnos = User::where('role_id', 1)->simplePaginate(6);
+    $clase = Clase::findOrFail($id);
 
-    return view('clase.alumnos', compact('alumnos'));
+    return view('clase.alumnos', compact('alumnos', 'clase'));
   }
 
   public function addAlumnos(Request $request)
   {
     // $clase = $request->all();
     // $clase->dias()->sync(); 
+    dd($request->id);
   }
   public function deleteAlumnos()
   {

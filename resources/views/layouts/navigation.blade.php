@@ -51,7 +51,7 @@
           </x-slot>
 
           <x-slot name="content">
-            <x-dropdown-link href="{{route('perfil.edit',auth()->id())}}">
+            <x-dropdown-link href="{{route('perfil')}}">
               {{ __('Perfil') }}
             </x-dropdown-link>
             <!-- Authentication -->
@@ -108,7 +108,7 @@
       </div>
 
       <div class="mt-3 space-y-1">
-        <x-responsive-nav-link href="{{ route('perfil.edit', auth()->user()->id) }}">
+        <x-responsive-nav-link href="{{ route('perfil') }}">
           {{ __('Profile') }}
         </x-responsive-nav-link>
         <!-- Authentication -->

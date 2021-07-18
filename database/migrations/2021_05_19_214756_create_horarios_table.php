@@ -6,28 +6,28 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateHorariosTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('horarios', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->id();
-            $table->time('hora')->unique();
-            $table->timestamps();
-        });
-    }
+  /**
+   * Run the migrations.
+   *
+   * @return void
+   */
+  public function up()
+  {
+    Schema::create('horarios', function (Blueprint $table) {
+      $table->engine = 'InnoDB';
+      $table->id();
+      $table->time('hora')->unique();
+      $table->timestamps();
+    });
+  }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('horarios');
-    }
+  /**
+   * Reverse the migrations.
+   *
+   * @return void
+   */
+  public function down()
+  {
+    Schema::dropIfExists('horarios');
+  }
 }
