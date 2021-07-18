@@ -36,7 +36,7 @@
                 </a>
 
                 <x-button class="ml-3 bg-green-900 hover:bg-green-700">
-                  {{ __('Edit User') }}
+                  {{ __('Edit Time') }}
                 </x-button>
               </div>
             </form>
