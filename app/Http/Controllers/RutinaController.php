@@ -38,6 +38,11 @@ class RutinaController extends Controller
       ->orderBy('name', 'asc')
       ->get();
 
+    $ejercicios = Ejercicio::select('id', 'nombre_ejercicio')
+      ->orderBy('nombre_ejercicio', 'asc')
+      ->get();
+
+    return view('rutina.create', compact('alumnos', 'ejercicios'));
     // $profesors = Profesor::select('id')
     //   ->join('')
 
@@ -47,33 +52,27 @@ class RutinaController extends Controller
     // })->pluck('id');
 
     // return response()->json($profesors);
-
-
-
-
-    $ejercicios = Ejercicio::select('id', 'nombre_ejercicio')
-      ->orderBy('nombre_ejercicio', 'asc')
-      ->get();
-    return view('rutina.create', compact('alumnos', 'ejercicios'));
   }
 
   public function findClase()
   {
-    $clases = Alumno::whereHas('alumno_clase', function ($query) {
-      $query->whereId(request()->input('alumno_id', 0));
-    });
+
+    $clases = DB::select('SELECT clases.id, clases.tipo_clase FROM `alumno_clase`,`alumnos`,`clases` WHERE alumnos.user_id= ? and alumno_clase.alumno_id=alumnos.id and clases.id=alumno_clase.clase_id', [request()->input('alumno_id')]);
+
+
     return response()->json($clases);
-    // if ($request->ajax()) {
-
-    //   $alumno_id = $request;
-
-    //   $data = DB::SELECT('clases.id, clases.tipo_clase FROM clases LEFT JOIN alumno_clase ON alumno_clase.clase_id = clases.id WHERE alumno_clase.alumno_id = ?', [$alumno_id]);
-
-    //   return response()->json($data);
-    // } else {
-    //   return response()->json('Alumno no encontrado', 501);
-    // }
   }
+
+  // if ($request->ajax()) {
+
+  //   $alumno_id = $request;
+
+  //   $data = DB::SELECT('clases.id, clases.tipo_clase FROM clases LEFT JOIN alumno_clase ON alumno_clase.clase_id = clases.id WHERE alumno_clase.alumno_id = ?', [$alumno_id]);
+
+  //   return response()->json($data);
+  // } else {
+  //   return response()->json('Alumno no encontrado', 501);
+  // }
   // public function findClase()
   // {
   //     $data= DB::SELECT ('clases.id, clases.tipo_clase FROM clases LEFT JOIN alumno_clase ON alumno_clase.clase_id = clases.id WHERE alumno_clase.alumno_id = ?',[$alumno_id]);
