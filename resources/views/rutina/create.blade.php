@@ -101,10 +101,10 @@
         },
         success: function(data) {
 
-          //console.log(data);
-          $clase.html('<option value="" selected>Choose Class</option>');
+          console.log(data);
+          $clase.html('<option value="" selected>Seleccionar</option>');
           $.each(data, function(id, value) {
-            $clase.append('<option value="' + id + '">' + value + '</option>');
+            $clase.append('<option value="' + id.id + '">' + value.tipo_clase + '</option>');
           });
         }
       });

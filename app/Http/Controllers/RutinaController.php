@@ -57,10 +57,17 @@ class RutinaController extends Controller
   public function findClase()
   {
 
-    $clases = DB::select('SELECT clases.id, clases.tipo_clase FROM `alumno_clase`,`alumnos`,`clases` WHERE alumnos.user_id= ? and alumno_clase.alumno_id=alumnos.id and clases.id=alumno_clase.clase_id', [request()->input('alumno_id')]);
+    $clases = DB::select('SELECT clases.id, clases.tipo_clase FROM `alumno_clase`,`alumnos`,`clases` WHERE alumnos.user_id= ? 
+    AND alumno_clase.alumno_id=alumnos.id AND clases.id=alumno_clase.clase_id', [request()->input('alumno_id')]);
+
+    $objClases = json_encode($clases);
 
 
-    return response()->json($clases);
+
+    // $objClase->pluck('id', 'tipo_clase');
+
+
+    return response()->json($objClases);
   }
 
   // if ($request->ajax()) {
