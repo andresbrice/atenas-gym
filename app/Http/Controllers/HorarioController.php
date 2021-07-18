@@ -42,39 +42,24 @@ class HorarioController extends Controller
    */
   public function store(Request $request)
   {
+    
     $request->validate([
-      'hora' => 'required|unique:horarios|after:07:59|before:22:00'
-    ], [
-      'hora.after' => 'El horario debe ser a partir de las 08.00 AM',
-      'hora.before' => 'El horario debe ser antes de las 22.00 PM'
-    ]);
-
-    $hora = new \DateTime($request->hora);
-    $formathora = $hora->format('H:i');
-    $horario = new Horario();
-    $horario->hora = $formathora;
-    $horario->save();
-
-    return redirect('horario')->with('status', 'Horario creado con exito');
+        'hora' => 'required|unique:horarios|after:07:59|before:22:00'
+      ], [
+        'hora.after' => 'El horario debe ser a partir de las 08.00 AM',
+        'hora.before' => 'El horario debe ser antes de las 22.00 PM'
+      ]);
+  
+      $hora = new \DateTime($request->hora);
+      $formathora = $hora->format('H:i');
+      $horario = new Horario();
+      $horario->hora = $formathora;
+      $horario->save();
+  
+      return redirect('horario')->with('status', 'Horario creado con exito');
   }
 
-  /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function show($id)
-  {
-    //
-  }
-
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
+  
   public function edit($id)
   {
     $horario = Horario::findOrFail($id);
@@ -91,8 +76,11 @@ class HorarioController extends Controller
   public function update(Request $request, $id)
   {
     $request->validate([
-      'hora' => 'required|unique:horarios|after:07:59|before:22:00'
-    ]);
+        'hora' => 'required|unique:horarios|after:07:59|before:22:00'
+      ], [
+        'hora.after' => 'El horario debe ser a partir de las 08.00 AM',
+        'hora.before' => 'El horario debe ser antes de las 22.00 PM'
+      ]);
 
     $horario = request()->except('_token', '_method');
 
@@ -116,7 +104,7 @@ class HorarioController extends Controller
     } else {
       Horario::destroy($id);
 
-      return redirect('horario')->with('status', 'Horario eliminado con exito');
+      return redirect('horario')->with('message', 'Horario eliminado con exito');
     }
   }
 }

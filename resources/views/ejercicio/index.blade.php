@@ -42,7 +42,7 @@
                                             Nombre
                                         </option>
 
-                                        <option >
+                                        <option value="2" >
                                             Descripción
                                         </option>
 

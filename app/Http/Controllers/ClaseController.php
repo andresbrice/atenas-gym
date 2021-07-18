@@ -163,9 +163,16 @@ class ClaseController extends Controller
   public function destroy($id)
   {
 
-    Clase::destroy($id);
+    $clase = Clase::findOrFail($id);
 
-    return redirect('clase')->with('message', 'Clase eliminada con exito');
+    if ($clase->alumno_clase()->count()) {
+        return redirect('clase')->with('error', 'No es posible eliminar este clase ya que esta relacionado a una clase');
+    } else {
+        Clase::destroy($id);
+
+        return redirect('clase')->with('message', 'Clase eliminada con exito');
+    }
+
   }
 
 

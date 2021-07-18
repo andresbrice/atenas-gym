@@ -47,36 +47,19 @@
                   <div class="inline grid-cols-6 space-x-2 gap-6 ">
                     <x-label for="dia" :value="__('Días de la semana')" class="text-xl px-2 mb-2 font-semibold" />
 
-                    {{-- @foreach ($dias as $dia)
+                    
+                    @foreach ($dias as $dia)
                     <div class="inline-flex items-center">
-                      <input type="hidden" name="dias[]" value="0">
-                      <input id="dias" type="checkbox" name="dias[]" value="1"
-                        {{$clase->dias || old('dias',0) === 1 ? 'checked' : '' }}class="rounded border-gray-300
-                    text-red-900
-                    shadow-sm focus:border-red-300 focus:ring
-                    focus:ring-red-200 focus:ring-opacity-50">
+                      <input id="dia" type="checkbox" class="rounded border-gray-300 text-red-900 
+                      shadow-sm focus:border-red-300 focus:ring
+                      focus:ring-red-200 focus:ring-opacity-50" name="dias[]" value="{{$dia->id}}" @if(is_array(old('dias')) && in_array($dia->id, old('dias'))) checked @endif>
 
-                    <span class="ml-2 text-sm text-gray-600">{{ $dia->dia }}</span>
-                  </div>
+                      <span class="ml-2 text-sm text-gray-600">{{ $dia->dia }}</span>
+                    </div>
 
-                  @endforeach --}}
-                  {{-- @foreach ($dias as $dia)
-                  <input type="hidden" name="dias[]" value="0">
-                  <input id="dias[]" type="checkbox"
-                    class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                    name="dias[]" value="1" @if (count($clase->dias->where('id',$dia->id)))
-                  checked
-                  @endif>
-                  <span class="ml-2 text-sm text-gray-600">{{$dia->dia}}</span>
-                  @endforeach --}}
-                  @foreach ($dias as $dia)
-                  <input type="checkbox"
-                    class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                    name="{{ $dia->dia }}" value="{{ $dia->id }}" @if( in_array($dia->id,
-                  $clase_dias)
-                  ) checked="1" @endif />
-                  <span class="ml-2 text-sm text-gray-600">{{$dia->dia}}</span>
-                  @endforeach
+                    @endforeach
+
+
 
                 </div>{{--/div dias de la semana--}}
               </div>
