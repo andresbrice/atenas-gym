@@ -35,8 +35,8 @@
                         - Seleccionar Horario -
                       </option>
                       @foreach ($horarios as $horario)
-                      <option value="{{$horario->id}}">
-                        {{$horario->hora->format('H:i A')}}
+                      <option value="{{$horario->id}}" {{old('horario_id') == $horario->id ? 'selected' : ''}}>
+                        {{$horario->hora->format('H:i A')}} 
                       </option>
                       @endforeach
                     </select>
@@ -50,7 +50,7 @@
                     <div class="inline-flex items-center">
                       <input id="dia" type="checkbox" class="rounded border-gray-300 text-red-900 
                       shadow-sm focus:border-red-300 focus:ring
-                      focus:ring-red-200 focus:ring-opacity-50" name="dias[]" value="{{$dia->id}}">
+                      focus:ring-red-200 focus:ring-opacity-50" name="dias[]" value="{{$dia->id}}" @if(is_array(old('dias')) && in_array($dia->id, old('dias'))) checked @endif>
 
                       <span class="ml-2 text-sm text-gray-600">{{ $dia->dia }}</span>
                     </div>

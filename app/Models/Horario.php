@@ -29,7 +29,8 @@ class Horario extends Model
   public function scopeSearch($query, $filtro, $search)
   {
     if (($filtro) && trim($search) && ($filtro != "")) {
-      return $query->where($filtro, "LIKE", "%$search%");
+      $filtro = 'hora';
+        return $query->where($filtro, "LIKE", "%$search%");
     }
   }
 }
