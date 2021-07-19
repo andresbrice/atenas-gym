@@ -48,17 +48,15 @@
                     <x-label for="dia" :value="__('Días de la semana')" class="text-xl px-2 mb-2 font-semibold" />
 
                     
-                    @foreach ($dias as $dia)
+                     @foreach ($dias as $dia)
                     <div class="inline-flex items-center">
                       <input id="dia" type="checkbox" class="rounded border-gray-300 text-red-900 
                       shadow-sm focus:border-red-300 focus:ring
-                      focus:ring-red-200 focus:ring-opacity-50" name="dias[]" value="{{$dia->id}}" @if(is_array(old('dias')) && in_array($dia->id, old('dias'))) checked @endif>
-
+                      focus:ring-red-200 focus:ring-opacity-50" name="dias[]" value="{{$dia->id}}"
+                      @if(is_array(old('dias')) && in_array($dia->id, old('dias'))) checked @endif >
                       <span class="ml-2 text-sm text-gray-600">{{ $dia->dia }}</span>
                     </div>
-
-                    @endforeach
-
+                    @endforeach 
 
 
                 </div>{{--/div dias de la semana--}}
