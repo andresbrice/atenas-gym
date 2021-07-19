@@ -58,7 +58,7 @@
                     </div>
 
                     @endforeach
-
+                  </div>
 
 
                 </div>{{--/div dias de la semana--}}
