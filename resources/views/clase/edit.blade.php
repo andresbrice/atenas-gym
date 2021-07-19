@@ -47,36 +47,38 @@
                   <div class="inline grid-cols-6 space-x-2 gap-6 ">
                     <x-label for="dia" :value="__('Días de la semana')" class="text-xl px-2 mb-2 font-semibold" />
 
-                    
-                     @foreach ($dias as $dia)
+
+                    @foreach ($dias as $dia)
                     <div class="inline-flex items-center">
                       <input id="dia" type="checkbox" class="rounded border-gray-300 text-red-900 
                       shadow-sm focus:border-red-300 focus:ring
                       focus:ring-red-200 focus:ring-opacity-50" name="dias[]" value="{{$dia->id}}"
-                      @if(is_array(old('dias')) && in_array($dia->id, old('dias'))) checked @endif >
+                        @if(is_array(old('dias')) && in_array($dia->id, old('dias'))) checked @endif>
+
                       <span class="ml-2 text-sm text-gray-600">{{ $dia->dia }}</span>
                     </div>
-                    @endforeach 
+                    @endforeach
 
 
-                </div>{{--/div dias de la semana--}}
-              </div>
-              <div class="px-4 py-2  flex items-center justify-between sm:px-6">
-                <a href="{{ route('clase.index') }}">
-                  <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
-                    {{ __('Back') }}
+
+                  </div>{{--/div dias de la semana--}}
+                </div>
+                <div class="px-4 py-2  flex items-center justify-between sm:px-6">
+                  <a href="{{ route('clase.index') }}">
+                    <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
+                      {{ __('Back') }}
+                    </x-button>
+                  </a>
+
+                  <x-button class="ml-3 bg-green-900 hover:bg-green-700">
+                    {{ __('Edit Class') }}
                   </x-button>
-                </a>
-
-                <x-button class="ml-3 bg-green-900 hover:bg-green-700">
-                  {{ __('Edit Class') }}
-                </x-button>
+                </div>
               </div>
           </div>
+          </form>
         </div>
-        </form>
       </div>
-    </div>
     </div>
   </x-slot>
 </x-app-layout>

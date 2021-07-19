@@ -6,7 +6,7 @@
           <thead class="bg-gray-100">
             @yield('nombre-columna')
           </thead>
-          <tbody class="bg-white divide-y divide-red-100">
+          <tbody @yield('tbodyID') class="bg-white divide-y divide-red-100">
             @yield('contenido-filas')
           </tbody>
         </table>

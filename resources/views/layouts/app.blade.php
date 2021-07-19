@@ -13,13 +13,15 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-  {{-- <link rel="stylesheet" href="{{ asset('cssPropio/estiloSize.css') }}"> --}}
+
+  {{-- FAVICON --}}
   <link rel="shortcut icon" href="{{asset('img/favicon/favicon.ico')}}" type="image/x-icon">
 
-  {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> --}}
+  {{-- JQUERY --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
   </script>
+
+  {{-- SELECT2 --}}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
     integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -29,17 +31,8 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-
-
-
-
-  {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" /> --}}
-  {{-- <link rel="stylesheet" href="{{ asset('vendor/select2/dist/css/select2.min.css') }}"> --}}
-
-  <!-- Scripts -->
-  {{-- <script src="{{ asset('vendor/select2/dist/js/select2.min.js') }}"></script> --}}
   <script src="{{ asset('js/app.js') }}"></script>
-  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script> --}}
+
 
   <!--Font Awesome-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous">
@@ -65,5 +58,6 @@
     <x-footer />
   </div>
 </body>
+@yield('scripts')
 
 </html>
