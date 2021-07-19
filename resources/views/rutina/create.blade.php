@@ -8,18 +8,18 @@
 
   <x-slot name="slot">
     <div class="py-2 xl:py-6">
-      <div class="max-w-4xl mx-auto sm:px-6 lg:px-2">
+      <div class="max-w-5xl mx-auto sm:px-6 lg:px-2">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
             {{-- RUTINA --}}
-            <form id="rutina" action="{{ route('rutina.store') }}" method="POST">
+            <form action="{{ route('rutina.store') }}" method="POST">
               @csrf
               <div class="grid grid-cols-1 gap-6 p-4 w-1/3"> {{-- WRAPPER --}}
 
                 <div class="sm:col-span-2">
                   <x-label value="{{ __('Student:') }}" class="block text-md font-medium text-gray-700" />
 
-                  <select class="select2_el w-full" id="alumno_id" name="alumno" required>
+                  <select class="select2_el" id="alumno_id" style="width:100%" name="alumno" required>
                     <option value="" selected></option>
                     @foreach ($alumnos as $alumno)
                     <option value="{{ $alumno->id }}">{{ $alumno->name }} {{ $alumno->lastName }}</option>
@@ -31,7 +31,7 @@
                 <div id="clase" class="hidden sm:col-span-2">
                   <x-label value="{{ __('Clase:') }}" class="block text-md font-medium text-gray-700" />
 
-                  <select class="select2_el w-full" id="clase_id" name="clase" required>
+                  <select class="select2_el " style="width:100%" id="clase_id" name="clase" required>
                     <option value="" selected></option>
                   </select>
                 </div>
@@ -39,11 +39,85 @@
                 <div id="profesor" class="hidden sm:col-span-2">
                   <x-label value="{{ __('Profesor:') }}" class="block text-md font-medium text-gray-700" />
 
-                  <select class="select2_el w-full" id="profesor_id" name="profesor" required>
+                  <select class="select2_el " style="width:100%" id="profesor_id" name="profesor" required>
                     <option value="" selected></option>
                   </select>
                 </div>
 
+              </div>
+
+
+              <div>
+                <x-table>
+                  @section('id')
+                  rutina_id
+                  @endsection
+
+                  @section('nombre-columna')
+                  <th scope="col"
+                    class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Ejercicio
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Series
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Repeticiones
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Descanso (MIN)
+                  </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Filas
+                  </th>
+                  @endsection
+
+                  @section('tbodyID')
+                  id="dynamic"
+                  @endsection
+
+                  @section('contenido-filas')
+                  <tr>
+                    <td class="px-6 py-4 whitespace-nowrap text-center">
+                      <select class="select2_el" id="ejercicio_id" name="ejercicio[]" required>
+                        <option value="" selected></option>
+                        @foreach ($ejercicios as $ejercicio)
+                        <option value="{{ $ejercicio->id }}">{{ $ejercicio->nombre_ejercicio }}</option>
+                        @endforeach
+                      </select>
+                    </td>
+
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                      <x-input id="series" class="block px-4 py-2" type="text" name="series[]" :value="old('series')"
+                        required autofocus />
+                    </td>
+
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                      <x-input id="repeticiones" class="block px-4 py-2" maxlength="2" type="text" name="repeticiones[]"
+                        :value="old('repeticiones')" required autofocus />
+                    </td>
+
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                      <x-input id="descansos" class="block px-4 py-2" maxlength="3" type="text" name="descansos[]"
+                        :value="old('descansos')" required autofocus />
+                    </td>
+
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                      <button type="button" id="add" class="addRow text-gray-900 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                      </button>
+                    </td>
+                  </tr>
+                  @endsection
+                </x-table>
               </div>
 
               {{-- BOTON ATRAS y CREAR RUTINA --}}
@@ -65,100 +139,190 @@
       </div>
     </div>
   </x-slot>
+  @section('scripts')
+  <script>
+    $(document).ready(function() {
+      initSelect2();
+      function initSelect2(){ 
+        $('.select2_el').select2({
+          placeholder: "Seleccionar",
+          allowClear: true,
+          width: 'resolve',
+          language: {
+    
+            noResults: function() {
+    
+              return "No hay resultado";
+            },
+            searching: function() {
+    
+              return "Buscando..";
+            }
+          }
+        });
+      }
+    });
+
+    $(document).ready(function() {
+  
+      $('#alumno_id').change(function() {
+        var $clase = $('#clase_id');
+        var $diasArr = [];
+        console.log($(this).val());
+        $.ajax({
+          url: "{{ route('findClase') }}",
+          data: {
+            alumno_id: $(this).val()
+          },
+          success: function(data) {
+            console.log(data);
+            $clase.html('<option value="" selected>Seleccionar</option>');
+            $.each(data, function(id, value) {
+              
+              // $clase.append('<option value="' + id.id + '">' + tipoClase.tipo_clase + " - " + horario.horario_id + " - " +  '</option>');
+              $clase.append('<option value="' + value.id + '">' + value.tipo_clase +' - '+ value.hora +' - '+ value.dias + '</option>');
+              console.log(id.id);
+            });
+          }
+        });
+        $('#clase_id, #profesor_id').val("");
+        $('#clase').removeClass('hidden');
+      });
+
+      $('#clase_id').change(function() {
+        var $profesor = $('#profesor_id');
+        console.log($('#clase_id').val());
+       
+        $.ajax({
+          url: "{{ route('findProfesor') }}",
+          data: {
+            clase_id: $(this).val()
+          },
+          success: function(data) {
+            $profesor.html('<option value="" selected>Seleccionar</option>');
+            $.each(data, function(id,value) {
+              $profesor.append('<option value="' + id.id + '">' + value.name +' '+ value.lastName + '</option>');
+            });
+          }
+        });
+        $('#profesor').removeClass('hidden');
+      });
+    });
+
+    $(document).ready(function() {
+      function initSelect2(){
+      $('.select2_el').select2({
+      placeholder: "Seleccionar",
+      allowClear: true,
+      width: 'resolve',
+      language: {
+      
+      noResults: function() {
+      
+      return "No hay resultado";
+      },
+      searching: function() {
+      
+      return "Buscando..";
+      }
+      }
+      });
+      }
+
+      let i = 1;
+      let maxRow = 10;
+        
+      $('#add').click(function() {
+        if (i<maxRow) {
+          i++;
+          $('#dynamic').append(''+'<tr id="row'+ i +'">'+
+            '<td class="px-6 py-4 whitespace-nowrap text-center"><select class="select2_el" id="ejercicio_id" name="ejercicio[]" required><option value="" selected></option>@foreach ($ejercicios as $ejercicio)<option value="{{ $ejercicio->id }}">{{ $ejercicio->nombre_ejercicio }}</option>@endforeach</select></td>'+
+            '<td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium"><x-input id="series" class="block px-4 py-2" type="text" name="series[]" value="old("series")" required autofocus /></td>'+
+            '<td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium"><x-input id="repeticiones" class="block px-4 py-2" maxlength="2" type="text" name="repeticiones[]":value="old("respiraciones")" required autofocus /></td>'+
+            '<td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium"><x-input id="descansos" class="block px-4 py-2" maxlength="3" type="text" name="descansos[]"value="old("descansos")" required autofocus /></td>'+
+            '<td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium"><button type="button" id="'+i+'" name="remove" class="remove_row text-gray-900 focus:outline-none"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></button></td></tr>');
+          initSelect2();
+        }
+      });
+    
+    });
+  </script>
+
+
+  @endsection
 </x-app-layout>
 
 
 
-<script>
-  $(document).ready(function() {
-    $('.select2_el').select2({
-      placeholder: "Seleccionar",
-      allowClear: true,
-      language: {
-
-        noResults: function() {
-
-          return "No hay resultado";
-        },
-        searching: function() {
-
-          return "Buscando..";
-        }
-      }
-    });
-  });
-</script>
-
-<script>
-  $(document).ready(function() {
-
-    $('#alumno_id').change(function() {
-      var $clase = $('#clase_id');
-      $.ajax({
-        url: "{{ route('findClase') }}",
-        data: {
-          alumno_id: $(this).val()
-        },
-        success: function(data) {
-
-          console.log(data);
-          $clase.html('<option value="" selected>Seleccionar</option>');
-          $.each(data, function(id, value) {
-            $clase.append('<option value="' + id.id + '">' + value.tipo_clase + '</option>');
-          });
-        }
-      });
-      $('#clase_id, #profesor_id').val("");
-      $('#clase').removeClass('hidden');
-    });
-
-    // $('#clase_id').change(function() {
-    //   var $profesor = $('#profesor_id');
-    //   $ajax({
-    //     url: "{{ route('rutina.create') }}",
-    //     data: {
-    //       clase_id: $(this).val(),
-    //     },
-    //     success: function(data) {
-    //       $profesor.html('<option value="" selected></option>');
-    //       $.each(data, function(id, value) {
-    //         $profesor.append('<option value="' + id + '">' + value + '</option>');
-    //       });
-    //     }
-    //   });
-    //   $('#profesor').removeClass('hidden');
-    // });
-  });
-</script>
-
-{{-- <script type="text/javascript">
+{{-- <script>
   $(document).ready(function(){
-              
-    $(document).on('change','#alumno',function(){
-              
-      var alumno_id=$(this).val();
-                    var div=$(this).parent();
-                    var op=" ";
-                    
-                    $.ajax({
-                      url:"{{route('findClase')}}",
-// type:'GET',
-data:{'id':alumno_id},
-// dataType:'json',
-success:function(data){
-// console.log(data.length);
-op+='<option value="0" selected disabled>Seleccionar clase</option>';
-for(var i=0;i<response.length;i++){ op+='<option value="' +response[i].id+'">'+response[i].tipo_clase+'</option>';
-  }
+    let count = 1;  
+    let maxRowNumber = 10;
 
-  div.find('.tipo_clase').html(" ");
-  div.find('.tipo_clase').append(op);
-  },
-  error:function(){
-  console.log("error");
-  }
-  });
-  });
+    dynamicRows(count);
 
-  });
-  </script> --}}
+    function dynamicRows(number) {
+      let html = `<tr>`;
+      html += `<td class="px-6 py-4 whitespace-nowrap text-center">
+        <select class="select2_el" id="ejercicio_id" name="ejercicio[]" required>
+          <option value="" selected></option>
+          @foreach ($ejercicios as $ejercicio)
+          <option value="{{ $ejercicio->id }}">{{ $ejercicio->nombre_ejercicio }}</option>
+@endforeach
+</select>
+</td>`;
+html += `<td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+  <x-input id="series_id" class="block px-4 py-2" type="text" name="series[]" :value="old('series')" required
+    autofocus />
+</td>`;
+html += `<td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+  <x-input id="repeticiones_id" class="block px-4 py-2" type="text" name="repeticiones[]" :value="old('repeticiones')"
+    required autofocus />
+</td>`;
+html += `<td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+  <x-input id="descansos_id" class="block px-4 py-2" type="text" name="descansos[]" :value="old('descansos')" required
+    autofocus />
+</td>`;
+
+if (number > 1) {
+html+= `<td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+  <button type="button" id="remove" name="remove" class="remove text-gray-900 focus:outline-none">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z">
+      </path>
+    </svg>
+  </button>
+</td>
+</tr>`;
+$('tbody').append(html);
+}else{
+html+=`<td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+  <button type="button" id="add" name="add" class="add text-gray-900 focus:outline-none">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    </svg>
+  </button>
+</td>
+</tr>`;
+$('tbody').html(html);
+}
+}
+
+function iniSelect2
+
+$('#add').click(function() {
+count++;
+dynamicRows(count);
+});
+
+
+$(document).on('click','#remove',function(){
+count--;
+dynamicRows(count);
+});
+
+$()
+});
+</script> --}}

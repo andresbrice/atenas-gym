@@ -6,9 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Rutina;
 use App\Models\Ejercicio;
 use App\Models\User;
-use App\Models\Clase;
-use App\Models\Alumno;
-use App\Models\Profesor;
 use Illuminate\Support\Facades\DB;
 
 class RutinaController extends Controller
@@ -43,88 +40,40 @@ class RutinaController extends Controller
       ->get();
 
     return view('rutina.create', compact('alumnos', 'ejercicios'));
-    // $profesors = Profesor::select('id')
-    //   ->join('')
-
-
-    // $profesors = Profesor::whereHas('clases', function ($query) {
-    //   $query->whereId(request()->input('clase_id', 0));
-    // })->pluck('id');
-
-    // return response()->json($profesors);
   }
 
   public function findClase()
   {
+    // $data = DB::RAW("SELECT GROUP_CONCAT(dias.dia) AS 'Dias',clases.id,clases.tipo_clase,horarios.hora  FROM `clases` JOIN `horarios` ON clases.horario_id = horarios.id JOIN `clase_dia` ON clases.id = clase_dia.clase_id JOIN `dias` ON clase_dia.dia_id = dias.id WHERE clases.id IN (SELECT clases.id FROM `clases` JOIN `alumno_clase` ON clases.id = alumno_clase.clase_id JOIN `alumnos` ON alumno_clase.alumno_id = alumnos.id WHERE alumnos.user_id = ?) GROUP BY clases.id", [request()->input('alumno_id')]);
 
-    $clases = DB::select('SELECT clases.id, clases.tipo_clase FROM `alumno_clase`,`alumnos`,`clases` WHERE alumnos.user_id= ? 
-    AND alumno_clase.alumno_id=alumnos.id AND clases.id=alumno_clase.clase_id', [request()->input('alumno_id')]);
+    $data = DB::query()
+      ->select('clases.id', 'clases.tipo_clase', 'horarios.hora', DB::raw("GROUP_CONCAT(dias.dia SEPARATOR ', ') as dias"))
+      ->from('clases')
+      ->join('horarios', 'clases.horario_id', '=', 'horarios.id')
+      ->join('clase_dia', 'clases.id', '=', 'clase_dia.clase_id')
+      ->join('dias', 'clase_dia.dia_id', '=', 'dias.id')
+      ->whereIn('clases.id', function ($query) {
+        $query->select('clases.id')
+          ->from('clases')
+          ->join('alumno_clase', 'clases.id', '=', 'alumno_clase.clase_id')
+          ->join('alumnos', 'alumno_clase.alumno_id', '=', 'alumnos.id')
+          ->where('alumnos.user_id', '=', request()->input('alumno_id'));
+      })
+      ->groupby('clases.id')
+      ->get();
 
-    $objClases = json_encode($clases);
-
-
-
-    // $objClase->pluck('id', 'tipo_clase');
-
-
-    return response()->json($objClases);
+    return response()->json($data);
   }
 
-  // if ($request->ajax()) {
+  public function findProfesor()
+  {
+    $data = DB::select('SELECT users.id,users.name,users.lastName FROM `users` INNER JOIN `profesors` ON users.id = profesors.user_id WHERE profesors.id IN (SELECT profesors.id FROM `profesors` JOIN `clase_profesor` ON profesors.id = clase_profesor.profesor_id WHERE clase_profesor.clase_id = ?)', [request()->input('clase_id')]);
 
-  //   $alumno_id = $request;
+    return response()->json($data);
+  }
 
-  //   $data = DB::SELECT('clases.id, clases.tipo_clase FROM clases LEFT JOIN alumno_clase ON alumno_clase.clase_id = clases.id WHERE alumno_clase.alumno_id = ?', [$alumno_id]);
-
-  //   return response()->json($data);
-  // } else {
-  //   return response()->json('Alumno no encontrado', 501);
-  // }
-  // public function findClase()
-  // {
-  //     $data= DB::SELECT ('clases.id, clases.tipo_clase FROM clases LEFT JOIN alumno_clase ON alumno_clase.clase_id = clases.id WHERE alumno_clase.alumno_id = ?',[$alumno_id]);
-  //     return response()->json($data);
-  //  }
-
-
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
-   */
   public function store(Request $request)
   {
-    $request->validate([
-      'alumno' => 'required',
-      'profesor' => 'required',
-      'ejercicio' => 'required',
-      'clase' => 'required',                                          //validar en frontend 
-      'series' => 'required|int',
-      'repeticiones' => 'required|int',
-      'descanso' => 'required|int',
-    ]);
-
-    // $rutina = Rutina::create([
-    //   'alumno' => $request->alumno,
-    //   'profesor' => $request->profesor,
-    //   'ejercicio' => $request->ejercicio,
-    //   'series' => $request->series,
-    //   'repeticiones' => $request->repeticiones,
-    //   'descanso' => $request->descanso,
-    // ]);
-
-
-    // $rutina = new Rutina();
-    // for ($i=0; $i < $request.lenght ; $i++ ) { 
-    //   $rutina->ejercicio() = $request->ejercicio
-    // }
-
-    // $rutina->series = ucfirst($request->series);
-    // $rutina->repeticiones = ucfirst($request->repeticiones);
-    // $rutina->descanso = ucfirst($request->descanso);
-    // // $rutina->alumno_clase_id = ;
-    // $rutina->save();
 
     return redirect('rutina.index')->with('status', 'Rutina creada con exito');
   }
@@ -137,7 +86,6 @@ class RutinaController extends Controller
    */
   public function show($id)
   {
-    //
   }
 
   /**

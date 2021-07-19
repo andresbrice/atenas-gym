@@ -59,9 +59,9 @@ class UserController extends Controller
       'dni' => 'required|int|digits:8|unique:users',
       'lastName' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'gender' => 'required',
-      'phone' => 'required|int',
-      'emergency_number' => 'required|int',
-      'age' => 'required|int',
+      'phone' => 'required|int|digits_between:7,13',
+      'emergency_number' => 'required|int|digits_between:7,13',
+      'age' => 'required|int|between:10,99',
     ]);
 
     $user = User::create([
@@ -155,10 +155,9 @@ class UserController extends Controller
       'dni' => 'required|int|digits:8|unique:users,dni,' . $user->id,
       'lastName' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'gender' => 'required',
-      'phone' => 'required|int',
-      'emergency_number' => 'required|int',
-      'age' => 'required|int',
-      // 'password' => 'nullable|required_with:password_confirmation|string|confirmed',
+      'phone' => 'required|int|digits_between:7,13',
+      'emergency_number' => 'required|int|digits_between:7,13',
+      'age' => 'required|int|between:10,99',
     ]);
 
     $usuario = request()->except('_token', '_method');

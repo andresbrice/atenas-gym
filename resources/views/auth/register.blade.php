@@ -64,8 +64,8 @@
 
                   <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                     <x-label for="age" :value="__('Age')" class="font-semibold" />
-                    <x-input id="age" class="block w-full px-4 py-2 mt-2" type="text" name="age" :value="old('age')"
-                      required />
+                    <x-input id="age" class="block w-full px-4 py-2 mt-2" type="text" maxlength="2" name="age"
+                      :value="old('age')" required />
                   </div>
                   <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                     <x-label for="phone" :value="__('Phone')" class="font-semibold" />
@@ -101,39 +101,29 @@
                     <label for="eRespiratorias" class="inline-flex items-center">
                       <input id="eRespiratorias" type="checkbox"
                         class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                        name="eRespiratorias" value="eRespiratorias"
-                        @if (old('eRespiratorias') == 'eRespiratorias')
-                          checked
-                        @endif>
+                        name="eRespiratorias" value="eRespiratorias" @if (old('eRespiratorias')=='eRespiratorias' )
+                        checked @endif>
                       <span class="ml-2 text-sm text-gray-600">{{ __('E. Respiratorias') }}</span>
                     </label>
 
                     <label for="eCardiacas" class="inline-flex items-center">
                       <input id="eCardiacas" type="checkbox"
                         class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                        name="eCardiacas" value="eCardiacas"
-                        @if (old('eCardiacas') == 'eCardiacas')
-                          checked
-                        @endif>
+                        name="eCardiacas" value="eCardiacas" @if (old('eCardiacas')=='eCardiacas' ) checked @endif>
                       <span class="ml-2 text-sm text-gray-600">{{ __('E. Cardíacas') }}</span>
                     </label>
 
                     <label for="eRenal" class="inline-flex items-center">
                       <input id="eRenal" type="checkbox"
                         class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                        name="eRenal" value="eRenal"
-                        @if (old('eRenal') == 'eRenal')
-                          checked
-                        @endif>
+                        name="eRenal" value="eRenal" @if (old('eRenal')=='eRenal' ) checked @endif>
                       <span class="ml-2 text-sm text-gray-600">{{ __('E. Renales') }}</span>
                     </label>
 
                     <label for="convulsiones" class="inline-flex items-center">
                       <input id="convulsiones" type="checkbox"
                         class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                        name="convulsiones" value="convulsiones"
-                        @if (old('convulsiones') == 'convulsiones')
-                          checked
+                        name="convulsiones" value="convulsiones" @if (old('convulsiones')=='convulsiones' ) checked
                         @endif>
                       <span class="ml-2 text-sm text-gray-600">{{ __('Convulsiones') }}</span>
                     </label>
@@ -141,50 +131,35 @@
                     <label for="epilepsia" class="inline-flex items-center">
                       <input id="epilepsia" type="checkbox"
                         class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                        name="epilepsia" value="epilepsia"
-                        @if (old('epilepsia') == 'epilepsia')
-                          checked
-                        @endif>
+                        name="epilepsia" value="epilepsia" @if (old('epilepsia')=='epilepsia' ) checked @endif>
                       <span class="ml-2 text-sm text-gray-600">{{ __('Epilepsia') }}</span>
                     </label>
 
                     <label for="diabetes" class="inline-flex items-center">
                       <input id="diabetes" type="checkbox"
                         class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                        name="diabetes" value="diabetes"
-                        @if (old('diabetes') == 'diabetes')
-                          checked
-                        @endif>
+                        name="diabetes" value="diabetes" @if (old('diabetes')=='diabetes' ) checked @endif>
                       <span class="ml-2 text-sm text-gray-600">{{ __('Diabetes') }}</span>
                     </label>
 
                     <label for="asma" class="inline-flex items-center">
                       <input id="asma" type="checkbox"
                         class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                        name="asma" value="asma"
-                        @if (old('asma') == 'asma')
-                          checked
-                        @endif>
+                        name="asma" value="asma" @if (old('asma')=='asma' ) checked @endif>
                       <span class="ml-2 text-sm text-gray-600">{{ __('Asma') }}</span>
                     </label>
 
                     <label for="alergia" class="inline-flex items-center">
                       <input id="alergia" type="checkbox"
                         class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                        name="alergia" value="alergia"
-                        @if (old('alergia') == 'alergia')
-                          checked
-                        @endif>
+                        name="alergia" value="alergia" @if (old('alergia')=='alergia' ) checked @endif>
                       <span class="ml-2 text-sm text-gray-600">{{ __('Alergias') }}</span>
                     </label>
 
                     <label for="medicacion" class="inline-flex items-center">
                       <input id="medicacion" type="checkbox"
                         class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                        name="medicacion" value="medicacion"
-                        @if (old('medicacion') == 'medicacion')
-                          checked
-                        @endif>
+                        name="medicacion" value="medicacion" @if (old('medicacion')=='medicacion' ) checked @endif>
                       <span class="ml-2 text-sm text-gray-600">{{ __('Medicación') }}</span>
                     </label>
                   </div>{{-- /div historial medico --}}
