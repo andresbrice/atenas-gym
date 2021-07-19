@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Clase;
+use App\Models\Alumno;
+use App\Models\Alumno_Clase;
 use App\Models\Dia;
 use App\Models\Horario;
 use Illuminate\Support\Facades\Session;
@@ -84,7 +86,17 @@ class ClaseController extends Controller
   public function show($id)
   {
     $clase = Clase::findOrFail($id);
-    return view('clase.show', compact('clase'));
+    $alumno_clase = Alumno_Clase::all();
+    $alumno = User::select('id', 'name', 'lastName')
+      ->where('role_id', '=', 1)
+      ->orderBy('name', 'asc')
+      ->get();
+    $profesor = User::select('id', 'name', 'lastName')
+      ->where('role_id', '=', 2)
+      ->orderBy('name', 'asc')
+      ->get();
+
+    return view('clase.show', compact('clase', 'alumno', 'profesor', 'alumno_clase'));
   }
 
   /**
