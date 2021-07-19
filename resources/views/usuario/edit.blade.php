@@ -63,7 +63,7 @@
 
                   <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                     <x-label for="age" :value="__('Age')" class="font-semibold" />
-                    <x-input id="age" class="block w-full px-4 py-2 mt-2" type="text" name="age"
+                    <x-input id="age" class="block w-full px-4 py-2 mt-2" type="text" maxlength="2" name="age"
                       value="{{ old('age', $usuario->age) }}" required />
                   </div>
                   <div class="col-span-6 sm:col-span-6 lg:col-span-2">

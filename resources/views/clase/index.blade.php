@@ -5,7 +5,7 @@
 
   <x-slot name="slot">
     <div class="py-2 xl:py-6">
-      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
             <x-success-message class=" mt-5" :errors="$errors" />
@@ -31,19 +31,19 @@
                     Filtrar por...
                   </option>
                   {{-- {{ old('filtro') == 'tipo_clase' ? 'selected' : '' }} value="1" --}}
-                  <option value="1" >
+                  <option value="1">
                     Clase
                   </option>
-                  <option  value="2" >
+                  <option value="2">
                     Horario
                   </option>
-                  <option value="3" >
+                  <option value="3">
                     Días de Entrenamiento
                   </option>
-                  <option >
+                  <option>
                     Alumnos
                   </option value="4">
-                  <option >
+                  <option>
                     Profesor
                   </option value="5">
 

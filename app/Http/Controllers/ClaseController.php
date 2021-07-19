@@ -61,6 +61,8 @@ class ClaseController extends Controller
       'dias' => 'required|array|min: 1'
     ], ['dias.required' => 'Debe seleccionar al menos 1 día de la semana']);
 
+    //hacer query para validar las 3 cosas
+
     $clase = new Clase();
     $clase->tipo_clase = $request->tipo_clase;
     $clase->horario_id = $request->horario_id;
@@ -178,13 +180,12 @@ class ClaseController extends Controller
     $clase = Clase::findOrFail($id);
 
     if ($clase->alumno_clase()->count()) {
-        return redirect('clase')->with('error', 'No es posible eliminar este clase ya que esta relacionado a una clase');
+      return redirect('clase')->with('error', 'No es posible eliminar este clase ya que esta relacionado a una clase');
     } else {
-        Clase::destroy($id);
+      Clase::destroy($id);
 
-        return redirect('clase')->with('message', 'Clase eliminada con exito');
+      return redirect('clase')->with('message', 'Clase eliminada con exito');
     }
-
   }
 
 
