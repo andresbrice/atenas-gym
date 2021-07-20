@@ -39,7 +39,7 @@
                       Horario
                     </dt>
                     <dd class="mt-1  text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      {{ $clase->horario->hora->format('H:i A') }}
+                      {{ $clase->horario->hora->format('H:i A')}}
                     </dd>
                   </div>
                   <div class="bg-white px-4 py-5 place-items-center sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -51,6 +51,13 @@
                       {{ $dia->dia }}@if (!$loop->last), @endif
                       @endforeach
                     </dd>
+
+
+                    <ul>
+                      foreach ($clase->alumno_clase as $alumno)
+                      <li>{{$alumno}}</li>
+                      endforeach
+                    </ul>
                   </div>
                   <div class="bg-gray-50 px-4 py-5 place-items-center sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">
@@ -81,7 +88,7 @@
             </div>
           </div>
           <div class="px-4 py-2  flex items-center justify-center sm:px-6">
-            <a href="{{ route('clase.index') }}">
+            <a href="{{url()->previous()}}">
               <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
                 {{ __('Back') }}
               </x-button>

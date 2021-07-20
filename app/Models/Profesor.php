@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User;
 
 class Profesor extends User
@@ -23,5 +22,10 @@ class Profesor extends User
   public function clases()
   {
     return $this->belongsToMany(Clase::class)->withTimestamps();
+  }
+
+  public function rutinas()
+  {
+    return $this->hasMany(Rutina::class);
   }
 }

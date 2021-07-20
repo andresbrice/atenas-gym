@@ -53,7 +53,7 @@
                       <input id="dia" type="checkbox" class="rounded border-gray-300 text-red-900 
                       shadow-sm focus:border-red-300 focus:ring
                       focus:ring-red-200 focus:ring-opacity-50" name="dias[]" value="{{$dia->id}}"
-                        @if(is_array(old('dias')) && in_array($dia->id, old('dias'))) checked @endif>
+                        @if(in_array($dia->id, $clase_dias)) checked @endif>
 
                       <span class="ml-2 text-sm text-gray-600">{{ $dia->dia }}</span>
                     </div>
@@ -64,7 +64,7 @@
                   </div>{{--/div dias de la semana--}}
                 </div>
                 <div class="px-4 py-2  flex items-center justify-between sm:px-6">
-                  <a href="{{ route('clase.index') }}">
+                  <a href="{{url()->previous()}}">
                     <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
                       {{ __('Back') }}
                     </x-button>

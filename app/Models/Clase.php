@@ -58,8 +58,8 @@ class Clase extends Model
           return $query->where($filtro, "LIKE", "%$search%");
           break;
         case 3:
-        //   $filtro = 'dias';
-          return $query->where('dias.dia', "LIKE", "%$search%")->join('clases','dias.clase_id','=','dias.id');
+          //   $filtro = 'dias';
+          return $query->where('dias.dia', "LIKE", "%$search%")->join('clases', 'dias.clase_id', '=', 'dias.id'); //mal
           break;
         case 4:
           $filtro = 'alumnos';
@@ -75,3 +75,28 @@ class Clase extends Model
     }
   }
 }
+
+/*
+
+$query = DB::query()
+->select('')
+->from('users')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/

@@ -15,6 +15,7 @@ class Rutina extends Model
     'repeticiones',
     'descanso',
     'alumno_clase_id',
+    'profesor_id',
   ];
 
   public function alumno_clase()
@@ -25,5 +26,10 @@ class Rutina extends Model
   public function ejercicios()
   {
     return $this->belongsToMany(Ejercicio::class);
+  }
+
+  public function profesor()
+  {
+    return $this->belongsTo(Profesor::class);
   }
 }
