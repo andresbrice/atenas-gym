@@ -75,7 +75,7 @@ class RutinaController extends Controller
   public function store(Request $request)
   {
 
-    return redirect('rutina.index')->with('status', 'Rutina creada con exito');
+    return redirect('rutina.index')->with('message', 'Rutina creada con exito');
   }
 
   /**

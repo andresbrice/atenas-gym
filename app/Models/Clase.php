@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Clase extends Model
 {
@@ -54,12 +55,18 @@ class Clase extends Model
           return $query->where($filtro, "LIKE", "%$search%");
           break;
         case 2:
-          $filtro = 'horario';
-          return $query->where($filtro, "LIKE", "%$search%");
-          break;
+            $filtro = 'hora';
+            return $query->whereHas('horarios', function($query) use($filtro, $search){
+                $query->where($filtro, "LIKE", "%$search%");
+            
+            });
+            break;
         case 3:
-        //   $filtro = 'dias';
-          return $query->where('dias.dia', "LIKE", "%$search%")->join('clases','dias.clase_id','=','dias.id');
+            $filtro = 'dia';
+            return $query->whereHas('dias', function($query) use($filtro, $search){
+                $query->where($filtro, "LIKE", "%$search%");
+            
+            });
           break;
         case 4:
           $filtro = 'alumnos';

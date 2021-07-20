@@ -8,7 +8,9 @@
       <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
-            <x-success-message class=" mt-5" :errors="$errors" />
+            {{-- <x-success-message class=" mt-5" :errors="$errors" /> --}}
+            <x-success-message class="mb-4 font-bold flex justify-center" />
+            <x-denied-message class="mb-4 font-bold flex justify-center" />
             <div class="mb-3">
               {{-- BOTON CREAR clase Y BUSCADOR --}}
               <div class="flex flex-col sm:flex-row justify-between items-center">
