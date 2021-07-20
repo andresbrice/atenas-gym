@@ -78,9 +78,12 @@
                                 @empty
                                     <tr>
                                         <td>
-                                            <center>
-                                                No se encontró dicha tarifa. Intente nuevamente
-                                            </center>
+                                            @if (strlen($tarifas) === 0)
+                                                <center>No hay tarifas creadas.</center>
+                                            @else
+                                                <center>
+                                                    No se encontró dicha tarifa. Intente nuevamente.</center>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforelse

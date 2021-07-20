@@ -113,9 +113,12 @@
               @empty
               <tr>
                 <td>
-                  <center>
-                    No se encontró dicho usuario. Intente nuevamente
-                  </center>
+                    @if (strlen($rutinas) === 0)
+                        <center>No hay rutinas creadas.</center>
+                    @else
+                    <center>
+                        No se encontró dicha rutina. Intente nuevamente.</center>
+                    @endif
                 </td>
               </tr>
               @endforelse

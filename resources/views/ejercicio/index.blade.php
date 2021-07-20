@@ -92,7 +92,7 @@
                   {{ $clase->tipo_clase}}
                   @endforeach --}}
 
-                  {{$ejercicio->clases()->tipo_clase}}
+                  {{-- {{$ejercicio->clases()->tipo_clase}} --}}
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                   <div class="inline-flex" role="group" aria-label="Button group">
@@ -113,9 +113,11 @@
               @empty
               <tr>
                 <td>
-                  <center>
-                    No se encontró dicho ejercicio. Intente nuevamente
-                  </center>
+                    @if (strlen($ejercicios) === 0)
+                        <center>No hay ejercicios creados.</center>
+                    @else
+                    <center>No se encontró dicho ejercicio. Intente nuevamente.</center>
+                    @endif
                 </td>
               </tr>
               @endforelse
