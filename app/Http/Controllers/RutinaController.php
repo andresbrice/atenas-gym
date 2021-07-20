@@ -30,10 +30,7 @@ class RutinaController extends Controller
    */
   public function create(Request $request)
   {
-    $alumnos = User::select('id', 'name', 'lastName')
-      ->where('role_id', '=', 1)
-      ->orderBy('name', 'asc')
-      ->get();
+    $alumnos = User::where('role_id', '1');
 
     $ejercicios = Ejercicio::select('id', 'nombre_ejercicio')
       ->orderBy('nombre_ejercicio', 'asc')
@@ -65,12 +62,12 @@ class RutinaController extends Controller
     return response()->json($data);
   }
 
-  public function findProfesor()
-  {
-    $data = DB::select('SELECT users.id,users.name,users.lastName FROM `users` INNER JOIN `profesors` ON users.id = profesors.user_id WHERE profesors.id IN (SELECT profesors.id FROM `profesors` JOIN `clase_profesor` ON profesors.id = clase_profesor.profesor_id WHERE clase_profesor.clase_id = ?)', [request()->input('clase_id')]);
+  // public function findProfesor()
+  // {
+  //   $data = DB::select('SELECT users.id,users.name,users.lastName FROM `users` INNER JOIN `profesors` ON users.id = profesors.user_id WHERE profesors.id IN (SELECT profesors.id FROM `profesors` JOIN `clase_profesor` ON profesors.id = clase_profesor.profesor_id WHERE clase_profesor.clase_id = ?)', [request()->input('clase_id')]);
 
-    return response()->json($data);
-  }
+  //   return response()->json($data);
+  // }
 
   public function store(Request $request)
   {

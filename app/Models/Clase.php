@@ -44,6 +44,11 @@ class Clase extends Model
     return $this->belongsTo(Horario::class);
   }
 
+  public function ejercicios()
+  {
+    return $this->belongsToMany(Ejercicio::class);
+  }
+
   // QUERY SCOPES
 
   public function scopeSearch($query, $filtro, $search)

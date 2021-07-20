@@ -5,7 +5,7 @@
 
   <x-slot name="slot">
     <div class="py-2 xl:py-6">
-      <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
             {{-- <x-success-message class=" mt-5" :errors="$errors" /> --}}
@@ -101,7 +101,7 @@
                   {{ $clase->horario->hora->format('H:i A') }}
                 </td>
 
-                <td class="px-6 py-4 whitespace-nowrap text-center">
+                <td class="px-6 py-4 whitespace-normal text-center">
                   @foreach ($clase->dias as $dia)
                   {{ $dia->dia }}@if (!$loop->last), @endif
                   @endforeach

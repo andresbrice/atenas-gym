@@ -103,7 +103,7 @@ class ClaseController extends Controller
   {
     $clase = Clase::findOrFail($id);
     $dias = Dia::all();
-    $clase_dias = $clase->dias->toArray();
+    $clase_dias = $clase->dias->pluck('id')->toArray();
     $horarios = Horario::all();
 
     return view('clase.edit', compact('clase', 'horarios', 'dias', 'clase_dias'));
@@ -145,7 +145,7 @@ class ClaseController extends Controller
     $clase = new Clase();
     $clase->tipo_clase = $request->tipo_clase;
     $clase->horario_id = $request->horario_id;
-    dd($request->dias);
+    // dd($request->dias);
     for ($i = 0; $i < count($request->dias); $i++) {
       $clase->tarifa_id += 1;
     }
