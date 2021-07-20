@@ -10,16 +10,21 @@ class Ejercicio extends Model
   use HasFactory;
 
   protected $fillable = [
-    
+
     'nombre_ejercicio',
     'descripcion',
   ];
 
-  
+
 
   public function rutinas()
   {
     return $this->belongsToMany(Rutina::class);
+  }
+
+  public function clases()
+  {
+    return $this->belongsToMany(Clase::class);
   }
 
 
@@ -42,4 +47,3 @@ class Ejercicio extends Model
     }
   }
 }
-

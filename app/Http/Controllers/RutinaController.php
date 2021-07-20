@@ -30,8 +30,7 @@ class RutinaController extends Controller
    */
   public function create(Request $request)
   {
-    $alumnos = DB::query()
-      ->select('');
+    $alumnos = User::where('role_id', '1');
 
     $ejercicios = Ejercicio::select('id', 'nombre_ejercicio')
       ->orderBy('nombre_ejercicio', 'asc')

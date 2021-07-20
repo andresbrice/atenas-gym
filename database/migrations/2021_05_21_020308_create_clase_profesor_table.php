@@ -15,6 +15,7 @@ class CreateClaseProfesorTable extends Migration
   {
     Schema::create('clase_profesor', function (Blueprint $table) {
       $table->engine = 'InnoDB';
+      $table->id();
       $table->foreignId('clase_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
       $table->foreignId('profesor_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
       $table->timestamps();
