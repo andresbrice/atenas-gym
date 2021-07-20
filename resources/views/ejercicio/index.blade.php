@@ -92,7 +92,7 @@
                   {{ $clase->tipo_clase}}
                   @endforeach --}}
 
-                  {{$ejercicio->clases()->tipo_clase}}
+                  {{-- {{$ejercicio->clases()->tipo_clase}} --}}
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                   <div class="inline-flex" role="group" aria-label="Button group">

@@ -13,7 +13,7 @@
             <x-denied-message class="mb-4 font-bold flex justify-center" />
             <x-auth-session-status class="mb-4 font-bold flex justify-center" :status="session('status')" />
             <div class="mb-3">
-              {{-- BOTON CREAR USUARIO Y BUSCADOR --}}
+              {{-- BOTON CREAR rutina Y BUSCADOR --}}
               <div class="flex flex-col sm:flex-row justify-between items-center">
                 {{-- BOTON --}}
                 <a href="{{ route('rutina.create') }}" class="w-max md:mr-5">
@@ -76,36 +76,36 @@
               @forelse ($rutinas as $rutina)
               <tr>
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                  {{-- {{ $usuario->userName }} --}}
+                  {{-- {{ $rutina->userName }} --}}
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                  {{-- {{ $usuario->name }} --}}
+                  {{-- {{ $rutina->name }} --}}
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                  {{-- {{ $usuario->lastName }} --}}
+                  {{-- {{ $rutina->lastName }} --}}
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                  {{-- {{ $usuario->email }} --}}
+                  {{-- {{ $rutina->email }} --}}
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                   <div class="inline-flex" role="group" aria-label="Button group">
                     <button
                       class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 rounded-l-md focus:shadow-outline hover:bg-green-800">
-                      <a href="{{ route('usuario.edit', $usuario->id) }}">Editar</a></button>
+                      <a href="{{ route('rutina.edit', $rutina->id) }}">Editar</a></button>
                     <button
                       class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 focus:shadow-outline hover:bg-yellow-600">
-                      <a href="{{ route('usuario.show', $usuario->id) }}">Mostrar</a></button>
+                      <a href="{{ route('rutina.show', $rutina->id) }}">Mostrar</a></button>
 
-                    <form method="POST" action="{{ route('usuario.destroy', $usuario->id) }}">
+                    <form method="POST" action="{{ route('rutina.destroy', $rutina->id) }}">
                       @csrf
                       @method('DELETE')
                       <button type="submit"
                         class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 rounded-r-md focus:shadow-outline hover:bg-red-800"
-                        onclick="return confirm('¿Esta seguro de querer borrar este usuario?');">Borrar</button>
+                        onclick="return confirm('¿Está seguro de querer borrar esta rutina?');">Borrar</button>
                     </form>
                   </div>
                 </td>
@@ -114,7 +114,7 @@
               <tr>
                 <td>
                   <center>
-                    No se encontró dicho usuario. Intente nuevamente
+                    No se encontró dicha rutina. Intente nuevamente
                   </center>
                 </td>
               </tr>
@@ -122,7 +122,7 @@
               @endsection
               @section('paginacion')
               <div class="mt-4">
-                {{-- {{ $usuarios->links() }} --}}
+                {{-- {{ $rutinas->links() }} --}}
               </div>
               @endsection
             </x-table>
