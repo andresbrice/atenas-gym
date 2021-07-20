@@ -10,6 +10,7 @@ use App\Models\Alumno;
 use App\Models\Alumno_Clase;
 use App\Models\Dia;
 use App\Models\Horario;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class ClaseController extends Controller
@@ -116,48 +117,41 @@ class ClaseController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, Clase $clase)
+  public function update(Request $request, $id)
   {
+        $clase = Clase::find($id);
+
+        $clase->tipo_clase = $request->get('tipo_clase');
+        $clase->horario_id = $request->get('horario_id');
+        $clase->dias()->sync($request->get('dias', []));
+        $clase->tarifa_id = count($request->dias); 
+        
+        $clase->save();
+
+        if (session('clase_url')) 
+        {
+            return redirect(session('clase_url'))->with('message', 'Clase modificada con exito');
+        }
+            return redirect('clase')->with('message', 'Clase modificada con exito');
+
+
+
+        // $request->validate([
+        //   'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
+        //   'horario_id' => 'required',
+        //   'dias' => 'required|array|min: 1'
+        // ], ['dias.required' => 'Debe seleccionar al menos 1 día de la semana']);
+        
+        // $clase = Clase::find($clase);
+        // $clase->tipo_clase = $request->tipo_clase;
+        // $clase->horario_id = $request->horario_id;
+        
+        // $clase->tarifa_id = count($request->dias);
     
-    // $request->validate([
-    //   'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
-    //   'horario_id' => 'required',
-    //   'dias[]' => 'min: 1',
-    // ]);
-    // $clase->update([
-    //   'tipo_clase' => $request->tipo_clase,
-    //   'horario_id' => $request->horario_id,
-    // ]);
-
-    // for ($i = 0; $i < count($request->dias); $i++) {
-    //   $clase->tarifa_id += 1;
-    // }
-    // $clase->dias()->sync($request->input('dias', []));
-
-    // }
-    $request->validate([
-      'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255|unique:clases',
-      'horario_id' => 'required',
-      'dias' => 'required|array|min: 1'
-    ], ['dias.required' => 'Debe seleccionar al menos 1 día de la semana']);
-
-    $clase = new Clase();
-    $clase->tipo_clase = $request->tipo_clase;
-    $clase->horario_id = $request->horario_id;
-    // dd($request->dias);
-    for ($i = 0; $i < count($request->dias); $i++) {
-      $clase->tarifa_id += 1;
+        // $clase->save();
+    
+        // $clase->dias()->sync($request->input('dias', []));
     }
-
-    $clase->save();
-
-    $clase->dias()->sync($request->input('dias', []));
-
-    if (session('clase_url')) {
-      return redirect(session('clase_url'))->with('message', 'Clase modificada con exito');
-    }
-    return redirect('clase')->with('message', 'Clase modificada con exito');
-  }
 
   /**
    * Remove the specified resource from storage.
@@ -169,9 +163,12 @@ class ClaseController extends Controller
   {
 
     $clase = Clase::findOrFail($id);
+   
 
-    if ($clase->alumno_clase()->count()) {
-      return redirect('clase')->with('error', 'No es posible eliminar este clase ya que esta relacionado a una clase');
+    $query = DB::table('alumno_clase')->where('alumno_clase.clase_id', '=', $clase->id)->count();
+
+    if ($clase->profesors()->count()|| $query > 0) {
+      return redirect('clase')->with('error', 'No es posible eliminar esta clase ya que esta relacionada con alumnos o profesores');
     } else {
       Clase::destroy($id);
 

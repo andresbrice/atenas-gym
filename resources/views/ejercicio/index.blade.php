@@ -22,7 +22,7 @@
                                     </x-button>
                                 </a>
 
-                {{-- @php
+                            {{-- @php
                                 if (isset($_GET['filtro'])) {
                                 $seleccionado= $_GET['filtro'];
                                 }
@@ -113,9 +113,11 @@
               @empty
               <tr>
                 <td>
-                  <center>
-                    No se encontró dicho ejercicio. Intente nuevamente
-                  </center>
+                    @if (strlen($ejercicios) === 0)
+                        <center>No hay ejercicios creados.</center>
+                    @else
+                    <center>No se encontró dicho ejercicio. Intente nuevamente.</center>
+                    @endif
                 </td>
               </tr>
               @endforelse

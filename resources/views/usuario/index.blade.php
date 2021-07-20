@@ -121,9 +121,12 @@
               @empty
               <tr>
                 <td>
-                  <center>
-                    No se encontró dicho usuario. Intente nuevamente
-                  </center>
+                    @if (strlen($usuarios) === 0)
+                        <center>No hay usuarios creados.</center>
+                    @else
+                    <center>
+                        No se encontró dicho usuario. Intente nuevamente.</center>
+                    @endif
                 </td>
               </tr>
               @endforelse
