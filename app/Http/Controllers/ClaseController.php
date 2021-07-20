@@ -120,7 +120,6 @@ class ClaseController extends Controller
     //   'horario_id' => 'required',
     //   'dias[]' => 'min: 1',
     // ]);
-
     // $clase->update([
     //   'tipo_clase' => $request->tipo_clase,
     //   'horario_id' => $request->horario_id,
