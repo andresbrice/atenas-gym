@@ -54,7 +54,7 @@ class EjercicioController extends Controller
     $ejercicio->descripcion = ucfirst($request->descripcion);
     $ejercicio->save();
 
-    return redirect('ejercicio')->with('status', 'Ejercicio creado con exito');
+    return redirect('ejercicio')->with('message', 'Ejercicio creado con exito');
   }
 
   /**
@@ -99,7 +99,7 @@ class EjercicioController extends Controller
 
     Ejercicio::where('id', '=', $id)->update($ejercicio);
 
-    return redirect('ejercicio')->with('status', 'Ejercicio modificado con exito');
+    return redirect('ejercicio')->with('message', 'Ejercicio modificado con exito');
   }
 
   /**
@@ -112,6 +112,6 @@ class EjercicioController extends Controller
   {
     Ejercicio::destroy($id);
 
-    return redirect('ejercicio')->with('status', 'Ejercicio eliminado con exito');
+    return redirect('ejercicio')->with('message', 'Ejercicio eliminado con exito');
   }
 }

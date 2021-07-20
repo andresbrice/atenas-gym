@@ -56,7 +56,7 @@ class ClaseController extends Controller
   public function store(Request $request)
   {
     $request->validate([
-      'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
+      'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255|unique:clases',
       'horario_id' => 'required',
       'dias' => 'required|array|min: 1'
     ], ['dias.required' => 'Debe seleccionar al menos 1 día de la semana']);
@@ -118,7 +118,7 @@ class ClaseController extends Controller
    */
   public function update(Request $request, Clase $clase)
   {
-    dd($request->all());
+    
     // $request->validate([
     //   'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
     //   'horario_id' => 'required',
@@ -137,7 +137,7 @@ class ClaseController extends Controller
 
     // }
     $request->validate([
-      'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
+      'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255|unique:clases',
       'horario_id' => 'required',
       'dias' => 'required|array|min: 1'
     ], ['dias.required' => 'Debe seleccionar al menos 1 día de la semana']);

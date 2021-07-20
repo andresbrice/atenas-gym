@@ -56,7 +56,7 @@ class HorarioController extends Controller
       $horario->hora = $formathora;
       $horario->save();
   
-      return redirect('horario')->with('status', 'Horario creado con exito');
+      return redirect('horario')->with('message', 'Horario creado con exito');
   }
 
   
@@ -86,7 +86,7 @@ class HorarioController extends Controller
 
     Horario::where('id', '=', $id)->update($horario);
 
-    return redirect('horario')->with('status', 'Horario modificado con exito');
+    return redirect('horario')->with('message', 'Horario modificado con exito');
   }
 
   /**
