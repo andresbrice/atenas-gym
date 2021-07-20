@@ -1,10 +1,10 @@
 <x-app-layout>
-    <x-slot name="breadcrumb">
-        <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{ route('usuario.index') }}">Gestión Usuario</a> /
-            <u>Mostrar
-                Usuario</u>
-        </x-breadcrumb>
-    </x-slot>
+  <x-slot name="breadcrumb">
+    <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{ route('usuario.index') }}">Gestión Usuario</a> /
+      <u>Mostrar
+        Usuario</u>
+    </x-breadcrumb>
+  </x-slot>
 
   <x-slot name="slot">
     <div class="py-2 xl:py-6">
@@ -99,110 +99,94 @@
                         <li><b><u>E. Respiratorias:</u></b>
                           @endif
 
-                                                @if ($usuario->eCardiacas === 1)
-                                                    <li><b><u>E. Cardiacas:</u></b> <svg
-                                                            xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline"
-                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2" d="M5 13l4 4L19 7" />
-                                                        </svg> </li>
-                                                @else
-                                                    <li><b><u>E. Cardiacas:</u></b>
-                                                @endif
+                          @if ($usuario->eCardiacas === 1)
+                        <li><b><u>E. Cardiacas:</u></b> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg> </li>
+                        @else
+                        <li><b><u>E. Cardiacas:</u></b>
+                          @endif
 
-                                                @if ($usuario->eRenal === 1)
-                                                    <li><b><u>E. Renales:</u></b> <svg
-                                                            xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline"
-                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2" d="M5 13l4 4L19 7" />
-                                                        </svg> </li>
-                                                @else
-                                                    <li><b><u>E. Renales:</u></b>
-                                                @endif
+                          @if ($usuario->eRenal === 1)
+                        <li><b><u>E. Renales:</u></b> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg> </li>
+                        @else
+                        <li><b><u>E. Renales:</u></b>
+                          @endif
 
-                                                @if ($usuario->convulsiones === 1)
-                                                    <li><b><u>Convulsiones:</u></b> <svg
-                                                            xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline"
-                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2" d="M5 13l4 4L19 7" />
-                                                        </svg> </li>
-                                                @else
-                                                    <li><b><u>Convulsiones:</u></b>
-                                                @endif
+                          @if ($usuario->convulsiones === 1)
+                        <li><b><u>Convulsiones:</u></b> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg> </li>
+                        @else
+                        <li><b><u>Convulsiones:</u></b>
+                          @endif
 
-                                                @if ($usuario->epilepsia === 1)
-                                                    <li><b><u>Epilepsia:</u></b> <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24"
-                                                            stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2" d="M5 13l4 4L19 7" />
-                                                        </svg> </li>
-                                                @else
-                                                    <li><b><u>Epilepsia:</u></b>
-                                                @endif
+                          @if ($usuario->epilepsia === 1)
+                        <li><b><u>Epilepsia:</u></b> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg> </li>
+                        @else
+                        <li><b><u>Epilepsia:</u></b>
+                          @endif
 
-                                                @if ($usuario->diabetes === 1)
-                                                    <li><b><u>Diabetes:</u></b> <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24"
-                                                            stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2" d="M5 13l4 4L19 7" />
-                                                        </svg> </li>
-                                                @else
-                                                    <li><b><u>Diabetes:</u></b>
-                                                @endif
+                          @if ($usuario->diabetes === 1)
+                        <li><b><u>Diabetes:</u></b> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg> </li>
+                        @else
+                        <li><b><u>Diabetes:</u></b>
+                          @endif
 
-                                                @if ($usuario->alergia === 1)
-                                                    <li><b><u>Alergias:</u></b> <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24"
-                                                            stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2" d="M5 13l4 4L19 7" />
-                                                        </svg> </li>
-                                                @else
-                                                    <li><b><u>Alergias:</u></b>
-                                                @endif
+                          @if ($usuario->alergia === 1)
+                        <li><b><u>Alergias:</u></b> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg> </li>
+                        @else
+                        <li><b><u>Alergias:</u></b>
+                          @endif
 
-                                                @if ($usuario->asma === 1)
-                                                    <li><b><u>Asma:</u></b> <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24"
-                                                            stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2" d="M5 13l4 4L19 7" />
-                                                        </svg> </li>
-                                                @else
-                                                    <li><b><u>Asma:</u></b>
-                                                @endif
+                          @if ($usuario->asma === 1)
+                        <li><b><u>Asma:</u></b> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg> </li>
+                        @else
+                        <li><b><u>Asma:</u></b>
+                          @endif
 
-                                                @if ($usuario->medicacion === 1)
-                                                    <li><b><u>Medicación:</u></b> <svg
-                                                            xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline"
-                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2" d="M5 13l4 4L19 7" />
-                                                        </svg> </li>
-                                                @else
-                                                    <li><b><u>Medicación:</u></b>
-                                                @endif
-                                            </ul>
-                                        </dd>
-                                    </div>
-                                </dl>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="px-4 py-2  flex items-center justify-center sm:px-6">
-                        <a href="{{ route('usuario.index') }}">
-                            <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
-                                {{ __('Back') }}
-                            </x-button>
-                        </a>
-                    </div>
-
-                </div>
+                          @if ($usuario->medicacion === 1)
+                        <li><b><u>Medicación:</u></b> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg> </li>
+                        @else
+                        <li><b><u>Medicación:</u></b>
+                          @endif
+                      </ul>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
             </div>
+          </div>
+          <div class="px-4 py-2  flex items-center justify-center sm:px-6">
+            <a href="{{ url()->previous() }}">
+              <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
+                {{ __('Back') }}
+              </x-button>
+            </a>
+          </div>
+
         </div>
-    </x-slot>
+      </div>
+    </div>
+  </x-slot>
 </x-app-layout>

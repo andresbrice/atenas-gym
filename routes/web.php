@@ -43,7 +43,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('cuota', CuotaController::class);
     Route::get('seleccionaralumno', [CuotaController::class, 'seleccionarAlumno'])->name('cuota.seleccionaralumno');
     Route::get('findClase', [RutinaController::class, 'findClase'])->name('findClase');
-    Route::get('findProfesor', [RutinaController::class, 'findProfesor'])->name('findProfesor');
   });
 
   // Route::group(['middleware' => 'profesor'], function () {

@@ -20,17 +20,31 @@
               @csrf
               <div class="flex flex-col p-4 overflow-hidden sm:rounded-md">
                 <div class="grid grid-cols-1 gap-4">
+
+                  <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                    <x-label for="tipo_clase" :value="__('Tipo de Clase')" class="font-semibold" />
+                    <select name="tipo_clase" id="tipo_clase"
+                      class="select2_el w-full block px-4 py-2 rounded-md mt-2 focus:border-red-300 focus:ring-red-200">
+                      <option value="" hidden></option>
+                      @foreach ($clases as $clase)
+                      <option value="{{$clase->id}}">{{ $clase->tipo_clase }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+
+
                   <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                     <x-label for="nombre_ejercicio" :value="__('Ejercicio')" class="font-semibold" />
                     <x-input id="nombre_ejercicio" class="block w-full px-4 py-2 mt-2" type="text"
-                      name="nombre_ejercicio" :value="old('nombre_ejercicio')" required autofocus />
+                      name="nombre_ejercicio" :value="old('nombre_ejercicio')" required />
                   </div>
+
                   <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                     <x-label for="descripcion" :value="__('Descripción')" class="font-semibold" />
                     <textarea id="descripcion" name="descripcion" class="w-full resize-none
-                                  border-gray-300 block
+                                  border-gray-300 block rounded-md
                                   focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50" rows="3"
-                      cols="50" minlength="10" required autofocus>{{old("descripcion")}}</textarea>
+                      cols="50" minlength="10" required>{{ old('descripcion') }}</textarea>
                   </div>
                 </div>
                 <div class="px-4 py-2 mt-3 flex items-center justify-between sm:px-6">
@@ -52,3 +66,24 @@
     </div>
   </x-slot>
 </x-app-layout>
+
+<script>
+  $(document).ready(function() {
+    $('.select2_el').select2({
+      placeholder: "Seleccionar",
+      allowClear: true,
+      width: 'resolve',
+      language: {
+
+        noResults: function() {
+
+          return "No hay resultado";
+        },
+        searching: function() {
+
+          return "Buscando..";
+        }
+      }
+    });
+  });
+</script>

@@ -57,7 +57,7 @@
     </main>
     <x-footer />
   </div>
+  @yield('scripts')
 </body>
-@yield('scripts')
 
 </html>
