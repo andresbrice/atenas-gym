@@ -40,12 +40,12 @@
                   <option value="3">
                     Días de Entrenamiento
                   </option>
-                  <option>
+                  <option value="4">
                     Alumnos
-                  </option value="4">
-                  <option>
+                  </option>
+                  <option value="5">
                     Profesor
-                  </option value="5">
+                  </option>
 
                   @endsection
                 </x-search>

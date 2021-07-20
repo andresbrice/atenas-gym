@@ -15,7 +15,7 @@ class Profesor extends User
     //
   }
 
-  public function usuario()
+  public function user()
   {
     return $this->belongsTo(User::class);
   }

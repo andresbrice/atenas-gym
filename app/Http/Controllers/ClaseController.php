@@ -87,18 +87,10 @@ class ClaseController extends Controller
 
   public function show($id)
   {
-    $clase = Clase::findOrFail($id);
-    $alumno_clase = Alumno_Clase::all();
-    $alumno = User::select('id', 'name', 'lastName')
-      ->where('role_id', '=', 1)
-      ->orderBy('name', 'asc')
-      ->get();
-    $profesor = User::select('id', 'name', 'lastName')
-      ->where('role_id', '=', 2)
-      ->orderBy('name', 'asc')
-      ->get();
+    $clase = Clase::findOrFail($id)
+      ->with('alumno_clase');
 
-    return view('clase.show', compact('clase', 'alumno', 'profesor', 'alumno_clase'));
+    return view('clase.show', compact('clase'));
   }
 
   /**
