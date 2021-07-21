@@ -8,6 +8,7 @@ use App\Models\Role;
 use App\Models\Alumno;
 use App\Models\Profesor;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Session;
 
@@ -179,8 +180,32 @@ class UserController extends Controller
    */
   public function destroy($id)
   {
-    User::destroy($id);
+    
+    
+    $user = User::findOrFail($id);
+    
+    if($user->role_id == 1){
+        $alumno_id = DB::select('select alumnos.id as alumno from alumnos JOIN users on alumnos.user_id = users.id WHERE users.id = ?', [$user->id]);
 
-    return redirect('usuario')->with('message', 'Usuario eliminado con exito');
+        $query1 = DB::select('select count(*) as contador from users JOIN alumnos ON users.id = alumnos.user_id WHERE alumnos.id
+        IN (SELECT alumno_clase.alumno_id FROM alumno_clase WHERE alumno_clase.alumno_id = ?)', [$alumno_id[0]->alumno]);
+    } elseif($user->role_id == 2 || $user->role_id == 3) {
+        $profesor_id = DB::select('select profesors.id as profesor from profesors JOIN users on profesors.user_id = users.id WHERE users.id = ?' [$user->id]);
+
+        $query2 = DB::select('select count(*) as contador from users JOIN profesors ON users.id = profesors.user_id WHERE profesors.id
+        IN (SELECT clase_profesor.profesor_id FROM clase_profesor WHERE clase_profesor.profesor_id = ?)', [$profesor_id[0]->profesor]);
+    }
+   
+  
+
+    if ( $query1 > 0 || $query2 > 0) {
+      return redirect('usuario')->with('error', 'No es posible eliminar este usuario ya que esta relacionado con una clase');
+    } else {
+
+        User::destroy($id);
+
+        return redirect('usuario')->with('message', 'Usuario eliminado con exito');
+    }
+    
   }
 }
