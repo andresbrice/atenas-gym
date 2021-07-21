@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Clase;
 use App\Models\Dia;
 use App\Models\Horario;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class ClaseController extends Controller
@@ -58,6 +59,16 @@ class ClaseController extends Controller
       'horario_id' => 'required',
       'dias' => 'required|array|min: 1'
     ], ['dias.required' => 'Debe seleccionar al menos 1 día de la semana']);
+
+    foreach ($request->dias as $dia) {
+      $query = DB::select('SELECT COUNT(*) as contador FROM clases JOIN clase_dia ON clases.id = clase_dia.clase_id WHERE clases.tipo_clase = ? AND EXISTS (SELECT * FROM horarios WHERE horarios.id = ?) AND clase_dia.dia_id = ?', [$request->tipo_clase, $request->horario_id, $dia]);
+
+      if ($query[0]->contador > 0) {
+        session()->flash('error', 'La cantidad de dias solicitados
+                 supera el limite de dias por solicitud');
+        return redirect('clase/create')->withInput();
+      }
+    }
 
     //hacer query para validar las 3 cosas
 
