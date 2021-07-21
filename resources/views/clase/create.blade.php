@@ -14,6 +14,7 @@
             <!-- Validation Errors -->
             <x-validation-errors class=" mt-5" :errors="$errors" />
 
+
             <form action="{{ route('clase.store') }}" method="POST">
               @csrf
               <div class="flex flex-col p-4 overflow-hidden sm:rounded-md">
@@ -36,7 +37,7 @@
                       </option>
                       @foreach ($horarios as $horario)
                       <option value="{{$horario->id}}" {{old('horario_id') == $horario->id ? 'selected' : ''}}>
-                        {{$horario->hora->format('H:i A')}} 
+                        {{$horario->hora->format('H:i A')}}
                       </option>
                       @endforeach
                     </select>
@@ -50,8 +51,8 @@
                     <div class="inline-flex items-center">
                       <input id="dia" type="checkbox" class="rounded border-gray-300 text-red-900 
                       shadow-sm focus:border-red-300 focus:ring
-                      focus:ring-red-200 focus:ring-opacity-50" name="dias[]" value="{{$dia->id}}" 
-                      @if(is_array(old('dias')) && in_array($dia->id, old('dias'))) checked @endif>
+                      focus:ring-red-200 focus:ring-opacity-50" name="dias[]" value="{{$dia->id}}"
+                        @if(is_array(old('dias')) && in_array($dia->id, old('dias'))) checked @endif>
 
                       <span class="ml-2 text-sm text-gray-600">{{ $dia->dia }}</span>
                     </div>
