@@ -48,6 +48,10 @@
                     Descripción
                   </option>
 
+                  <option value="3">
+                    Tipo de clase
+                  </option>
+
                   @endsection
                 </x-search>
                 {{-- FIN BUSCADOR --}}
@@ -88,11 +92,9 @@
                 </td>
 
                 <td class="px-6 py-4 whitespace-normal text-center text-sm font-medium">
-                  {{-- @foreach ($ejercicio->clases as $clase)
-                  {{ $clase->tipo_clase}}
-                  @endforeach --}}
-
-                  {{-- {{$ejercicio->clases()->tipo_clase}} --}}
+                  @foreach ($ejercicio->clases as $clase)
+                  {{ $clase->tipo_clase}}@if (!$loop->last), @endif
+                  @endforeach
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                   <div class="inline-flex" role="group" aria-label="Button group">

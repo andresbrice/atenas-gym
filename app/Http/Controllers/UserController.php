@@ -194,7 +194,6 @@ class UserController extends Controller
       $query = DB::select('select count(*) as c from users JOIN profesors ON users.id = profesors.user_id WHERE profesors.id IN (SELECT clase_profesor.profesor_id FROM clase_profesor WHERE clase_profesor.profesor_id = ?)', [$profesor_id[0]->profesor]);
     }
 
-
     if ($query[0]->c > 0) {
       return redirect('usuario')->with('error', 'No es posible eliminar este usuario ya que esta relacionado con una clase');
     } else {
