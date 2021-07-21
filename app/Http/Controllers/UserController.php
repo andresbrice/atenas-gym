@@ -195,7 +195,7 @@ class UserController extends Controller
         $query2 = DB::select('select count(*) as contador from users JOIN profesors ON users.id = profesors.user_id WHERE profesors.id
         IN (SELECT clase_profesor.profesor_id FROM clase_profesor WHERE clase_profesor.profesor_id = ?)', [$profesor_id[0]->profesor]);
     }
-   
+
   
 
     if ( $query1 > 0 || $query2 > 0) {
