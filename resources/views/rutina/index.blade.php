@@ -38,9 +38,16 @@
                   </option>
 
                   <option value="2">
-                    Nombre y Apellido
+                    Fecha de emisión
                   </option>
 
+                  <option value="3">
+                    Alumno
+                  </option>
+
+                  <option value="4">
+                    Profesor
+                  </option>
                   @endsection
                 </x-search>
                 {{-- FIN BUSCADOR --}}
@@ -76,19 +83,19 @@
               @forelse ($rutinas as $rutina)
               <tr>
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                  {{-- {{ $rutina->userName }} --}}
+                  {{-- {{ $rutina->alumno_clase->clase->tipo_clase }} --}}
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                  {{-- {{ $rutina->name }} --}}
+                  {{ $rutina->fecha_emision }}
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                  {{-- {{ $rutina->lastName }} --}}
+                  {{-- {{ $rutina->alumno_clase->alumno->user->name }} {{ $rutina->alumno_clase->alumno->user->lastName }} --}}
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                  {{-- {{ $rutina->email }} --}}
+                  {{ $rutina->profesor->user->name }} {{ $rutina->profesor->user->lastName }}
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">

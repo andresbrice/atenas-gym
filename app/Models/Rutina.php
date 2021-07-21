@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Rutina extends Model
 {
@@ -31,5 +32,36 @@ class Rutina extends Model
   public function profesor()
   {
     return $this->belongsTo(Profesor::class);
+  }
+
+  public function scopeSearch($query, $filtro, $search)
+  {
+    if (($filtro) && trim($search) && ($filtro != "")) {
+      switch ($filtro) {
+        case 1:
+          return $query->whereHas('alumno_clase', function($query) use($search){
+            $query->whereHas('clase', function($query) use($search){
+              return $query->where();
+            });
+          });
+          break;
+        case 2:
+          $filtro = 'fecha_emision';
+          return $query->where($filtro, "LIKE", "%$search%");
+          break;
+        case 3:
+          # code...
+          break;
+        case 4:
+          $query->whereHas('profesor', function($query) use($search){
+            $query->whereHas('user', function($query) use($search){
+              return $query->where(DB::raw("CONCAT(name,' ',lastName)"), "LIKE", "%$search%");
+            });
+          });
+          break;
+      }
+    } elseif (trim($search) == "") {
+      $filtro = "";
+    }
   }
 }

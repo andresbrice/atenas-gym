@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Ejercicio extends Model
 {
@@ -40,6 +41,15 @@ class Ejercicio extends Model
         case 2:
           $filtro = 'descripcion';
           return $query->where($filtro, "LIKE", "%$search%");
+          break;
+        case 3:
+          $query->whereHas('rutinas', function($query) use($search){
+            $query->whereHas('alumno_clase', function($query) use($search){
+              $query->whereHas('clase', function($query) use($search){
+                return $query->where(DB::raw("tipo_clase", "LIKE", "%$search%"));
+              });
+            });
+          });
           break;
       }
     } elseif (trim($search) == "") {

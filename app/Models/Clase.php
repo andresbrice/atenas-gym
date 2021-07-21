@@ -73,11 +73,11 @@ class Clase extends Model
           break;
         case 4:
           return $query->whereHas('alumno_clase', function($query) use($search){
-            $query->whereHas('alumno', function($query) use($search) {
-              $query->whereHas('user', function($query) use($search) {
+            $query->whereHas('alumno', function($query) use($search){
+              $query->whereHas('user', function($query) use($search){
                 return $query->where(DB::raw("CONCAT(name,' ',lastName)"), "LIKE", "%$search%");
               });
-            });  
+            });
           });
           break;
         case 5:
