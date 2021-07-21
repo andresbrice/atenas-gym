@@ -134,23 +134,6 @@ class ClaseController extends Controller
         }
             return redirect('clase')->with('message', 'Clase modificada con exito');
 
-
-
-        // $request->validate([
-        //   'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
-        //   'horario_id' => 'required',
-        //   'dias' => 'required|array|min: 1'
-        // ], ['dias.required' => 'Debe seleccionar al menos 1 día de la semana']);
-        
-        // $clase = Clase::find($clase);
-        // $clase->tipo_clase = $request->tipo_clase;
-        // $clase->horario_id = $request->horario_id;
-        
-        // $clase->tarifa_id = count($request->dias);
-    
-        // $clase->save();
-    
-        // $clase->dias()->sync($request->input('dias', []));
     }
 
   /**
