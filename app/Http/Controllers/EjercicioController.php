@@ -81,6 +81,7 @@ class EjercicioController extends Controller
     //$ejercicio = Ejercicio::create([$request->all()]);
 
     $ejercicio = new Ejercicio();
+
     $ejercicio->nombre_ejercicio = ucfirst($request->nombre_ejercicio);
     $ejercicio->descripcion = ucfirst($request->descripcion);
     $ejercicio->save();
@@ -141,21 +142,20 @@ class EjercicioController extends Controller
    */
   public function destroy($id)
   {
-    
+
     $ejercicio = Ejercicio::findOrFail($id);
-    
+
     $query1 = DB::table('clase_ejercicio')->where('clase_ejercicio.ejercicio_id', '=', $ejercicio->id)->count();
     $query2 = DB::table('ejercicio_rutina')->where('ejercicio_rutina.ejercicio_id', '=', $ejercicio->id)->count();
 
-    
-    if ( $query1 > 0 || $query2 > 0) {
+
+    if ($query1 > 0 || $query2 > 0) {
       return redirect('ejercicio')->with('error', 'No es posible eliminar este ejercicio ya que esta relacionado con una clase o rutina');
     } else {
 
-        Ejercicio::destroy($id);
+      Ejercicio::destroy($id);
 
-        return redirect('ejercicio')->with('message', 'Ejercicio eliminado con exito');
+      return redirect('ejercicio')->with('message', 'Ejercicio eliminado con exito');
     }
-
   }
 }

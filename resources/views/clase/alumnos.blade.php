@@ -10,7 +10,11 @@
           <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
             <x-success-message class=" mt-5" :errors="$errors" />
             <div class="flex flex-col">
-              grid.grid-c
+              <x-table>
+                @section('id')
+                id="tabla-alumnos"
+                @endsection
+              </x-table>
             </div>
           </div>
         </div>

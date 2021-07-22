@@ -29,7 +29,7 @@ class ClaseController extends Controller
       ->search($filtro, $search)
       ->orderByDesc('id')
       ->simplePaginate(4);
-
+    // dd($clases);
     Session::put('clase_url', request()->fullUrl());
 
     return view('clase.index', compact('clases'));
@@ -129,22 +129,20 @@ class ClaseController extends Controller
    */
   public function update(Request $request, $id)
   {
-        $clase = Clase::find($id);
+    $clase = Clase::find($id);
 
-        $clase->tipo_clase = $request->get('tipo_clase');
-        $clase->horario_id = $request->get('horario_id');
-        $clase->dias()->sync($request->get('dias', []));
-        $clase->tarifa_id = count($request->dias); 
-        
-        $clase->save();
+    $clase->tipo_clase = $request->get('tipo_clase');
+    $clase->horario_id = $request->get('horario_id');
+    $clase->dias()->sync($request->get('dias', []));
+    $clase->tarifa_id = count($request->dias);
 
-        if (session('clase_url')) 
-        {
-            return redirect(session('clase_url'))->with('message', 'Clase modificada con exito');
-        }
-            return redirect('clase')->with('message', 'Clase modificada con exito');
+    $clase->save();
 
+    if (session('clase_url')) {
+      return redirect(session('clase_url'))->with('message', 'Clase modificada con exito');
     }
+    return redirect('clase')->with('message', 'Clase modificada con exito');
+  }
 
   /**
    * Remove the specified resource from storage.
@@ -156,11 +154,11 @@ class ClaseController extends Controller
   {
 
     $clase = Clase::findOrFail($id);
-   
+
 
     $query = DB::table('alumno_clase')->where('alumno_clase.clase_id', '=', $clase->id)->count();
 
-    if ($clase->profesors()->count()|| $query > 0) {
+    if ($clase->profesors()->count() || $query > 0) {
       return redirect('clase')->with('error', 'No es posible eliminar esta clase ya que esta relacionada con alumnos o profesores');
     } else {
       Clase::destroy($id);

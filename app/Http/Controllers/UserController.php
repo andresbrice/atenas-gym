@@ -184,13 +184,13 @@ class UserController extends Controller
     $usuario = User::findOrFail($id);
 
     if ($usuario->role_id == 1) {
-
       $alumno_id = DB::select('select alumnos.id as id from alumnos JOIN users on alumnos.user_id = users.id WHERE users.id = ?', [$usuario->id]);
-      dd($alumno_id);
+
       $query = DB::select('select count(*) as c from users JOIN alumnos ON users.id = alumnos.user_id WHERE alumnos.id
         IN (SELECT alumno_clase.alumno_id FROM alumno_clase WHERE alumno_clase.alumno_id = ?)', [$alumno_id[0]->alumno]);
     } else {
       $profesor_id = DB::select('select profesors.id as id from profesors JOIN users on profesors.user_id = users.id WHERE users.id = ?', [$usuario->id]);
+
       $query = DB::select('select count(*) as c from users JOIN profesors ON users.id = profesors.user_id WHERE profesors.id IN (SELECT clase_profesor.profesor_id FROM clase_profesor WHERE clase_profesor.profesor_id = ?)', [$profesor_id[0]->profesor]);
     }
 
