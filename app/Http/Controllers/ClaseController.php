@@ -131,6 +131,12 @@ class ClaseController extends Controller
   {
         $clase = Clase::find($id);
 
+        $request->validate([
+            'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
+            'horario_id' => 'required',
+            'dias' => 'required|array|min: 1'
+          ], ['dias.required' => 'Debe seleccionar al menos 1 día de la semana']);
+
         $clase->tipo_clase = $request->get('tipo_clase');
         $clase->horario_id = $request->get('horario_id');
         $clase->dias()->sync($request->get('dias', []));

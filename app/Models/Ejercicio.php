@@ -43,13 +43,9 @@ class Ejercicio extends Model
           return $query->where($filtro, "LIKE", "%$search%");
           break;
         case 3:
-          $query->whereHas('rutinas', function($query) use($search){
-            $query->whereHas('alumno_clase', function($query) use($search){
-              $query->whereHas('clase', function($query) use($search){
-                return $query->where(DB::raw("tipo_clase", "LIKE", "%$search%"));
-              });
-            });
-          });
+            return $query->whereHas('clases', function($query) use($search) {   
+                  return $query->where("clases.tipo_clase", "LIKE", "%$search%");
+                });
           break;
       }
     } elseif (trim($search) == "") {

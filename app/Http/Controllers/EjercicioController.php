@@ -19,14 +19,13 @@ class EjercicioController extends Controller
     $search = $request->get('search');
     $filtro = $request->get('filtro');
 
-    // $ejercicios = Ejercicio::with('clases')
-    //   ->search($filtro, $search)
-    //   ->orderByDesc('id')
-    //   ->simplePaginate(4);
-
-    $ejercicios = Ejercicio::orderBy('id', 'DESC')
+    $ejercicios = Ejercicio::with('clases')
       ->search($filtro, $search)
-      ->simplePaginate(5);
+      ->orderByDesc('id')
+      ->simplePaginate(4);
+    // $ejercicios = Ejercicio::orderBy('id', 'DESC')
+    //   ->search($filtro, $search)
+    //   ->simplePaginate(5);
 
     // 
 
@@ -73,7 +72,7 @@ class EjercicioController extends Controller
 
 
     $request->validate([
-      'tipo_clase' => 'required',
+      'tipo_clase' => 'required|unique:clases,tipo_clase',
       'nombre_ejercicio' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255|unique:ejercicios,nombre_ejercicio',
       'descripcion' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255|unique:ejercicios,descripcion',
     ]);
@@ -84,6 +83,7 @@ class EjercicioController extends Controller
     $ejercicio->nombre_ejercicio = ucfirst($request->nombre_ejercicio);
     $ejercicio->descripcion = ucfirst($request->descripcion);
     $ejercicio->save();
+    $ejercicio->clases()->sync($request->input('tipo_clase'));
 
     return redirect('ejercicio')->with('message', 'Ejercicio creado con exito');
   }
@@ -107,9 +107,11 @@ class EjercicioController extends Controller
    */
   public function edit($id)
   {
-
+    
     $ejercicio = Ejercicio::findOrFail($id);
-    return view('ejercicio.edit', compact('ejercicio'));
+    $clases = Clase::all();
+    $ejercicio_clase = $ejercicio->clases;
+    return view('ejercicio.edit', compact('ejercicio', 'clases', 'ejercicio_clase'));
   }
 
   /**
@@ -124,11 +126,14 @@ class EjercicioController extends Controller
     $request->validate([
       'nombre_ejercicio' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'descripcion' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
+      'tipo_clase' => 'required',
     ]);
 
-    $ejercicio = request()->except('_token', '_method');
-
+    $ejercicio = request()->except('_token', '_method', 'tipo_clase');
     Ejercicio::where('id', '=', $id)->update($ejercicio);
+    $ejer = Ejercicio::find($id);
+    $ejer->clases()->sync($request->input('tipo_clase'));
+
 
     return redirect('ejercicio')->with('message', 'Ejercicio modificado con exito');
   }
