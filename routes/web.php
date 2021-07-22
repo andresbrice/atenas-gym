@@ -50,10 +50,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
   // });
 
   Route::group(['middleware' => 'alumno'], function () {
-    Route::get('claseAlumno', [AlumnoController::class, 'consultaClase'])->name('alumnos.clase');
-    Route::get('asistenciaAlumno', [AlumnoController::class, 'consultaAsistencia'])->name('alumnos.asistencia');
-    Route::get('rutinaAlumno', [AlumnoController::class, 'consultaRutina'])->name('alumnos.rutina');
-    Route::get('cuotaAlumno', [AlumnoController::class, 'consultaCuota'])->name('alumnos.cuota');
+    Route::get('clases', [AlumnoController::class, 'consultaClase'])->name('alumnos.clase');
+    Route::get('buscarClase', [AlumnoController::class, 'buscarClase'])->name('alumnos.buscarClase');
+    Route::get('asistencias', [AlumnoController::class, 'consultaAsistencia'])->name('alumnos.asistencia');
+    Route::get('rutinas/{clase}', [AlumnoController::class, 'consultaRutina'])->name('alumnos.rutina');
+    Route::get('cuotas', [AlumnoController::class, 'consultaCuota'])->name('alumnos.cuota');
     Route::get('imprimirRutina', [AlumnoController::class, 'imprimirRutina'])->name('alumnos.imprimirRutina');
   });
 });

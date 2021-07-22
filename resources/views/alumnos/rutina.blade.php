@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="breadcrumb">
-        <x-breadcrumb><a href="/">Dashboard</a> / <u>Consulta Rutina</u></x-breadcrumb>
+        <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{ route('alumnos.buscarClase') }}">Buscar clase</a> / <u>Consulta Rutinas</u></x-breadcrumb>
     </x-slot>
 
     <x-slot name="slot">
@@ -23,7 +23,9 @@
                         </div>
                         <div class="flex flex-col">
                             <div class="flex-1 my-3">
-                                <h2 class="text-xl font-bold text-gray-800 uppercase dark:text-white">Día 1</h2>
+                                <h2 class="text-xl font-bold text-gray-800 uppercase dark:text-white">
+                                    DÍA 1
+                                </h2>
                                 <x-table>
                                     @section('nombre-columna')
                                         <tr>
@@ -48,83 +50,30 @@
 
 
                                     @section('contenido-filas')
-                                        <tr>
+                                    @foreach ($ejercicios as $ejercicio)
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-center">
+                                            {{ $ejercicio->nombre_ejercicio }}
+                                        </td>
 
-                                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                Press de Banca
-                                            </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-center">
+                                            {{ $ejercicio->series }}
+                                        </td>
 
-                                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                3
-                                            </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-center">
+                                            {{ $ejercicio->repeticiones }}
+                                        </td>
 
-                                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                10
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                60"
-                                            </td>
-                                        </tr>
-                                        <tr>
-
-                                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                Sentadillas
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                5
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                15
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                60"
-                                            </td>
-                                        </tr>
-                                        <tr>
-
-                                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                Burpees
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                3
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                10
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                60"
-                                            </td>
-                                        </tr>
-                                        <tr>
-
-                                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                Flexiones
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                3
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                10
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                60"
-                                            </td>
-                                        </tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-center">
+                                            {{ $ejercicio->descanso }}
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                     @endsection
 
                                 </x-table>
                             </div>
-                            <div class="flex-1 my-3">
+                            {{-- <div class="flex-1 my-3">
                                 <h2 class="text-xl font-bold text-gray-800 uppercase dark:text-white">Día 2</h2>
                                 <x-table>
                                     @section('nombre-columna')
@@ -324,7 +273,7 @@
                                     @endsection
 
                                 </x-table>
-                            </div>
+                            </div> --}}
 
                         </div>
                     </div>
