@@ -23,9 +23,9 @@
                         </div>
                         <div class="flex flex-col">
                             <div class="flex-1 my-3">
-                                <h2 class="text-xl font-bold text-gray-800 uppercase dark:text-white">
+                                {{-- <h2 class="text-xl font-bold text-gray-800 uppercase dark:text-white">
                                     DÍA 1
-                                </h2>
+                                </h2> --}}
                                 <x-table>
                                     @section('nombre-columna')
                                         <tr>

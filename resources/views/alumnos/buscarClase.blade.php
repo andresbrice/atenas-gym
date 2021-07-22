@@ -11,12 +11,12 @@
           <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
   
-              <form action="{{ route('alumnos.rutina', $clase->id) }}" method="GET">
+              <form action="{{ route('alumnos.seleccionarclase') }}" method="GET">
                 @csrf
                 <div class="flex flex-col p-4 overflow-hidden sm:rounded-md">
                     <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                       <x-label for="tipo_clase" :value="__('Clase')" class="font-semibold" />
-                      <select name="tipo_clase"
+                      <select id="tipo_clase" name="tipo_clase"
                         class="block w-full px-2 py-2 mt-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-300 focus:border-red-300">
                         <option hidden value="">Seleccione la clase</option>
                         @foreach ($clases as $clase)
