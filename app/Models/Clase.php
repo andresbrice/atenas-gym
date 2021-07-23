@@ -59,18 +59,21 @@ class Clase extends Model
           $filtro = 'tipo_clase';
           return $query->where($filtro, "LIKE", "%$search%");
           break;
+
         case 2:
           $filtro = 'hora';
           return $query->whereHas('horario', function($query) use($filtro, $search) {
             $query->where($filtro, "LIKE", "%$search%");
             });
           break;
+
         case 3:
           $filtro = 'dia';
           return $query->whereHas('dias', function($query) use($filtro, $search) {
             $query->where($filtro, "LIKE", "%$search%");
             });
           break;
+
         case 4:
           $query = DB::query()
           ->select('clases.id', 'clases.tipo_clase', 'clases.cupos_disponibles', 'horarios.hora', DB::raw("GROUP_CONCAT(dias.dia SEPARATOR ', ') as dias"), 'tarifas.precio')
@@ -86,8 +89,11 @@ class Clase extends Model
           ->groupBy('clases.id')
           ->get();
           dd($query);
+
           return $query;
+
           break;
+          
         case 5:
           return $query->whereHas('profesors', function($query) use($search) {
             $query->whereHas('user', function($query) use($search) {

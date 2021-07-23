@@ -50,7 +50,7 @@ class Rutina extends Model
           return $query->where($filtro, "LIKE", "%$search%");
           break;
         case 3:
-          # code...
+          # alumno...
           break;
         case 4:
           $query->whereHas('profesor', function($query) use($search){
