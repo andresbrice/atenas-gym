@@ -69,7 +69,6 @@ class AlumnoController extends Controller
        ->where('clases.id', '=', $clase_id)
        ->groupBy('ejercicio_rutina.id')
        ->get();
-        // dd($ejercicios);
         
         return view('alumnos.rutina', compact('clase', 'clase_id', 'ejercicios'));
     }
@@ -81,11 +80,9 @@ class AlumnoController extends Controller
     public function consultaCuota()
     {
         return view('alumnos.Cuota');
-
     }
     public function imprimirRutina()
     {
-
         return view('alumnos.imprimirRutina');
     }
 
