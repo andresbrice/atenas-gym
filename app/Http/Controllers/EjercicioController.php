@@ -19,14 +19,14 @@ class EjercicioController extends Controller
     $search = $request->get('search');
     $filtro = $request->get('filtro');
 
-    // $ejercicios = Ejercicio::with('clases')
-    //   ->search($filtro, $search)
-    //   ->orderByDesc('id')
-    //   ->simplePaginate(4);
-
-    $ejercicios = Ejercicio::orderBy('id', 'DESC')
+    $ejercicios = Ejercicio::with('clases')
       ->search($filtro, $search)
-      ->simplePaginate(5);
+      ->orderByDesc('id')
+      ->simplePaginate(4);
+
+    // $ejercicios = Ejercicio::orderBy('id', 'DESC')
+    //   ->search($filtro, $search)
+    //   ->simplePaginate(5);
 
     // 
 

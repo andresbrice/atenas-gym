@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Http\Middleware\Profesor;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Clase;
@@ -56,23 +56,20 @@ class ClaseController extends Controller
    */
   public function store(Request $request)
   {
+
     $request->validate([
-      'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255|unique:clases',
+      'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'horario_id' => 'required',
       'dias' => 'required|array|min: 1'
     ], ['dias.required' => 'Debe seleccionar al menos 1 día de la semana']);
 
     foreach ($request->dias as $dia) {
-      $query = DB::select('SELECT COUNT(*) as contador FROM clases JOIN clase_dia ON clases.id = clase_dia.clase_id WHERE clases.tipo_clase = ? AND EXISTS (SELECT * FROM horarios WHERE horarios.id = ?) AND clase_dia.dia_id = ?', [$request->tipo_clase, $request->horario_id, $dia]);
-
+      $query = DB::select("select count(*) as contador from clases join clase_dia on clases.id = clase_dia.clase_id JOIN dias on clase_dia.dia_id = dias.id join horarios on clases.horario_id = horarios.id where clases.tipo_clase = ? and dias.id = ? and horarios.id = ?", [$request->tipo_clase, $request->horario_id, $dia]);
       if ($query[0]->contador > 0) {
-        session()->flash('error', 'La cantidad de dias solicitados
-                 supera el limite de dias por solicitud');
+        session()->flash('error', 'La cantidad de dias solicitados supera el limite de dias por solicitud');
         return redirect('clase/create')->withInput();
       }
     }
-
-    //hacer query para validar las 3 cosas
 
     $clase = new Clase();
     $clase->tipo_clase = $request->tipo_clase;
@@ -98,10 +95,13 @@ class ClaseController extends Controller
 
   public function show($id)
   {
-    $clase = Clase::findOrFail($id)
-      ->with('alumno_clase');
+    $clase = Clase::findOrFail($id);
 
-    return view('clase.show', compact('clase'));
+    $alumno_clase = DB::select('select users.id as id, users.name as nombre, users.lastName as apellido from users where users.id in (select users.id from users join alumnos on users.id = alumnos.user_id where alumnos.id in(select alumnos.id from alumnos join alumno_clase on alumnos.id = alumno_clase.alumno_id where alumno_clase.clase_id = ?))', [$clase->id]);
+
+    $profesores = DB::select('select users.id as id, users.name as nombre, users.lastName as apellido from users where users.id in (select users.id from users join profesors on users.id = profesors.user_id where profesors.id in(select profesors.id from profesors join clase_profesor on profesors.id = clase_profesor.profesor_id where clase_profesor.clase_id = ?))', [$clase->id]);
+
+    return view('clase.show', compact('clase', 'alumno_clase', 'profesores'));
   }
 
   /**
@@ -170,28 +170,96 @@ class ClaseController extends Controller
 
   public function indexAlumnos($id)
   {
-    $alumnos = User::where('role_id', 1)->simplePaginate(6);
+    $cupos = Clase::where('id', $id)->pluck('cupos_disponibles');
+    $alumnos = User::where('role_id', 1)->get();
+    $clase = Clase::findOrFail($id);
+    $alumno_clase = DB::select('select users.id as id, users.name as nombre, users.lastName as apellido from users where users.id in (select users.id from users join alumnos on users.id = alumnos.user_id where alumnos.id in(select alumnos.id from alumnos join alumno_clase on alumnos.id = alumno_clase.alumno_id where alumno_clase.clase_id = ?))', [$clase->id]);
+
+    return view('clase.alumnos', compact('alumnos', 'clase', 'alumno_clase', 'cupos'));
+  }
+
+  public function addAlumnos(Request $request, $id)
+  {
+    $clase = Clase::findOrFail($id);
+    $cupos = Clase::where('id', $id)->pluck('cupos_disponibles');
+
+    $validacion = DB::select('SELECT COUNT(*) as enClase FROM alumno_clase WHERE alumno_clase.alumno_id IN (SELECT alumnos.id FROM alumnos JOIN users ON alumnos.user_id = users.id WHERE alumnos.user_id = ?) AND alumno_clase.clase_id = ?', [$request->alumno, $clase->id]);
+
+    if ($validacion[0]->enClase > 0) {
+      return  back()->with('error', 'El alumno ya se encuentra en esta clase');
+    }
+
+    $alumno_id = DB::select('select alumnos.id as id from alumnos where alumnos.user_id = ?', [$request->alumno]);
+    // dd($alumno_id[0]->id);
+
+    $alumno_clase = new Alumno_Clase();
+    $alumno_clase->alumno_id = $alumno_id[0]->id;
+    $alumno_clase->clase_id = $clase->id;
+    $alumno_clase->save();
+
+
+    $cupos_disp = $cupos[0] - 1;
+    $clase->cupos_disponibles = $cupos_disp;
+    $clase->save();
+
+
+    return back();
+  }
+  public function deleteAlumnos($user_id, $clase_id)
+  {
+    $clase = Clase::findOrFail($clase_id);
+    $cupos = Clase::where('id', $clase_id)->pluck('cupos_disponibles');
+    $alumno_id = DB::select('select alumnos.id as id from alumnos where alumnos.user_id = ?', [$user_id]);
+
+    $query = DB::select('select alumno_clase.id as id from alumno_clase where alumno_clase.alumno_id = ? and alumno_clase.clase_id = ?', [$alumno_id[0]->id, $clase_id]);
+
+    $alumno_clase = Alumno_Clase::where('id', '=', $query[0]->id);
+    $alumno_clase->delete();
+
+
+    $cupos_disp = $cupos[0] + 1;
+    $clase->cupos_disponibles = $cupos_disp;
+    $clase->save();
+    return back();
+  }
+  public function indexProfesores($id)
+  {
+
+    $profesores = User::whereIn('role_id', [2, 3])->get();
+    // dd($profesores);
+    $clase = Clase::findOrFail($id);
+    $clase_profesor = DB::select('select users.id as id, users.name as nombre, users.lastName as apellido from users where users.id in (select users.id from users join profesors on users.id = profesors.user_id where profesors.id in(select profesors.id from profesors join clase_profesor on profesors.id = clase_profesor.profesor_id where clase_profesor.clase_id = ?))', [$clase->id]);
+
+    return view('clase.profesores', compact('profesores', 'clase', 'clase_profesor'));
+  }
+  public function addProfesores(Request $request, $id)
+  {
     $clase = Clase::findOrFail($id);
 
-    return view('clase.alumnos', compact('alumnos', 'clase'));
-  }
+    $validacion = DB::select('SELECT COUNT(*) as enClase FROM clase_profesor WHERE clase_profesor.profesor_id IN (SELECT profesors.id FROM profesors JOIN users ON profesors.user_id = users.id WHERE profesors.user_id = ?) AND clase_profesor.clase_id = ?', [$request->profesor, $clase->id]);
 
-  public function addAlumnos(Request $request)
-  {
-    // $clase = $request->all();
-    // $clase->dias()->sync(); 
-    dd($request->id);
+    if ($validacion[0]->enClase > 0) {
+      return  back()->with('error', 'El profesor ya se encuentra en esta clase');
+    }
+
+    $profesor_id = DB::select('select profesors.id as id from profesors where profesors.user_id = ?', [$request->profesor]);
+    // dd($alumno_id[0]->id);
+
+    $clase->profesors()->attach($profesor_id[0]->id);
+
+    return back();
   }
-  public function deleteAlumnos()
+  public function deleteProfesores($user, $id)
   {
-  }
-  public function indexProfesores()
-  {
-  }
-  public function addProfesores()
-  {
-  }
-  public function deleteProfesores()
-  {
+
+    $clase = Clase::findOrFail($id);
+    // dd($clase);
+
+    $profesor = DB::select('select profesors.id as id from profesors where profesors.user_id = ?', [$user]);
+    $profesor_id = $profesor[0]->id;
+
+    $clase->profesors()->detach($profesor_id);
+
+    return back();
   }
 }
