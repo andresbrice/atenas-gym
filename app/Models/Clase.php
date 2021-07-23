@@ -72,24 +72,21 @@ class Clase extends Model
             });
           break;
         case 4:
-          return $query = DB::query()
+          $query = DB::query()
           ->select('clases.id', 'clases.tipo_clase', 'clases.cupos_disponibles', 'horarios.hora', DB::raw("GROUP_CONCAT(dias.dia SEPARATOR ', ') as dias"), 'tarifas.precio')
           ->from('clases')
           ->join('horarios', 'clases.horario_id', '=', 'horarios.id')
           ->join('clase_dia', 'clases.id', '=', 'clase_dia.clase_id')
           ->join('dias', 'clase_dia.dia_id', '=', 'dias.id')
           ->join('tarifas', 'clases.tarifa_id', '=', 'tarifas.id')
-          ->whereIn('clases.id', function ($query) use($search){
-            $query->select('clases.id')
-              ->from('clases')
-              ->join('alumno_clase', 'clases.id', '=', 'alumno_clase.clase_id')
-              ->join('alumnos', 'alumno_clase.alumno_id', '=', 'alumnos.id')
-              ->join('users', 'alumnos.user_id', '=', 'users.id')
-              ->where(DB::raw("CONCAT(users.name, users.lastName)"), "LIKE", "%$search%");
-          })
-          ->groupby('clases.id')
+          ->join('alumno_clase', 'clases.id', '=', 'alumno_clase.clase_id')
+          ->join('alumnos', 'alumno_clase.alumno_id', '=', 'alumnos.id')
+          ->join('users', 'alumnos.user_id', '=', 'users.id')
+          ->where(DB::raw("CONCAT(users.name, users.lastName)"), "LIKE", "%$search%")
+          ->groupBy('clases.id')
           ->get();
           dd($query);
+          return $query;
           break;
         case 5:
           return $query->whereHas('profesors', function($query) use($search) {
