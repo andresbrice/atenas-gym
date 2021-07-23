@@ -14,6 +14,7 @@
                 @csrf
                 <div class="flex flex-col p-4 overflow-hidden sm:rounded-md">
                   <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                    <x-label for="tipo_clase" :value="__('Clase')" class="font-semibold" />
                     <select id="tipo_clase" name="tipo_clase"
                       class="block w-full px-2 py-2 mt-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-300 focus:border-red-300">
                       <option hidden value="">Seleccione la clase</option>

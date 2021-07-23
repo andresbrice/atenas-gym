@@ -89,7 +89,7 @@ class Clase extends Model
           })
           ->groupby('clases.id')
           ->get();
-          // dd($query);
+          dd($query);
           break;
         case 5:
           return $query->whereHas('profesors', function($query) use($search) {

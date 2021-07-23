@@ -9,9 +9,6 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
                         <x-auth-session-status class="mb-4 font-bold flex justify-center" :status="session('status')" />
-                        <div class="p-2 uppercase text-lg font-bold text-red-700">
-                            <h2> {{ $clase->tipo_clase }} </h2>
-                        </div>
                         <div class="flex flex-col">
                             <style>
                                 @media print {
@@ -22,12 +19,12 @@
                                         visibility: visible;
                                     }
                                 }
-                            
                             </style>
                             <div class="flex-1 my-3 print-container">
-                                {{-- <h2 class="text-xl font-bold text-gray-800 uppercase dark:text-white">
-                                    DÍA 1
-                                </h2> --}}
+                                
+                                <div class="pb-5 uppercase text-lg font-bold text-red-700  ">
+                                    <h2> {{ $clase->tipo_clase }} </h2>
+                                </div>
                                 <x-table>
                                     @section('nombre-columna')
                                         <tr>
@@ -75,7 +72,7 @@
                                 </x-table>
                             </div>
                             <div class="px-4 mt-3 py-2  flex items-center justify-between sm:px-6">
-                                <a href="{{ route('alumnos.clase') }}">
+                                <a href="{{ route('alumnos.buscarClase') }}">
                                     <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
                                         {{ __('Back') }}
                                     </x-button>
