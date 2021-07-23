@@ -51,13 +51,6 @@
                       {{ $dia->dia }}@if (!$loop->last), @endif
                       @endforeach
                     </dd>
-
-
-                    <ul>
-                      foreach ($clase->alumno_clase as $alumno)
-                      <li>{{$alumno}}</li>
-                      endforeach
-                    </ul>
                   </div>
                   <div class="bg-gray-50 px-4 py-5 place-items-center sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">
@@ -72,14 +65,13 @@
                       Alumnos
                     </dt>
                     <dd class="mt-1  text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      <ul>
-                        @foreach ($clase->alumno_clase as $alumno)
-                          <li>
-                            Hola
-                            {{-- {{ $alumno->alumnos->users->name }} {{ $alumno->alumnos->users->lastName }} --}}
-                          </li>
-                        @endforeach
-                      </ul>
+
+                      @foreach ($alumno_clase as $alumno)
+                      <li>
+                        {{ $alumno->nombre }} {{ $alumno->apellido }}
+                      </li>
+                      @endforeach
+
                     </dd>
                   </div>
                   <div class="bg-gray-50 px-4 py-5 place-items-center sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -87,7 +79,12 @@
                       Profesores
                     </dt>
                     <dd class="mt-1  text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      {{-- {{$clase->phone}} --}}
+
+                      @foreach ($profesores as $profesor)
+                      <li>
+                        {{ $profesor->nombre }} {{ $profesor->apellido }}
+                      </li>
+                      @endforeach
                     </dd>
                   </div>
                 </dl>
