@@ -23,11 +23,6 @@ class EjercicioController extends Controller
       ->search($filtro, $search)
       ->orderByDesc('id')
       ->simplePaginate(4);
-    // $ejercicios = Ejercicio::orderBy('id', 'DESC')
-    //   ->search($filtro, $search)
-    //   ->simplePaginate(5);
-
-    // 
 
     return view('ejercicio.index', compact('ejercicios'));
   }
