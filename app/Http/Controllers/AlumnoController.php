@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Clase;
-use App\Models\Ejercicio;
+use App\Models\Horario;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
