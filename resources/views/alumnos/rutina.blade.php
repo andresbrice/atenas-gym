@@ -5,24 +5,23 @@
 
     <x-slot name="slot">
         <div class="py-2 xl:py-6">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
                         <x-auth-session-status class="mb-4 font-bold flex justify-center" :status="session('status')" />
-                        <div class="mb-3">
-                            {{-- BOTON --}}
-                            <div class="flex flex-col sm:flex-row justify-between items-center">
-                                {{-- BOTON --}}
-                                <div class="flex-auto justify-center">
-                                    <x-button
-                                        class="bg-red-300 text-red-700 hover:bg-red-700 hover:text-white border-red-600 font-bold">
-                                        {{ __('Print Routine') }}
-                                    </x-button>
-                                </div>
-                            </div>
-                        </div>
                         <div class="flex flex-col">
-                            <div class="flex-1 my-3">
+                            <style>
+                                @media print {
+                                    body * {
+                                        visibility: hidden;
+                                    }
+                                    .print-container, .print-container * {
+                                        visibility: visible;
+                                    }
+                                }
+                            
+                            </style>
+                            <div class="flex-1 my-3 print-container">
                                 {{-- <h2 class="text-xl font-bold text-gray-800 uppercase dark:text-white">
                                     DÍA 1
                                 </h2> --}}
@@ -47,7 +46,6 @@
                                             </th>
                                         </tr>
                                     @endsection
-
 
                                     @section('contenido-filas')
                                     @foreach ($ejercicios as $ejercicio)
