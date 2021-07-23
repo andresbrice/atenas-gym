@@ -2,7 +2,7 @@
   {{ __('Clases') }}
 </x-nav-link>
 
-<x-nav-link class="px-3 py-2" :href="route('alumnos.rutina')" :active="request()->routeIs('alumnos.rutina')">
+<x-nav-link class="px-3 py-2" :href="route('alumnos.buscarClase')" :active="request()->routeIs('alumnos.buscarClase')">
   {{ __('Rutinas') }}
 </x-nav-link>
 
