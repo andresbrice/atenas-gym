@@ -82,32 +82,35 @@
               @section('contenido-filas')
               @forelse ($rutinas as $rutina)
               <tr>
+
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                  {{-- {{ $rutina->alumno_clase->clase->tipo_clase }} --}}
+                  {{$rutina->alumno_clase->clase->tipo_clase}}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                  {{ \Carbon\Carbon::parse($rutina->fecha_emision)->format('d/m/Y')}}
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                  {{ $rutina->fecha_emision }}
+                  {{$rutina->alumno_clase->alumno->user->name}} {{$rutina->alumno_clase->alumno->user->lastName}}
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                  {{-- {{ $rutina->alumno_clase->alumno->user->name }} {{ $rutina->alumno_clase->alumno->user->lastName }} --}}
-                </td>
-
-                <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                  {{ $rutina->profesor->user->name }} {{ $rutina->profesor->user->lastName }}
+                  {{$rutina->profesor->user->name}} {{$rutina->profesor->user->lastName}}
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                   <div class="inline-flex" role="group" aria-label="Button group">
-                    <button
-                      class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 rounded-l-md focus:shadow-outline hover:bg-green-800">
-                      <a href="{{ route('rutina.edit', $rutina->id) }}">Editar</a></button>
-                    <button
-                      class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 focus:shadow-outline hover:bg-yellow-600">
-                      <a href="{{ route('rutina.show', $rutina->id) }}">Mostrar</a></button>
+                    <a href="{{ route('rutina.edit', $rutina->id) }}"><button
+                        class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 rounded-l-md focus:shadow-outline hover:bg-green-800">
+                        Editar</button></a>
+                    <a href="{{ route('rutina.show', $rutina->id) }}"><button
+                        class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 focus:shadow-outline hover:bg-yellow-600">
+                        Mostrar</button></a>
+                    <a href="{{ route('rutina.ejercicios', $rutina->id) }}"><button
+                        class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 focus:shadow-outline hover:bg-blue-600">
+                        Ejercicios</button></a>
 
-                    <form method="POST" action="{{ route('rutina.destroy', $rutina->id) }}">
+                    <form method="POST" action="{{route('rutina.destroy',$rutina->id)}}">
                       @csrf
                       @method('DELETE')
                       <button type="submit"
@@ -120,12 +123,12 @@
               @empty
               <tr>
                 <td>
-                    @if (strlen($rutinas) === 0)
-                        <center>No hay rutinas creadas.</center>
-                    @else
-                    <center>
-                        No se encontró dicha rutina. Intente nuevamente.</center>
-                    @endif
+                  @if (strlen($rutinas) === 0)
+                  <center>No hay rutinas creadas.</center>
+                  @else
+                  <center>
+                    No se encontró dicha rutina. Intente nuevamente.</center>
+                  @endif
                 </td>
               </tr>
               @endforelse

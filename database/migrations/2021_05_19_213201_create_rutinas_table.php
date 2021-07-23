@@ -17,8 +17,8 @@ class CreateRutinasTable extends Migration
       $table->engine = 'InnoDB';
       $table->id();
       $table->date("fecha_emision");
-      $table->foreignId('alumno_clase_id')->constrained('alumno_clase');
       $table->foreignId('profesor_id')->constrained();
+      $table->foreignId('alumno_clase_id')->constrained('alumno_clase', 'id');
       $table->timestamps();
     });
   }

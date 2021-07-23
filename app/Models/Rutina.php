@@ -29,6 +29,10 @@ class Rutina extends Model
     return $this->belongsToMany(Ejercicio::class);
   }
 
+  // public function alumno(){
+  //   $query = Rutina::
+  // }
+
   public function profesor()
   {
     return $this->belongsTo(Profesor::class);
@@ -71,8 +75,8 @@ class Rutina extends Model
           return ($query);
           break;
         case 4:
-          $query->whereHas('profesor', function($query) use($search){
-            $query->whereHas('user', function($query) use($search){
+          $query->whereHas('profesor', function ($query) use ($search) {
+            $query->whereHas('user', function ($query) use ($search) {
               return $query->where(DB::raw("CONCAT(name,' ',lastName)"), "LIKE", "%$search%");
             });
           });

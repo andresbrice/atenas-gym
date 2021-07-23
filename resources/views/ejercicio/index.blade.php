@@ -3,26 +3,26 @@
     <x-breadcrumb><a href="/">Dashboard</a> / <u>Gestion Ejercicio</u></x-breadcrumb>
   </x-slot>
 
-    <x-slot name="slot">
-        <div class="py-2 xl:py-6">
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
-                        <x-success-message class="mb-4 font-bold flex justify-center" />
-                        <x-denied-message class="mb-4 font-bold flex justify-center" />
-                        <x-auth-session-status class="mb-4 font-bold flex justify-center" :status="session('status')" />
-                        <div class="mb-3">
-                            {{-- BOTON CREAR EJERCICIO Y BUSCADOR --}}
-                            <div class="flex flex-col sm:flex-row justify-between items-center">
-                                {{-- BOTON --}}
-                                <a href="{{ route('ejercicio.create') }}" class="w-max md:mr-5">
-                                    <x-button type="button"
-                                        class="bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
-                                        {{ __('Register Exercise') }}
-                                    </x-button>
-                                </a>
+  <x-slot name="slot">
+    <div class="py-2 xl:py-6">
+      <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+          <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
+            <x-success-message class="mb-4 font-bold flex justify-center" />
+            <x-denied-message class="mb-4 font-bold flex justify-center" />
+            <x-auth-session-status class="mb-4 font-bold flex justify-center" :status="session('status')" />
+            <div class="mb-3">
+              {{-- BOTON CREAR EJERCICIO Y BUSCADOR --}}
+              <div class="flex flex-col sm:flex-row justify-between items-center">
+                {{-- BOTON --}}
+                <a href="{{ route('ejercicio.create') }}" class="w-max md:mr-5">
+                  <x-button type="button"
+                    class="bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
+                    {{ __('Register Exercise') }}
+                  </x-button>
+                </a>
 
-                            {{-- @php
+                {{-- @php
                                 if (isset($_GET['filtro'])) {
                                 $seleccionado= $_GET['filtro'];
                                 }
@@ -92,7 +92,7 @@
                 </td>
 
                 <td class="px-6 py-4 whitespace-normal text-center text-sm font-medium">
-                  @foreach ($ejercicio->clases as $clase)
+                  @foreach ($ejercicio->clase_ejercicio->clase as $clase)
                   {{ $clase->tipo_clase}}@if (!$loop->last), @endif
                   @endforeach
                 </td>
@@ -115,11 +115,11 @@
               @empty
               <tr>
                 <td>
-                    @if (strlen($ejercicios) === 0)
-                        <center>No hay ejercicios creados.</center>
-                    @else
-                    <center>No se encontró dicho ejercicio. Intente nuevamente.</center>
-                    @endif
+                  @if (strlen($ejercicios) === 0)
+                  <center>No hay ejercicios creados.</center>
+                  @else
+                  <center>No se encontró dicho ejercicio. Intente nuevamente.</center>
+                  @endif
                 </td>
               </tr>
               @endforelse
