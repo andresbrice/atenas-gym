@@ -76,6 +76,7 @@ class AlumnoController extends Controller
 
   public function consultaAsistencia()
   {
+    return view('alumnos.asistencia');
   }
   public function consultaCuota()
   {
@@ -83,7 +84,8 @@ class AlumnoController extends Controller
   }
   public function imprimirRutina()
   {
-
     return view('alumnos.imprimirRutina');
   }
+
+
 }
