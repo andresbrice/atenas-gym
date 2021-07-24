@@ -92,7 +92,7 @@
                 </td>
 
                 <td class="px-6 py-4 whitespace-normal text-center text-sm font-medium">
-                  @foreach ($ejercicio->clase_ejercicio->clase as $clase)
+                  @foreach ($ejercicio->clases as $clase)
                   {{ $clase->tipo_clase}}@if (!$loop->last), @endif
                   @endforeach
                 </td>
