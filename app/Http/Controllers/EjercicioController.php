@@ -56,12 +56,12 @@ class EjercicioController extends Controller
     ]);
 
 
-    for ($i = 0; $i < count($request->tipo_clase); $i++) {
-      $query = DB::select('select * from ejercicios join clase_ejercicio on ejercicios.id = clase_ejercicio.ejercicio_id join clases on clase_ejercicio.clase_id = clases.id where clases.id = ? and ejercicios.nombre_ejercicio = ? and ejercicios.descripcion = ?', [$request->tipo_clase[$i], $request->nombre_ejercicio, $request->descripcion]);
+    // for ($i = 0; $i < count($request->tipo_clase); $i++) {
+    //   $query = DB::select('select * from ejercicios join clase_ejercicio on ejercicios.id = clase_ejercicio.ejercicio_id join clases on clase_ejercicio.clase_id = clases.id where clases.id = ? and ejercicios.nombre_ejercicio = ? and ejercicios.descripcion = ?', [$request->tipo_clase[$i], $request->nombre_ejercicio, $request->descripcion]);
 
 
-      dd($query);
-    }
+
+    // }
 
     // foreach ($request->tipo_clase as $clase) {
     //   dd($clase[1]);

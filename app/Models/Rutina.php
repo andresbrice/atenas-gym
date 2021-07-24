@@ -26,12 +26,8 @@ class Rutina extends Model
 
   public function ejercicios()
   {
-    return $this->belongsToMany(Ejercicio::class);
+    return $this->belongsToMany(Ejercicio::class)->withPivot(['series', 'repeticiones', 'descanso']);
   }
-
-  // public function alumno(){
-  //   $query = Rutina::
-  // }
 
   public function profesor()
   {
@@ -44,15 +40,15 @@ class Rutina extends Model
       switch ($filtro) {
         case 1:
           $query = DB::query()
-          ->select('rutinas.id', 'clases.tipo_clase', 'rutinas.fecha_emision', DB::raw("CONCAT(users.name,' ',users.lastName) as alumno"))
-          ->from('rutinas')
-          ->join('alumno_clase', 'rutinas.alumno_clase_id', '=', 'alumno_clase.id')
-          ->join('clases', 'alumno_clase.clase_id', '=', 'clases.id')
-          ->join('alumnos', 'alumno_clase.alumno_id', '=', 'alumnos.id')
-          ->join('users', 'alumnos.user_id', '=', 'users.id')
-          ->where("clases.tipo_clase", "LIKE", "%$search%")
-          ->groupBy('rutinas.id')
-          ->get();
+            ->select('rutinas.id', 'clases.tipo_clase', 'rutinas.fecha_emision', DB::raw("CONCAT(users.name,' ',users.lastName) as alumno"))
+            ->from('rutinas')
+            ->join('alumno_clase', 'rutinas.alumno_clase_id', '=', 'alumno_clase.id')
+            ->join('clases', 'alumno_clase.clase_id', '=', 'clases.id')
+            ->join('alumnos', 'alumno_clase.alumno_id', '=', 'alumnos.id')
+            ->join('users', 'alumnos.user_id', '=', 'users.id')
+            ->where("clases.tipo_clase", "LIKE", "%$search%")
+            ->groupBy('rutinas.id')
+            ->get();
           dd($query);
           return ($query);
           break;
@@ -62,15 +58,15 @@ class Rutina extends Model
           break;
         case 3:
           $query = DB::query()
-          ->select('rutinas.id', 'clases.tipo_clase', 'rutinas.fecha_emision', DB::raw("CONCAT(users.name,' ',users.lastName) as alumno"))
-          ->from('rutinas')
-          ->join('alumno_clase', 'rutinas.alumno_clase_id', '=', 'alumno_clase.id')
-          ->join('clases', 'alumno_clase.clase_id', '=', 'clases.id')
-          ->join('alumnos', 'alumno_clase.alumno_id', '=', 'alumnos.id')
-          ->join('users', 'alumnos.user_id', '=', 'users.id')
-          ->where(DB::raw("CONCAT(users.name, users.lastName)"), "LIKE", "%$search%")
-          ->groupBy('rutinas.id')
-          ->get();
+            ->select('rutinas.id', 'clases.tipo_clase', 'rutinas.fecha_emision', DB::raw("CONCAT(users.name,' ',users.lastName) as alumno"))
+            ->from('rutinas')
+            ->join('alumno_clase', 'rutinas.alumno_clase_id', '=', 'alumno_clase.id')
+            ->join('clases', 'alumno_clase.clase_id', '=', 'clases.id')
+            ->join('alumnos', 'alumno_clase.alumno_id', '=', 'alumnos.id')
+            ->join('users', 'alumnos.user_id', '=', 'users.id')
+            ->where(DB::raw("CONCAT(users.name, users.lastName)"), "LIKE", "%$search%")
+            ->groupBy('rutinas.id')
+            ->get();
           dd($query);
           return ($query);
           break;

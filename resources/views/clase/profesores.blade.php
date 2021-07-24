@@ -1,7 +1,12 @@
 <x-app-layout>
   <x-slot name="breadcrumb">
-    <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{route('clase.index')}}">Gestión Clase</a> / Clase N°
-      {{$clase->id}} / <u>Profesores</u></x-breadcrumb>
+    <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{route('clase.index')}}">Gestión Clase</a> /
+      {{$clase->tipo_clase}} -
+      @foreach ($clase->dias as $dia)
+      {{ $dia->dia }}@if (!$loop->last), @endif
+      @endforeach
+      - {{ $clase->horario->hora->format('H:i A')}}
+      / <u>Profesores</u></x-breadcrumb>
   </x-slot>
 
   <x-slot name="slot">
@@ -27,6 +32,7 @@
 
 
                   @if (count($clase_profesor) == 2) <x-button type="submit"
+                    title="Solo se admiten 2 profesores por clase"
                     class="bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold" disabled>
                     {{ __('Add Teacher') }}
                   </x-button>
