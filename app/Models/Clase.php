@@ -83,9 +83,9 @@ class Clase extends Model
           ->join('alumnos', 'alumno_clase.alumno_id', '=', 'alumnos.id')
           ->join('users', 'alumnos.user_id', '=', 'users.id')
           ->where(DB::raw("CONCAT(users.name, users.lastName)"), "LIKE", "%$search%")
-          ->groupBy('clases.id')
-          ->get();
-          dd($query);
+          ->groupBy('clases.id');
+          // ->get();
+          // dd($query);
           return ($query);
           break;
         case 5:
@@ -100,27 +100,9 @@ class Clase extends Model
       $filtro = "";
     }
   }
+
+  // public function getDiasAttribute()
+  //   {
+  //     return 'dias' . $this->horario->hora->format('H:i A');
+  //   }
 }
-
-          
-
-          // $filtro = 'horarios.hora';
-          // $s = $search;
-          // dd($s);
-          // $query = DB::query()
-          //   ->select('clases.id', 'clases.tipo_clase', 'clases.cupos_disponibles', 'horarios.hora', DB::raw("GROUP_CONCAT(dias.dia SEPARATOR ', ') as dias"), 'tarifas.precio')
-          //   ->from('clases')
-          //   ->join('horarios', 'clases.horario_id', '=', 'horarios.id')
-          //   ->join('clase_dia', 'clases.id', '=', 'clase_dia.clase_id')
-          //   ->join('dias', 'clase_dia.dia_id', '=', 'dias.id')
-          //   ->join('tarifas', 'clases.tarifa_id', '=', 'tarifa.id')
-          //   ->whereIn('clases.horario_id', function ($subQuery) {
-          //     $subQuery->select('clases.horario_id')
-          //       ->from('clases')
-          //       ->join('horarios', 'clases.horario_id', '=', 'horarios.id')
-          //       ->where($filtro, "LIKE", "%$search%");
-          //   })
-          //   ->groupby('clases.id')
-          //   ->get();
-
-          //   return $query;
