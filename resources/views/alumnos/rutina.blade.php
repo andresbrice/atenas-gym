@@ -22,8 +22,14 @@
                             </style>
                             <div class="flex-1 my-3 print-container">
                                 
-                                <div class="pb-5 uppercase text-lg font-bold text-red-700  ">
-                                    <h2> {{ $clase->tipo_clase }} </h2>
+                                <div class="pb-5 uppercase text-lg font-bold text-red-700 text-center ">
+                                    <h2> {{ $clase->tipo_clase }} - 
+                                        @foreach ($clase->dias as $dia)
+                                        {{ $dia->dia }}@if (!$loop->last),
+                                        @endif
+                                        @endforeach - 
+                                        {{ $clase->horario->hora->format('H:i A') }} 
+                                    </h2>  
                                 </div>
                                 <x-table>
                                     @section('nombre-columna')

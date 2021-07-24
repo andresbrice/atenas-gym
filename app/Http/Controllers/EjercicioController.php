@@ -60,7 +60,7 @@ class EjercicioController extends Controller
       $query = DB::select('select * from ejercicios join clase_ejercicio on ejercicios.id = clase_ejercicio.ejercicio_id join clases on clase_ejercicio.clase_id = clases.id where clases.id = ? and ejercicios.nombre_ejercicio = ? and ejercicios.descripcion = ?', [$request->tipo_clase[$i], $request->nombre_ejercicio, $request->descripcion]);
 
 
-      dd($query);
+    //   dd($query);
     }
 
     // foreach ($request->tipo_clase as $clase) {
