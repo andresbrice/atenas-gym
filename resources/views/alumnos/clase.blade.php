@@ -25,7 +25,9 @@
                     Días:
                   </h2>
                   <p class="mt-1 text-lg text-gray-100 dark:text-gray-400">
-                    {{ $clase->dias }}
+                    @foreach ($clase->dias as $dia)
+                    {{ $dia->dia }}@if (!$loop->last), @endif
+                    @endforeach
                   </p>
                 </div>
                 <div class="px-4 py-2">
@@ -33,7 +35,7 @@
                     Horario:
                   </h2>
                   <p class="mt-1 text-lg text-gray-100 dark:text-gray-400">
-                    {{ $clase->hora }} hs
+                    {{ $clase->horario->hora->format('H:i A') }}
                   </p>
                 </div>
               </div>    
