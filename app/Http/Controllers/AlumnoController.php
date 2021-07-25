@@ -44,15 +44,16 @@ class AlumnoController extends Controller
     $clase = Clase::findOrFail($request->tipo_clase);
     $clase_id = $clase->id;
 
-    $rutina = Rutina::whereHas('alumno_clase', function($query) {
-      $query->whereHas('alumno', function($query) {
-        $query->whereHas('user', function($query) {
-          $query->where('id', '=', auth()->id());
-        });  
-      });
-    })->get();
+    // $rutina = Rutina::whereHas('alumno_clase', function($query) {
+    //   $query->whereHas('alumno', function($query) {
+    //     $query->whereHas('user', function($query) {
+    //       $query->where('id', '=', auth()->id());
+    //     });  
+    //   });
+    // })->get();
+
     // $rutina = DB::query()
-    //   ->select('rutinas.id', DB::raw("CONCAT('users.name',' ','users.lastName') as alumno"), 'clases.tipo_clase', DB::raw("GROUP_CONCAT('dias.dia', SEPARATOR ', ') as dias"))
+    //   ->select('rutinas.id', DB::raw("CONCAT('users.name',' ','users.lastName') as alumno"), 'clases.tipo_clase', DB::raw("GROUP_CONCAT('dias.dia' SEPARATOR ', ') as dias"), 'horarios.hora')
     //   ->from('rutinas')
     //   ->join('alumno_clase', 'rutinas.alumno_clase_id', '=', 'alumno_clase.id')
     //   ->join('clases', 'alumno_clase.clase_id', '=', 'clases.id')
@@ -62,7 +63,7 @@ class AlumnoController extends Controller
     //   ->where('clases.id', '=', $clase_id)
     //   ->groupBy('rutinas.id')
     //   ->get();
-    dd($rutina);
+    // dd($rutina);
 
     // $ejercicios = Ejercicio::whereHas('clases', function ($query) use ($rutina) {
     //   $query->where('tipo_clase', '=', $rutina->alumno_clase->clase->tipo_clase);
@@ -83,7 +84,7 @@ class AlumnoController extends Controller
       ->get();
     // dd($ejercicios);
 
-    return view('alumnos.rutina', compact('clase', 'clase_id', 'ejercicios', 'rutina'));
+    return view('alumnos.rutina', compact('clase', 'clase_id', 'ejercicios'));
   }
 
   public function consultaAsistencia()
