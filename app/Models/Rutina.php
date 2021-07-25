@@ -50,20 +50,20 @@ class Rutina extends Model
           return $query->where($filtro, "LIKE", "%$search%");
           break;
         case 3:
-          $query->whereHas('alumno_clase', function ($query) use ($search) {
-            $query->whereHas('alumno', function ($query) use ($search) {
-              $query->whereHas('user', function ($query) use ($search) {
-                return $query->where(DB::raw("CONCAT(name,' ',lastName)"), "LIKE", "%$search%");
+            $query->whereHas('alumno_clase', function ($query) use ($search) {
+                $query->whereHas('alumno', function ($query) use ($search) {
+                  $query->whereHas('user', function ($query) use ($search) {
+                    return $query->where(DB::raw("CONCAT(name,' ',lastName)"), "LIKE", "%$search%");
+                  });
+                });
               });
-            });
-          });
           break;
         case 4:
-          $query->whereHas('profesor', function ($query) use ($search) {
-            $query->whereHas('user', function ($query) use ($search) {
-              return $query->where(DB::raw("CONCAT(name,' ',lastName)"), "LIKE", "%$search%");
-            });
-          });
+            return $query->whereHas('profesors', function($query) use($search) {
+                $query->whereHas('user', function($query) use($search) {
+                  return $query->where(DB::raw("CONCAT(name,' ',lastName)"), "LIKE", "%$search%");
+                });
+              });
           break;
       }
     } elseif (trim($search) == "") {
