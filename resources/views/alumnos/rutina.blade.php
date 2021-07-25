@@ -43,14 +43,6 @@
                                          @endif
                                          @endforeach - 
                                          {{ $clase->horario->hora->format('H:i A') }}
-
-                                         {{-- {{$rutina->alumno_clase->alumno->user->name}} {{$rutina->alumno_clase->alumno->user->lastName}}
-                                         <br>
-                                         {{$rutina->alumno_clase->clase->tipo_clase}}
-                                         <br>
-                                         @foreach ($rutina->alumno_clase->clase->dias as $dia) {{ $dia->dia }}@if (!$loop->last), @endif @endforeach
-                                         <br>
-                                         {{$rutina->alumno_clase->clase->horario->hora->format('H:i A')}} --}}
                                     </h2>
                                     
                                 </div>
