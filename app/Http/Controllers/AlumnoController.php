@@ -44,13 +44,13 @@ class AlumnoController extends Controller
     $clase = Clase::findOrFail($request->tipo_clase);
     $clase_id = $clase->id;
 
-    // $rutina = Rutina::whereHas('alumno_clase', function($query) {
-    //   $query->whereHas('alumno', function($query) {
-    //     $query->whereHas('user', function($query) {
-    //       $query->where('id', '=', auth()->id());
-    //     });  
-    //   });
-    // })->get();
+    $rutina = Rutina::whereHas('alumno_clase', function($query) {
+      $query->whereHas('alumno', function($query) {
+        $query->whereHas('user', function($query) {
+          $query->where('id', '=', auth()->id());
+        });  
+      });
+    })->get();
 
     // $ejercicios = Ejercicio::whereHas('clases', function ($query) use ($rutina) {
     //   $query->where('tipo_clase', '=', $rutina->alumno_clase->clase->tipo_clase);
@@ -69,9 +69,9 @@ class AlumnoController extends Controller
       ->where('clases.id', '=', $clase_id)
       ->groupBy('ejercicio_rutina.id')
       ->get();
-    dd($ejercicios);
+    // dd($ejercicios);
 
-    return view('alumnos.rutina', compact('clase', 'clase_id', 'rutina'));
+    return view('alumnos.rutina', compact('clase', 'clase_id', 'ejercicios', 'rutina'));
   }
 
   public function consultaAsistencia()
