@@ -101,7 +101,7 @@
                 </div>
               </div>
               <div class="px-4 mt-3 py-2  flex items-center justify-between sm:px-6">
-                <a href="{{ route('alumnos.buscarClase') }}">
+                <a href="{{ url()->previous()}}">
                   <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
                     {{ __('Back') }}
                   </x-button>
