@@ -59,7 +59,7 @@ class Rutina extends Model
               });
           break;
         case 4:
-            return $query->whereHas('profesors', function($query) use($search) {
+            return $query->whereHas('profesor', function($query) use($search) {
                 $query->whereHas('user', function($query) use($search) {
                   return $query->where(DB::raw("CONCAT(name,' ',lastName)"), "LIKE", "%$search%");
                 });
