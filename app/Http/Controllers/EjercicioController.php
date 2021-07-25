@@ -22,7 +22,7 @@ class EjercicioController extends Controller
     $ejercicios = Ejercicio::with('clases')
       ->search($filtro, $search)
       ->orderByDesc('id')
-      ->simplePaginate(4);
+      ->simplePaginate(10);
 
     return view('ejercicio.index', compact('ejercicios'));
   }

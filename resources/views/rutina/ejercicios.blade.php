@@ -125,7 +125,7 @@
                           </th>
                           <th scope="col"
                             class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Descansos(MIN)
+                            Descansos
                           </th>
                           <th scope="col"
                             class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -136,7 +136,7 @@
                       <tbody class="bg-white divide-y divide-gray-200">
                         @forelse ($ejercicios_rutina as $ejercicio)
                         <tr>
-                          <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                          <td class="px-6 py-4 w-48 whitespace-nowrap text-center text-sm font-medium">
                             {{$ejercicio->nombre_ejercicio}}
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
