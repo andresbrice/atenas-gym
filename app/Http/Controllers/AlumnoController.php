@@ -51,6 +51,18 @@ class AlumnoController extends Controller
         });  
       });
     })->get();
+    // $rutina = DB::query()
+    //   ->select('rutinas.id', DB::raw("CONCAT('users.name',' ','users.lastName') as alumno"), 'clases.tipo_clase', DB::raw("GROUP_CONCAT('dias.dia', SEPARATOR ', ') as dias"))
+    //   ->from('rutinas')
+    //   ->join('alumno_clase', 'rutinas.alumno_clase_id', '=', 'alumno_clase.id')
+    //   ->join('clases', 'alumno_clase.clase_id', '=', 'clases.id')
+    //   ->join('alumnos', 'alumno_clase.alumno_id', '=', 'alumnos.id')
+    //   ->join('users', 'alumnos.user_id', '=', 'users.id')
+    //   ->where('users.id', '=', auth()->id())
+    //   ->where('clases.id', '=', $clase_id)
+    //   ->groupBy('rutinas.id')
+    //   ->get();
+    dd($rutina);
 
     // $ejercicios = Ejercicio::whereHas('clases', function ($query) use ($rutina) {
     //   $query->where('tipo_clase', '=', $rutina->alumno_clase->clase->tipo_clase);
