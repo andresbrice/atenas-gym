@@ -32,7 +32,6 @@
                               </style>
                             <div class="flex-1 my-3 print-container">
                                 
-                                {{-- class="flex pb-5 uppercase text-lg font-bold text-red-700" --}}
                                 <div class="text-center font-bold mb-2 underline">
                                     <h2>
                                         Rutina de: {{ Auth::user()->name }} 

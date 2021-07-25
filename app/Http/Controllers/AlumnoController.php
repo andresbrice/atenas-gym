@@ -57,7 +57,6 @@ class AlumnoController extends Controller
       ->where('clases.id', '=', $clase_id)
       ->groupBy('ejercicio_rutina.id')
       ->get();
-    // dd($ejercicios);
 
     return view('alumnos.rutina', compact('clase', 'clase_id', 'ejercicios'));
   }
