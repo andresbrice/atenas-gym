@@ -20,6 +20,14 @@
                   .print-container * {
                     visibility: visible;
                   }
+
+                  @page {
+                    margin: 0;
+                  }
+
+                  body {
+                    margin: 1.6cm;
+                  }
                 }
               </style>
               <div class="flex-1 my-3 print-container">
@@ -57,7 +65,7 @@
                               </th>
                               <th scope="col"
                                 class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Descansos(MIN)
+                                Descansos
                               </th>
                             </tr>
                           </thead>
@@ -98,7 +106,7 @@
                     {{ __('Back') }}
                   </x-button>
                 </a>
-                <x-button onclick="window.print();"
+                <x-button onclick="window.print()"
                   class="ml-3 bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
                   {{ __('Print Routine') }}
                 </x-button>
@@ -109,4 +117,5 @@
       </div>
     </div>
   </x-slot>
+
 </x-app-layout>
