@@ -50,7 +50,7 @@
 
 
                   <tr>
-                    <td class="px-6 py-4 whitespace-nowrap text-center font-medium">
+                    <td class="px-3 py-2 whitespace-nowrap text-center font-medium">
                       {{-- {{dd($alum_id)}} --}}
                       <select class="select2_el" id="ejercicio_id" style="width:100%" name="ejercicio" required>
                         <option value="" selected></option>
@@ -59,27 +59,25 @@
                         @endforeach
                       </select>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                      <x-input maxlength="2" value="" step="1" ondrop="return false;" onpaste="return false;"
+                    <td class="px-3 py-2 whitespace-nowrap text-center text-sm font-medium">
+                      <x-input maxlength="2" value="" ondrop="return false;" onpaste="return false;"
                         onkeypress="return event.charCode >= 48 && event.charCode <= 57" id="series"
-                        class="block text-center w-full px-4 py-2 mt-2" type="text" name="series" :value="old('series')"
-                        required autofocus />
+                        class="block text-center" type="text" name="series" :value="old('series')" required autofocus />
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                      <x-input id="repeticiones" class="block w-full text-center px-4 py-2 mt-2" maxlength="2" value=""
-                        step="1" ondrop="return false;" onpaste="return false;"
+                    <td class="px-3 py-2 whitespace-nowrap text-center text-sm font-medium">
+                      <x-input id="repeticiones" class="block  text-center " maxlength="2" value=""
+                        ondrop="return false;" onpaste="return false;"
                         onkeypress="return event.charCode >= 48 && event.charCode <= 57" type="text" name="repeticiones"
                         :value="old('repeticiones')" required />
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                      <x-input id="descanso" class="block w-full text-center px-4 py-2 mt-2" type="text" name="descanso"
-                        :value="old('descanso')" maxlength="2" value="" step="1" ondrop="return false;"
-                        onpaste="return false;" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-                        required />
+                    <td class="px-3 py-2 whitespace-nowrap text-center text-sm font-medium">
+                      <x-input id="descanso" class="block  text-center " type="text" name="descanso"
+                        :value="old('descanso')" maxlength="2" value="" ondrop="return false;" onpaste="return false;"
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" required />
                     </td>
 
 
-                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                    <td class="px-3 py-2 whitespace-nowrap text-center text-sm font-medium">
                       @if (count($ejercicios_rutina) >= 10)
                       <x-button type="submit" title="Solo se admiten 10 ejercicios por rutina"
                         class="bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold"

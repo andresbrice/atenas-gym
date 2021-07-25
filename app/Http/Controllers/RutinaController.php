@@ -53,7 +53,10 @@ class RutinaController extends Controller
   public function show($id)
   {
     $rutina = Rutina::findOrFail($id);
-    return view('rutina.show', compact('rutina'));
+
+    $ejercicios_rutina = DB::select('select ejercicios.id as id, ejercicio_rutina.id as ejercicio_rutina_id, ejercicios.nombre_ejercicio as nombre_ejercicio, rutinas.id as rutina_id, ejercicio_rutina.series as series, ejercicio_rutina.repeticiones as repeticiones, ejercicio_rutina.descanso as descanso from ejercicio_rutina join ejercicios on ejercicio_rutina.ejercicio_id = ejercicios.id join rutinas on ejercicio_rutina.rutina_id = rutinas.id where rutina_id = ?', [$rutina->id]);
+
+    return view('rutina.show', compact('rutina', 'ejercicios_rutina'));
   }
 
   public function edit($id)
@@ -76,11 +79,11 @@ class RutinaController extends Controller
     $alumno_clase = Alumno_Clase::findOrFail($queryAlumnoClase[0]->id);
     $profesor = Profesor::findOrFail($queryProfesor[0]->id);
 
-    $rutina = Rutina::update([
-      'alumno_clase_id' => $alumno_clase->id,
-      'fecha_emision' => now()->format('Y/m/d'),
-      'profesor_id' => $profesor->id,
-    ]);
+    // $rutina = Rutina::update([
+    //   'alumno_clase_id' => $alumno_clase->id,
+    //   'fecha_emision' => now()->format('Y/m/d'),
+    //   'profesor_id' => $profesor->id,
+    // ]);
 
     return redirect('rutina')->with('message', 'Rutina creada con éxito');
   }
@@ -125,8 +128,6 @@ class RutinaController extends Controller
     })->get();
 
     $ejercicios_rutina = DB::select('select ejercicios.id as id, ejercicio_rutina.id as ejercicio_rutina_id, ejercicios.nombre_ejercicio as nombre_ejercicio, rutinas.id as rutina_id, ejercicio_rutina.series as series, ejercicio_rutina.repeticiones as repeticiones, ejercicio_rutina.descanso as descanso from ejercicio_rutina join ejercicios on ejercicio_rutina.ejercicio_id = ejercicios.id join rutinas on ejercicio_rutina.rutina_id = rutinas.id where rutina_id = ?', [$rutina->id]);
-
-    // dd($ejercicios_rutina);
 
     return view('rutina.ejercicios', compact('rutina', 'ejercicios', 'ejercicios_rutina'));
   }
