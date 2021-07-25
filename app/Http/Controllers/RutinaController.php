@@ -19,7 +19,8 @@ class RutinaController extends Controller
     $search = $request->get('search');
     $filtro = $request->get('filtro');
     
-    $rutinas = Rutina::all();
+    $rutinas = Rutina::all()
+    ->search($filtro, $search);
 
     // dd($rutinas);
     return view('rutina.index', compact('rutinas'));
