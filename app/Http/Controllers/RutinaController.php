@@ -21,7 +21,7 @@ class RutinaController extends Controller
     
     $rutinas = Rutina::orderBy('id', 'DESC')
     ->search($filtro, $search)
-    ->simplePaginate(10);
+    ->simplePaginate(4);
 
     // dd($rutinas);
     return view('rutina.index', compact('rutinas'));
