@@ -24,16 +24,9 @@
                                 
                                 <div class="pb-5 uppercase text-lg font-bold text-red-700  ">
                                     <h2>
-                                        {{-- {{$rutina->alumno_clase->clase->tipo_clase}} --}}
+                                         {{$clase->tipo_clase}} 
                                     </h2>
-                                    <h1>
-                                        {{-- @foreach ($rutina->alumno_clase->clase->dias as $dia)
-                                        {{ $dia->dia }}@if (!$loop->last), @endif
-                                        @endforeach --}}
-                                    </h1>
-                                    <h1>
-                                        {{-- {{ $rutina->alumno_clase->clase->horario->hora->format('H:i A') }} --}}
-                                    </h1>
+                                    
                                 </div>
                                 <x-table>
                                     @section('nombre-columna')
@@ -91,12 +84,6 @@
                                     onclick="imprimirRutina();" class="ml-3 bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
                                     {{ __('Print Routine') }}
                                 </x-button>
-
-                                <script>
-                                    function imprimirRutina(){
-                                        window.print();
-                                    }
-                                </script>
                             </div>
                         </div>
                     </div>

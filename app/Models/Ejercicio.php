@@ -20,7 +20,7 @@ class Ejercicio extends Model
 
   public function rutinas()
   {
-    return $this->belongsToMany(Rutina::class);
+    return $this->belongsToMany(Rutina::class)->withTimestamps();
   }
 
   public function clases()
@@ -43,9 +43,9 @@ class Ejercicio extends Model
           return $query->where($filtro, "LIKE", "%$search%");
           break;
         case 3:
-            return $query->whereHas('clases', function($query) use($search) {   
-                  return $query->where("clases.tipo_clase", "LIKE", "%$search%");
-                });
+          return $query->whereHas('clases', function ($query) use ($search) {
+            return $query->where("clases.tipo_clase", "LIKE", "%$search%");
+          });
           break;
       }
     } elseif (trim($search) == "") {

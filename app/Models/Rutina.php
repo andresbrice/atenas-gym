@@ -26,12 +26,8 @@ class Rutina extends Model
 
   public function ejercicios()
   {
-    return $this->belongsToMany(Ejercicio::class);
+    return $this->belongsToMany(Ejercicio::class)->withPivot(['series', 'repeticiones', 'descanso']);
   }
-
-  // public function alumno(){
-  //   $query = Rutina::
-  // }
 
   public function profesor()
   {
