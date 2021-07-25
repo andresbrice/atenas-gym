@@ -97,8 +97,4 @@ class Clase extends Model
     }
   }
 
-  // public function getDiasAttribute()
-  //   {
-  //     return 'dias' . $this->horario->hora->format('H:i A');
-  //   }
 }
