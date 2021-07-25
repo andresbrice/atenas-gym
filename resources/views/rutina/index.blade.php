@@ -135,7 +135,7 @@
               @endsection
               @section('paginacion')
               <div class="mt-4">
-                {{-- {{ $rutinas->links() }} --}}
+                {{ $rutinas->links() }}
               </div>
               @endsection
             </x-table>
