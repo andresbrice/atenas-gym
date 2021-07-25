@@ -32,15 +32,16 @@
                               </style>
                             <div class="flex-1 my-3 print-container">
                                 
-                                <div class="flex pb-5 uppercase text-lg font-bold text-red-700">
+                                {{-- class="flex pb-5 uppercase text-lg font-bold text-red-700" --}}
+                                <div class="text-center font-bold mb-2 underline">
                                     <h2>
                                         Rutina de: {{ Auth::user()->name }} 
-                                        {{ Auth::user()->lastName }} <br>
-                                        {{$clase->tipo_clase}} <br>
+                                        {{ Auth::user()->lastName }} - 
+                                        {{$clase->tipo_clase}} - 
                                          @foreach ($clase->dias as $dia)
                                          {{ $dia->dia }}@if (!$loop->last),
                                          @endif
-                                         @endforeach <br>
+                                         @endforeach - 
                                          {{ $clase->horario->hora->format('H:i A') }}
 
                                          {{-- {{$rutina->alumno_clase->alumno->user->name}} {{$rutina->alumno_clase->alumno->user->lastName}}
