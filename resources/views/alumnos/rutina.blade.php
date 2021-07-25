@@ -24,26 +24,14 @@
                                 
                                 <div class="pb-5 uppercase text-lg font-bold text-red-700  ">
                                     <h2>
-                                        {{-- {{$rutina->alumno_clase->clase->tipo_clase}} --}}
-                                        
-                                        <br>
-
-                                        {{-- {{$rutina->alumno_clase->alumno->user->name}} {{$rutina->alumno_clase->alumno->user->lastName}} --}}
-                                        
-                                        <br>
-                                        
-                                        {{-- {{$rutina->profesor->user->name}} {{$rutina->profesor->user->lastName}} --}}
-                                        
-                                        <br>
-                                        
-                                        {{-- @foreach ($rutina->alumno_clase->clase->dias as $dia)
-                                        {{ $dia->dia }}@if (!$loop->last), @endif
-                                        @endforeach --}}
-                                        
-                                        <br>
-                                        
-                                        {{-- {{ $rutina->alumno_clase->clase->horario->hora->format('H:i A')}} --}}
+                                         {{$clase->tipo_clase}} -
+                                         @foreach ($clase->dias as $dia)
+                                         {{ $dia->dia }}@if (!$loop->last),
+                                         @endif
+                                         @endforeach -
+                                         {{ $clase->horario->hora->format('H:i A') }}
                                     </h2>
+                                    
                                 </div>
                                 <x-table>
                                     @section('nombre-columna')
