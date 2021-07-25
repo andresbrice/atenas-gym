@@ -102,8 +102,8 @@ class EjercicioController extends Controller
 
     $ejercicio = Ejercicio::findOrFail($id);
     $clases = Clase::all();
-    $ejercicio_clase = $ejercicio->clases;
-    return view('ejercicio.edit', compact('ejercicio', 'clases', 'ejercicio_clase'));
+    $clase_ejercicio = $ejercicio->clases->pluck('id')->toArray();
+    return view('ejercicio.edit', compact('ejercicio', 'clases', 'clase_ejercicio'));
   }
 
   /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alumno;
 use Illuminate\Http\Request;
 use App\Models\Rutina;
 use App\Models\User;
@@ -42,6 +43,12 @@ class RutinaController extends Controller
 
     $queryAlumnoClase = DB::select('select alumno_clase.id as id from alumno_clase where alumno_clase.id in (select alumno_clase.id from alumno_clase join alumnos on alumno_clase.alumno_id = alumnos.id where alumno_clase.clase_id = ? and alumno_clase.alumno_id in (SELECT alumno_clase.alumno_id from alumno_clase JOIN alumnos on alumno_clase.alumno_id = alumnos.id JOIN users on alumnos.user_id = users.id where users.id = ?))', [$request->clase, $request->alumno]);
 
+    $validacion = DB::select('select count(*) as c from rutinas where alumno_clase_id = ? and fecha_emision = ?', [$queryAlumnoClase[0]->id, now()->format('Y/m/d')]);
+
+    if ($validacion[0]->c > 0) {
+      return  back()->with('error', 'No es posible crear más de una rutina el día de hoy para este alumno en dicha clase.');
+    }
+
     $queryProfesor = DB::select('select profesors.id as id from profesors where profesors.user_id = ?', [auth()->id()]);
 
     $alumno_clase = Alumno_Clase::findOrFail($queryAlumnoClase[0]->id);
@@ -68,9 +75,7 @@ class RutinaController extends Controller
   public function edit($id)
   {
     $rutina = Rutina::findOrFail($id);
-    $alumnos =
-      DB::select('select users.id as user_id, users.name as name, users.lastName as lastname, alumnos.id as alumno_id from users join alumnos on users.id = alumnos.user_id');
-
+    $alumnos = User::where('role_id', '1')->get();
     $profesor = DB::select('select profesors.id as id from profesors where profesors.user_id = ?', [auth()->id()]);
 
     return view('rutina.edit', compact('rutina', 'alumnos', 'profesor'));

@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="breadcrumb">
-    <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{ route('rutina.index') }}">Gestión Rutina</a> / <u>Seleccionar
-        Datos</u>
+    <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{ route('rutina.index') }}">Gestión Rutina</a> / <u>Crear
+        Rutina</u>
     </x-breadcrumb>
   </x-slot>
 
@@ -46,7 +46,7 @@
                 </div>
               </div>
               <div class="px-4 py-2  mt-3 flex items-center justify-between sm:px-6">
-                <a href="{{ url()->previous() }}">
+                <a href="{{ route('rutina.index') }}">
                   <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
                     {{ __('Back') }}
                   </x-button>
