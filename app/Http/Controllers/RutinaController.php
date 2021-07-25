@@ -13,8 +13,12 @@ use Illuminate\Support\Facades\DB;
 class RutinaController extends Controller
 {
 
-  public function index()
+  public function index(Request $request)
   {
+
+    $search = $request->get('search');
+    $filtro = $request->get('filtro');
+    
     $rutinas = Rutina::all();
 
     // dd($rutinas);

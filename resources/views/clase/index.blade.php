@@ -34,7 +34,7 @@
                   </option>
                   {{-- {{ old('filtro') == 'tipo_clase' ? 'selected' : '' }} value="1" --}}
                   <option value="1">
-                    Clase
+                    Tipo de Clase
                   </option>
                   <option value="2">
                     Horario
