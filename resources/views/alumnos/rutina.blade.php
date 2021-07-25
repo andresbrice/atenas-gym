@@ -41,6 +41,8 @@
                                          @endforeach -
                                          {{ $clase->horario->hora->format('H:i A') }}
 
+                                        {{ Auth::user()->name }} {{ Auth::user()->lastName }}
+
                                          {{-- {{$rutina->alumno_clase->alumno->user->name}} {{$rutina->alumno_clase->alumno->user->lastName}}
                                          <br>
                                          {{$rutina->alumno_clase->clase->tipo_clase}}
