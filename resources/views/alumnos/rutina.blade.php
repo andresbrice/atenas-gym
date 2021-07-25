@@ -12,42 +12,36 @@
                         <div class="flex flex-col">
                             <style>
                                 @media print {
-                                    body * {
-                                        visibility: hidden;
-                                    }
-                                    .print-container, .print-container * {
-                                        visibility: visible;
-                                    }
+                                  body * {
+                                    visibility: hidden;
+                                  }
+                
+                                  .print-container,
+                                  .print-container * {
+                                    visibility: visible;
+                                  }
+                
+                                  @page {
+                                    margin: 0;
+                                  }
+                
+                                  body {
+                                    margin: 1.6cm;
+                                  }
                                 }
-                            </style>
+                              </style>
                             <div class="flex-1 my-3 print-container">
                                 
-                                <div class="pb-5 uppercase text-lg font-bold text-red-700  ">
+                                <div class="text-center font-bold mb-2 underline">
                                     <h2>
-                                         {{-- {{$clase->tipo_clase}} -
+                                        Rutina de: {{ Auth::user()->name }} 
+                                        {{ Auth::user()->lastName }} - 
+                                        {{$clase->tipo_clase}} - 
                                          @foreach ($clase->dias as $dia)
                                          {{ $dia->dia }}@if (!$loop->last),
                                          @endif
-                                         @endforeach -
-                                         {{ $clase->horario->hora->format('H:i A') }} --}}
-
-                                         {{$rutina->alumno_clase->alumno->user->name}} {{$rutina->alumno_clase->alumno->user->lastName}}
-
-                                         <br>
-
-                                         {{$rutina->alumno_clase->clase->tipo_clase}}
-
-                                         <br>
-
-                                         @foreach ($rutina->alumno_clase->clase->dias as $dia) {{ $dia->dia }}@if (!$loop->last), @endif @endforeach
-
-                                         <br>
-
-                                         {{$rutina->alumno_clase->clase->horario->hora->format('H:i A')}}
-
-                                         <br>
-
-                                         {{$rutina->profesor->user->name}} {{$rutina->profesor->user->lastName}}
+                                         @endforeach - 
+                                         {{ $clase->horario->hora->format('H:i A') }}
                                     </h2>
                                     
                                 </div>
@@ -104,7 +98,7 @@
                                     </x-button>
                                 </a>
                                 <x-button
-                                    onclick="window.print();" class="ml-3 bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
+                                    onclick="window.print()" class="ml-3 bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
                                     {{ __('Print Routine') }}
                                 </x-button>
                             </div>
