@@ -46,8 +46,11 @@ class AlumnoController extends Controller
     $clase = Clase::findOrFail($request->tipo_clase);
     $clase_id = $clase->id;
     
-    $alumno = Alumno::where('user_id', auth()->id());
-    $alumno_id = $alumno->id;
+    $alumno = Alumno::whereHas('user', function($query) {
+      $query->where('user_id', auth()->id());
+    })->get();
+
+    $alumno_id = $alumno->users->id;
     dd($alumno_id);
 
     // $alumno_clase = Alumno_Clase::where('clase_id', $clase_id)
