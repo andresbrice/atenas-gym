@@ -56,14 +56,17 @@ class UserController extends Controller
     $request->validate([
       'name' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'email' => 'required|string|email|max:255|unique:users',
-      'userName' => 'required|string|max:255',
-      'dni' => 'required|int|digits:8|unique:users',
+      'userName' => 'required|string|max:255',      'dni' => 'required|int|digits:8|unique:users',
       'lastName' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'gender' => 'required',
       'phone' => 'required|int|digits_between:7,13',
       'emergency_number' => 'required|int|digits_between:7,13',
       'age' => 'required|int|between:10,99',
     ]);
+
+    if ($request->age < 21 || $request->age > 60 && $request->role_id == 2 || $request->role_id == 3) {
+      return  back()->with('error', 'Un profesor no puede ser menor a 21 años o mayor a 60.');
+    }
 
     $user = User::create([
       'name' => $request->name,

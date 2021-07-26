@@ -144,8 +144,6 @@ class ClaseController extends Controller
 
     $clase->save();
 
-    $clase->save();
-
     if (session('clase_url')) {
       return redirect(session('clase_url'))->with('message', 'Clase modificada con exito');
     }

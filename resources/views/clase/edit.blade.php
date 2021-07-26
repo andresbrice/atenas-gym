@@ -61,24 +61,24 @@
                   </div>
 
 
-                  </div>{{--/div dias de la semana--}}
-                </div>
-                <div class="px-4 py-2  flex items-center justify-between sm:px-6">
-                  <a href="{{url()->previous()}}">
-                    <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
-                      {{ __('Back') }}
-                    </x-button>
-                  </a>
-
-                  <x-button class="ml-3 bg-green-900 hover:bg-green-700">
-                    {{ __('Edit Class') }}
+                </div>{{--/div dias de la semana--}}
+              </div>
+              <div class="px-4 py-2  flex items-center justify-between sm:px-6">
+                <a href="{{url()->previous()}}">
+                  <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
+                    {{ __('Back') }}
                   </x-button>
-                </div>
+                </a>
+
+                <x-button class="ml-3 bg-green-900 hover:bg-green-700">
+                  {{ __('Edit Class') }}
+                </x-button>
               </div>
           </div>
-          </form>
         </div>
+        </form>
       </div>
+    </div>
     </div>
   </x-slot>
 </x-app-layout>

@@ -83,20 +83,28 @@ class RutinaController extends Controller
 
   public function update(Request $request, $id)
   {
+    $rutina = Rutina::findOrFail($id);
     $queryAlumnoClase = DB::select('select alumno_clase.id as id from alumno_clase where alumno_clase.id in (select alumno_clase.id from alumno_clase join alumnos on alumno_clase.alumno_id = alumnos.id where alumno_clase.clase_id = ? and alumno_clase.alumno_id in (SELECT alumno_clase.alumno_id from alumno_clase JOIN alumnos on alumno_clase.alumno_id = alumnos.id JOIN users on alumnos.user_id = users.id where users.id = ?))', [$request->clase, $request->alumno]);
+
+    $validacion = DB::select('select count(*) as c from rutinas where alumno_clase_id = ? and fecha_emision = ?', [$queryAlumnoClase[0]->id, now()->format('Y/m/d')]);
+
+    if ($validacion[0]->c > 0) {
+      return  back()->with('error', 'No es posible crear más de una rutina el día de hoy para este alumno en dicha clase.');
+    }
 
     $queryProfesor = DB::select('select profesors.id as id from profesors where profesors.user_id = ?', [auth()->id()]);
 
     $alumno_clase = Alumno_Clase::findOrFail($queryAlumnoClase[0]->id);
     $profesor = Profesor::findOrFail($queryProfesor[0]->id);
 
-    // $rutina = Rutina::update([
-    //   'alumno_clase_id' => $alumno_clase->id,
-    //   'fecha_emision' => now()->format('Y/m/d'),
-    //   'profesor_id' => $profesor->id,
-    // ]);
 
-    return redirect('rutina')->with('message', 'Rutina creada con éxito');
+    $rutina->alumno_clase_id = $alumno_clase->id;
+    $rutina->fecha_emision = now()->format('Y/m/d');
+    $rutina->profesor_id = $profesor->id;
+
+    $rutina->save();
+
+    return redirect('rutina')->with('message', 'Rutina modificada con éxito');
   }
 
   public function destroy($id)

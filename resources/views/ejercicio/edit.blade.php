@@ -30,17 +30,8 @@
 
                     <select name="tipo_clase[]" id="tipo_clase" multiple="multiple"
                       class="select2_el w-full block px-4 py-2 rounded-md mt-2 focus:border-red-300 focus:ring-red-200">
-                      <option hidden value="">
-                        {{ old('tipo_clase', $ejercicio_clase) }}
-                      </option>
-
-                      {{-- @foreach ($ejercicio->clases as $clase)
-                      {{ $clase->tipo_clase}}@if (!$loop->last), @endif
-                      @endforeach --}}
-
-                      {{-- {{$clase == $clase->id ? 'selected' : ''}} --}}
-                      @foreach ($ejercicio->clases as $clase)
-                      <option value="{{ $clase->id }}">
+                      @foreach ($clases as $clase)
+                      <option value="{{ $clase->id }}" @if(in_array($clase->id, $clase_ejercicio)) selected @endif>
                         {{ $clase->tipo_clase }}
                       </option>
                       @endforeach

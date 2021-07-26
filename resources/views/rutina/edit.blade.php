@@ -12,8 +12,9 @@
           <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
             <x-success-message class=" mt-5" />
             <x-denied-message class=" mt-5" :errors="$errors" />
-            <form method="post" action="{{ route('rutina.store') }}">
+            <form method="post" action="{{ route('rutina.update', $rutina->id) }}">
               @csrf
+              @method('PUT')
               <div class="flex flex-col">
                 <div class="mb-4 flex flex-col p-3 space-y-2">
                   <div id="profesor" class="flex space-x-2  sm:col-span-2">
@@ -29,16 +30,16 @@
 
                     <select class="select2_el" id="alumno_id" style="width:100%" name="alumno" required>
                       <option value="" selected></option>
-                      @foreach ($alumnos as $alumno->id => $alumno)
-                      <option value="{{ $alumno->user_id }}"
-                        {{ $rutina->alumno_clase->alumno->user_id == $alumno->user_id ? 'selected' : '' }}>
-                        {{ $alumno->name }} {{ $alumno->lastname }}</option>
+                      @foreach ($alumnos as $alumno)
+                      <option value="{{ $alumno->id }}"
+                        {{ $rutina->alumno_clase->alumno->user_id == $alumno->id ? 'selected' : '' }}>
+                        {{ $alumno->name }} {{ $alumno->lastName }}</option>
                       @endforeach
                     </select>
                   </div>
 
 
-                  <div id="clase" class=" flex space-x-6  sm:col-span-2">
+                  <div id="clase" class=" hidden space-x-6  sm:col-span-2">
                     <x-label value="{{ __('Clase:') }}" class="block text-md font-medium text-gray-700" />
                     <select class="select2_el " style="width:100%" id="clase_id" name="clase" required>
                       <option value="" selected></option>
@@ -105,8 +106,8 @@
               }
             }); 
             $('#clase_id').val(""); 
-            // $('#clase').removeClass('hidden');
-            // $('#clase').addClass('flex');
+            $('#clase').removeClass('hidden');
+            $('#clase').addClass('flex');
         });
     });
 </script>
