@@ -112,7 +112,7 @@ class RutinaController extends Controller
     $rutina = Rutina::findOrFail($id);
     // dd($rutina->ejercicios->count());
     if ($rutina->ejercicios->count() > 0) {
-      return redirect('rutina')->with('error', 'No es posible eliminar este rutina ya que esta relacionada a un ejercicio');
+      return redirect('rutina')->with('error', 'No es posible eliminar este rutina ya que tiene ejercicios asignados.');
     } else {
       Rutina::destroy($id);
 
