@@ -24,7 +24,8 @@ class UserController extends Controller
     $search = $request->get('search');
     $filtro = $request->get('filtro');
 
-    $usuarios = User::orderBy('id', 'DESC')
+    $usuarios = User::where('active', 1)
+      ->orderByDesc('id')
       ->search($filtro, $search)
       ->simplePaginate(4);
 
@@ -70,52 +71,62 @@ class UserController extends Controller
       }
     }
 
-    $user = User::create([
-      'name' => $request->name,
-      'email' => $request->email,
-      'userName' => $request->userName,
-      'dni' => $request->dni,
-      'age' => $request->age,
-      'lastName' => $request->lastName,
-      'gender' => $request->gender,
-      'phone' => $request->phone,
-      'emergency_number' => $request->emergency_number,
-      'eRespiratorias' => $request->has('eRespiratorias'),
-      'eCardiacas' => $request->has('eCardiacas'),
-      'eRenal' => $request->has('eRenal'),
-      'convulsiones' => $request->has('convulsiones'),
-      'epilepsia' => $request->has('epilepsia'),
-      'diabetes' => $request->has('diabetes'),
-      'asma' => $request->has('asma'),
-      'alergia' => $request->has('alergia'),
-      'medicacion' => $request->has('medicacion'),
-      'role_id' => $request->role_id,
-    ]);
+    $query = DB::select('select count(*) as c, users.id as id, users.active as activo from users where users.userName = ?', [$request->userName]);
+
+    if ($query[0]->c > 0) {
+      $usuario = User::findOrFail($query[0]->id);
+      $usuario->active = 1;
+      $usuario->save();
+      return redirect('usuario')->with('message', 'Usuario creado con éxito');
+    } else {
+
+      $user = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'userName' => $request->userName,
+        'dni' => $request->dni,
+        'age' => $request->age,
+        'lastName' => $request->lastName,
+        'gender' => $request->gender,
+        'phone' => $request->phone,
+        'emergency_number' => $request->emergency_number,
+        'eRespiratorias' => $request->has('eRespiratorias'),
+        'eCardiacas' => $request->has('eCardiacas'),
+        'eRenal' => $request->has('eRenal'),
+        'convulsiones' => $request->has('convulsiones'),
+        'epilepsia' => $request->has('epilepsia'),
+        'diabetes' => $request->has('diabetes'),
+        'asma' => $request->has('asma'),
+        'alergia' => $request->has('alergia'),
+        'medicacion' => $request->has('medicacion'),
+        'role_id' => $request->role_id,
+      ]);
 
 
-    Password::sendResetLink($request->only(['email']));
+      Password::sendResetLink($request->only(['email']));
 
-    event(new PasswordReset($user));
+      event(new PasswordReset($user));
 
-    switch ($user->role_id) {
-      case '1':
-        $alumno = new Alumno();
-        $alumno->user_id = $user->id;
-        $alumno->save();
-        break;
-      case '2':
-        $profesor = new Profesor();
-        $profesor->user_id = $user->id;
-        $profesor->save();
-        break;
-      case '3':
-        $profesor = new Profesor();
-        $profesor->user_id = $user->id;
-        $profesor->save();
-        break;
+      switch ($user->role_id) {
+        case '1':
+          $alumno = new Alumno();
+          $alumno->user_id = $user->id;
+          $alumno->save();
+          break;
+        case '2':
+          $profesor = new Profesor();
+          $profesor->user_id = $user->id;
+          $profesor->save();
+          break;
+        case '3':
+          $profesor = new Profesor();
+          $profesor->user_id = $user->id;
+          $profesor->save();
+          break;
+      }
+
+      return redirect('usuario')->with('message', 'Usuario creado con éxito');
     }
-
-    return redirect('usuario')->with('message', 'Usuario creado con exito');
   }
 
   /**
@@ -171,10 +182,10 @@ class UserController extends Controller
     User::where('id', '=', $id)->update($usuario);
 
     if (session('usuario_url')) {
-      return redirect(session('usuario_url'))->with('message', 'Usuario modificado con exito');
+      return redirect(session('usuario_url'))->with('message', 'Usuario modificado con éxito');
     }
 
-    return redirect('usuario')->with('message', 'Usuario modificado con exito');
+    return redirect('usuario')->with('message', 'Usuario modificado con éxito');
   }
 
   /**
@@ -186,12 +197,10 @@ class UserController extends Controller
   public function destroy($id)
   {
     $usuario = User::findOrFail($id);
-    if ($usuario->alumno()->alumno_clase()->rutinas()->count() > 0) {
-        return redirect('usuario')->with('error', 'No es posible eliminar este usuario ya que esta relacionado a una rutina');
-      } else {
-        User::destroy($id);
-  
-        return redirect('usuario')->with('message', 'usuario eliminado con exito');
-      }
+
+    $usuario->active = 0;
+    $usuario->save();
+
+    return redirect('usuario')->with('message', 'Usuario borrado con éxito');
   }
 }
