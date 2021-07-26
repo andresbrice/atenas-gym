@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="breadcrumb">
-        <x-breadcrumb><a href="/">Dashboard</a> / <u>Gestion Asistencia</u></x-breadcrumb>
+        <x-breadcrumb><a href="/">Dashboard</a> / <u>Gestión Asistencia</u></x-breadcrumb>
     </x-slot>
 
     <x-slot name="slot">
