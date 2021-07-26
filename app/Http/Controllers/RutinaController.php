@@ -109,15 +109,15 @@ class RutinaController extends Controller
 
   public function destroy($id)
   {
-    $rutina = Rutina::findOrFail($id);
+    // $rutina = Rutina::findOrFail($id);
     // dd($rutina->ejercicios->count());
-    if ($rutina->ejercicios->count() > 0) {
-      return redirect('rutina')->with('error', 'No es posible eliminar este rutina ya que tiene ejercicios asignados.');
-    } else {
-      Rutina::destroy($id);
+    // if ($rutina->ejercicios->count() > 0) {
+    //   return redirect('rutina')->with('error', 'No es posible eliminar este rutina ya que tiene ejercicios asignados.');
+    // } else {
+    Rutina::destroy($id);
 
-      return redirect('rutina')->with('message', 'Rutina eliminado con éxito.');
-    }
+    return redirect('rutina')->with('message', 'Rutina eliminado con éxito.');
+    // }
   }
 
   public function findClase()

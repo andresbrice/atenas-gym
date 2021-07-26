@@ -17,7 +17,7 @@ class Profesor
    */
   public function handle(Request $request, Closure $next)
   {
-    abort_if(!Auth::user()->role_id === 2, 401);
+    abort_if(!Auth::user()->role_id == 2, 401);
     return $next($request);
   }
 }

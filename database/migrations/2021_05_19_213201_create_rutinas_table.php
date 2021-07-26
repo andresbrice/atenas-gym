@@ -18,7 +18,7 @@ class CreateRutinasTable extends Migration
       $table->id();
       $table->date("fecha_emision");
       $table->foreignId('profesor_id')->constrained();
-      $table->foreignId('alumno_clase_id')->constrained('alumno_clase', 'id');
+      $table->foreignId('alumno_clase_id')->constrained('alumno_clase', 'id')->onUpdate('cascade')->onDelete('cascade');
       $table->timestamps();
     });
   }

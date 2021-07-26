@@ -16,8 +16,8 @@ class CreateEjercicioRutinaTable extends Migration
     Schema::create('ejercicio_rutina', function (Blueprint $table) {
       $table->engine = 'InnoDB';
       $table->id();
-      $table->foreignId('ejercicio_id')->constrained();
-      $table->foreignId('rutina_id')->constrained();
+      $table->foreignId('ejercicio_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+      $table->foreignId('rutina_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
       $table->integer('series');
       $table->integer('repeticiones');
       $table->integer('descanso');

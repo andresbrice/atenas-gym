@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="breadcrumb">
-    <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{ route('rutina.index') }}">Gestión Rutina</a> / <u>Crear
-        Rutina</u>
+    <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{ route('rutina.index') }}">Gestión Rutina</a> /
+      <u>Ejercicios</u>
     </x-breadcrumb>
   </x-slot>
 
