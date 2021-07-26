@@ -1,6 +1,6 @@
 <x-app-layout>
   <x-slot name="breadcrumb">
-    <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{route('alumnos.buscarClase')}}">Buscar clase</a> / <u>Consultar
+    <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{route('alumnos.buscarClase')}}">Buscar Clase</a> / <u>Consultar
         Rutina</u> </x-breadcrumb>
   </x-slot>
 
@@ -69,7 +69,7 @@
                               </th>
                             </tr>
                           </thead>
-                          <tbody class="bg-white divide-x divide-gray-400 divide-y divide-gray-400">
+                          <tbody class="bg-white divide-gray-400 divide-y divide-gray-400">
                             @forelse ($ejercicios_rutina as $ejercicio)
                             <tr>
                               <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
