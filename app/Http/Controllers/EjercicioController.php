@@ -77,7 +77,7 @@ class EjercicioController extends Controller
 
     $ejercicio->clases()->sync($request->input('tipo_clase'), []);
 
-    return redirect('ejercicio')->with('message', 'Ejercicio creado con exito');
+    return redirect('ejercicio')->with('message', 'Ejercicio creado con éxito.');
   }
 
   /**
@@ -127,7 +127,7 @@ class EjercicioController extends Controller
     $ejer->clases()->sync($request->input('tipo_clase'));
 
 
-    return redirect('ejercicio')->with('message', 'Ejercicio modificado con exito');
+    return redirect('ejercicio')->with('message', 'Ejercicio modificado con éxito.');
   }
 
   /**
@@ -140,6 +140,6 @@ class EjercicioController extends Controller
   {
     Ejercicio::destroy($id);
 
-    return redirect('ejercicio')->with('message', 'Ejercicio eliminado con exito');
+    return redirect('ejercicio')->with('message', 'Ejercicio eliminado con éxito.');
   }
 }

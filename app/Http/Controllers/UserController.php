@@ -125,7 +125,7 @@ class UserController extends Controller
           break;
       }
 
-      return redirect('usuario')->with('message', 'Usuario creado con éxito');
+      return redirect('usuario')->with('message', 'Usuario creado con éxito.');
     }
   }
 
@@ -182,10 +182,10 @@ class UserController extends Controller
     User::where('id', '=', $id)->update($usuario);
 
     if (session('usuario_url')) {
-      return redirect(session('usuario_url'))->with('message', 'Usuario modificado con éxito');
+      return redirect(session('usuario_url'))->with('message', 'Usuario modificado con éxito.');
     }
 
-    return redirect('usuario')->with('message', 'Usuario modificado con éxito');
+    return redirect('usuario')->with('message', 'Usuario modificado con éxito.');
   }
 
   /**
@@ -201,6 +201,6 @@ class UserController extends Controller
     $usuario->active = 0;
     $usuario->save();
 
-    return redirect('usuario')->with('message', 'Usuario borrado con éxito');
+    return redirect('usuario')->with('message', 'Usuario borrado con éxito.');
   }
 }

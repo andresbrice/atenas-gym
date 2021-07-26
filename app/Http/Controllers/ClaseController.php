@@ -66,7 +66,7 @@ class ClaseController extends Controller
     foreach ($request->dias as $dia) {
       $query = DB::select("select count(*) as contador from clases join clase_dia on clases.id = clase_dia.clase_id JOIN dias on clase_dia.dia_id = dias.id join horarios on clases.horario_id = horarios.id where clases.tipo_clase = ? and dias.id = ? and horarios.id = ?", [$request->tipo_clase, $dia, $request->horario_id]);
       if ($query[0]->contador > 0) {
-        return  back()->with('error', 'Ya existe una clase de ese tipo en los dias y horario seleccionado')->withInput();
+        return  back()->with('error', 'Ya existe una clase de ese tipo en los dias y horario seleccionado.')->withInput();
       }
     }
 
@@ -82,7 +82,7 @@ class ClaseController extends Controller
 
     $clase->dias()->sync($request->input('dias', []));
 
-    return redirect('clase')->with('message', 'Clase creada con exito');
+    return redirect('clase')->with('message', 'Clase creada con éxito.');
   }
 
   /**
@@ -144,9 +144,9 @@ class ClaseController extends Controller
     $clase->save();
 
     if (session('clase_url')) {
-      return redirect(session('clase_url'))->with('message', 'Clase modificada con exito');
+      return redirect(session('clase_url'))->with('message', 'Clase modificada con éxito.');
     }
-    return redirect('clase')->with('message', 'Clase modificada con exito');
+    return redirect('clase')->with('message', 'Clase modificada con éxito.');
   }
 
   /**
@@ -164,11 +164,11 @@ class ClaseController extends Controller
     $query = DB::table('alumno_clase')->where('alumno_clase.clase_id', '=', $clase->id)->count();
 
     if ($clase->profesors()->count() || $query > 0) {
-      return redirect('clase')->with('error', 'No es posible eliminar esta clase ya que esta relacionada con alumnos o profesores');
+      return redirect('clase')->with('error', 'No es posible eliminar esta clase ya que esta relacionada con alumnos o profesores.');
     } else {
       Clase::destroy($id);
 
-      return redirect('clase')->with('message', 'Clase eliminada con exito');
+      return redirect('clase')->with('message', 'Clase eliminada con éxito.');
     }
   }
 

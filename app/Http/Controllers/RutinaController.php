@@ -60,7 +60,7 @@ class RutinaController extends Controller
       'profesor_id' => $profesor->id,
     ]);
 
-    return redirect('rutina')->with('message', 'Rutina creada con éxito');
+    return redirect('rutina')->with('message', 'Rutina creada con éxito.');
   }
 
   public function show($id)
@@ -104,7 +104,7 @@ class RutinaController extends Controller
 
     $rutina->save();
 
-    return redirect('rutina')->with('message', 'Rutina modificada con éxito');
+    return redirect('rutina')->with('message', 'Rutina modificada con éxito.');
   }
 
   public function destroy($id)
@@ -116,7 +116,7 @@ class RutinaController extends Controller
     } else {
       Rutina::destroy($id);
 
-      return redirect('rutina')->with('message', 'Rutina eliminado con exito');
+      return redirect('rutina')->with('message', 'Rutina eliminado con éxito.');
     }
   }
 
@@ -163,7 +163,7 @@ class RutinaController extends Controller
     $validacion = DB::select('select count(*) as enRutina from ejercicio_rutina where ejercicio_rutina.ejercicio_id = ? and ejercicio_rutina.rutina_id = ?', [$request->ejercicio, $rutina->id]);
 
     if ($validacion[0]->enRutina > 0) {
-      return  back()->with('error', 'El ejercicio ya se encuentra en esta rutina');
+      return  back()->with('error', 'El ejercicio ya se encuentra en esta rutina.');
     }
 
     $rutina->ejercicios()->attach($request->ejercicio, ['series' => $request->series, 'repeticiones' => $request->repeticiones, 'descanso' => $request->descanso]);
