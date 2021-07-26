@@ -45,10 +45,11 @@ class AlumnoController extends Controller
   {
     $clase = Clase::findOrFail($request->tipo_clase);
     $clase_id = $clase->id;
-    $alumno = Alumno::where('user_id', auth()->id());
-    $alumno_id = $alumno->id;
+    $alumno_id = Alumno::select('id')
+      ->where('user_id', auth()->id());
 
-    $alumno_clase = Alumno_Clase::where('clase_id', $clase_id)
+    $alumno_clase = Alumno_Clase::select('id')
+      ->where('clase_id', $clase_id)
       ->where('alumno_id', $alumno_id);
 
     $rutina = Rutina::where('alumno_clase_id', $alumno_clase)->first();
