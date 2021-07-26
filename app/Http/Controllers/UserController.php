@@ -64,8 +64,10 @@ class UserController extends Controller
       'age' => 'required|int|between:10,99',
     ]);
 
-    if ($request->age < 21 || $request->age > 60 && $request->role_id == 2 || $request->role_id == 3) {
-      return  back()->with('error', 'Un profesor no puede ser menor a 21 años o mayor a 60.');
+    if ($request->role_id == 2 || $request->role_id == 3) {
+      if ($request->age < 21 || $request->age > 60) {
+        return  back()->with('error', 'Un profesor no puede ser menor a 21 años o mayor a 60.')->withInput();
+      }
     }
 
     $user = User::create([

@@ -64,10 +64,9 @@ class ClaseController extends Controller
     ], ['dias.required' => 'Debe seleccionar al menos 1 día de la semana']);
 
     foreach ($request->dias as $dia) {
-      $query = DB::select("select count(*) as contador from clases join clase_dia on clases.id = clase_dia.clase_id JOIN dias on clase_dia.dia_id = dias.id join horarios on clases.horario_id = horarios.id where clases.tipo_clase = ? and dias.id = ? and horarios.id = ?", [$request->tipo_clase, $request->horario_id, $dia]);
+      $query = DB::select("select count(*) as contador from clases join clase_dia on clases.id = clase_dia.clase_id JOIN dias on clase_dia.dia_id = dias.id join horarios on clases.horario_id = horarios.id where clases.tipo_clase = ? and dias.id = ? and horarios.id = ?", [$request->tipo_clase, $dia, $request->horario_id]);
       if ($query[0]->contador > 0) {
-        session()->flash('error', 'La cantidad de dias solicitados supera el limite de dias por solicitud');
-        return redirect('clase/create')->withInput();
+        return  back()->with('error', 'Ya existe una clase de ese tipo en los dias y horario seleccionado')->withInput();
       }
     }
 
