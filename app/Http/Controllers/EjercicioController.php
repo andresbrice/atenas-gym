@@ -35,8 +35,7 @@ class EjercicioController extends Controller
   public function create()
   {
 
-    $clases = Clase::all();
-    // dd($clases);
+    $clases = Clase::orderBy('tipo_clase', 'desc')->groupBy('tipo_clase')->get();
     return view('ejercicio.create', compact('clases'));
   }
 

@@ -43,16 +43,20 @@ class AlumnoController extends Controller
 
   public function seleccionarclase(Request $request)
   {
+
     $clase = Clase::findOrFail($request->tipo_clase);
-    $queryAlumnoClase = DB::select('select alumno_clase.id as id from alumno_clase where alumno_clase.id in (select alumno_clase.id from alumno_clase join alumnos on alumno_clase.alumno_id = alumnos.id where alumno_clase.clase_id = ? and alumno_clase.alumno_id in (SELECT alumno_clase.alumno_id from alumno_clase JOIN alumnos on alumno_clase.alumno_id = alumnos.id JOIN users on alumnos.user_id = users.id where users.id = ?))', [$clase->id, auth()->id()]);
 
-    $alumno_clase = Alumno_Clase::findOrFail($queryAlumnoClase[0]->id);
+    $queryAlumnoClase = DB::select('select alumno_clase.id as id from alumno_clase JOIN clases on alumno_clase.clase_id = clases.id JOIN alumnos on alumno_clase.alumno_id = alumnos.id WHERE alumnos.user_id = ? && clases.id = ?', [auth()->id(), $clase->id]);
 
-    $rutina = Rutina::where('alumno_clase_id', $alumno_clase->id)->get();
 
-    dd($rutina);
+    $id = $queryAlumnoClase[0]->id;
+    $alumno_clase = Alumno_Clase::findOrFail($id);
 
-    // $ejercicios_rutina = DB::select('select ejercicios.id as id, ejercicio_rutina.id as ejercicio_rutina_id, ejercicios.nombre_ejercicio as nombre_ejercicio, rutinas.id as rutina_id, ejercicio_rutina.series as series, ejercicio_rutina.repeticiones as repeticiones, ejercicio_rutina.descanso as descanso from ejercicio_rutina join ejercicios on ejercicio_rutina.ejercicio_id = ejercicios.id join rutinas on ejercicio_rutina.rutina_id = rutinas.id where rutina_id = ?', [$rutina->id]);
+
+    $rutina = Rutina::where('alumno_clase_id', $alumno_clase->id)->latest()->first();
+
+
+    $ejercicios_rutina = DB::select('select ejercicios.id as id, ejercicio_rutina.id as ejercicio_rutina_id, ejercicios.nombre_ejercicio as nombre_ejercicio, rutinas.id as rutina_id, ejercicio_rutina.series as series, ejercicio_rutina.repeticiones as repeticiones, ejercicio_rutina.descanso as descanso from ejercicio_rutina join ejercicios on ejercicio_rutina.ejercicio_id = ejercicios.id join rutinas on ejercicio_rutina.rutina_id = rutinas.id where rutina_id = ?', [$rutina->id]);
 
 
     return view('alumnos.rutina', compact('rutina', 'ejercicios_rutina'));

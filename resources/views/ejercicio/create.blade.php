@@ -27,7 +27,7 @@
                     <x-label for="tipo_clase" :value="__('Tipo de Clase')" class="font-semibold" />
                     <select name="tipo_clase[]" id="tipo_clase" multiple="multiple"
                       class="select2_el w-full block px-4 py-2 rounded-md mt-2 focus:border-red-300 focus:ring-red-200">
-                      <option value="" hidden></option>
+
                       @foreach ($clases as $clase)
                       <option value="{{$clase->id}}">{{ $clase->tipo_clase }}</option>
                       @endforeach
