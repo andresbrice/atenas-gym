@@ -41,6 +41,10 @@ class UserSeeder extends Seeder
       "remember_token" => null,
     ]);
 
+    DB::table('profesors')->insert([
+      "user_id" => 1,
+    ]);
+
     // User::factory()->times(50)->create();
   }
 }
