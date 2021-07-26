@@ -1,12 +1,13 @@
 <x-app-layout>
   <x-slot name="breadcrumb">
-    <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{ route('alumnos.buscarClase') }}">Buscar clase</a> /
-      <u>Consulta Rutinas</u></x-breadcrumb>
+    <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{route('rutina.index')}}">Gestión Rutina</a> / <u>Mostrar
+        Rutina</u>
+    </x-breadcrumb>
   </x-slot>
 
   <x-slot name="slot">
     <div class="py-2 xl:py-6">
-      <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-2 2xl:p-4 bg-white border-b border-gray-400">
             <div class="flex flex-col">
@@ -106,10 +107,18 @@
                     {{ __('Back') }}
                   </x-button>
                 </a>
+
+                @if (count($ejercicios_rutina) == 0)
+                <x-button disabled title="La rutina debe tener ejercicios asignados para poder imprimirla"
+                  class="ml-3 bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
+                  {{ __('Print Routine') }}
+                </x-button>
+                @else
                 <x-button onclick="window.print()"
                   class="ml-3 bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
                   {{ __('Print Routine') }}
                 </x-button>
+                @endif
               </div>
             </div>
           </div>
@@ -117,5 +126,4 @@
       </div>
     </div>
   </x-slot>
-
 </x-app-layout>
