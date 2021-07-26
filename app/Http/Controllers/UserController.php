@@ -185,8 +185,13 @@ class UserController extends Controller
    */
   public function destroy($id)
   {
-    User::destroy($id);
-
-    return redirect('usuario')->with('message', 'Usuario eliminado con exito');
+    $usuario = User::findOrFail($id);
+    if ($usuario->alumno()->alumno_clase()->rutinas()->count() > 0) {
+        return redirect('usuario')->with('error', 'No es posible eliminar este usuario ya que esta relacionado a una rutina');
+      } else {
+        User::destroy($id);
+  
+        return redirect('usuario')->with('message', 'usuario eliminado con exito');
+      }
   }
 }

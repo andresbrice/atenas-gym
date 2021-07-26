@@ -43,7 +43,6 @@
                                          @endforeach - 
                                          {{ $clase->horario->hora->format('H:i A') }}
                                     </h2>
-                                    
                                 </div>
                                 <x-table>
                                     @section('nombre-columna')
