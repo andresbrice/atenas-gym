@@ -46,8 +46,8 @@ class HorarioController extends Controller
     $request->validate([
         'hora' => 'required|unique:horarios|after:07:59|before:22:00'
       ], [
-        'hora.after' => 'El horario debe ser a partir de las 08.00 AM',
-        'hora.before' => 'El horario debe ser antes de las 22.00 PM'
+        'hora.after' => 'El horario debe ser a partir de las 08.00 AM.',
+        'hora.before' => 'El horario debe ser antes de las 22.00 PM.'
       ]);
   
       $hora = new \DateTime($request->hora);
@@ -56,7 +56,7 @@ class HorarioController extends Controller
       $horario->hora = $formathora;
       $horario->save();
   
-      return redirect('horario')->with('message', 'Horario creado con exito');
+      return redirect('horario')->with('message', 'Horario creado con éxito.');
   }
 
   
@@ -78,15 +78,15 @@ class HorarioController extends Controller
     $request->validate([
         'hora' => 'required|unique:horarios|after:07:59|before:22:00'
       ], [
-        'hora.after' => 'El horario debe ser a partir de las 08.00 AM',
-        'hora.before' => 'El horario debe ser antes de las 22.00 PM'
+        'hora.after' => 'El horario debe ser a partir de las 08.00 AM.',
+        'hora.before' => 'El horario debe ser antes de las 22.00 PM.'
       ]);
 
     $horario = request()->except('_token', '_method');
 
     Horario::where('id', '=', $id)->update($horario);
 
-    return redirect('horario')->with('message', 'Horario modificado con exito');
+    return redirect('horario')->with('message', 'Horario modificado con éxito.');
   }
 
   /**
@@ -104,7 +104,7 @@ class HorarioController extends Controller
     } else {
       Horario::destroy($id);
 
-      return redirect('horario')->with('message', 'Horario eliminado con exito');
+      return redirect('horario')->with('message', 'Horario eliminado con éxito.');
     }
   }
 }
