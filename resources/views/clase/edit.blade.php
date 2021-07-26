@@ -14,6 +14,8 @@
           <div class="p-4 bg-white border-b border-gray-200">
             <!-- Validation Errors -->
             <x-validation-errors class=" mt-5" :errors="$errors" />
+            <x-success-message class="mb-4 font-bold flex justify-center" />
+            <x-denied-message class="mb-4 font-bold flex justify-center" />
 
             <form method="POST" action="{{route('clase.update',$clase->id)}}">
               @csrf

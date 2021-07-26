@@ -66,10 +66,8 @@
 
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-center font-medium">
                                             <div class="inline-flex" role="group" aria-label="Button group">
-                                                <button
-                                                    class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 rounded-l-md focus:shadow-outline hover:bg-green-800">
-                                                    <a
-                                                        href="{{ route('horario.edit', $horario->id) }}">Editar</a></button>
+                                                <a href="{{ route('horario.edit', $horario->id) }}"><button
+                                                    class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 rounded-l-md focus:shadow-outline hover:bg-green-800">Editar</button></a>
                                                 <form method="POST"
                                                     action="{{ route('horario.destroy', $horario->id) }}">
                                                     @csrf
