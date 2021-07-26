@@ -180,7 +180,9 @@ class UserController extends Controller
    */
   public function destroy($id)
   {
-    User::destroy($id);
+    // User::destroy($id);
+    $usuario = User::findOrFail($id);
+
 
     return redirect('usuario')->with('message', 'Usuario eliminado con exito');
   }

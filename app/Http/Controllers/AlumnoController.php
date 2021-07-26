@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alumno_Clase;
+use App\Models\Alumno;
 use App\Models\Clase;
 use App\Models\Rutina;
 use App\Models\Ejercicio;
@@ -43,6 +45,13 @@ class AlumnoController extends Controller
   {
     $clase = Clase::findOrFail($request->tipo_clase);
     $clase_id = $clase->id;
+    $alumno = Alumno::where('user_id', auth()->id());
+    $alumno_id = $alumno->id;
+
+    $alumno_clase = Alumno_Clase::where('clase_id', $clase_id)
+      ->where('alumno_id', $alumno_id);
+
+    $rutina = Rutina::where('alumno_clase_id', $alumno_clase)->first();
 
     $ejercicios = DB::query()
       ->select('rutinas.id', 'rutinas.fecha_emision', 'clases.tipo_clase', 'ejercicios.nombre_ejercicio', 'ejercicio_rutina.series', 'ejercicio_rutina.repeticiones', 'ejercicio_rutina.descanso')
@@ -56,7 +65,10 @@ class AlumnoController extends Controller
       ->where('users.id', '=', auth()->id())
       ->where('clases.id', '=', $clase_id)
       ->groupBy('ejercicio_rutina.id')
+      ->first()
       ->get();
+
+      dd($ejercicios);
 
     return view('alumnos.rutina', compact('clase', 'clase_id', 'ejercicios'));
   }
