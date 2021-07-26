@@ -41,7 +41,7 @@ class AlumnoController extends Controller
     return view('alumnos.buscarClase', compact('clases'));
   }
 
-  public function seleccionarclase(Request $request)
+  public function consultaRutina(Request $request)
   {
 
     $clase = Clase::findOrFail($request->tipo_clase);
@@ -69,9 +69,5 @@ class AlumnoController extends Controller
   public function consultaCuota()
   {
     return view('alumnos.Cuota');
-  }
-  public function imprimirRutina()
-  {
-    return view('alumnos.imprimirRutina');
   }
 }
