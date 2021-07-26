@@ -67,7 +67,7 @@
                                     @endsection
 
                                     @section('contenido-filas')
-                                    @foreach ($ejercicios as $ejercicio)
+                                    @foreach ($ejercicios_rutina as $ejercicio)
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
                                             {{ $ejercicio->nombre_ejercicio }}
