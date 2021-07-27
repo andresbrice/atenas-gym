@@ -71,7 +71,7 @@ class UserController extends Controller
       }
     }
 
-    $query = DB::select('select count(*) as c, users.id as id, users.active as activo from users where users.userName = ?', [$request->userName]);
+    $query = DB::select('select count(*) as c, users.id as id, users.dni as dni, users.active as activo from users where users.userName = ?', [$request->userName]);
 
     if ($query[0]->c > 0) {
       $usuario = User::findOrFail($query[0]->id);
@@ -79,7 +79,6 @@ class UserController extends Controller
       $usuario->save();
       return redirect('usuario')->with('message', 'Usuario creado con éxito');
     } else {
-
       $user = User::create([
         'name' => $request->name,
         'email' => $request->email,

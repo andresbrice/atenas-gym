@@ -17,7 +17,7 @@ class Alumno
    */
   public function handle(Request $request, Closure $next)
   {
-    abort_if(!Auth::user()->role_id == 1, 401);
+    abort_if(Auth::user()->role_id != 1, 401);
     return $next($request);
   }
 }
