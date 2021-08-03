@@ -22,6 +22,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
   Route::view('perfil', 'perfil.edit')->name('perfil');
   Route::put('perfil', [PerfilController::class, 'update'])->name('perfil.update');
 
+  // Route::group(['middleware' => ['admin', 'profesor']], function () {
+
+  // });
+  //gestion rutina
+  Route::resource('rutina', RutinaController::class);
+  Route::get('findClase', [RutinaController::class, 'findClase'])->name('findClase'); //json 
+  Route::get('rutina/{rutina}/ejercicios', [RutinaController::class, 'indexEjercicios'])->name('rutina.ejercicios');
+  Route::post('addEjercicios/{rutina}', [RutinaController::class, 'addEjercicios'])->name('rutina.addEjercicios');
+  Route::delete('deleteEjercicios/{ejercicio}/{rutina}', [RutinaController::class, 'deleteEjercicios'])->name('rutina.deleteEjercicios');
+
   Route::group(['middleware' => 'admin'], function () {
     //gestion usuario
     Route::resource('usuario', UserController::class);
@@ -38,12 +48,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //gestion asistencia
     Route::resource('asistencia', AsistenciaController::class);
     Route::get('buscarclase', [AsistenciaController::class, 'buscarClase'])->name('asistencia.buscarclase');
-    //gestion rutina
-    Route::resource('rutina', RutinaController::class);
-    Route::get('findClase', [RutinaController::class, 'findClase'])->name('findClase'); //json 
-    Route::get('rutina/{rutina}/ejercicios', [RutinaController::class, 'indexEjercicios'])->name('rutina.ejercicios');
-    Route::post('addEjercicios/{rutina}', [RutinaController::class, 'addEjercicios'])->name('rutina.addEjercicios');
-    Route::delete('deleteEjercicios/{ejercicio}/{rutina}', [RutinaController::class, 'deleteEjercicios'])->name('rutina.deleteEjercicios');
+
     //gestion cuota
     Route::resource('cuota', CuotaController::class);
     Route::get('seleccionaralumno', [CuotaController::class, 'seleccionarAlumno'])->name('cuota.seleccionaralumno');
@@ -57,15 +62,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //gestion asistencia
     Route::resource('asistencia', AsistenciaController::class);
     Route::get('buscarclase', [AsistenciaController::class, 'buscarClase'])->name('asistencia.buscarclase');
-    //gestion rutina
-    Route::resource('rutina', RutinaController::class);
-    Route::get('findClase', [RutinaController::class, 'findClase'])->name('findClase'); //json 
-    Route::get('rutina/{rutina}/ejercicios', [RutinaController::class, 'indexEjercicios'])->name('rutina.ejercicios');
-    Route::post('addEjercicios/{rutina}', [RutinaController::class, 'addEjercicios'])->name('rutina.addEjercicios');
-    Route::delete('deleteEjercicios/{ejercicio}/{rutina}', [RutinaController::class, 'deleteEjercicios'])->name('rutina.deleteEjercicios');
     //gestion cuota
     Route::resource('cuota', CuotaController::class);
     Route::get('seleccionaralumno', [CuotaController::class, 'seleccionarAlumno'])->name('cuota.seleccionaralumno');
+    //gestion rutina
+    // Route::resource('rutina', RutinaController::class);
+    // Route::get('findClase', [RutinaController::class, 'findClase'])->name('findClase'); //json 
+    // Route::get('rutina/{rutina}/ejercicios', [RutinaController::class, 'indexEjercicios'])->name('rutina.ejercicios');
+    // Route::post('addEjercicios/{rutina}', [RutinaController::class, 'addEjercicios'])->name('rutina.addEjercicios');
+    // Route::delete('deleteEjercicios/{ejercicio}/{rutina}', [RutinaController::class, 'deleteEjercicios'])->name('rutina.deleteEjercicios');
   });
 
   Route::group(['middleware' => 'alumno'], function () {

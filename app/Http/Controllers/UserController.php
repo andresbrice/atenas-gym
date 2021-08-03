@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Alumno;
+use App\Models\Alumno_Clase;
+use App\Models\Clase;
 use App\Models\Profesor;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\DB;
@@ -199,6 +201,20 @@ class UserController extends Controller
 
     $usuario->active = 0;
     $usuario->save();
+
+    switch ($usuario->role_id) {
+      case '1':
+        DB::select('delete from alumnos where alumnos.user_id = ?', [$usuario->id]);
+        break;
+      case '2':
+        DB::select('delete from profesors where profesors.user_id = ?', [$usuario->id]);
+        break;
+        break;
+      case '3':
+        DB::select('delete from profesors where profesors.user_id = ?', [$usuario->id]);
+        break;
+        break;
+    }
 
     return redirect('usuario')->with('message', 'Usuario borrado con éxito.');
   }

@@ -136,14 +136,14 @@ class ClaseController extends Controller
       'dias' => 'required|array|min: 1'
     ], ['dias.required' => 'Debe seleccionar al menos 1 día de la semana']);
 
-    $query = DB::select('select clase_dia.dia_id as id from clase_dia join clases on clase_dia.clase_id = clases.id join horarios on clases.horario_id = horarios.id WHERE clases.tipo_clase = ? and clases.horario_id = ?', [$request->tipo_clase, $request->horario_id]);
+    $query = DB::select('select clase_dia.dia_id as id, clases.horario_id as horario, clases.tipo_clase as tipo_clase from clase_dia join clases on clase_dia.clase_id = clases.id join horarios on clases.horario_id = horarios.id WHERE clases.tipo_clase = ? and clases.horario_id = ?', [$request->tipo_clase, $request->horario_id]);
 
     $dias = array();
     for ($i = 0; $i < count($query); $i++) {
       array_push($dias, $query[$i]->id);
     }
 
-    if ($request->dias == $dias) {
+    if ($request->dias == $dias && $request->horario_id == $query) {
       return  back()->with('error', 'Ya existe una clase de ese tipo en los dias y horario seleccionado.')->withInput();
     }
 
