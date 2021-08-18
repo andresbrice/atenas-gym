@@ -30,7 +30,8 @@
                     <select class="select2_el" id="alumno_id" style="width:100%" name="alumno" required>
                       <option value="" selected></option>
                       @foreach ($alumnos as $alumno)
-                      <option value="{{ $alumno->user_id }}">{{ $alumno->name }} {{ $alumno->lastname }}</option>
+                      <option value="{{ $alumno->user_id }}">{{ $alumno->name }} {{ $alumno->lastname }} - DNI:
+                        {{$alumno->dni}}</option>
                       @endforeach
                     </select>
                   </div>

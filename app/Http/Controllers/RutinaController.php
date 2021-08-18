@@ -31,7 +31,9 @@ class RutinaController extends Controller
   public function create()
   {
     $alumnos =
-      DB::select('select users.id as user_id, users.name as name, users.lastName as lastname, alumnos.id as alumno_id from users join alumnos on users.id = alumnos.user_id');
+      DB::select('select users.id as user_id, users.name as name, users.dni as dni, users.lastName as lastname, alumnos.id as alumno_id from users join alumnos on users.id = alumnos.user_id where users.active = 1');
+
+    // $alumnos = User::where('role_id', 1)->where('active', 1)->get();
 
     $profesor = DB::select('select profesors.id as id from profesors where profesors.user_id = ?', [auth()->id()]);
 

@@ -1,6 +1,6 @@
 <x-app-layout>
   <x-slot name="breadcrumb">
-    <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{route('alumnos.buscarClase')}}">Buscar Clase</a> / <u>Consultar
+    <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{route('alumnos.buscarClase')}}">Buscar clase</a> / <u>Consulta
         Rutina</u> </x-breadcrumb>
   </x-slot>
 

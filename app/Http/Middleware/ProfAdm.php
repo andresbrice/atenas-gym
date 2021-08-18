@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Profesor
+class ProfAdm
 {
   /**
    * Handle an incoming request.
@@ -17,7 +17,10 @@ class Profesor
    */
   public function handle(Request $request, Closure $next)
   {
-    abort_if(Auth::user()->role_id != 2, 401);
-    return $next($request);
+    if (Auth::user()->role_id == 1) {
+      abort(401);
+    } else {
+      return $next($request);
+    }
   }
 }

@@ -187,9 +187,9 @@ class ClaseController extends Controller
   public function indexAlumnos($id)
   {
     $cupos = Clase::where('id', $id)->pluck('cupos_disponibles');
-    $alumnos = User::where('role_id', 1)->get();
+    $alumnos = User::where('role_id', 1)->where('active', 1)->get();
     $clase = Clase::findOrFail($id);
-    $alumno_clase = DB::select('select users.id as id, users.name as nombre, users.lastName as apellido from users where users.id in (select users.id from users join alumnos on users.id = alumnos.user_id where alumnos.id in(select alumnos.id from alumnos join alumno_clase on alumnos.id = alumno_clase.alumno_id where alumno_clase.clase_id = ?))', [$clase->id]);
+    $alumno_clase = DB::select('select users.id as id, users.name as nombre, users.dni as dni, users.lastName as apellido from users where users.id in (select users.id from users join alumnos on users.id = alumnos.user_id where alumnos.id in(select alumnos.id from alumnos join alumno_clase on alumnos.id = alumno_clase.alumno_id where alumno_clase.clase_id = ?))', [$clase->id]);
 
     return view('clase.alumnos', compact('alumnos', 'clase', 'alumno_clase', 'cupos'));
   }
@@ -202,7 +202,7 @@ class ClaseController extends Controller
     $validacion = DB::select('SELECT COUNT(*) as enClase FROM alumno_clase WHERE alumno_clase.alumno_id IN (SELECT alumnos.id FROM alumnos JOIN users ON alumnos.user_id = users.id WHERE alumnos.user_id = ?) AND alumno_clase.clase_id = ?', [$request->alumno, $clase->id]);
 
     if ($validacion[0]->enClase > 0) {
-      return  back()->with('error', 'El alumno ya se encuentra en esta clase');
+      return  back()->with('error', 'El alumno ya se encuentra en esta clase.');
     }
 
     $alumno_id = DB::select('select alumnos.id as id from alumnos where alumnos.user_id = ?', [$request->alumno]);
@@ -255,7 +255,7 @@ class ClaseController extends Controller
     $validacion = DB::select('SELECT COUNT(*) as enClase FROM clase_profesor WHERE clase_profesor.profesor_id IN (SELECT profesors.id FROM profesors JOIN users ON profesors.user_id = users.id WHERE profesors.user_id = ?) AND clase_profesor.clase_id = ?', [$request->profesor, $clase->id]);
 
     if ($validacion[0]->enClase > 0) {
-      return  back()->with('error', 'El profesor ya se encuentra en esta clase');
+      return  back()->with('error', 'El profesor ya se encuentra en esta clase.');
     }
 
     $profesor_id = DB::select('select profesors.id as id from profesors where profesors.user_id = ?', [$request->profesor]);

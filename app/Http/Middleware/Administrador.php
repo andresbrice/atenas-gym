@@ -17,7 +17,6 @@ class Administrador
    */
   public function handle(Request $request, Closure $next)
   {
-
     abort_if(Auth::user()->role_id != 3, 401);
     return $next($request);
   }

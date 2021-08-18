@@ -42,24 +42,24 @@ class HorarioController extends Controller
    */
   public function store(Request $request)
   {
-    
+
     $request->validate([
-        'hora' => 'required|unique:horarios|after:07:59|before:22:00'
-      ], [
-        'hora.after' => 'El horario debe ser a partir de las 08.00 AM.',
-        'hora.before' => 'El horario debe ser antes de las 22.00 PM.'
-      ]);
-  
-      $hora = new \DateTime($request->hora);
-      $formathora = $hora->format('H:i');
-      $horario = new Horario();
-      $horario->hora = $formathora;
-      $horario->save();
-  
-      return redirect('horario')->with('message', 'Horario creado con éxito.');
+      'hora' => 'required|unique:horarios|after:07:59|before:22:00'
+    ], [
+      'hora.after' => 'El horario debe ser a partir de las 08.00 AM.',
+      'hora.before' => 'El horario debe ser antes de las 22.00 PM.'
+    ]);
+
+    $hora = new \DateTime($request->hora);
+    $formathora = $hora->format('H:i');
+    $horario = new Horario();
+    $horario->hora = $formathora;
+    $horario->save();
+
+    return redirect('horario')->with('message', 'Horario creado con éxito.');
   }
 
-  
+
   public function edit($id)
   {
     $horario = Horario::findOrFail($id);
@@ -76,11 +76,11 @@ class HorarioController extends Controller
   public function update(Request $request, $id)
   {
     $request->validate([
-        'hora' => 'required|unique:horarios|after:07:59|before:22:00'
-      ], [
-        'hora.after' => 'El horario debe ser a partir de las 08.00 AM.',
-        'hora.before' => 'El horario debe ser antes de las 22.00 PM.'
-      ]);
+      'hora' => 'required|unique:horarios|after:07:59|before:22:00'
+    ], [
+      'hora.after' => 'El horario debe ser a partir de las 08.00 AM.',
+      'hora.before' => 'El horario debe ser antes de las 22.00 PM.'
+    ]);
 
     $horario = request()->except('_token', '_method');
 
@@ -100,7 +100,7 @@ class HorarioController extends Controller
     $horario = Horario::findOrFail($id);
 
     if ($horario->clases()->count()) {
-      return redirect('horario')->with('error', 'No es posible eliminar este horario ya que esta relacionado a una clase');
+      return redirect('horario')->with('error', 'No es posible eliminar este horario ya que esta relacionado a una clase.');
     } else {
       Horario::destroy($id);
 

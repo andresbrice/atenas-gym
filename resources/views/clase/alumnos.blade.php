@@ -26,7 +26,8 @@
                   <select class="select2_el" id="alumno_id" style="width:100%" name="alumno" required>
                     <option value="" selected></option>
                     @foreach ($alumnos as $alumno)
-                    <option value="{{ $alumno->id }}">{{ $alumno->name }} {{ $alumno->lastName }}</option>
+                    <option value="{{ $alumno->id }}">{{ $alumno->name }} {{ $alumno->lastName }} - DNI:
+                      {{ $alumno->dni}}</option>
                     @endforeach
                   </select>
 
@@ -54,6 +55,10 @@
                     class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Alumnos
                   </th>
+                  <th scope="col"
+                    class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    dni
+                  </th>
 
                   <th scope="col"
                     class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -69,6 +74,9 @@
                 <tr>
                   <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                     {{$alumno->nombre}} {{$alumno->apellido}}
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                    {{$alumno->dni}}
                   </td>
 
 

@@ -59,7 +59,8 @@ class UserController extends Controller
     $request->validate([
       'name' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'email' => 'required|string|email|max:255|unique:users',
-      'userName' => 'required|string|max:255',      'dni' => 'required|int|digits:8|unique:users',
+      'userName' => 'required|string|max:255',
+      'dni' => 'required|int|digits:8',
       'lastName' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'gender' => 'required',
       'phone' => 'required|int|digits_between:7,13',
@@ -73,13 +74,12 @@ class UserController extends Controller
       }
     }
 
-    $query = DB::select('select count(*) as c, users.id as id, users.dni as dni, users.active as activo from users where users.userName = ?', [$request->userName]);
+    $query = DB::select('select count(users.id) as c, users.id as id, users.dni as dni, users.active as activo, users.role_id as role_id from users where users.active = ? AND users.dni = ?; ', [0, $request->dni]);
 
     if ($query[0]->c > 0) {
-      $usuario = User::findOrFail($query[0]->id);
-      $usuario->active = 1;
-      $usuario->save();
-      return redirect('usuario')->with('message', 'Usuario creado con éxito');
+      $user = User::findOrFail($query[0]->id);
+      $user->active = 1;
+      $user->save();
     } else {
       $user = User::create([
         'name' => $request->name,
@@ -102,33 +102,33 @@ class UserController extends Controller
         'medicacion' => $request->has('medicacion'),
         'role_id' => $request->role_id,
       ]);
-
-
-      Password::sendResetLink($request->only(['email']));
-
-      event(new PasswordReset($user));
-
-      switch ($user->role_id) {
-        case '1':
-          $alumno = new Alumno();
-          $alumno->user_id = $user->id;
-          $alumno->save();
-          break;
-        case '2':
-          $profesor = new Profesor();
-          $profesor->user_id = $user->id;
-          $profesor->save();
-          break;
-        case '3':
-          $profesor = new Profesor();
-          $profesor->user_id = $user->id;
-          $profesor->save();
-          break;
-      }
-
-      return redirect('usuario')->with('message', 'Usuario creado con éxito.');
     }
+
+    Password::sendResetLink($request->only(['email']));
+
+    event(new PasswordReset($user));
+
+    switch ($user->role_id) {
+      case '1':
+        $alumno = new Alumno();
+        $alumno->user_id = $user->id;
+        $alumno->save();
+        break;
+      case '2':
+        $profesor = new Profesor();
+        $profesor->user_id = $user->id;
+        $profesor->save();
+        break;
+      case '3':
+        $profesor = new Profesor();
+        $profesor->user_id = $user->id;
+        $profesor->save();
+        break;
+    }
+
+    return redirect('usuario')->with('message', 'Usuario creado con éxito.');
   }
+
 
   /**
    * Display the specified resource.
@@ -199,6 +199,18 @@ class UserController extends Controller
   {
     $usuario = User::findOrFail($id);
 
+    if ($usuario->role_id == 1) {
+
+      $alumno_clase = DB::select('select clases.cupos_disponibles,clases.id from clases join alumno_clase on clases.id = alumno_clase.clase_id where alumno_clase.alumno_id in (select alumnos.id from alumnos where alumnos.user_id = ?)', [$usuario->id]);
+
+
+      foreach ($alumno_clase as $a_clase) {
+        $clase = Clase::findorFail($a_clase->id);
+        $clase->cupos_disponibles = $a_clase->cupos_disponibles + 1;
+        $clase->save();
+      }
+    }
+
     $usuario->active = 0;
     $usuario->save();
 
@@ -209,10 +221,8 @@ class UserController extends Controller
       case '2':
         DB::select('delete from profesors where profesors.user_id = ?', [$usuario->id]);
         break;
-        break;
       case '3':
         DB::select('delete from profesors where profesors.user_id = ?', [$usuario->id]);
-        break;
         break;
     }
 
