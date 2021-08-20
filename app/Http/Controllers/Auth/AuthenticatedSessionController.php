@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -28,6 +29,12 @@ class AuthenticatedSessionController extends Controller
    */
   public function store(LoginRequest $request)
   {
+
+    $activo = DB::select('select users.active as activo from users where email = ?', [$request->email]);
+    if ($activo[0]->activo == 0) {
+      return  redirect('login')->with('error', 'Usuario inactivo. Comuniquese con la administración para resolver este problema.');
+    }
+
     $request->authenticate();
 
     $request->session()->regenerate();

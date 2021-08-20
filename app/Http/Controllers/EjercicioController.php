@@ -115,9 +115,9 @@ class EjercicioController extends Controller
   public function update(Request $request, $id)
   {
     $request->validate([
-      'nombre_ejercicio' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
-      'descripcion' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'tipo_clase' => 'required',
+      'nombre_ejercicio' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255|unique:ejercicios,nombre_ejercicio',
+      'descripcion' => 'required|string|max:255|unique:ejercicios,descripcion',
     ]);
 
     $ejercicio = request()->except('_token', '_method', 'tipo_clase');

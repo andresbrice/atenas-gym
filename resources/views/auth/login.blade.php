@@ -12,6 +12,8 @@
     <!-- Validation Errors -->
     <x-validation-errors class="mb-4" :errors="$errors" />
 
+    <x-denied-message class=" mt-5" :errors="$errors" />
+
     <form method="POST" action="{{ route('login') }}">
       @csrf
 
