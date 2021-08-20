@@ -61,7 +61,7 @@ class ClaseController extends Controller
       'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
       'horario_id' => 'required',
       'dias' => 'required|array|min: 1'
-    ], ['dias.required' => 'Debe seleccionar al menos 1 día de la semana']);
+    ], ['dias.required' => 'Debe seleccionar al menos 1 día de la semana.']);
 
     foreach ($request->dias as $dia) {
       $query = DB::select("select count(*) as contador from clases join clase_dia on clases.id = clase_dia.clase_id JOIN dias on clase_dia.dia_id = dias.id join horarios on clases.horario_id = horarios.id where clases.tipo_clase = ? and dias.id = ? and horarios.id = ?", [$request->tipo_clase, $dia, $request->horario_id]);
@@ -175,7 +175,7 @@ class ClaseController extends Controller
     $query = DB::table('alumno_clase')->where('alumno_clase.clase_id', '=', $clase->id)->count();
 
     if ($clase->profesors()->count() || $query > 0) {
-      return redirect('clase')->with('error', 'No es posible eliminar esta clase ya que esta relacionada con alumnos o profesores.');
+      return redirect('clase')->with('error', 'No es posible eliminar está clase ya que esta relacionada con alumnos o profesores.');
     } else {
       Clase::destroy($id);
 

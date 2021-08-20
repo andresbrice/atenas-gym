@@ -103,7 +103,7 @@ class HorarioController extends Controller
     $horario = Horario::findOrFail($id);
 
     if ($horario->clases()->count()) {
-      return redirect('horario')->with('error', 'No es posible eliminar este horario ya que esta relacionado a una clase.');
+      return redirect('horario')->with('error', 'No es posible eliminar este horario ya que está relacionado a una clase.');
     } else {
       Horario::destroy($id);
 

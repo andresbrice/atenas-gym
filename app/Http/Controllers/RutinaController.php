@@ -118,7 +118,7 @@ class RutinaController extends Controller
     // } else {
     Rutina::destroy($id);
 
-    return redirect('rutina')->with('message', 'Rutina eliminado con éxito.');
+    return redirect('rutina')->with('message', 'Rutina eliminada con éxito.');
     // }
   }
 
