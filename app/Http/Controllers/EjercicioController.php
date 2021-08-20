@@ -50,8 +50,8 @@ class EjercicioController extends Controller
     // dd($request->all());
     $request->validate([
       'tipo_clase' => 'required',
-      'nombre_ejercicio' => 'required|string|max:255|unique:ejercicios,nombre_ejercicio',
-      'descripcion' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255|unique:ejercicios,descripcion',
+      'nombre_ejercicio' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255|unique:ejercicios,nombre_ejercicio',
+      'descripcion' => 'required|string|max:255|unique:ejercicios,descripcion',
     ]);
 
 

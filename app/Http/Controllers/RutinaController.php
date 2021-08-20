@@ -77,7 +77,7 @@ class RutinaController extends Controller
   public function edit($id)
   {
     $rutina = Rutina::findOrFail($id);
-    $alumnos = User::where('role_id', '1')->get();
+    $alumnos = User::where('role_id', '1')->where('active', '1')->get();
     $profesor = DB::select('select profesors.id as id from profesors where profesors.user_id = ?', [auth()->id()]);
 
     return view('rutina.edit', compact('rutina', 'alumnos', 'profesor'));

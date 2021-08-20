@@ -10,27 +10,20 @@
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-2 2xl:p-4 bg-white border-b border-gray-400">
             <div class="flex flex-col">
-              <style>
+              {{-- <style type="text/css" media="print">
                 @media print {
-                  body * {
-                    visibility: hidden;
-                  }
-
-                  .print-container,
-                  .print-container * {
-                    visibility: visible;
-                  }
-
                   @page {
-                    margin: 0;
+                    margin-top: 0;
+                    margin-bottom: 0;
                   }
 
                   body {
-                    margin: 1.6cm;
+                    padding-top: 72px;
+                    padding-bottom: 72px;
                   }
                 }
-              </style>
-              <div class="flex-1 my-3 print-container">
+              </style> --}}
+              <div class="flex-1 my-3" id="print-container">
 
                 <div class="text-center font-bold mb-2 underline">Rutina de
                   {{$rutina->alumno_clase->alumno->user->name}}
@@ -113,7 +106,7 @@
                   {{ __('Print Routine') }}
                 </x-button>
                 @else
-                <x-button onclick="window.print()"
+                <x-button onclick="print();"
                   class="ml-3 bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
                   {{ __('Print Routine') }}
                 </x-button>
@@ -125,4 +118,17 @@
       </div>
     </div>
   </x-slot>
+  @section('scripts')
+  <script src="print.js"></script>
+  <script>
+    function print() {
+      printJS({
+      printable: 'print-container',
+      type: 'html',
+      maxWidth: '800px',
+      targetStyles: ['*'],
+      })
+      }
+  </script>
+  @endsection
 </x-app-layout>

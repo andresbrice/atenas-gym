@@ -183,7 +183,7 @@ class ClaseController extends Controller
     }
   }
 
-
+  ///////////////////////////////////////////////////* ALUMNOS *////////////////////////////////////////////////////
   public function indexAlumnos($id)
   {
     $cupos = Clase::where('id', $id)->pluck('cupos_disponibles');
@@ -238,10 +238,15 @@ class ClaseController extends Controller
     $clase->save();
     return back();
   }
+
+
+
+  ///////////////////////////////////////////////////* PROFESORES *////////////////////////////////////////////////////
+
   public function indexProfesores($id)
   {
 
-    $profesores = User::whereIn('role_id', [2, 3])->get();
+    $profesores = User::whereIn('role_id', [2, 3])->where('active', 1)->get();
     // dd($profesores);
     $clase = Clase::findOrFail($id);
     $clase_profesor = DB::select('select users.id as id, users.name as nombre, users.lastName as apellido from users where users.id in (select users.id from users join profesors on users.id = profesors.user_id where profesors.id in(select profesors.id from profesors join clase_profesor on profesors.id = clase_profesor.profesor_id where clase_profesor.clase_id = ?))', [$clase->id]);
