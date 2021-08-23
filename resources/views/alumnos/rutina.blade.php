@@ -9,20 +9,7 @@
       <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-2 2xl:p-4 bg-white border-b border-gray-400">
-            <div class="flex flex-col">
-              {{-- <style type="text/css" media="print">
-                @media print {
-                  @page {
-                    margin-top: 0;
-                    margin-bottom: 0;
-                  }
-
-                  body {
-                    padding-top: 72px;
-                    padding-bottom: 72px;
-                  }
-                }
-              </style> --}}
+            <div class="flex flex-col">lo
               <div class="flex-1 my-3" id="print-container">
 
                 <div class="text-center font-bold mb-2 underline">Rutina de

@@ -229,6 +229,6 @@ class UserController extends Controller
         break;
     }
 
-    return redirect('usuario')->with('message', 'Usuario borrado con éxito.');
+    return redirect('usuario')->with('message', 'Usuario eliminado con éxito.');
   }
 }
