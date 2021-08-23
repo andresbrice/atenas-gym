@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Alumno;
+use App\Models\Profesor;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -45,6 +48,27 @@ class UserSeeder extends Seeder
       "user_id" => 1,
     ]);
 
-    // User::factory()->times(50)->create();
+    User::factory()->times(50)->create();
+
+
+    foreach (User::all() as $usuario) {
+      switch ($usuario->role_id) {
+        case '1':
+          $alumno = new Alumno();
+          $alumno->user_id = $usuario->id;
+          $alumno->save();
+          break;
+        case '2':
+          $profesor = new Profesor();
+          $profesor->user_id = $usuario->id;
+          $profesor->save();
+          break;
+        case '3':
+          $profesor = new Profesor();
+          $profesor->user_id = $usuario->id;
+          $profesor->save();
+          break;
+      }
+    }
   }
 }

@@ -21,6 +21,6 @@ class PerfilController extends Controller
       auth()->user()->update(['password' => bcrypt($request->input('password'))]);
     }
 
-    return redirect('perfil')->with('message', 'Perfil editado con éxito.');
+    return redirect('perfil')->with('message', 'Perfil modificado con éxito.');
   }
 }

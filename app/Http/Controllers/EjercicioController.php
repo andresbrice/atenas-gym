@@ -114,10 +114,13 @@ class EjercicioController extends Controller
    */
   public function update(Request $request, $id)
   {
+    $ejercicio = Ejercicio::findOrFail($id);
+
     $request->validate([
       'tipo_clase' => 'required',
-      'nombre_ejercicio' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255|unique:ejercicios,nombre_ejercicio',
-      'descripcion' => 'required|string|max:255|unique:ejercicios,descripcion',
+      'nombre_ejercicio' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255|unique:ejercicios,nombre_ejercicio,' . $ejercicio->id,
+      'descripcion' =>
+      'required|string|max:255|unique:ejercicios,descripcion,' . $ejercicio->id,
     ]);
 
     $ejercicio = request()->except('_token', '_method', 'tipo_clase');

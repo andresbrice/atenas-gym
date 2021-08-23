@@ -56,17 +56,6 @@ class UserController extends Controller
    */
   public function store(Request $request)
   {
-    $request->validate([
-      'name' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
-      'email' => 'required|string|email|max:255|unique:users',
-      'userName' => 'required|string|max:255',
-      'dni' => 'required|int|digits:8',
-      'lastName' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
-      'gender' => 'required',
-      'phone' => 'required|int|digits_between:7,13',
-      'emergency_number' => 'required|int|digits_between:7,13',
-      'age' => 'required|int|between:10,99',
-    ]);
 
     if ($request->role_id == 2 || $request->role_id == 3) {
       if ($request->age < 21 || $request->age > 60) {
@@ -77,10 +66,24 @@ class UserController extends Controller
     $query = DB::select('select count(users.id) as c, users.id as id, users.dni as dni, users.active as activo, users.role_id as role_id from users where users.active = ? AND users.dni = ?; ', [0, $request->dni]);
 
     if ($query[0]->c > 0) {
+
       $user = User::findOrFail($query[0]->id);
       $user->active = 1;
       $user->save();
     } else {
+
+      $request->validate([
+        'name' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users',
+        'userName' => 'required|string|max:255',
+        'dni' => 'required|int|digits:8',
+        'lastName' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
+        'gender' => 'required',
+        'phone' => 'required|int|digits_between:7,13',
+        'emergency_number' => 'required|int|digits_between:7,13',
+        'age' => 'required|int|between:10,99',
+      ]);
+
       $user = User::create([
         'name' => $request->name,
         'email' => $request->email,
