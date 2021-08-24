@@ -33,9 +33,17 @@
                     Filtrar por...
                   </option>
                   {{-- {{ old('filtro') == 'userName' ? 'selected' : '' }}value="userName" --}}
-                  <option >Alumno
+                  <option>
+                    Alumno
                   </option>
-                  <option >Clase
+                  <option>
+                    Tipo de clase
+                  </option>
+                  <option>
+                    Fecha de pago
+                  </option>
+                  <option>
+                    Fecha de caducidad
                   </option>
 
                   @endsection
