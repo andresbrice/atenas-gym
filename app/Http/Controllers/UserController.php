@@ -57,11 +57,6 @@ class UserController extends Controller
   public function store(Request $request)
   {
 
-    if ($request->role_id == 2 || $request->role_id == 3) {
-      if ($request->age < 21 || $request->age > 60) {
-        return  back()->with('error', 'Un profesor no puede ser menor a 21 años o mayor a 60.')->withInput();
-      }
-    }
 
     $query = DB::select('select count(users.id) as c, users.id as id, users.dni as dni, users.active as activo, users.role_id as role_id from users where users.active = ? AND users.dni = ?; ', [0, $request->dni]);
 
@@ -83,6 +78,13 @@ class UserController extends Controller
         'emergency_number' => 'required|int|digits_between:7,13',
         'age' => 'required|int|between:10,99',
       ]);
+
+
+      if ($request->role_id == 2 || $request->role_id == 3) {
+        if ($request->age < 21 || $request->age > 60) {
+          return  back()->with('error', 'Un profesor no puede ser menor a 21 años o mayor a 60.')->withInput();
+        }
+      }
 
       $user = User::create([
         'name' => $request->name,

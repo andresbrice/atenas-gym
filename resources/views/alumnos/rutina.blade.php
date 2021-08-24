@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="breadcrumb">
-    <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{route('alumnos.buscarClase')}}">Buscar clase</a> / <u>Consulta
-        rutina</u> </x-breadcrumb>
+    <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{route('alumnos.buscarClase')}}">Buscar Clase</a> / <u>Consulta
+        Rutina</u> </x-breadcrumb>
   </x-slot>
 
   <x-slot name="slot">
@@ -9,7 +9,7 @@
       <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-2 2xl:p-4 bg-white border-b border-gray-400">
-            <div class="flex flex-col">lo
+            <div class="flex flex-col">
               <div class="flex-1 my-3" id="print-container">
 
                 <div class="text-center font-bold mb-2 underline">Rutina de
