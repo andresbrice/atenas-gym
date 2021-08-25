@@ -9,9 +9,10 @@
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
 
-            <div class="flex flex-col justify-center items-center md:flex-row">
+            <div class="flex  flex-col justify-center items-stretch md:flex-row">
               @foreach ($clases as $clase)
-              <div class="flex-1 m-3 w-full overflow-hidden bg-gray-900 rounded-lg shadow-lg dark:bg-gray-800">
+              <div
+                class=" flex-1  m-3 max-w-max min-h-full overflow-hidden bg-gray-900 rounded-lg shadow-lg dark:bg-gray-800">
                 <div class="px-4 py-2">
                   <h2 class="text-xl font-bold text-red-700 uppercase dark:text-white">
                     Tipo de clase:
