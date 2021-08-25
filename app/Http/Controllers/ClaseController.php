@@ -136,16 +136,29 @@ class ClaseController extends Controller
       'dias' => 'required|array|min: 1'
     ], ['dias.required' => 'Debe seleccionar al menos 1 día de la semana.']);
 
-    $query = DB::select('select clase_dia.dia_id as id, clases.horario_id as horario, clases.tipo_clase as tipo_clase from clase_dia join clases on clase_dia.clase_id = clases.id join horarios on clases.horario_id = horarios.id WHERE clases.tipo_clase = ? and clases.horario_id = ?', [$request->tipo_clase, $request->horario_id]);
-
-    $dias = array();
-    for ($i = 0; $i < count($query); $i++) {
-      array_push($dias, $query[$i]->id);
+    foreach ($request->dias as $dia) {
+      $query = DB::select("select count(*) as contador from clases join clase_dia on clases.id = clase_dia.clase_id JOIN dias on clase_dia.dia_id = dias.id join horarios on clases.horario_id = horarios.id where clases.tipo_clase = ? and dias.id = ? and horarios.id = ?", [$request->tipo_clase, $dia, $request->horario_id]);
+      if ($query[0]->contador > 0) {
+        return  back()->with('error', 'Ya existe una clase de ese tipo en los dias y horario seleccionado.')->withInput();
+      }
     }
 
-    if ($request->dias == $dias && $request->horario_id == $query) {
-      return  back()->with('error', 'Ya existe una clase de ese tipo en los dias y horario seleccionado.')->withInput();
-    }
+    // $request->validate([
+    //   'tipo_clase' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
+    //   'horario_id' => 'required',
+    //   'dias' => 'required|array|min: 1'
+    // ], ['dias.required' => 'Debe seleccionar al menos 1 día de la semana.']);
+
+    // $query = DB::select('select clase_dia.dia_id as id, clases.horario_id as horario, clases.tipo_clase as tipo_clase from clase_dia join clases on clase_dia.clase_id = clases.id join horarios on clases.horario_id = horarios.id WHERE clases.tipo_clase = ? and clases.horario_id = ?', [$request->tipo_clase, $request->horario_id]);
+
+    // $dias = array();
+    // for ($i = 0; $i < count($query); $i++) {
+    //   array_push($dias, $query[$i]->id);
+    // }
+
+    // if ($request->dias == $dias && $request->horario_id == $query) {
+    //   return  back()->with('error', 'Ya existe una clase de ese tipo en los dias y horario seleccionado.')->withInput();
+    // }
 
     $clase->tipo_clase = $request->get('tipo_clase');
     $clase->horario_id = $request->get('horario_id');
