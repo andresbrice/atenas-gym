@@ -66,7 +66,7 @@ class ClaseController extends Controller
     foreach ($request->dias as $dia) {
       $query = DB::select("select count(*) as contador from clases join clase_dia on clases.id = clase_dia.clase_id JOIN dias on clase_dia.dia_id = dias.id join horarios on clases.horario_id = horarios.id where clases.tipo_clase = ? and dias.id = ? and horarios.id = ?", [$request->tipo_clase, $dia, $request->horario_id]);
       if ($query[0]->contador > 0) {
-        return  back()->with('error', 'Ya existe una clase de ese tipo en los dias y horario seleccionado.')->withInput();
+        return  back()->with('error', 'Ya existe una clase de ese tipo en los días y horario seleccionados.')->withInput();
       }
     }
 
@@ -139,7 +139,7 @@ class ClaseController extends Controller
     foreach ($request->dias as $dia) {
       $query = DB::select("select count(*) as contador from clases join clase_dia on clases.id = clase_dia.clase_id JOIN dias on clase_dia.dia_id = dias.id join horarios on clases.horario_id = horarios.id where clases.tipo_clase = ? and dias.id = ? and horarios.id = ?", [$request->tipo_clase, $dia, $request->horario_id]);
       if ($query[0]->contador > 0) {
-        return  back()->with('error', 'Ya existe una clase de ese tipo en los dias y horario seleccionado.')->withInput();
+        return  back()->with('error', 'Ya existe una clase de ese tipo en los días y horario seleccionados.')->withInput();
       }
     }
 
