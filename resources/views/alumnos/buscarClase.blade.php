@@ -1,7 +1,7 @@
 <x-app-layout>
 
   <x-slot name="breadcrumb">
-    <x-breadcrumb><a href="/">Dashboard</a> / <u>Buscar clase</u>
+    <x-breadcrumb><a href="/">Dashboard</a> / <u>Buscar Clase</u>
     </x-breadcrumb>
   </x-slot>
 
