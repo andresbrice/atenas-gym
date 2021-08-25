@@ -249,7 +249,7 @@ class ClaseController extends Controller
     $profesores = User::whereIn('role_id', [2, 3])->where('active', 1)->get();
     // dd($profesores);
     $clase = Clase::findOrFail($id);
-    $clase_profesor = DB::select('select users.id as id, users.name as nombre, users.lastName as apellido from users where users.id in (select users.id from users join profesors on users.id = profesors.user_id where profesors.id in(select profesors.id from profesors join clase_profesor on profesors.id = clase_profesor.profesor_id where clase_profesor.clase_id = ?))', [$clase->id]);
+    $clase_profesor = DB::select('select users.id as id, users.name as nombre, users.lastName as apellido, users.dni as dni from users where users.id in (select users.id from users join profesors on users.id = profesors.user_id where profesors.id in(select profesors.id from profesors join clase_profesor on profesors.id = clase_profesor.profesor_id where clase_profesor.clase_id = ?))', [$clase->id]);
 
     return view('clase.profesores', compact('profesores', 'clase', 'clase_profesor'));
   }

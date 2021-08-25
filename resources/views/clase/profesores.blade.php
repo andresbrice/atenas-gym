@@ -26,7 +26,8 @@
                   <select class="select2_el" id="profesor_id" style="width:100%" name="profesor" required>
                     <option value="" selected></option>
                     @foreach ($profesores as $profesor)
-                    <option value="{{ $profesor->id }}">{{ $profesor->name }} {{ $profesor->lastName }}</option>
+                    <option value="{{ $profesor->id }}">{{ $profesor->name }} {{ $profesor->lastName }} - DNI:
+                      {{ $profesor->dni}}</option>
                     @endforeach
                   </select>
 

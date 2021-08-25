@@ -102,11 +102,9 @@
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                   <div class="inline-flex" role="group" aria-label="Button group">
 
-                    <a href="{{ route('usuario.edit', $usuario->id) }}"><button
-                      class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 rounded-l-md focus:shadow-outline 
+                    <a href="{{ route('usuario.edit', $usuario->id) }}"><button class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 rounded-l-md focus:shadow-outline 
                       hover:bg-green-800">Editar</button></a>
-                      <a href="{{ route('usuario.show', $usuario->id) }}"><button 
-                      class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 focus:shadow-outline 
+                    <a href="{{ route('usuario.show', $usuario->id) }}"><button class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 focus:shadow-outline 
                       hover:bg-yellow-600">Mostrar</button></a>
 
                     <form method="POST" action="{{ route('usuario.destroy', $usuario->id) }}">
@@ -121,13 +119,8 @@
               </tr>
               @empty
               <tr>
-                <td>
-                    @if (strlen($usuarios) === 0)
-                        <center>No hay usuarios creados.</center>
-                    @else
-                    <center>
-                        No se encontró dicho usuario. Intente nuevamente.</center>
-                    @endif
+                <td class="text-center">
+                  No se encontró dicho usuario. Intente nuevamente.
                 </td>
               </tr>
               @endforelse
