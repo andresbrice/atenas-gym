@@ -52,7 +52,7 @@ class EjercicioController extends Controller
       'tipo_clase' => 'required',
       'nombre_ejercicio' => 'required|regex:/^[\pL\s\-]+$/u|string|max:255|unique:ejercicios,nombre_ejercicio',
       'descripcion' => 'required|string|max:255|unique:ejercicios,descripcion',
-    ]);
+    ], ['tipo_clase.required' => 'El campo tipo de clase es obligatorio.']);
 
 
     // for ($i = 0; $i < count($request->tipo_clase); $i++) {
