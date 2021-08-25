@@ -17,7 +17,7 @@
                 {{-- BOTON --}}
                 <a href="{{ route('usuario.create') }}" class="w-max md:mr-5">
                   <x-button type="button"
-                    class="bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
+                    class="bg-blue-400 text-blue-800 hover:bg-blue-700 hover:text-white border-blue-800 font-bold">
                     {{ __('Register User') }}
                   </x-button>
                 </a>

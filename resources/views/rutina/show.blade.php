@@ -90,12 +90,12 @@
 
                 @if (count($ejercicios_rutina) == 0)
                 <x-button disabled title="La rutina debe tener ejercicios asignados para poder imprimirla"
-                  class="ml-3 bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
+                  class="ml-3 bg-blue-400 text-blue-800 hover:bg-blue-700 hover:text-white border-blue-800 font-bold">
                   {{ __('Print Routine') }}
                 </x-button>
                 @else
                 <x-button onclick="print();"
-                  class="ml-3 bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
+                  class="ml-3 bg-blue-400 text-blue-800 hover:bg-blue-700 hover:text-white border-blue-800 font-bold">
                   {{ __('Print Routine') }}
                 </x-button>
                 @endif

@@ -17,7 +17,7 @@
                 {{-- BOTON --}}
                 <a href="{{ route('ejercicio.create') }}" class="w-max md:mr-5">
                   <x-button type="button"
-                    class="bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
+                    class="bg-blue-400 text-blue-800 hover:bg-blue-700 hover:text-white border-blue-800 font-bold">
                     {{ __('Register Exercise') }}
                   </x-button>
                 </a>
@@ -98,10 +98,9 @@
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                   <div class="inline-flex" role="group" aria-label="Button group">
-                    <a href="{{ route('ejercicio.edit', $ejercicio->id) }}"><button
-                      class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 rounded-l-md focus:shadow-outline 
+                    <a href="{{ route('ejercicio.edit', $ejercicio->id) }}"><button class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 rounded-l-md focus:shadow-outline 
                       hover:bg-green-800">Editar</button></a>
-                      
+
                     <form method="POST" action="{{ route('ejercicio.destroy', $ejercicio->id) }}">
                       @csrf
                       @method('DELETE')

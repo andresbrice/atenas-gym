@@ -33,12 +33,13 @@
 
 
                   @if ($cupos[0] = 0) <x-button type="submit" title="Solo se admiten 10 alumnos por clase"
-                    class="bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold" disabled>
+                    class="bg-blue-400 text-blue-800 hover:bg-blue-700 hover:text-white border-blue-800 font-bold"
+                    disabled>
                     {{ __('Add Student') }}
                   </x-button>
                   @else
                   <x-button type="submit"
-                    class="bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
+                    class="bg-blue-400 text-blue-800 hover:bg-blue-700 hover:text-white border-blue-800 font-bold">
                     {{ __('Add Student') }}
                   </x-button>
 

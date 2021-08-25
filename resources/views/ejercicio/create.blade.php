@@ -56,7 +56,8 @@
                     </x-button>
                   </a>
 
-                  <x-button class="bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
+                  <x-button
+                    class="bg-blue-400 text-blue-800 hover:bg-blue-700 hover:text-white border-blue-800 font-bold">
                     {{ __('Register Exercise') }}
                   </x-button>
                 </div>

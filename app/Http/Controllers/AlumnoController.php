@@ -55,8 +55,12 @@ class AlumnoController extends Controller
 
     $rutina = Rutina::where('alumno_clase_id', $alumno_clase->id)->latest()->first();
 
+    if ($rutina == null) {
+      return  back()->with('error', 'No tienes ninguna rutina asignada a dicha clase.');
+    }
 
     $ejercicios_rutina = DB::select('select ejercicios.id as id, ejercicio_rutina.id as ejercicio_rutina_id, ejercicios.nombre_ejercicio as nombre_ejercicio, rutinas.id as rutina_id, ejercicio_rutina.series as series, ejercicio_rutina.repeticiones as repeticiones, ejercicio_rutina.descanso as descanso from ejercicio_rutina join ejercicios on ejercicio_rutina.ejercicio_id = ejercicios.id join rutinas on ejercicio_rutina.rutina_id = rutinas.id where rutina_id = ?', [$rutina->id]);
+
 
 
     return view('alumnos.rutina', compact('rutina', 'ejercicios_rutina'));

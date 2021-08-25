@@ -16,7 +16,7 @@
                 {{-- BOTON --}}
                 <a href="{{ route('clase.create') }}" class="w-max md:mr-5">
                   <x-button type="button"
-                    class="bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
+                    class="bg-blue-400 text-blue-800 hover:bg-blue-700 hover:text-white border-blue-800 font-bold">
                     {{ __('Register Class') }}
                   </x-button>
                 </a>
@@ -121,7 +121,7 @@
                         class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-800 focus:shadow-outline hover:bg-yellow-600">
                         Mostrar</button></a>
                     <a href="{{ route('clase.alumnos', $clase->id) }}"><button
-                        class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-800 focus:shadow-outline hover:bg-blue-600">
+                        class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-800 focus:shadow-outline hover:bg-pink-700">
                         Alumnos</button></a>
                     <a href="{{ route('clase.profesores', $clase->id) }}"><button
                         class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-800 focus:shadow-outline hover:bg-indigo-800">

@@ -15,8 +15,8 @@
                 {{-- BOTON --}}
                 <div class="flex-auto justify-center">
                   <a href="{{ route('asistencia.buscarclase') }}">
-                    <x-button
-                      class="bg-red-300 text-red-700 hover:bg-red-700 hover:text-white border-red-600 font-bold">
+                    <x-button class="bg-blue-400 text-blue-800 hover:bg-blue-700 hover:text-white
+                      border-blue-800 font-bold">
                       {{ __('Register Assistance') }}
                     </x-button>
                   </a>
@@ -82,30 +82,31 @@
               <tr>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center">
-                  {{ $asistencia->tipo_clase }}
+                  {{ $asistencia->alumno_clase->clase->tipo_clase }}
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center">
-                  {{ $asistencia->fecha }}
+                  {{ \Carbon\Carbon::parse($asistencia->fecha_asistencia)->format('d/m/Y') }}
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center">
-                  {{ $asistencia->horario->hora->format('H:i A') }}
+                  {{-- {{ $asistencia->horario->hora->format('H:i A') }} --}}
+                  {{-- {{ $asistencia->}} --}}
+                  {{ $asistencia->alumno_clase->clase->horario->hora->format('H:i A')}}
                 </td>
 
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                   <div class="inline-flex" role="group" aria-label="Button group">
-                    <button
-                      class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 rounded-l-md focus:shadow-outline hover:bg-green-800">
-                      <a href="{{ route('asistencia.edit', $asistencia->id) }}">Editar</a></button>
-                    <button
-                      class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 focus:shadow-outline hover:bg-yellow-600">
-                      <a href="{{ route('asistencia.show', $asistencia->id) }}">Mostrar</a></button>
+                    <a href="{{ route('asistencia.edit') }}"><button
+                        class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 rounded-l-md focus:shadow-outline hover:bg-green-800">
+                        Editar</button></a>
+                    <a href="{{ route('asistencia.show')}}"><button
+                        class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 focus:shadow-outline hover:bg-yellow-600">
+                        Mostrar</button></a>
 
-                    <form method="POST" action="{{ route('asistencia.destroy', $asistencia->id) }}">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit"
+                    <form method="POST" action="#">
+
+                      <button type="button"
                         class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 rounded-r-md focus:shadow-outline hover:bg-red-800"
                         onclick="return confirm('¿Esta seguro de querer borrar esta asistencia?');">Borrar</button>
                     </form>

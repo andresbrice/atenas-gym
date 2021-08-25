@@ -15,8 +15,8 @@
                 {{-- BOTON --}}
                 <div class="flex-auto justify-center ml-4">
                   <a href="{{ route('cuota.seleccionaralumno') }}">
-                    <x-button
-                      class="bg-red-300 text-red-700 hover:bg-red-700 hover:text-white border-red-600 font-bold">
+                    <x-button class="bg-blue-400 text-blue-800 hover:bg-blue-700 hover:text-white
+                      border-blue-800 font-bold">
                       {{ __('Register Subscription') }}
                     </x-button>
                   </a>
@@ -34,7 +34,10 @@
                   </option>
                   {{-- {{ old('filtro') == 'userName' ? 'selected' : '' }}value="userName" --}}
                   <option>
-                    Alumno
+                    Usuario
+                  </option>
+                  <option>
+                    Nombre y apellido
                   </option>
                   <option>
                     Tipo de clase
@@ -87,30 +90,30 @@
               <tr>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center">
-                  {{ $cuota->userName }}
+                  daianadirie
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center">
-                  {{ $cuota->tipo_clase }}
+                  Funcional
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center">
-                  {{ $cuota->fechaDePago }}
+                  {{ \Carbon\Carbon::parse($cuota->fecha_de_pago)->format('d/m/Y') }}
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center">
-                  {{ $cuota->fechaCaducidad }}
+                  {{ \Carbon\Carbon::parse($cuota->fecha_de_caducidad)->format('d/m/Y') }}
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center">
-                  {{ $cuota->importe }}
+                  ${{ $cuota->importe }}
                 </td>
 
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                   <div class="inline-flex" role="group" aria-label="Button group">
-                    <button
-                      class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 rounded-l-md focus:shadow-outline hover:bg-green-800">
-                      <a href="{{ route('cuota.edit', $cuota->id) }}">Editar</a></button>
+                    <a href="{{ route('cuota.edit')}}"><button
+                        class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 rounded-l-md focus:shadow-outline hover:bg-green-800">
+                        Editar</button></a>
 
                     <button
                       class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 rounded-r-md focus:shadow-outline hover:bg-red-800"

@@ -10,6 +10,7 @@
       <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-2 2xl:p-4 bg-white border-b border-gray-200">
+            <x-denied-message class="mb-4 font-bold flex justify-center" />
             <form action="{{ route('alumnos.rutina') }}" method="get">
 
               <div class="flex flex-col p-4 overflow-hidden sm:rounded-md">
@@ -30,7 +31,8 @@
                   </select>
                 </div>
                 <div class="px-4 mt-3 py-2  flex items-center justify-center sm:px-6">
-                  <x-button class=" bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
+                  <x-button
+                    class=" bg-blue-400 text-blue-800 hover:bg-blue-700 hover:text-white border-blue-800 font-bold">
                     {{__('Select') }}
                   </x-button>
                 </div>

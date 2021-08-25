@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="breadcrumb">
     <x-breadcrumb><a href="/">Dashboard</a> / <a href="{{ route('asistencia.index') }}">Gestión Asistencia</a> /
-      <u>Editar Asistencia</u>
+      <u>Mostrar Asistencia</u>
     </x-breadcrumb>
   </x-slot>
 
@@ -28,7 +28,7 @@
                     <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                       <input type="checkbox" name="alumno1" id="alumno1"
                         class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                        checked>
+                        checked disabled>
                     </dd>
                   </div>
                   <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -38,7 +38,7 @@
                     <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                       <input type="checkbox" name="alumno1" id="alumno1"
                         class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                        checked>
+                        checked disabled>
                     </dd>
                   </div>
                   <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -57,7 +57,7 @@
                     <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                       <input type="checkbox" name="alumno1" id="alumno1"
                         class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                        checked>
+                        checked disabled>
                     </dd>
                   </div>
                   <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -67,7 +67,7 @@
                     <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                       <input type="checkbox" name="alumno1" id="alumno1"
                         class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                        checked>
+                        checked disabled>
                     </dd>
                   </div>
                   <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -77,7 +77,7 @@
                     <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                       <input type="checkbox" name="alumno1" id="alumno1"
                         class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                        checked>
+                        checked disabled>
                     </dd>
                   </div>
                   <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -87,7 +87,7 @@
                     <dd class="mt-1 text-center text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                       <input type="checkbox" name="alumno1" id="alumno1"
                         class="rounded border-gray-300 text-red-900 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                        checked>
+                        checked disabled>
                     </dd>
                   </div>
                   <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -103,16 +103,12 @@
               </div>
             </div>
           </div>
-          <div class="px-4 py-2 my-3 flex items-center justify-between sm:px-6">
+          <div class="px-4 py-2 my-3 flex items-center justify-center sm:px-6">
             <a href="{{ url()->previous() }}">
               <x-button type="button" class="bg-gray-600 hover:bg-gray-700">
                 {{ __('Back') }}
               </x-button>
             </a>
-
-            <x-button class="ml-3 bg-green-900 hover:bg-green-700">
-              {{ __('Edit Assistance') }}
-            </x-button>
           </div>
 
         </div>

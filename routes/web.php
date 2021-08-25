@@ -58,9 +58,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('rutina', RutinaController::class);
     //gestion asistencia
     Route::get('buscarclase', [AsistenciaController::class, 'buscarClase'])->name('asistencia.buscarclase');
-    Route::resource('asistencia', AsistenciaController::class);
+    Route::get('asistencia/edit', function () {
+      return view('asistencia.edit');
+    })->name('asistencia.edit');
+
+    Route::get('asistencia/show', function () {
+      return view('asistencia.show');
+    })->name('asistencia.show');
+    Route::resource('asistencia', AsistenciaController::class)->except(['edit', 'show']);
     //gestion cuota
     Route::get('seleccionaralumno', [CuotaController::class, 'seleccionarAlumno'])->name('cuota.seleccionaralumno');
-    Route::resource('cuota', CuotaController::class);
+    Route::get('cuota/edit', function () {
+      return view('cuota.edit');
+    })->name('cuota.edit');
+    Route::resource('cuota', CuotaController::class)->except(['edit', 'show']);
   });
 });

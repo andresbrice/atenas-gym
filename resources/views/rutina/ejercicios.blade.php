@@ -80,13 +80,13 @@
                     <td class="px-3 py-2 whitespace-nowrap text-center text-sm font-medium">
                       @if (count($ejercicios_rutina) >= 10)
                       <x-button type="submit" title="Solo se admiten 10 ejercicios por rutina"
-                        class="bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold"
+                        class="bg-blue-400 text-blue-800 hover:bg-blue-700 hover:text-white border-blue-800 font-bold"
                         disabled>
                         {{ __('Add Exercise') }}
                       </x-button>
                       @else
                       <x-button type="submit"
-                        class="bg-red-400 text-red-800 hover:bg-red-700 hover:text-white border-red-800 font-bold">
+                        class="bg-blue-400 text-blue-800 hover:bg-blue-700 hover:text-white border-blue-800 font-bold">
                         {{ __('Add Exercise') }}
                       </x-button>
 
