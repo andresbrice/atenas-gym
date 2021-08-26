@@ -112,7 +112,7 @@
                       @method('DELETE')
                       <button type="submit"
                         class="h-9 px-3 text-indigo-100 transition-colors duration-150 bg-gray-900 rounded-r-md focus:shadow-outline hover:bg-red-800"
-                        onclick="return confirm('¿Esta seguro de querer borrar este usuario? Es posible que este relacionado con una clase');">Borrar</button>
+                        onclick="return confirm('¿Esta seguro de querer borrar este usuario?');">Borrar</button>
                     </form>
                   </div>
                 </td>

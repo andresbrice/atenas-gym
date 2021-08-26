@@ -71,6 +71,10 @@
                 </th>
                 <th scope="col"
                   class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Profesor
+                </th>
+                <th scope="col"
+                  class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Acciones
                 </th>
               </tr>
@@ -90,9 +94,10 @@
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center">
-                  {{-- {{ $asistencia->horario->hora->format('H:i A') }} --}}
-                  {{-- {{ $asistencia->}} --}}
                   {{ $asistencia->alumno_clase->clase->horario->hora->format('H:i A')}}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-center">
+                  andresbrice
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
