@@ -2,8 +2,7 @@
 
 ## Sobre Atenas GYM Web
 
-Atenas GYM web es una aplicación web para la gestión y administración del gimnasio "Atenas". Creada como proyecto final de la carrera "Tecnicatura Superior en Programación"
-
+Atenas GYM web es una aplicación web para la gestión y administración del gimnasio "Atenas".
 ## Prerequisitos
 
 -   Entorno de desarrollo (Puede utilizar el de su preferencia. Recomendamos [XAMPP](https://www.apachefriends.org/es/index.html))
